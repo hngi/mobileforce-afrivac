@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">AfriVac</string>
+    <string name="start_date">Start Date</string>
+    <string name="end_date">End Date</string>
+    <string name="next">Next</string>
+    <string name="hotel_booking">Hotel Booking</string>
+    <string name="guests">Guests</string>
+    <string name="rooms">Rooms</string>
 </resources>
