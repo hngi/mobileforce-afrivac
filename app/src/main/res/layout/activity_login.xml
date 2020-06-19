@@ -20,7 +20,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-            <TextView
+            <com.google.android.material.textview.MaterialTextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dimension_50dp"
@@ -29,7 +29,11 @@
                 android:textColor="@color/colorBlack"
                 android:textSize="33sp"
                 android:textStyle="bold"
-                android:textAlignment="center"/>
+                android:textAlignment="center"
+                app:cit_drawableStart="@drawable/logo"
+                app:cit_iconWidth="40dp"
+                app:cit_iconHeight="40dp"
+                app:cit_iconColor="@color/colorBlack"/>
 
             <TextView
                 android:layout_width="match_parent"
