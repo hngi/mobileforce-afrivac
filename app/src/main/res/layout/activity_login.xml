@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LoginActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimension_50dp"
+                android:text="AfriVac"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                android:textColor="@color/colorBlack"
+                android:textSize="33sp"
+                android:textStyle="bold"
+                android:textAlignment="center"
+                app:cit_drawableStart="@drawable/logo"
+                app:cit_iconWidth="40dp"
+                app:cit_iconHeight="40dp"
+                app:cit_iconColor="@color/colorBlack"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimension_30dp"
+                android:text="Welcome Back,"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/dimension_25sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimension_25dp"
+                android:text="Email"
+                android:textColor="@color/colorGrey"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/signin_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimension_5dp"
+                android:inputType="textEmailAddress"
+                android:textColor="@color/colorBlack"
+                android:textSize="21sp"
+                android:padding="@dimen/dimension_5dp"
+                android:background="@drawable/circular_drawable01"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimension_10dp"
+                android:text="Password"
+                android:textColor="@color/colorGrey"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/signin_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimension_5dp"
+                android:inputType="textPassword"
+                android:textColor="@color/colorBlack"
+                android:textSize="21sp"
+                android:padding="@dimen/dimension_5dp"
+                android:background="@drawable/circular_drawable01" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimension_10dp"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Forgot Password? "
+                    android:textAlignment="textEnd"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/signin_forgot_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Click Here"
+                    android:textAlignment="textStart"
+                    android:textColor="@color/colorBlue"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <com.github.aakira.compoundicontextview.CompoundIconTextView
+                android:id="@+id/signin_with_google"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimension_60"
+                android:text="Sign in with Google "
+                android:textAlignment="center"
+                android:textColor="@color/colorBlack"
+                android:textSize="21sp"
+                android:padding="@dimen/dimension_5dp"
+                android:background="@drawable/circular_drawable02"
+                app:cit_drawableStart="@drawable/google"
+                app:cit_iconWidth="@dimen/dimension_25dp"
+                app:cit_iconHeight="@dimen/dimension_25dp"/>
+
+            <com.github.aakira.compoundicontextview.CompoundIconTextView
+                android:id="@+id/signin_with_facebook"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimension_10dp"
+                android:text="Sign in with Facebook "
+                android:textAlignment="center"
+                android:textColor="@color/colorBlack"
+                android:textSize="21sp"
+                android:padding="@dimen/dimension_5dp"
+                android:background="@drawable/circular_drawable02"
+                app:cit_drawableStart="@drawable/facebook"
+                app:cit_iconWidth="@dimen/dimension_25dp"
+                app:cit_iconHeight="@dimen/dimension_25dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimension_15"
+                android:orientation="horizontal"
+                android:weightSum="3">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:background="@color/colorGrey" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="OR"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorLightGrey"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:background="@color/colorGrey" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/singin_into_account"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimension_15"
+                android:background="@drawable/circular_drawable03"
+                android:padding="7dp"
+                android:text="Sign In"
+                android:textAlignment="center"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                android:textColor="@color/colorWhite"
+                android:textSize="21sp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimension_20dp"
+                android:orientation="horizontal"
+                android:weightSum="3">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Don't have an account?"
+                    android:textAlignment="textEnd"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/singin_goto_signup"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:text="Sign Up"
+                    android:textAlignment="textStart"
+                    android:textColor="@color/colorBlue"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.core.widget.NestedScrollView>
