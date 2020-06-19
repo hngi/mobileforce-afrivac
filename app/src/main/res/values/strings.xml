@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">AfriVac</string>
+<<<<<<< master
     <string name="azeez_adeleke">Azeez Adeleke</string>
     <string name="my_account">My Account</string>
     <string name="nigeria">Nigeria</string>
@@ -22,4 +23,7 @@
     <string name="male">Male</string>
     <string name="english">English</string>
     <string name="hidden_password">********</string>
+=======
+    <string name="apps_logo">logo</string>
+>>>>>>> test
 </resources>
