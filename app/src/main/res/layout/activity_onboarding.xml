@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/onboarding_1"
     android:id="@+id/layout"
-    >
+    tools:context=".OnboardscreenActivity">
 
     <ImageView
         android:id="@+id/imageView"
