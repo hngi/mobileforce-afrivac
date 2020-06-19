@@ -11,7 +11,6 @@ public class MainActivity extends AppCompatActivity {
     public void convertCurrency(View view){
         EditText editText = (EditText) findViewById(R.id.edtText);
         int currency = Integer.parseInt(editText.getText().toString());
-//        double dollar;
         double result;
 
         switch (currency){
