@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "203440292435",
+    "firebase_url": "https://afrivac-e45dd.firebaseio.com",
+    "project_id": "afrivac-e45dd",
+    "storage_bucket": "afrivac-e45dd.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:203440292435:android:81744f563502a1fd9d3ca6",
+        "android_client_info": {
+          "package_name": "com.michael.afrivac"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "203440292435-s50htbhbtcgf9lh9k3rvd17o4tckl0fu.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.michael.afrivac",
+            "certificate_hash": "4169dd118d27856a49cf1aa7ddb59ca4e6b69d2f"
+          }
+        },
+        {
+          "client_id": "203440292435-66itkjvnssnhnln4118hps24duklsth1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDeJaOF28Kwb2N0VnjCDg4FpsoqCxvg8vI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "203440292435-66itkjvnssnhnln4118hps24duklsth1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
