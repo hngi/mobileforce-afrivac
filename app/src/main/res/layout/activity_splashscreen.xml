@@ -9,7 +9,7 @@
     <ImageView
         android:id="@+id/logo"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:contentDescription="@string/apps_logo"
         android:src="@drawable/splash_screen"
         android:scaleType="centerCrop"
