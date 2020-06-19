@@ -9,13 +9,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".OnboardscreenActivity">
-
-        </activity>
+<<<<<<< master
+        <activity android:name=".ProfilePageActivity"></activity>
+        <activity android:name=".MainActivity">
+=======
+        <activity android:name=".OnboardscreenActivity"></activity>
         <activity
             android:name=".SplashscreenActivity"
             android:theme="@style/AppTheme.splashScreen">
 
+>>>>>>> test
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
