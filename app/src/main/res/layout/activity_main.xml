@@ -30,6 +30,7 @@
         app:headerLayout="@layout/nav_header_main"
         app:menu="@menu/activity_main2_drawer" />
 
+
 </androidx.drawerlayout.widget.DrawerLayout>
     tools:context=".MainActivity">
     <TextView
