@@ -1,4 +1,29 @@
 <resources>
     <string name="app_name">AfriVac</string>
+<<<<<<< master
+    <string name="azeez_adeleke">Azeez Adeleke</string>
+    <string name="my_account">My Account</string>
+    <string name="nigeria">Nigeria</string>
+    <string name="username">Username</string>
+    <string name="email">Email</string>
+    <string name="phone">Phone</string>
+    <string name="country">Country</string>
+    <string name="gender">Gender</string>
+    <string name="language">Language</string>
+    <string name="my_destinations">My Destinations</string>
+    <string name="invite_friends">Invite Friends</string>
+    <string name="saved_destination">Saved Destination</string>
+    <string name="password">Password</string>
+    <string name="user_image">User image</string>
+    <string name="edit_profile">Edit Profile</string>
+    <string name="_234_8012345678">+234 8012345678</string>
+    <string name="back_arrow">back arrow</string>
+    <string name="azeez_adeleke">Azeez Adeleke</string>
+    <string name="azeez_hng_com">Azeez@hng.com</string>
+    <string name="male">Male</string>
+    <string name="english">English</string>
+    <string name="hidden_password">********</string>
+=======
     <string name="apps_logo">logo</string>
+>>>>>>> test
 </resources>
