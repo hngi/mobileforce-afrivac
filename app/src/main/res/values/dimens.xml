@@ -10,4 +10,6 @@
     <dimen name="dimension_15">15dp</dimen>
     <dimen name="dimension_15dp">15dp</dimen>
     <dimen name="dimension_60">60dp</dimen>
+    <dimen name="dimension_21sp">21sp</dimen>
+    <dimen name="dimension_18sp">18sp</dimen>
 </resources>
