@@ -3,5 +3,21 @@
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
+<<<<<<< HEAD
     <color name="mainColor">#3913BB</color>
+=======
+
+    <color name="colorWhite">#FFFFFF</color>
+    <color name="colorGrey">#323131</color>
+    <color name="colorLightGrey">#535051</color>
+    <color name="colorBlack">#FF000000</color>
+    <color name="colorBlue">#3913B8</color>
+    <color name="drawerColor">#3913B8</color>
+
+    <color name="stroke">#C4C4C4</color>
+    <color name="roundBtn">#3913B8</color>
+    <color name="roundBtn2">#4D3913B8</color>
+    <color name="black">#000</color>
+    <color name="white">#FFF</color>
+>>>>>>> 700525da2a9e30e088aa84bb8865cb704591e7ad
 </resources>

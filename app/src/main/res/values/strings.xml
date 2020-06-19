@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">AfriVac</string>
+<<<<<<< HEAD
     <string name="line">a line</string>
     <string name="completeBooking">Complete your booking at cocoon luxury</string>
     <string name="hotelName">Cocoon Hotel</string>
@@ -23,4 +24,46 @@
     <string name="reserveFor">I\'m making the reservation on behalf of someone else</string>
     <string name="cab">Yes, I\'d like a cab service as well</string>
     <string name="pay">Pay Now</string>
+=======
+    <string name="azeez_adeleke">Azeez Adeleke</string>
+    <string name="my_account">My Account</string>
+    <string name="nigeria">Nigeria</string>
+    <string name="username">Username</string>
+    <string name="email">Email</string>
+    <string name="phone">Phone</string>
+    <string name="country">Country</string>
+    <string name="gender">Gender</string>
+    <string name="language">Language</string>
+    <string name="my_destinations">My Destinations</string>
+    <string name="invite_friends">Invite Friends</string>
+    <string name="saved_destination">Saved Destination</string>
+    <string name="password">Password</string>
+    <string name="user_image">User image</string>
+    <string name="edit_profile">Edit Profile</string>
+    <string name="_234_8012345678">+234 8012345678</string>
+    <string name="back_arrow">back arrow</string>
+    <string name="azeez_hng_com">Azeez@hng.com</string>
+    <string name="male">Male</string>
+    <string name="english">English</string>
+    <string name="hidden_password">********</string>
+    <string name="apps_logo">logo</string>
+    <string name="title_activity_main3">Main3Activity</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
+    <string name="menu_tools">Tools</string>
+    <string name="menu_share">Share</string>
+    <string name="menu_send">Send</string>
+    <string name="action_settings">Settings</string>
+    <string name="popular_destination">Popular Destinations</string>
+    <string name="logout">Logout</string>
+    <string name="account">Account</string>
+    <string name="support">Support</string>
+>>>>>>> 700525da2a9e30e088aa84bb8865cb704591e7ad
 </resources>
