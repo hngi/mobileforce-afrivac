@@ -12,6 +12,20 @@
 
         <activity android:name=".LoginActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+
+        </activity>
+
+        <activity android:name=".ProfilePageActivity">
+
+        </activity>
+
+        <activity android:name=".OnboardscreenActivity">
+
+        </activity>
+
+        <activity
+            android:name=".SplashscreenActivity"
+            android:theme="@style/AppTheme.splashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -22,6 +36,9 @@
         <activity android:name=".MainActivity">
         </activity>
 
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>

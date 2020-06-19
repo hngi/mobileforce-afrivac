@@ -25,7 +25,12 @@ dependencies {
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
     //textview libry
     implementation 'com.github.aakira:compound-icon-textview:1.2.1@aar'
+    implementation 'com.google.android.material:material:1.1.0'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.2.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+
+//    circle image
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
+    implementation "androidx.cardview:cardview:1.0.0"
 }
