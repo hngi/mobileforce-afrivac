@@ -22,15 +22,18 @@ public class SplashscreenActivity extends AppCompatActivity {
         setContentView(R.layout.activity_splashscreen);
 
         sharePref = SharePref.getINSTANCE(getApplicationContext());
-        
+
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
 
                 if (sharePref.getIsUserLoggedIn()) {
-                    startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                    startActivity(new Intent(getApplicationContext(), SignUpActivity.class));
                 } else {
                     Intent intent = new Intent(getApplicationContext(), OnboardscreenActivity.class);
+
+                    Intent intent = new Intent(getApplicationContext(), SignUpActivity.class);
+
 
                     startActivity(intent);
                 }
