@@ -72,11 +72,11 @@ public class SignUpActivity extends AppCompatActivity {
 
     }
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.signup);
+    }
 
         Username = findViewById(R.id.username);
         Email = findViewById(R.id.email);
@@ -138,5 +138,4 @@ public class SignUpActivity extends AppCompatActivity {
         }
 
     }*/
-
 }
