@@ -4,6 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="200dp"
     android:background="@drawable/side_nav_bar"
+    android:layout_height="@dimen/nav_header_height"
+    android:background="@color/drawerColor"
     android:gravity="bottom"
     android:orientation="vertical"
     android:paddingLeft="@dimen/dimension_10dp"
@@ -40,5 +42,14 @@
         android:text="@string/subtittle"
         android:textSize="@dimen/dimension_18sp"
         android:textAlignment="center"/>
+        android:layout_width="wrap_content"
+        android:layout_gravity="end|center_vertical"
+        android:foregroundGravity="center_vertical"
+
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/nav_header_desc"
+        android:paddingTop="@dimen/nav_header_vertical_spacing"
+        app:srcCompat="@drawable/ic_close_black_24dp" />
+
 
 </LinearLayout>

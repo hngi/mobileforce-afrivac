@@ -3,34 +3,42 @@ package com.michael.afrivac;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
 
 import android.view.View;
 
-import androidx.navigation.NavController;
+/*import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import com.google.android.material.navigation.NavigationView;
 
-import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.drawerlayout.widget.DrawerLayout;*/
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+import androidx.navigation.ui.AppBarConfiguration;
+import androidx.navigation.ui.NavigationUI;
 
 import android.view.Menu;
 
 public class MainActivity extends AppCompatActivity {
 
-    private AppBarConfiguration mAppBarConfiguration;
+   private AppBarConfiguration mAppBarConfiguration;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        //  setSupportActionBar(toolbar);
+      //  setSupportActionBar(toolbar);
+        //s49c6223f55a10e57b33c58b9cf1819ff7714fd38
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -67,3 +75,30 @@ public class MainActivity extends AppCompatActivity {
                 || super.onSupportNavigateUp();
     }
 }
+
+
+
+
+ /*   public void convertCurrency(View view){
+    EditText editText = (EditText) findViewById(R.id.edtText);
+    int currency = Integer.parseInt(editText.getText().toString());
+    double result;
+
+    private AppBarConfiguration mAppBarConfiguration;
+
+    switch (currency){
+    case 1: //Dollar to Naira
+    double dollar = 360;
+    result = currency * dollar;
+    break;
+    case 2: //Pounds to Naira
+    double pounds = 450;
+    result = currency * pounds;
+    break;
+
+    default:
+    throw new IllegalStateException("Unexpected value: " + currency);
+    }
+
+    Toast.makeText(MainActivity.this, Double.toString(result), Toast.LENGTH_LONG).show();
+    }*/

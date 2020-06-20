@@ -23,19 +23,14 @@ public class SplashscreenActivity extends AppCompatActivity {
 
         sharePref = SharePref.getINSTANCE(getApplicationContext());
 
-
-        Animation fadeIn = AnimationUtils.loadAnimation(this, R.anim.fade__in);
-        ImageView fadeInImage = findViewById(R.id.logo);
-        fadeInImage.startAnimation(fadeIn);
-
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
 
                 if (sharePref.getIsUserLoggedIn()) {
-                    startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                    startActivity(new Intent(getApplicationContext(), SignUpActivity.class));
                 } else {
-                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                    Intent intent = new Intent(getApplicationContext(), SignUpActivity.class);
 
                     startActivity(intent);
                 }
