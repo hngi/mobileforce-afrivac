@@ -30,7 +30,10 @@ public class SplashscreenActivity extends AppCompatActivity {
                 if (sharePref.getIsUserLoggedIn()) {
                     startActivity(new Intent(getApplicationContext(), SignUpActivity.class));
                 } else {
+                    Intent intent = new Intent(getApplicationContext(), OnboardscreenActivity.class);
+
                     Intent intent = new Intent(getApplicationContext(), SignUpActivity.class);
+
 
                     startActivity(intent);
                 }
