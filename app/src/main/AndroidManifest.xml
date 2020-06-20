@@ -28,6 +28,11 @@
         </activity>
 
         <activity
+            android:name=".LoginActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
+        <activity android:name=".ProfilePageActivity"></activity>
+        <activity android:name=".OnboardscreenActivity"></activity>
+        <activity
             android:name=".SplashscreenActivity"
             android:theme="@style/AppTheme.splashScreen">
             <intent-filter>
