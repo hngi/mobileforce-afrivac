@@ -1,0 +1,46 @@
+
+	<RelativeLayout
+		xmlns:android="http://schemas.android.com/apk/res/android"
+		android:layout_width="120dp"
+		android:layout_weight="1"
+		android:layout_height="fill_parent"
+		android:layout_marginEnd="8dp"
+		android:layout_marginStart="8dp"
+		android:background="@drawable/bg_white_rounded_nopadding">
+		<ImageView
+			android:id="@+id/activity_popular_viewpager_fragmentImage"
+			android:layout_width="fill_parent"
+			android:layout_height="fill_parent"
+			android:scaleType="centerCrop"
+			android:src="@drawable/camel"/>
+		<ImageView
+			android:id="@+id/temporaryID493393"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:src="@drawable/ic_location_on_black_24dp"
+			android:layout_marginLeft="12dp"
+			android:layout_marginBottom="12dp"
+			android:layout_alignParentBottom="true"/>
+		<TextView
+			android:id="@+id/activity_popular_viewpager_fragmentCountry"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			style="@style/activity_popular_text"
+			android:layout_marginLeft="10dp"
+			android:layout_toRightOf="@id/temporaryID493393"
+			android:layout_alignTop="@id/temporaryID493393"
+			android:text="Egypt"
+			android:textColor="@color/white"
+			android:textSize="16sp"/>
+		<TextView
+			android:id="@+id/activity_popular_viewpager_fragmentCity"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_above="@id/temporaryID493393"
+			style="@style/activity_popular_text"
+			android:layout_alignLeft="@id/temporaryID493393"
+			android:text="Cairo"
+			android:textColor="@color/white"
+			android:textSize="14sp"/>
+		
+</RelativeLayout>

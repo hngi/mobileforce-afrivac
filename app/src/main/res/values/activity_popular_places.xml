@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="activity_popular_text">
+        <!-- Customize your theme here. -->
+        <item name="android:textColor">@color/black</item>
+        <item name="android:fontFamily">@font/poppins_semibold</item>
+    </style>
+</resources>

@@ -1,0 +1,19 @@
+<LinearLayout 
+	xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="100dp"
+	android:weightSum="1"
+	android:layout_marginLeft="10dp"
+	android:layout_marginRight="20dp"
+	android:layout_marginBottom="10dp"
+	android:elevation="5dp"
+	android:background="@drawable/bg_white_rounded_nopadding"
+	android:gravity="fill_horizontal"
+    android:orientation="horizontal">
+    <ImageView
+		android:id="@+id/activity_popular_cardImage"
+		android:layout_width="100dp"
+		android:scaleType="centerCrop"
+		android:layout_height="fill_parent"/>
+	<include layout="@layout/activity_popular_card_content"/>
+</LinearLayout>
