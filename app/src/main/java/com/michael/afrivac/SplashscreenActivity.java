@@ -37,9 +37,8 @@ public class SplashscreenActivity extends AppCompatActivity {
 
                 finish();
             }
-            //the delay time is 3s
-        }, 3000);
-
+            //the delay time is 2s
+        }, 2000);
     }
 
 }

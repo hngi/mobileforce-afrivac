@@ -22,13 +22,14 @@
     <string name="english">English</string>
     <string name="hidden_password">********</string>
     <string name="apps_logo">logo</string>
+    <string name="subtittle">subtittle</string>
+    <string name="title">title</string>
     <string name="title_activity_main3">Main3Activity</string>
     <string name="navigation_drawer_open">Open</string>
     <string name="navigation_drawer_close">Close</string>
     <string name="nav_header_title">Android Studio</string>
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
-
     <string name="menu_home">Home</string>
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
