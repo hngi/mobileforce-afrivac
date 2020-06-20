@@ -25,10 +25,6 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.TextView;
 import android.view.Menu;
 
 public class MainActivity extends AppCompatActivity {
@@ -42,8 +38,7 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         //  setSupportActionBar(toolbar);
       //  setSupportActionBar(toolbar);
-        
-        setSupportActionBar(toolbar);
+        //s49c6223f55a10e57b33c58b9cf1819ff7714fd38
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -79,7 +74,6 @@ public class MainActivity extends AppCompatActivity {
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
     }
-
 }
 
 
