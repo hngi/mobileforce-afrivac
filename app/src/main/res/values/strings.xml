@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">AfriVac</string>
-<<<<<<< HEAD
     <string name="line">a line</string>
     <string name="completeBooking">Complete your booking at cocoon luxury</string>
     <string name="hotelName">Cocoon Hotel</string>
