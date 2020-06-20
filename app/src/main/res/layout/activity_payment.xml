@@ -8,6 +8,7 @@
     <ScrollView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:scrollbars="none"
             android:background="#fff">
 
         <RelativeLayout
