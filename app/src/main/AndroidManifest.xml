@@ -3,7 +3,6 @@
     package="com.michael.afrivac">
     <uses-permission android:name="android.permission.INTERNET"/>
 
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -17,6 +16,7 @@
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity android:name=".ProfilePageActivity" />
         <activity android:name=".OnboardscreenActivity" />
+        <activity android:name=".ForgetPasswordActivity"/>
         <activity
             android:name=".SplashscreenActivity"
             android:theme="@style/AppTheme.splashScreen">
@@ -25,7 +25,6 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
 
         <activity android:name=".MainActivity"
