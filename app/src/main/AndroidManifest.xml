@@ -9,13 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-<<<<<<< HEAD
         <activity android:name=".BookingActivity"
             android:theme="@style/BookingTheme">
         </activity>
 
-        <activity android:name=".MainActivity">
-=======
+        <activity android:name=".MainActivity"> </activity>
 
         <activity android:name=".LoginActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
@@ -33,7 +31,6 @@
         <activity
             android:name=".SplashscreenActivity"
             android:theme="@style/AppTheme.splashScreen">
->>>>>>> 700525da2a9e30e088aa84bb8865cb704591e7ad
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -41,8 +38,6 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".MainActivity">
-        </activity>
 
         <meta-data
             android:name="preloaded_fonts"

@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">AfriVac</string>
-<<<<<<< HEAD
     <string name="line">a line</string>
     <string name="completeBooking">Complete your booking at cocoon luxury</string>
     <string name="hotelName">Cocoon Hotel</string>
@@ -25,7 +24,6 @@
     <string name="pay">Pay Now</string>
     <string name="or">OR</string>
     <string name="payLater">Pay at Hotel</string>
-=======
     <string name="azeez_adeleke">Azeez Adeleke</string>
     <string name="my_account">My Account</string>
     <string name="nigeria">Nigeria</string>
@@ -48,7 +46,6 @@
     <string name="english">English</string>
     <string name="hidden_password">********</string>
     <string name="apps_logo">logo</string>
-<<<<<<< HEAD
     <string name="title_activity_main3">Main3Activity</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -67,7 +64,4 @@
     <string name="logout">Logout</string>
     <string name="account">Account</string>
     <string name="support">Support</string>
->>>>>>> 700525da2a9e30e088aa84bb8865cb704591e7ad
-=======
->>>>>>> 01f9917ed311504fb1a3563a380d1edc2c92e0e5
 </resources>
