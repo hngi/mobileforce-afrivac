@@ -388,7 +388,41 @@
             android:text="@string/pay"
             android:textStyle="bold"
             android:layout_marginTop="30dp"
-            android:textAllCaps="false"/>
+            android:textAllCaps="false"
+            />
+
+        <GridLayout
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp">
+            <TextView
+                android:layout_height="1dp"
+                android:layout_width="0dp"
+                android:layout_columnWeight="5"
+                android:background="@android:color/black"/>
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:text="@string/or"
+                android:layout_columnWeight="1"
+                android:layout_gravity="center_vertical"/>
+            <TextView
+                android:layout_height="1dp"
+                android:layout_width="0dp"
+                android:layout_columnWeight="5"
+                android:background="@android:color/black"/>
+        </GridLayout>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/burron_border2"
+            android:textStyle="bold"
+            android:layout_marginTop="30dp"
+            android:textAllCaps="false"
+            android:textColor="#000"
+            android:text="@string/payLater"/>
 
     </LinearLayout>
 </ScrollView>

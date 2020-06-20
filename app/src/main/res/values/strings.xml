@@ -19,11 +19,12 @@
     <string name="title">Mr</string>
     <string name="fullName">Full Name</string>
     <string name="phoneNumber">Phone number</string>
-    <string name="email">Email</string>
     <string name="additionalInfo">Enter any additional request/information</string>
     <string name="reserveFor">I\'m making the reservation on behalf of someone else</string>
     <string name="cab">Yes, I\'d like a cab service as well</string>
     <string name="pay">Pay Now</string>
+    <string name="or">OR</string>
+    <string name="payLater">Pay at Hotel</string>
 =======
     <string name="azeez_adeleke">Azeez Adeleke</string>
     <string name="my_account">My Account</string>
