@@ -66,7 +66,7 @@ public class OnboardscreenActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), SignUpActivity.class);
+                Intent intent = new Intent(getApplicationContext(), BookingActivity.class);
 
                 startActivity(intent);
             }

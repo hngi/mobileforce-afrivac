@@ -1,7 +1,5 @@
 <resources>
     <string name="app_name">AfriVac</string>
-<<<<<<< HEAD
-    <string name="line">a line</string>
     <string name="completeBooking">Complete your booking at cocoon luxury</string>
     <string name="hotelName">Cocoon Hotel</string>
     <string name="checkInDetails">Check-in Details</string>
@@ -16,7 +14,7 @@
     <string name="arrow">A downward facing arrow</string>
     <string name="profileIcon">the user\'s profile picture</string>
     <string name="details">Your Details</string>
-    <string name="title">Mr</string>
+    <string name="titlee">Mr</string>
     <string name="fullName">Full Name</string>
     <string name="phoneNumber">Phone number</string>
     <string name="additionalInfo">Enter any additional request/information</string>
@@ -25,8 +23,6 @@
     <string name="pay">Pay Now</string>
     <string name="or">OR</string>
     <string name="payLater">Pay at Hotel</string>
-=======
->>>>>>> 61be2322a7b52875c8a8cac224da902bd20412e1
     <string name="azeez_adeleke">Azeez Adeleke</string>
     <string name="my_account">My Account</string>
     <string name="nigeria">Nigeria</string>
@@ -49,11 +45,9 @@
     <string name="english">English</string>
     <string name="hidden_password">********</string>
     <string name="apps_logo">logo</string>
-<<<<<<< HEAD
-=======
+
     <string name="subtittle">subtittle</string>
     <string name="title">title</string>
->>>>>>> 61be2322a7b52875c8a8cac224da902bd20412e1
     <string name="title_activity_main3">Main3Activity</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -71,4 +65,5 @@
     <string name="logout">Logout</string>
     <string name="account">Account</string>
     <string name="support">Support</string>
+    <string name="line">a line</string>
 </resources>
