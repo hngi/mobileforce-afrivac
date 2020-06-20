@@ -1,5 +1,6 @@
 package com.michael.afrivac;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -19,6 +20,7 @@ import com.google.android.material.navigation.NavigationView;
 import androidx.drawerlayout.widget.DrawerLayout;*/
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -30,9 +32,13 @@ import androidx.navigation.ui.NavigationUI;
 import android.view.Menu;
 import android.widget.Toast;
 
+import java.util.Objects;
+
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private AppBarConfiguration mAppBarConfiguration;
+    private ActionBarDrawerToggle toggle;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,28 +46,26 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        //  setSupportActionBar(toolbar);
-        //s49c6223f55a10e57b33c58b9cf1819ff7714fd38
-        FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
+        toggle = new ActionBarDrawerToggle(this, drawer,
+                R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawer.addDrawerListener(toggle);
+        toggle.syncState();
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         NavigationView navigationView = findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
+
+
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
-        mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow,
-                R.id.nav_tools, R.id.nav_share, R.id.nav_send)
-                .setDrawerLayout(drawer)
-                .build();
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
-        NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
-        NavigationUI.setupWithNavController(navigationView, navController);
+//        mAppBarConfiguration = new AppBarConfiguration.Builder(
+//                R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow,
+//                R.id.nav_tools, R.id.nav_share, R.id.nav_send)
+//                .setDrawerLayout(drawer)
+//                .build();
+//        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
+//        NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
+//        NavigationUI.setupWithNavController(navigationView, navController);
     }
 
     @Override
@@ -71,40 +75,61 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         return true;
     }
 
-    @Override
-    public boolean onSupportNavigateUp() {
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
-        return NavigationUI.navigateUp(navController, mAppBarConfiguration)
-                || super.onSupportNavigateUp();
-    }
+//    @Override
+//    public boolean onSupportNavigateUp() {
+//        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
+//        return NavigationUI.navigateUp(navController, mAppBarConfiguration)
+//                || super.onSupportNavigateUp();
+//    }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (toggle.onOptionsItemSelected(item)){
+            return  true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        int item_id = item.getItemId();
-        switch (item_id) {
+        int id = item.getItemId();
+        switch (id) {
             case R.id.nav_home:
-                Toast.makeText(this, "Nav Home", Toast.LENGTH_SHORT).show();
+                //TODO: Link the HomeActivity.class (replace signup with activity class)
+                startActivity(new Intent(MainActivity.this, SignUpActivity.class));
+                Toast.makeText(MainActivity.this, "Change it to the real activity", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.nav_account:
-                Toast.makeText(this, "Nav Account", Toast.LENGTH_SHORT).show();
+                //TODO: Link the Account.class(replace login with activity class)
+                startActivity(new Intent(MainActivity.this, LoginActivity.class));
+                Toast.makeText(MainActivity.this, "Open Account Activity", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.nav_destination:
-                Toast.makeText(this, "Nav Destination", Toast.LENGTH_SHORT).show();
+                //TODO: Link the Destination.class(replace destination with activity class)
+                startActivity(new Intent(MainActivity.this, LocationActivity.class));
+                Toast.makeText(MainActivity.this, "Open Destination Activity", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.nav_hotel:
+                //TODO: Link the Hotel.class(replace signup with activity class)
+                startActivity(new Intent(MainActivity.this, SignUpActivity.class));
+                Toast.makeText(MainActivity.this, "Open hotel activity", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.nav_support:
-                Toast.makeText(this, "Nav Support", Toast.LENGTH_SHORT).show();
+                //TODO: Link the Support.class(replace signup with activity class)
+                startActivity(new Intent(MainActivity.this, SignUpActivity.class));
+                Toast.makeText(MainActivity.this, "Open support page", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.nav_logout:
-                Toast.makeText(this, "Nav Logout", Toast.LENGTH_SHORT).show();
+                //TODO: LoG User out
+                Toast.makeText(MainActivity.this, "log user out", Toast.LENGTH_SHORT).show();
                 break;
+            default:
+                return true;
         }
-        return false;
+        return true;
+
     }
 }
-
-
-
 
  /*   public void convertCurrency(View view){
     EditText editText = (EditText) findViewById(R.id.edtText);

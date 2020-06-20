@@ -28,9 +28,9 @@ public class SplashscreenActivity extends AppCompatActivity {
             public void run() {
 
                 if (sharePref.getIsUserLoggedIn()) {
-                    startActivity(new Intent(getApplicationContext(), SignUpActivity.class));
+                    startActivity(new Intent(getApplicationContext(), MainActivity.class));
                 } else {
-                    Intent intent = new Intent(getApplicationContext(), SignUpActivity.class);
+                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
 
                     startActivity(intent);
                 }
@@ -38,7 +38,7 @@ public class SplashscreenActivity extends AppCompatActivity {
                 finish();
             }
             //the delay time is 3s
-        }, 5000);
+        }, 3000);
 
     }
 

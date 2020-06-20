@@ -25,6 +25,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".MainActivity" />
+        <activity android:name=".LocationActivity" />
 
         <meta-data
             android:name="preloaded_fonts"
