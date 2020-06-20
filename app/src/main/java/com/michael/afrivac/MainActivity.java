@@ -25,14 +25,11 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
-<<<<<<< HEAD
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
-=======
 import android.view.Menu;
->>>>>>> 700525da2a9e30e088aa84bb8865cb704591e7ad
 
 public class MainActivity extends AppCompatActivity {
 
@@ -43,13 +40,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
-<<<<<<< HEAD
         //  setSupportActionBar(toolbar);
       //  setSupportActionBar(toolbar);
-        //s49c6223f55a10e57b33c58b9cf1819ff7714fd38
-=======
+        
         setSupportActionBar(toolbar);
->>>>>>> 01f9917ed311504fb1a3563a380d1edc2c92e0e5
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -79,19 +73,13 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
-<<<<<<< HEAD
-=======
     @Override
     public boolean onSupportNavigateUp() {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
-<<<<<<< HEAD
-    }*/
->>>>>>> 700525da2a9e30e088aa84bb8865cb704591e7ad
-=======
     }
->>>>>>> fe6f085026d82f41b230f9957a8a205d9a8b89f0
+
 }
 
 
