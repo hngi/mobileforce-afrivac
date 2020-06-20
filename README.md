@@ -66,8 +66,8 @@ App Features
 2.	Sign in 
 3.	Click the sign up button for new user to get register
 4.	Homepage Screen display with information on each vacation center in Africa
-a. Homepage screen has feature to search desirable destination using the search button
-b. Side bar button on the homepage gives user ability to check;
+ a. Homepage screen has feature to search desirable destination using the search button
+ b. Side bar button on the homepage gives user ability to check;
   i. Profile screen
   ii. Popular vacation Destination
   iii. Find Hotel
