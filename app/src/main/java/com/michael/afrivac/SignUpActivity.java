@@ -1,13 +1,5 @@
 package com.michael.afrivac;
 
-
-import android.os.Bundle;
-
-import androidx.appcompat.app.AppCompatActivity;
-
-public class SignUpActivity extends AppCompatActivity {
-
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
