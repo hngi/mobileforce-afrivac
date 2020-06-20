@@ -22,6 +22,16 @@
     <string name="english">English</string>
     <string name="hidden_password">********</string>
     <string name="apps_logo">logo</string>
+    <string name="menu_home">menu_home</string>
+    <string name="menu_gallery">menu_gallery</string>
+    <string name="menu_slideshow">menu_slide_show</string>
+    <string name="menu_tools">menu_tools</string>
+    <string name="menu_share">menu_share</string>
+    <string name="menu_send">menu_share</string>
+    <string name="action_settings">action_settings</string>
+    <string name="nav_header_desc">header_desc</string>
+    <string name="nav_header_title">header_title</string>
+    <string name="nav_header_subtitle">header_subtitle</string>
     <string name="subtittle">subtittle</string>
     <string name="title">title</string>
     <string name="title_activity_main3">Main3Activity</string>
