@@ -31,7 +31,7 @@ public class OnboardscreenActivity extends AppCompatActivity {
         layout = findViewById(R.id.layout);
         button = findViewById(R.id.button);
 
-        long delay = 5000;
+        long delay = 3000;
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -66,8 +66,7 @@ public class OnboardscreenActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), SignUpActivity.class);
-
+                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
                 startActivity(intent);
             }
         });
