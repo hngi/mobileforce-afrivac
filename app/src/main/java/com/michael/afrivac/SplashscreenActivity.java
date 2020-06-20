@@ -22,12 +22,7 @@ public class SplashscreenActivity extends AppCompatActivity {
         setContentView(R.layout.activity_splashscreen);
 
         sharePref = SharePref.getINSTANCE(getApplicationContext());
-
-
-        Animation fadeIn = AnimationUtils.loadAnimation(this, R.anim.fade__in);
-        ImageView fadeInImage = findViewById(R.id.logo);
-        fadeInImage.startAnimation(fadeIn);
-
+        
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {

@@ -3,7 +3,13 @@
   <component name="GradleSettings">
     <option name="linkedExternalProjectsSettings">
       <GradleProjectSettings>
+<<<<<<< HEAD
         <option name="testRunner" value="PLATFORM" />
+=======
+        <compositeConfiguration>
+          <compositeBuild compositeDefinitionSource="SCRIPT" />
+        </compositeConfiguration>
+>>>>>>> 055f27d0c93721ce3727c0d4c2efc49450f83379
         <option name="distributionType" value="DEFAULT_WRAPPED" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="modules">
