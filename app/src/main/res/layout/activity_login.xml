@@ -30,7 +30,7 @@
                 android:textSize="33sp"
                 android:textStyle="bold"
                 android:textAlignment="center"
-                app:cit_drawableStart="@drawable/logo"
+                app:cit_drawableStart="@drawable/logo_black"
                 app:cit_iconWidth="40dp"
                 app:cit_iconHeight="40dp"
                 app:cit_iconColor="@color/colorBlack"/>

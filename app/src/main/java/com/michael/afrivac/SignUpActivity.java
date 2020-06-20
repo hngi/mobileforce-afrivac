@@ -21,20 +21,7 @@ import java.util.Scanner;
 
 public class SignUpActivity extends AppCompatActivity implements View.OnClickListener {
 
-    @Override
-    public void onClick(View view) {
-
-        if (view.getId() == R.id.toSignIn) {
-
-        Intent Michaelzy = new Intent(SignUpActivity.this, LoginActivity.class);
-        startActivity(Michaelzy);
-
-        }
-
-    }
-
     private FirebaseAuth mAuth;
-
     EditText Username;
     EditText Email;
     EditText Phone;
@@ -43,26 +30,47 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
     EditText ConfirmPassword;
     TextView ToSignIn;
 
-    String email;
-    String password;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.signup);
+
+        Username = findViewById(R.id.username);
+        Email = findViewById(R.id.email);
+        Phone = findViewById(R.id.phone);
+        Country = findViewById(R.id.country);
+        Password = findViewById(R.id.password);
+        ConfirmPassword = findViewById(R.id.confirmpassword);
+        ToSignIn = findViewById(R.id.toSignIn);
+
+        String PasswordAuth;
+        mAuth = FirebaseAuth.getInstance();
+
+    }
+
+    @Override
+    public void onClick(View view) {
+        if (view.getId() == R.id.toSignIn) {
+            Intent Michaelzy = new Intent(SignUpActivity.this, LoginActivity.class);
+            startActivity(Michaelzy);
+        }
+    }
 
     public void SignUp(View view) {
-
+        String email;
+        String password;
         email = Email.getText().toString();
         password = Password.getText().toString();
 
         if (email.isEmpty()) {
-
             Toast.makeText(this, "Please enter an email", Toast.LENGTH_SHORT).show();
             Email.requestFocus();
 
         } else if (password.isEmpty()) {
-
             Toast.makeText(this, "Please enter a Password", Toast.LENGTH_SHORT).show();
             Password.requestFocus();
 
-        } else if (!(email.isEmpty() && password.isEmpty())) {
-
+        } else {
             mAuth.createUserWithEmailAndPassword(email, password)
                     .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                         @Override
@@ -83,28 +91,6 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
                     });
 
         }
-
-    }
-
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.signup);
-
-        Username = findViewById(R.id.username);
-        Email = findViewById(R.id.email);
-        Phone = findViewById(R.id.phone);
-        Country = findViewById(R.id.country);
-        Password = findViewById(R.id.password);
-        ConfirmPassword = findViewById(R.id.country);
-        ToSignIn = findViewById(R.id.toSignIn);
-
-        String PasswordAuth;
-        email = Email.getText().toString();
-        password = Password.getText().toString();
-
-        mAuth = FirebaseAuth.getInstance();
 
     }
 
