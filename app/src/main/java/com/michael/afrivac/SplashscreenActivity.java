@@ -22,15 +22,15 @@ public class SplashscreenActivity extends AppCompatActivity {
         setContentView(R.layout.activity_splashscreen);
 
         sharePref = SharePref.getINSTANCE(getApplicationContext());
-        
+
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
 
                 if (sharePref.getIsUserLoggedIn()) {
-                    startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                    startActivity(new Intent(getApplicationContext(), LoginActivity.class));
                 } else {
-                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                    Intent intent = new Intent(getApplicationContext(), OnboardscreenActivity.class);
 
                     startActivity(intent);
                 }
@@ -38,7 +38,7 @@ public class SplashscreenActivity extends AppCompatActivity {
                 finish();
             }
             //the delay time is 3s
-        }, 5000);
+        }, 2000);
 
     }
 
