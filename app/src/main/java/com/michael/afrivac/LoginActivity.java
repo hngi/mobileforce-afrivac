@@ -4,8 +4,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
-<<<<<<< HEAD
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
@@ -22,12 +26,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     SignInButton signInButton;
     GoogleSignInClient mGoogleSignInClient;
 
-=======
-import android.widget.EditText;
-import android.widget.TextView;
-import android.widget.Toast;
->>>>>>> 055f27d0c93721ce3727c0d4c2efc49450f83379
-
 
     private EditText email, password;
     private TextView sign_in;
@@ -36,9 +34,12 @@ import android.widget.Toast;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-<<<<<<< HEAD
+
         //initializing Google Signup features
         signInButton = findViewById(R.id.signin_with_google);
+        email = findViewById(R.id.signin_email);
+        password = findViewById(R.id.signin_password);
+        sign_in = findViewById(R.id.singin_into_account);
 
         //Configure sign in to request the user ID, Email Adress and basic
         //profile ID, and Basic profile are included in the DEFAULT_SIGN_IN
@@ -67,7 +68,6 @@ import android.widget.Toast;
             startActivityForResult(googleSignInIntent, RC_SIGN_IN);
 
         }
-    @Override
         public void onActivityActivityResult(int requestCode, int resultCode, Intent data){
         super.onActivityResult(requestCode, resultCode, data);
 
@@ -82,14 +82,17 @@ import android.widget.Toast;
             try {
                 GoogleSignInAccount account = completedTask.getResult(ApiException.class);
                 //SignIn successfully, show authentication UI
-                startActivity(new Intent(LoginActivity.this, ))
+                startActivity(new Intent(LoginActivity.this, MainActivity.class));
+            } catch (ApiException e){
+                //the ApiException code status indicates the detailed failure reason
+                //please refer to to the GoogleSignInStatusCodes class reference for more information
+                Log.w("Google Sign In Error", "signInResult:failed code=" + e.getStatusCode() );
+                Toast.makeText(this, "Failed", Toast.LENGTH_LONG).show();
             }
         }
 
-=======
-        email = findViewById(R.id.signin_email);
-        password = findViewById(R.id.signin_password);
-        sign_in = findViewById(R.id.singin_into_account);
+
+
         final String Email = email.getText().toString().trim();
         final String Password = password.getText().toString().trim();
 
@@ -110,5 +113,5 @@ import android.widget.Toast;
 
 
         });
->>>>>>> 055f27d0c93721ce3727c0d4c2efc49450f83379
+
     }
