@@ -32,9 +32,6 @@ public class SplashscreenActivity extends AppCompatActivity {
                 } else {
                     Intent intent = new Intent(getApplicationContext(), OnboardscreenActivity.class);
 
-                    Intent intent = new Intent(getApplicationContext(), SignUpActivity.class);
-
-
                     startActivity(intent);
                 }
 
