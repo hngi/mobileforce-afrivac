@@ -25,16 +25,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-<<<<<<< HEAD
-        <activity android:name=".MainActivity" />
         <activity android:name=".LocationActivity" />
-=======
 
         <activity android:name=".MainActivity"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
->>>>>>> d89256ee9c9b2d2f027681cac50f25c71a0c4c9d
-
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
