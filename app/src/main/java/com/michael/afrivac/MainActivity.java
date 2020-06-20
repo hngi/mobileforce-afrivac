@@ -6,6 +6,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
 
+import android.view.MenuItem;
 import android.view.View;
 
 /*import androidx.navigation.NavController;
@@ -17,6 +18,7 @@ import com.google.android.material.navigation.NavigationView;
 
 import androidx.drawerlayout.widget.DrawerLayout;*/
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -26,18 +28,19 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import android.view.Menu;
+import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
-   private AppBarConfiguration mAppBarConfiguration;
+    private AppBarConfiguration mAppBarConfiguration;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
         //  setSupportActionBar(toolbar);
-      //  setSupportActionBar(toolbar);
         //s49c6223f55a10e57b33c58b9cf1819ff7714fd38
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -73,6 +76,30 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
+    }
+
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        int item_id = item.getItemId();
+        switch (item_id) {
+            case R.id.nav_home:
+                Toast.makeText(this, "Nav Home", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.nav_account:
+                Toast.makeText(this, "Nav Account", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.nav_destination:
+                Toast.makeText(this, "Nav Destination", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.nav_support:
+                Toast.makeText(this, "Nav Support", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.nav_logout:
+                Toast.makeText(this, "Nav Logout", Toast.LENGTH_SHORT).show();
+                break;
+        }
+        return false;
     }
 }
 
