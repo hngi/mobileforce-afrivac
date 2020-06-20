@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -18,7 +19,19 @@ import com.google.firebase.auth.FirebaseUser;
 
 import java.util.Scanner;
 
-public class SignUpActivity extends AppCompatActivity {
+public class SignUpActivity extends AppCompatActivity implements View.OnClickListener {
+
+    @Override
+    public void onClick(View view) {
+
+        if (view.getId() == R.id.toSignIn) {
+
+        Intent Michaelzy = new Intent(SignUpActivity.this, LoginActivity.class);
+        startActivity(Michaelzy);
+
+        }
+
+    }
 
     private FirebaseAuth mAuth;
 
@@ -28,6 +41,7 @@ public class SignUpActivity extends AppCompatActivity {
     EditText Country;
     EditText Password;
     EditText ConfirmPassword;
+    TextView ToSignIn;
 
     String email;
     String password;
@@ -84,6 +98,7 @@ public class SignUpActivity extends AppCompatActivity {
         Country = findViewById(R.id.country);
         Password = findViewById(R.id.password);
         ConfirmPassword = findViewById(R.id.country);
+        ToSignIn = findViewById(R.id.toSignIn);
 
         String PasswordAuth;
         email = Email.getText().toString();
