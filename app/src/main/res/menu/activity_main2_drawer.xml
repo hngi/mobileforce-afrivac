@@ -17,9 +17,13 @@
             android:icon="@drawable/ic_location_on_black_24dp"
             android:title="@string/popular_destination" />
         <item
-            android:id="@+id/nav_tools"
-            android:icon="@drawable/ic_menu_manage"
-            android:title="@string/menu_tools" />
+            android:id="@+id/nav_support"
+            android:icon="@drawable/ic_assignment_late_black_24dp"
+            android:title="@string/support" />
+        <item
+            android:id="@+id/nav_logout"
+            android:icon="@drawable/ic_exit_to_app_black_24dp"
+            android:title="@string/logout" />
     </group>
 
     <item android:title="Communicate">
