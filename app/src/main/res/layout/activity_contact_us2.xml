@@ -6,23 +6,47 @@
     android:layout_height="match_parent"
     tools:context=".ContactUsActivity2">
 
-    <TextView
-        android:id="@+id/textView_contact_us"
+    <LinearLayout
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="39dp"
-        android:layout_marginTop="45dp"
-        android:layout_marginEnd="39dp"
-        android:fontFamily="@font/poppins"
+        android:layout_marginTop="40dp"
         android:gravity="center"
+
         android:text="@string/contact_us"
         android:textStyle="bold"
 
         android:textColor="@color/black"
         android:textSize="18sp"
+
+        android:orientation="horizontal"
+
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/image_contact"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/dimension_10dp"
+            android:contentDescription="Contact"
+            app:srcCompat="@drawable/contact"
+            tools:layout_editor_absoluteY="48dp" />
+
+        <TextView
+            android:id="@+id/textView_contact_us"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins"
+            android:layout_marginLeft="@dimen/dimension_10dp"
+            android:gravity="center"
+            android:text="@string/contact_us"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            tools:layout_editor_absoluteX="313dp"
+            tools:layout_editor_absoluteY="45dp" />
+
+    </LinearLayout>
 
     <ImageView
         android:id="@+id/imageView_contactbar"
@@ -73,16 +97,5 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/imageView_contactbar"
         app:layout_constraintTop_toTopOf="@+id/imageView_contactbar" />
-
-    <ImageView
-        android:id="@+id/image_contact"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:contentDescription="Contact"
-        app:layout_constraintBottom_toBottomOf="@+id/textView_contact_us"
-        app:layout_constraintStart_toStartOf="@+id/textView_contact_us"
-        app:layout_constraintTop_toTopOf="@+id/textView_contact_us"
-        app:srcCompat="@drawable/contact" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
