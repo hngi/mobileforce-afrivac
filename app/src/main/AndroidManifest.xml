@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".BookingActivity"></activity>
+        <activity android:name=".payment_page"></activity>
+        <activity android:name=".BookingActivity" />
         <activity android:name=".SignUpActivity" />
         <activity
             android:name=".LoginActivity" />
@@ -30,7 +31,6 @@
         <activity
             android:name=".MainActivity"
             android:theme="@style/AppTheme.NoActionBar">
-
         </activity>
 
         <meta-data
