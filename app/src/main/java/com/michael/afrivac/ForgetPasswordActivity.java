@@ -3,6 +3,8 @@ package com.michael.afrivac;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -20,6 +22,7 @@ public class ForgetPasswordActivity extends AppCompatActivity {
     private EditText email;
     private TextView reset;
     private FirebaseAuth mAuth;
+    private Animation animation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,28 +37,41 @@ public class ForgetPasswordActivity extends AppCompatActivity {
         reset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                 final String mail = email.getText().toString().trim();
-                if (mail.isEmpty())
-                {
-                    email.setError("Please enter your valid email");
-                    email.requestFocus();
-                }else {
-                    {
-                        mAuth.sendPasswordResetEmail(mail).addOnCompleteListener(new OnCompleteListener<Void>() {
-                            @Override
-                            public void onComplete(@NonNull Task<Void> task) {
-                                if (task.isSuccessful()){
-                                    Toast.makeText(ForgetPasswordActivity.this,
-                                            "Please check your email for reset link", Toast.LENGTH_SHORT).show();
-                                    startActivity(new Intent(getApplicationContext(), LoginActivity.class));//Change the signUpActivity to signinActivity
-                                }else {
-                                    String message = task.getException().getMessage();
-                                    Toast.makeText(ForgetPasswordActivity.this, "Error Occurred" + message, Toast.LENGTH_SHORT).show();
-                                }
+                animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.button_anim);
+                reset.startAnimation(animation);
+                animation.setAnimationListener(new Animation.AnimationListener() {
+                    @Override
+                    public void onAnimationStart(Animation animation) {}
+
+                    @Override
+                    public void onAnimationEnd(Animation animation) {
+                        final String mail = email.getText().toString().trim();
+                        if (mail.isEmpty())
+                        {
+                            email.setError("Please enter your valid email");
+                            email.requestFocus();
+                        }else {
+                            {
+                                mAuth.sendPasswordResetEmail(mail).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<Void> task) {
+                                        if (task.isSuccessful()){
+                                            Toast.makeText(ForgetPasswordActivity.this,
+                                                    "Please check your email for reset link", Toast.LENGTH_SHORT).show();
+                                            startActivity(new Intent(getApplicationContext(), LoginActivity.class));//Change the signUpActivity to signinActivity
+                                        }else {
+                                            String message = task.getException().getMessage();
+                                            Toast.makeText(ForgetPasswordActivity.this, "Error Occurred" + message, Toast.LENGTH_SHORT).show();
+                                        }
+                                    }
+                                });
                             }
-                        });
+                        }
                     }
-                }
+
+                    @Override
+                    public void onAnimationRepeat(Animation animation) {}
+                });
             }
         });
     }

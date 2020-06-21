@@ -10,10 +10,13 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.github.aakira.compoundicontextview.CompoundIconTextView;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -25,6 +28,8 @@ public class LoginActivity extends AppCompatActivity {
     private EditText email, password;
     private String Email, Password;
     private TextView sign_in, signUp, forgotPassword;
+    private CompoundIconTextView googleSignIn, facebookSignIn;
+    Animation animation;
     private FirebaseAuth mAuth;
 
     @Override
@@ -36,6 +41,8 @@ public class LoginActivity extends AppCompatActivity {
         password = findViewById(R.id.signin_password);
         sign_in = findViewById(R.id.singin_into_account);
         signUp = findViewById(R.id.singin_goto_signup);
+        googleSignIn = findViewById(R.id.signin_with_google);
+        facebookSignIn = findViewById(R.id.signin_with_facebook);
         forgotPassword = findViewById(R.id.signin_forgot_password);
 
          Email = email.getText().toString().trim();
@@ -49,24 +56,76 @@ public class LoginActivity extends AppCompatActivity {
         sign_in.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.button_anim);
+                sign_in.startAnimation(animation);
+                animation.setAnimationListener(new Animation.AnimationListener() {
+                    @Override
+                    public void onAnimationStart(Animation animation) {}
 
-                 //Email = email.getText().toString().trim();
-                 //Password = password.getText().toString().trim();
+                    @Override
+                    public void onAnimationEnd(Animation animation) {
+                        //Email = email.getText().toString().trim();
+                        //Password = password.getText().toString().trim();
 
-                if (TextUtils.isEmpty(Email)){
-                    email.setError("enter your email");
-                    return;
+                        if (TextUtils.isEmpty(Email)){
+                            email.setError("enter your email");
+                            return;
 
-                }if (TextUtils.isEmpty(Password)){
-                    password.setError("enter password");
-                }else {
-                    checkNetwork();
-                }
-                //startActivity(new Intent(getApplicationContext(), MainActivity.class));
-                //finish();
+                        }if (TextUtils.isEmpty(Password)){
+                            password.setError("enter password");
+                        }else {
+                            checkNetwork();
+                        }
+                        //startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                        //finish();
 
-                startActivity(new Intent(getApplicationContext(), MainActivity.class));
-                finish();
+                        startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                        finish();
+                    }
+
+                    @Override
+                    public void onAnimationRepeat(Animation animation) {}
+                });
+            }
+        });
+
+        googleSignIn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.button_anim);
+                googleSignIn.startAnimation(animation);
+                animation.setAnimationListener(new Animation.AnimationListener() {
+                    @Override
+                    public void onAnimationStart(Animation animation) {}
+
+                    @Override
+                    public void onAnimationEnd(Animation animation) {
+                        // TODO: Continue the OnClickListener implementation
+                    }
+
+                    @Override
+                    public void onAnimationRepeat(Animation animation) {}
+                });
+            }
+        });
+
+        facebookSignIn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.button_anim);
+                facebookSignIn.startAnimation(animation);
+                animation.setAnimationListener(new Animation.AnimationListener() {
+                    @Override
+                    public void onAnimationStart(Animation animation) {}
+
+                    @Override
+                    public void onAnimationEnd(Animation animation) {
+                        // TODO: Continue the OnClickListener implementation
+                    }
+
+                    @Override
+                    public void onAnimationRepeat(Animation animation) {}
+                });
             }
         });
 

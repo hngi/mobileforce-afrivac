@@ -8,6 +8,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -30,6 +32,7 @@ public class SignUpActivity extends AppCompatActivity {
     EditText Password;
     EditText ConfirmPassword;
     TextView ToSignIn;
+    Animation animation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,40 +70,55 @@ public class SignUpActivity extends AppCompatActivity {
     }*/
 
     public void SignUp(View view) {
-        String email;
-        String password;
-        email = Email.getText().toString();
-        password = Password.getText().toString();
+        animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.button_anim);
+        view.startAnimation(animation);
+        animation.setAnimationListener(new Animation.AnimationListener() {
+            @Override
+            public void onAnimationStart(Animation animation) {}
 
-        if (email.isEmpty()) {
-            Toast.makeText(this, "Please enter an email", Toast.LENGTH_SHORT).show();
-            Email.requestFocus();
+            @Override
+            public void onAnimationEnd(Animation animation) {
+                String email;
+                String password;
+                email = Email.getText().toString();
+                password = Password.getText().toString();
 
-        } else if (password.isEmpty()) {
-            Toast.makeText(this, "Please enter a Password", Toast.LENGTH_SHORT).show();
-            Password.requestFocus();
+                if (email.isEmpty()) {
+                    Toast.makeText(SignUpActivity.this, "Please enter an email", Toast.LENGTH_SHORT).show();
+                    Email.requestFocus();
 
-        } else {
-            mAuth.createUserWithEmailAndPassword(email, password)
-                    .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                        @Override
-                        public void onComplete(@NonNull Task<AuthResult> task) {
-                            if (task.isSuccessful()) {
-                                // Sign in success, update UI with the signed-in user's information
-                                Toast.makeText(SignUpActivity.this, "Successful", Toast.LENGTH_SHORT).show();
-                                Intent i = new Intent(SignUpActivity.this, MainActivity.class);
-                                startActivity(i);
+                } else if (password.isEmpty()) {
+                    Toast.makeText(SignUpActivity.this, "Please enter a Password", Toast.LENGTH_SHORT).show();
+                    Password.requestFocus();
 
-                            } else {
-                                // If sign in fails, display a message to the user.
-                                Toast.makeText(SignUpActivity.this, "Authentication failed.", Toast.LENGTH_SHORT).show();
-                            }
+                } else {
+                    mAuth.createUserWithEmailAndPassword(email, password)
+                            .addOnCompleteListener(SignUpActivity.this, new OnCompleteListener<AuthResult>() {
+                                @Override
+                                public void onComplete(@NonNull Task<AuthResult> task) {
+                                    if (task.isSuccessful()) {
+                                        // Sign in success, update UI with the signed-in user's information
+                                        Toast.makeText(SignUpActivity.this, "Successful", Toast.LENGTH_SHORT).show();
+                                        Intent i = new Intent(SignUpActivity.this, MainActivity.class);
+                                        startActivity(i);
 
-                            // ...
-                        }
-                    });
+                                    } else {
+                                        // If sign in fails, display a message to the user.
+                                        Toast.makeText(SignUpActivity.this, "Authentication failed.", Toast.LENGTH_SHORT).show();
+                                    }
 
-        }
+                                    // ...
+                                }
+                            });
+
+                }
+            }
+
+            @Override
+            public void onAnimationRepeat(Animation animation) {}
+        });
+
+
 
     }
 
