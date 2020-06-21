@@ -11,13 +11,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".payment_page"></activity>
+        <activity android:name=".ContactUsActivity2"></activity>
+        <activity android:name=".payment_page" />
         <activity android:name=".BookingActivity" />
->>>>>>> 06763717f6c82172e259a3a9601ff2051f5f2cd9
         <activity android:name=".SignUpActivity" />
         <activity
-            android:name=".LoginActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+            android:name=".LoginActivity" />
         <activity android:name=".ProfilePageActivity" />
         <activity android:name=".OnboardscreenActivity" />
         <activity android:name=".ForgetPasswordActivity" />
@@ -32,19 +31,8 @@
         </activity>
         <activity
             android:name=".MainActivity"
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-            android:theme="@style/AppTheme.NoActionBar" />
-=======
-            android:theme="@style/AppTheme.NoActionBar"></activity>
->>>>>>> ed7f795ed2e84a447e75aa1820108f155e578e06
-=======
-            android:theme="@style/AppTheme.NoActionBar"></activity>
->>>>>>> 4ad23553c445b2f74a58f1c5411add3b30bddb6e
-=======
-            android:theme="@style/AppTheme.NoActionBar" />
->>>>>>> 06763717f6c82172e259a3a9601ff2051f5f2cd9
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
 
         <meta-data
             android:name="preloaded_fonts"
