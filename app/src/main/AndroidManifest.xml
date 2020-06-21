@@ -9,9 +9,41 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+<<<<<<< HEAD
         <activity android:name=".LocationActivity"
             android:theme="@style/AppTheme.NoActionBar">
+=======
+
+        <activity android:name=".LoginActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+
         </activity>
+
+        <activity android:name=".ProfilePageActivity">
+
+        </activity>
+
+        <activity android:name=".OnboardscreenActivity">
+
+        </activity>
+
+        <activity
+            android:name=".SplashscreenActivity"
+            android:theme="@style/AppTheme.splashScreen">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+>>>>>>> d04566e5ef02a2b945ca9e3c57f64b604ae917c9
+        </activity>
+
+        <activity android:name=".MainActivity">
+        </activity>
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>

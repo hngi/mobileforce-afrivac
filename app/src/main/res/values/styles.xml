@@ -8,10 +8,24 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+<<<<<<< HEAD
     <style name="AppTheme.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
         <item name="android:windowFullscreen">true</item>
     </style>
 
+=======
+    <style name="AppTheme.splashScreen" parent="Theme.AppCompat.NoActionBar" />
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+>>>>>>> d04566e5ef02a2b945ca9e3c57f64b604ae917c9
 </resources>
