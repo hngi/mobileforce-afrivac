@@ -13,13 +13,14 @@
         android:theme="@style/AppTheme">
         <activity android:name=".BookingPageActivity"></activity>
         <activity android:name=".BookingPage" />
+        <activity android:name=".BookingActivity"></activity>
         <activity android:name=".SignUpActivity" />
         <activity
             android:name=".LoginActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity android:name=".ProfilePageActivity" />
         <activity android:name=".OnboardscreenActivity" />
-        <activity android:name=".ForgetPasswordActivity"/>
+        <activity android:name=".ForgetPasswordActivity" />
         <activity
             android:name=".SplashscreenActivity"
             android:theme="@style/AppTheme.splashScreen">
@@ -32,6 +33,7 @@
         <activity
             android:name=".MainActivity"
             android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar"></activity>
 
         <meta-data
             android:name="preloaded_fonts"
