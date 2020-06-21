@@ -41,4 +41,18 @@
     <string name="logout">Logout</string>
     <string name="account">Account</string>
     <string name="support">Support</string>
+    <string name="frequently_asked_questions">Frequently Asked Questions</string>
+    <string name="describe_issues">Describe your issue</string>
+    <string name="question_1">How many people can join a tour?</string>
+    <string name="profile_image">Profile image</string>
+    <string name="support_text">Support</string>
+    <string name="contact_us">Contact us</string>
+    <string name="contact_us_msg">Tell us more and we\'ll help you</string>
+    <string name="feedback">Send feedback</string>
+    <string name="terms_and_conditions">Terms and Conditions</string>
+    <string name="questions_image">question image</string>
+    <string name="need_more_help_question">Need more help?</string>
+    <string name="back_button_image">back button image</string>
+    <string name="email_sender">email sender</string>
+    <string name="contact_open_image">contact open image</string>
 </resources>

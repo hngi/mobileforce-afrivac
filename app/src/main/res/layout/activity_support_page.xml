@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".SupportPageActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elevation="10dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center|end"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:background="@android:color/white"
+                android:gravity="center|end"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/back_button_sImageView"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_marginStart="@dimen/fab_margin"
+                    android:background="#ffffff"
+                    android:contentDescription="@string/back_button_image"
+                    android:src="@drawable/back_button" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="60dp"
+                    android:layout_margin="5dp"
+                    android:layout_weight="8"
+                    android:gravity="center"
+                    android:text="@string/support_text"
+                    android:textColor="@android:color/black"
+                    android:fontFamily="@font/poppins_bold"
+                    tools:ignore="NestedWeights" />
+
+                <ImageView
+                    android:id="@+id/profile_picture_iv"
+                    android:layout_width="0dp"
+                    android:layout_height="60dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_weight="1.5"
+                    android:contentDescription="@string/profile_image"
+                    android:ems="10"
+                    android:gravity="center"
+                    tools:src="@drawable/circle_test" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:ignore="UselessParent">
+
+                    <EditText
+                        android:id="@+id/describe_edit_text"
+                        android:layout_width="400dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/fab_margin"
+                        android:layout_marginEnd="@dimen/fab_margin"
+                        android:autofillHints="@string/describe_issues"
+                        android:background="@drawable/edit_text_corners"
+                        android:hint="@string/describe_issues"
+                        android:inputType="textAutoComplete"
+                        android:padding="12dp" />
+
+                    <SearchView
+                        android:id="@+id/searchView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignEnd="@id/describe_edit_text"
+                        android:layout_marginEnd="12dp" />
+                </RelativeLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="45dp"
+        android:layout_marginTop="12dp"
+        android:text="@string/frequently_asked_questions"
+        android:textColor="@android:color/black"
+        android:textSize="18sp"
+        android:fontFamily="@font/poppins_bold"
+        android:textStyle="bold" />
+
+    <!--TODO: Use recycler view and Adapter to get the support page recycler list.xml here-->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/question_and_answer_recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/fab_margin"
+                android:clipToPadding="false"
+                tools:listitem="@layout/support_page_recycler_list_item" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dimen_spacing"
+                android:layout_marginBottom="@dimen/fab_margin"
+                android:text="@string/need_more_help_question"
+                android:fontFamily="@font/poppins_light"
+                android:textColor="#3913B8" />
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="45dp"
+                android:layout_marginEnd="45dp"
+                android:background="@drawable/contact_us_background"
+                android:padding="@dimen/fab_margin">
+
+                <ImageView
+                    android:id="@+id/contact_us_iv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="@dimen/fab_margin"
+                    android:contentDescription="@string/email_sender"
+                    android:src="@drawable/ic_baseline_mail_outline_24" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="3dp"
+                    android:layout_toEndOf="@id/contact_us_iv"
+                    android:text="@string/contact_us"
+                    android:textColor="#000000"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:fontFamily="@font/poppins_bold"
+                    tools:ignore="RelativeOverlap" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="29dp"
+                    android:layout_toEndOf="@id/contact_us_iv"
+                    android:text="@string/contact_us_msg"
+                    android:textColor="#000000"
+                    android:textSize="12sp"
+                    android:fontFamily="@font/poppins_light"
+                    tools:ignore="RelativeOverlap" />
+
+                <ImageView
+                    android:id="@+id/contact_us_open_iv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="@dimen/fab_margin"
+                    android:contentDescription="@string/contact_open_image"
+                    android:src="@drawable/ic_baseline_open_in_new_24" />
+            </RelativeLayout>
+
+
+            <TextView
+                android:id="@+id/feedback_tv"
+                android:layout_width="130dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dimen_spacing"
+                android:layout_marginTop="@dimen/fab_margin"
+                android:drawableStart="@drawable/ic_baseline_feedback_24"
+                android:elegantTextHeight="true"
+                android:text="@string/feedback"
+                android:textAlignment="viewEnd"
+                android:fontFamily="@font/poppins_light"
+                android:textColor="#000000" />
+
+
+            <TextView
+                android:id="@+id/terms_and_condition_textView"
+                android:layout_width="185dp"
+                android:layout_height="24dp"
+                android:layout_marginStart="@dimen/dimen_spacing"
+                android:layout_marginTop="@dimen/fab_margin"
+                android:layout_marginBottom="@dimen/fab_margin"
+                android:drawableStart="@drawable/ic_baseline_open_in_new_24"
+                android:elegantTextHeight="true"
+                android:text="@string/terms_and_conditions"
+                android:textAlignment="center"
+                android:fontFamily="@font/poppins_light"
+                android:textColor="#000000" />
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>
