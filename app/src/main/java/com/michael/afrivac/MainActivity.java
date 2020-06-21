@@ -38,9 +38,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         toolbar = findViewById(R.id.toolbar);
-        //  setSupportActionBar(toolbar);
-      //  setSupportActionBar(toolbar);
-        //s49c6223f55a10e57b33c58b9cf1819ff7714fd38
+        setSupportActionBar(toolbar);
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
