@@ -29,12 +29,15 @@ import android.view.Menu;
 
 public class MainActivity extends AppCompatActivity {
 
+    Toolbar toolbar;
+
    private AppBarConfiguration mAppBarConfiguration;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+<<<<<<< HEAD
         Toolbar toolbar = findViewById(R.id.toolbar);
 <<<<<<< HEAD
         setSupportActionBar(toolbar);
@@ -43,6 +46,12 @@ public class MainActivity extends AppCompatActivity {
       //  setSupportActionBar(toolbar);
         //s49c6223f55a10e57b33c58b9cf1819ff7714fd38
 >>>>>>> 094eb7e10e7bfe4e65076ccddb76eee0cdaaee01
+=======
+        toolbar = findViewById(R.id.toolbar);
+        //  setSupportActionBar(toolbar);
+      //  setSupportActionBar(toolbar);
+        //s49c6223f55a10e57b33c58b9cf1819ff7714fd38
+>>>>>>> 61be2322a7b52875c8a8cac224da902bd20412e1
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
