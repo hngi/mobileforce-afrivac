@@ -16,7 +16,8 @@
         android:fontFamily="@font/poppins"
         android:gravity="center"
         android:text="@string/contact_us"
-        android:textAppearance="bold"
+        android:textStyle="bold"
+
         android:textColor="@color/black"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"

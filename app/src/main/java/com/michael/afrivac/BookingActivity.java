@@ -5,18 +5,17 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import java.util.Calendar;
 
-public class BookingActivity extends AppCompatActivity  {
+public class BookingActivity extends AppCompatActivity {
+
     /*
      *creating a booking details class that can hold all the user details so that they can be easily accessible
      */
@@ -27,7 +26,6 @@ public class BookingActivity extends AppCompatActivity  {
         CheckBox useCabService, reservingForSomeone;
     }
 
-    ImageView dropDownCheckIn, dropDownCheckOut ; // variable to access the dropdown image view icon.
     DatePickerDialog.OnDateSetListener mDateSetListener;
     Button payNowButton, payAtHotel;
     EditText dateSelected, GuestsNumberSelected, RoomsNumberSelected;
@@ -38,9 +36,11 @@ public class BookingActivity extends AppCompatActivity  {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_booking);
         final BookingDetails person = new BookingDetails();
+        ImageView dropDownCheckIn, dropDownCheckOut ; // variable to access the dropdown image view icon.
         person.checkInDate =  (EditText) findViewById(R.id.check_in_date);
         person.checkOutDate = (EditText) findViewById(R.id.check_out_date);
         dropDownCheckIn = (ImageView) findViewById(R.id.check_in_arrow);
+        dropDownCheckOut = (ImageView) findViewById(R.id.check_out_arrow);
         payNowButton = (Button) findViewById(R.id.pay_button);
         GuestsNumberSelected = (EditText) findViewById(R.id.no_of_guests);
         RoomsNumberSelected = (EditText) findViewById(R.id.no_of_rooms);
@@ -54,16 +54,18 @@ public class BookingActivity extends AppCompatActivity  {
         dropDownCheckIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                dateSelected = (EditText)findViewById(R.id.check_in_date);
                 showDate();
-                person.checkInDate = dateSelected;
+
             }
         });
+        //when the dropdown arrow for checkout is clicked. this block of code runs
         dropDownCheckOut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                dateSelected = (EditText) findViewById(R.id.check_out_date);
                 showDate();
-                person.checkOutDate = dateSelected;
+
             }
         });
 
@@ -97,7 +99,7 @@ public class BookingActivity extends AppCompatActivity  {
         int year = cal.get(Calendar.YEAR);
         int month = cal.get(Calendar.MONTH);
         int day = cal.get(Calendar.DAY_OF_MONTH);
-
+//THE dialog that will make the date picker pop up or display to the user.
         DatePickerDialog dialog = new DatePickerDialog(BookingActivity.this,
                 android.R.style.Theme_Holo_Dialog,
                 mDateSetListener, day, month, year);
