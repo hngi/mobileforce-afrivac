@@ -20,5 +20,6 @@
     <dimen name="nav_header_height">176dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="dimension_30sp">30sp</dimen>
+    <dimen name="dimension_45dp">45dp</dimen>
     <dimen name="txtSize">12sp</dimen>
 </resources>
