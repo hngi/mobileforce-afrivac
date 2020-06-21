@@ -175,7 +175,7 @@
                     android:layout_height="1dp"
                     android:layout_gravity="center"
                     android:layout_weight="1"
-                    android:background="@color/colorGrey" />
+                    android:background="@color/colorLightGrey" />
 
                 <TextView
                     android:layout_width="match_parent"
@@ -192,7 +192,7 @@
                     android:layout_height="1dp"
                     android:layout_gravity="center"
                     android:layout_weight="1"
-                    android:background="@color/colorGrey" />
+                    android:background="@color/colorLightGrey" />
             </LinearLayout>
 
             <TextView
