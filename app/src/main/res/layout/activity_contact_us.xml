@@ -10,7 +10,7 @@
     <ImageView
         android:id="@+id/imageView_contact"
         android:layout_width="20dp"
-        android:layout_height="0dp"
+        android:layout_height="1dp"
         android:src="@drawable/contact"
         app:layout_constraintStart_toStartOf="@+id/textView_contact_us"
         app:layout_constraintTop_toTopOf="@+id/textView_contact_us" />
