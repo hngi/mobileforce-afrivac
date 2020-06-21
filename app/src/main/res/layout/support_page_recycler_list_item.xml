@@ -16,7 +16,7 @@
             android:id="@+id/questions_imageView"
             android:layout_width="24dp"
             android:layout_height="match_parent"
-            android:layout_marginStart="@dimen/dimen_spacing"
+            android:layout_marginStart="40dp"
             android:layout_marginTop="12dp"
             android:contentDescription="@string/questions_image"
             android:paddingTop="2dp"
@@ -28,6 +28,7 @@
             style="@style/questionsStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_bold"
             tools:text="@string/question_1" />
         <!--TODO: use setVisibility to get the visibility of the spinner-->
         <Spinner
