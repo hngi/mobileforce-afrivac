@@ -11,9 +11,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".view.ContactUsActivity">
-
-        </activity>
+        <activity android:name=".BookingPageActivity"></activity>
+        <activity android:name=".BookingPage" />
+        <activity android:name=".BookingActivity"></activity>
         <activity android:name=".SignUpActivity" />
         <activity
             android:name=".LoginActivity"
@@ -29,13 +29,11 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
         <activity
             android:name=".MainActivity"
-            android:theme="@style/AppTheme.NoActionBar">
-
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar"></activity>
 
         <meta-data
             android:name="preloaded_fonts"
