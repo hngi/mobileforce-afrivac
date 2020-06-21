@@ -65,4 +65,5 @@
     <string name="or">OR</string>
     <string name="payLater">Pay at Hotel</string>
     <string name="line">A line</string>
+    <string name="sign_in_with_google">Sign in with Google</string>
 </resources>

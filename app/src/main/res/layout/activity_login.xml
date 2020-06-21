@@ -133,8 +133,8 @@
                 android:id="@+id/signin_with_google"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dimension_60"
-                android:text="Sign in with Google "
+                android:layout_marginTop="@dimen/dimension_45dp"
+                android:text="@string/sign_in_with_google"
                 android:textAlignment="center"
                 android:textColor="@color/colorBlack"
                 android:textSize="21sp"
@@ -175,7 +175,7 @@
                     android:layout_height="1dp"
                     android:layout_gravity="center"
                     android:layout_weight="1"
-                    android:background="@color/colorGrey" />
+                    android:background="@color/colorLightGrey" />
 
                 <TextView
                     android:layout_width="match_parent"
@@ -192,7 +192,7 @@
                     android:layout_height="1dp"
                     android:layout_gravity="center"
                     android:layout_weight="1"
-                    android:background="@color/colorGrey" />
+                    android:background="@color/colorLightGrey" />
             </LinearLayout>
 
             <TextView
