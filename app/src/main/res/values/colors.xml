@@ -5,8 +5,8 @@
     <color name="colorAccent">#E64513</color>
 
     <color name="colorWhite">#FFFFFF</color>
-    <color name="colorGrey">#323131</color>
-    <color name="colorLightGrey">#535051</color>
+    <color name="colorGrey">#464646</color>
+    <color name="colorLightGrey">#919191</color>
     <color name="colorBlack">#FF000000</color>
     <color name="colorBlue">#3913B8</color>
     <color name="drawerColor">#3913B8</color>
