@@ -11,18 +11,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-        <activity android:name=".BookingPageActivity"></activity>
-        <activity android:name=".BookingPage" />
-=======
-        <activity android:name=".BookingActivity"></activity>
->>>>>>> ed7f795ed2e84a447e75aa1820108f155e578e06
-=======
-        <activity android:name=".BookingActivity"></activity>
->>>>>>> 4ad23553c445b2f74a58f1c5411add3b30bddb6e
-=======
         <activity android:name=".payment_page"></activity>
         <activity android:name=".BookingActivity" />
 >>>>>>> 06763717f6c82172e259a3a9601ff2051f5f2cd9
