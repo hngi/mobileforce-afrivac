@@ -26,7 +26,6 @@ public class BookingActivity extends AppCompatActivity {
         CheckBox useCabService, reservingForSomeone;
     }
 
-    ImageView dropDownCheckIn, dropDownCheckOut ; // variable to access the dropdown image view icon.
     DatePickerDialog.OnDateSetListener mDateSetListener;
     Button payNowButton, payAtHotel;
     EditText dateSelected, GuestsNumberSelected, RoomsNumberSelected;
@@ -37,9 +36,11 @@ public class BookingActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_booking);
         final BookingDetails person = new BookingDetails();
+        ImageView dropDownCheckIn, dropDownCheckOut ; // variable to access the dropdown image view icon.
         person.checkInDate =  (EditText) findViewById(R.id.check_in_date);
         person.checkOutDate = (EditText) findViewById(R.id.check_out_date);
         dropDownCheckIn = (ImageView) findViewById(R.id.check_in_arrow);
+        dropDownCheckOut = (ImageView) findViewById(R.id.check_out_arrow);
         payNowButton = (Button) findViewById(R.id.pay_button);
         GuestsNumberSelected = (EditText) findViewById(R.id.no_of_guests);
         RoomsNumberSelected = (EditText) findViewById(R.id.no_of_rooms);
