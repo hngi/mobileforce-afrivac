@@ -133,7 +133,7 @@
                 android:id="@+id/signin_with_google"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dimension_60"
+                android:layout_marginTop="@dimen/dimension_40dp"
                 android:text="Sign in with Google "
                 android:textAlignment="center"
                 android:textColor="@color/colorBlack"
