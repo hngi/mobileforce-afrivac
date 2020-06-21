@@ -49,7 +49,6 @@ public class LoginActivity extends AppCompatActivity {
         sign_in.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                  //Email = email.getText().toString().trim();
                  //Password = password.getText().toString().trim();
 
@@ -57,7 +56,8 @@ public class LoginActivity extends AppCompatActivity {
                     email.setError("enter your email");
                     return;
 
-                }if (TextUtils.isEmpty(Password)){
+                }
+                else if (TextUtils.isEmpty(Password)){
                     password.setError("enter password");
                 }else {
                     checkNetwork();
@@ -120,10 +120,13 @@ public class LoginActivity extends AppCompatActivity {
     public void onStart() {
         super.onStart();
         // Check if user is signed in (non-null) and update UI accordingly.
-        FirebaseUser currentUser = mAuth.getCurrentUser();
-        updateUI(currentUser);
+        //FirebaseUser currentUser = mAuth.getCurrentUser();
+        /*if(currentUser != null){
+            startActivity(new Intent(getApplicationContext(), MainActivity.class));
+        }*/
     }
 
     private void updateUI(FirebaseUser currentUser) {
+
     }
 }
