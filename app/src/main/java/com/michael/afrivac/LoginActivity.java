@@ -2,13 +2,11 @@ package com.michael.afrivac;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
-import android.provider.ContactsContract;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
@@ -34,12 +32,9 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        mAuth = FirebaseAuth.getInstance();
-
         email = findViewById(R.id.signin_email);
         password = findViewById(R.id.signin_password);
         sign_in = findViewById(R.id.singin_into_account);
-
         signUp = findViewById(R.id.singin_goto_signup);
         forgotPassword = findViewById(R.id.signin_forgot_password);
 
@@ -70,6 +65,8 @@ public class LoginActivity extends AppCompatActivity {
                 //startActivity(new Intent(getApplicationContext(), MainActivity.class));
                 //finish();
 
+                startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                finish();
             }
         });
 
@@ -89,9 +86,11 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
     }
+
     private void checkNetwork(){
         if (isNetWorkAvailable()){
             mAuth.signInWithEmailAndPassword(Email, Password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if (task.isSuccessful()){
