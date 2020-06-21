@@ -1,10 +1,10 @@
 <resources>
     <string name="app_name">AfriVac</string>
-    <string name="azeez_adeleke">Azeez Adeleke</string>
+    <string name="azeez_adeleke" translatable="false">Azeez Adeleke</string>
     <string name="my_account">My Account</string>
-    <string name="nigeria">Nigeria</string>
+    <string name="nigeria" translatable="false">Nigeria</string>
     <string name="username">Username</string>
-    <string name="email">Email</string>
+    <string name="email" translatable="false">Email</string>
     <string name="phone">Phone</string>
     <string name="country">Country</string>
     <string name="gender">Gender</string>
@@ -15,20 +15,20 @@
     <string name="password">Password</string>
     <string name="user_image">User image</string>
     <string name="edit_profile">Edit Profile</string>
-    <string name="_234_8012345678">+234 8012345678</string>
+    <string name="_234_8012345678" translatable="false">+234 8012345678</string>
     <string name="back_arrow">back arrow</string>
-    <string name="azeez_hng_com">Azeez@hng.com</string>
+    <string name="azeez_hng_com" translatable="false">Azeez@hng.com</string>
     <string name="male">Male</string>
     <string name="english">English</string>
-    <string name="hidden_password">********</string>
-    <string name="apps_logo">logo</string>
+    <string name="hidden_password" translatable="false">********</string>
+    <string name="apps_logo" translatable="false">logo</string>
     <string name="subtittle">subtittle</string>
     <string name="title">title</string>
-    <string name="title_activity_main3">Main3Activity</string>
+    <string name="title_activity_main3" translatable="false">Main3Activity</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="nav_header_title">Android Studio</string>
-    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_title" translatable="false">Android Studio</string>
+    <string name="nav_header_subtitle" translatable="false">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="menu_home">Home</string>
     <string name="menu_gallery">Gallery</string>
@@ -42,7 +42,7 @@
     <string name="account">Account</string>
     <string name="support">Support</string>
     <string name="completeBooking">Complete your booking at cocoon luxury</string>
-    <string name="hotelName">Cocoon Hotel</string>
+    <string name="hotelName" translatable="false">Cocoon Hotel</string>
     <string name="checkInDetails">Check-in Details</string>
     <string name="checkIn">Check-in</string>
     <string name="checkOut">Check-out</string>
