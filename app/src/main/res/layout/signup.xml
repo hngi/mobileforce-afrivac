@@ -30,7 +30,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
                 android:fontFamily="@font/poppins_light"
-                android:text="Username"
+                android:text="@string/username"
                 android:textColor="#000000"
                 app:layout_constraintBottom_toTopOf="@+id/username"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -69,7 +69,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
                 android:fontFamily="@font/poppins_light"
-                android:text="Email"
+                android:text="@string/email"
                 android:textColor="#000000"
                 app:layout_constraintBottom_toTopOf="@+id/username"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -108,7 +108,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
                 android:fontFamily="@font/poppins_light"
-                android:text="Phone"
+                android:text="@string/phone"
                 android:textColor="#000000"
                 app:layout_constraintBottom_toTopOf="@+id/username"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -147,7 +147,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
                 android:fontFamily="@font/poppins_light"
-                android:text="Country"
+                android:text="@string/country"
                 android:textColor="#000000"
                 app:layout_constraintBottom_toTopOf="@+id/username"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -186,7 +186,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
                 android:fontFamily="@font/poppins_light"
-                android:text="Password"
+                android:text="@string/password"
                 android:textColor="#000000"
                 app:layout_constraintBottom_toTopOf="@+id/username"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -225,7 +225,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
                 android:fontFamily="@font/poppins_light"
-                android:text="Confirm Password"
+                android:text="@string/confirmPassword"
                 android:textColor="#000000"
                 app:layout_constraintBottom_toTopOf="@+id/username"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -260,7 +260,7 @@
             android:background="@drawable/curve"
             android:fontFamily="@font/poppins_light"
             android:onClick="SignUp"
-            android:text="SIGN-UP"
+            android:text="@string/signUp"
             android:textColor="#ffffff"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
@@ -277,7 +277,7 @@
             android:layout_marginStart="39dp"
             android:layout_marginTop="580dp"
             android:layout_marginEnd="176dp"
-            android:text="I have read and agreed to "
+            android:text="@string/readAndAgreed"
             android:textSize="10sp" />
 
 
@@ -293,7 +293,7 @@
             android:layout_marginEnd="62dp"
             android:layout_marginBottom="127dp"
             android:fontFamily="@font/poppins_light"
-            android:text="Terms and agreement"
+            android:text="@string/terms_and_agreement"
             android:textColor="#8352fd"
             android:textSize="9sp" />
 
@@ -307,7 +307,7 @@
             android:layout_marginTop="680dp"
             android:layout_marginEnd="145dp"
             android:layout_marginBottom="28dp"
-            android:text="Already have an account?"
+            android:text="@string/existingAccount"
             android:textSize="13sp"
             android:textStyle="bold" />
 
@@ -322,7 +322,7 @@
             android:layout_marginBottom="26dp"
             android:clickable="true"
             android:fontFamily="@font/poppins_light"
-            android:text="Sign-in"
+            android:text="@string/signIn"
             android:textColor="#3913b8"
             android:textSize="13sp"
             android:textStyle="bold" />
@@ -346,7 +346,7 @@
             android:layout_marginEnd="196dp"
             android:layout_marginRight="30dp"
             android:fontFamily="sans-serif"
-            android:text="AfriVac"
+            android:text="@string/app_name"
             android:textColor="#000000"
             android:textSize="21sp"
             android:textStyle="bold" />

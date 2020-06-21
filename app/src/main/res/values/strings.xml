@@ -42,7 +42,6 @@
     <string name="account">Account</string>
     <string name="support">Support</string>
     <string name="completeBooking">Complete your booking at cocoon luxury</string>
-    <string name="hotelName" translatable="false">Cocoon Hotel</string>
     <string name="checkInDetails">Check-in Details</string>
     <string name="checkIn">Check-in</string>
     <string name="checkOut">Check-out</string>
@@ -61,8 +60,79 @@
     <string name="additionalInfo">Enter any additional request/information</string>
     <string name="reserveFor">I\'m making the reservation on behalf of someone else</string>
     <string name="cab">Yes, I\'d like a cab service as well</string>
-    <string name="pay">Pay Now</string>
+    <string name="payNow">Pay Now</string>
     <string name="or">OR</string>
     <string name="payLater">Pay at Hotel</string>
     <string name="line">A line</string>
+    <string name="cocoon_hotel" translatable="false">Cocoon Hotel</string>
+    <string name="confirmation" translatable="false">Confirmation</string>
+    <string name="room_type">Room Type</string>
+    <string name="deluxe_rooms">Deluxe Rooms</string>
+    <string name="guest">Guest</string>
+    <string name="_2_adults">2 Adults</string>
+    <string name="night">Night</string>
+    <string name="fri_19_june_2020">Fri 19 June 2020</string>
+    <string name="_96_78" translatable="false">(96** **** *** 78)</string>
+    <string name="n12_000" translatable="false">N12,000</string>
+    <string name="edit_room_details">Edit Room Details</string>
+    <string name="sat_19_june_2020">Sat 19 June 2020</string>
+    <string name="reset">Reset</string>
+    <string name="forgotPassword">Forgot Password?</string>
+    <string name="overview">Overview</string>
+    <string name="viewAll">View All</string>
+    <string name="hotels">Hotels</string>
+    <string name="WhatToDoInEgypt">What to do in Egypt</string>
+    <string name="pyramidOfGaza">Pyramid of Gaza</string>
+    <string name="egyptianMusuem">Synix Egyptian Museum</string>
+    <string name="flightDetails">Flight Details</string>
+    <string name="from">From</string>
+    <string name="destination" translatable="false">Cairo, International CAI</string>
+    <string name="oneWay">One Way</string>
+    <string name="roundTrip">Round Trip</string>
+    <string name="depart">Depart</string>
+    <string name="returning">Return</string>
+    <string name="economy">Economy</string>
+    <string name="traveller">Traveller</string>
+    <string name="findFlight">Find Flight</string>
+    <string name="welcomeBack">Welcome Back,</string>
+    <string name="clickHere">Click here</string>
+    <string name="signInGoogle">Sign-in with Google</string>
+    <string name="signInFacebook">Sign-in with Facebook</string>
+    <string name="signIn">Sign In</string>
+    <string name="dontHaveAccount">Don\'t have an account?</string>
+    <string name="signUp">Sign Up</string>
+    <string name="getStarted">Get Started</string>
+    <string name="aNewWay">A new way  to Travel</string>
+    <string name="introText" translatable="false">lorem ispum dolor sit amet, \nconsectetur adipiscing eiit</string>
+    <string name="one" translatable="false">01</string>
+    <string name="payment">Payment</string>
+    <string name="paymentMethod">Pay Later</string>
+    <string name="paypal" translatable="false">PayPal</string>
+    <string name="creditDebit">Credit/Debit</string>
+    <string name="myWallet">My Wallet</string>
+    <string name="cardNumber">Card Number</string>
+    <string name="hiddenCardNumber" translatable="false">**** **** **** ****</string>
+    <string name="cvv" translatable="false">CVV*</string>
+    <string name="monthYear">Month / Year</string>
+    <string name="cvvHint" translatable="false">***</string>
+    <string name="proceedToConfirm">Proceed to Confirm</string>
+    <string name="validUntil">Valid until</string>
+    <string name="securePayment">This is a secure SSL encrypted payment</string>
+    <string name="room">Room</string>
+    <string name="figure1" translatable="false">1</string>
+    <string name="total">Total</string>
+    <string name="pay">Pay</string>
+    <string name="visitWhere">Hi Adeleke, \nWhere would you like to visit?</string>
+    <string name="discoverAfrica">Discover Africa</string>
+    <string name="cairo">Cairo</string>
+    <string name="egypt">Egypt</string>
+    <string name="nairobi" translatable="false">Nairobi</string>
+    <string name="kenya" translatable="false">Kenya</string>
+    <string name="destinationInfo" translatable="false">Lorem ipsum dolor fhdhjdkdkk fnfnnf\nwhhhffffkkfkfffsjssjnsjj\nywyoufhfhhffffywyey</string>
+    <string name="_4_1" translatable="false">4.1</string>
+    <string name="_2_731">(2,731)</string>
+    <string name="confirmPassword">Confirm Password</string>
+    <string name="readAndAgreed">I have read and agreed to</string>
+    <string name="terms_and_agreement">Terms and agreement</string>
+    <string name="existingAccount">Already have an account?</string>
 </resources>

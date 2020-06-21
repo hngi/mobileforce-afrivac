@@ -22,14 +22,33 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:scaleType="fitXY"
-                android:src="@drawable/hotel" />
+                android:src="@drawable/hotel"/>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:id="@+id/sliderLayout"
-                android:layout_below="@id/hotel">
+                android:layout_below="@id/hotel"
+                    android:layout_marginTop="5dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/dotsText"
+                        android:text="@string/overview"
+                        android:layout_gravity="center_horizontal"
+                        android:textStyle="bold"
+                        android:textSize="20sp"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/dots"
+                        android:orientation="horizontal"
+                        android:gravity="center_horizontal"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginEnd="20dp"/>
 
                 <androidx.viewpager.widget.ViewPager
                     android:layout_width="match_parent"
@@ -37,7 +56,6 @@
                     android:id="@+id/slideViewPager"
                     android:layout_marginStart="20dp"
                     android:layout_marginEnd="20dp"
-                    android:layout_marginTop="10dp"
                     android:paddingStart="20dp"
                     android:paddingEnd="20dp"/>
 
@@ -64,7 +82,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="View All"
+                    android:text="@string/viewAll"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     android:textColor="#0000ff"
@@ -134,16 +152,16 @@
                         android:layout_height="wrap_content"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        android:text="Hotels"
+                        android:text="@string/hotels"
                         android:layout_marginBottom="5dp"
-                        android:textSize="20dp"
+                        android:textSize="20sp"
                         android:textStyle="bold"
                         android:id="@+id/hotels"/>
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="View All"
+                        android:text="@string/viewAll"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         android:textColor="#0000ff"
@@ -156,7 +174,7 @@
                         android:layout_width="150dp"
                         android:layout_height="150dp"
                         android:id="@+id/img5"
-                        android:src="@drawable/img1"
+                        android:src="@drawable/hotel2"
                         app:layout_constraintTop_toBottomOf="@id/hotels"
                         app:layout_constraintRight_toRightOf="parent"
                         android:layout_marginStart="5dp"
@@ -167,7 +185,7 @@
                         android:layout_width="150dp"
                         android:layout_height="150dp"
                         android:id="@+id/img4"
-                        android:src="@drawable/img3"
+                        android:src="@drawable/hotel3"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/viewAll2"
                         android:layout_marginStart="10dp"
@@ -188,7 +206,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="What to do in Egypt"
+                    android:text="@string/WhatToDoInEgypt"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -220,7 +238,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Pyramid Of Gaza"
+                        android:text="@string/pyramidOfGaza"
                         android:fontFamily="monospace"
                         android:textStyle="bold"
                         android:textSize="15dp"/>
@@ -256,7 +274,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Synix Egyptian Museum"
+                            android:text="@string/egyptianMusuem"
                             android:fontFamily="monospace"
                             android:textStyle="bold"
                             android:textSize="15dp"/>
@@ -283,7 +301,7 @@
                     android:layout_height="wrap_content"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    android:text="Flight Details"
+                    android:text="@string/flightDetails"
                     android:id="@+id/flightDetails"
                     android:layout_marginBottom="90dp"
                     android:textStyle="bold"
@@ -309,7 +327,7 @@
                 <EditText
                     android:layout_width="300dp"
                     android:layout_height="50dp"
-                    android:hint="From"
+                    android:hint="@string/from"
                     app:layout_constraintStart_toEndOf="@id/findIcon"
                     app:layout_constraintTop_toTopOf="parent"
                     android:id="@+id/from"
@@ -341,7 +359,7 @@
                 <EditText
                     android:layout_width="300dp"
                     android:layout_height="50dp"
-                    android:hint="Cairo, International CAI"
+                    android:hint="@string/destination"
                     app:layout_constraintStart_toEndOf="@id/planeIcon"
                     app:layout_constraintTop_toTopOf="parent"
                     android:id="@+id/destination"
@@ -372,7 +390,7 @@
                 <EditText
                     android:layout_width="150dp"
                     android:layout_height="wrap_content"
-                    android:hint="One way"
+                    android:hint="@string/oneWay"
                     app:layout_constraintStart_toEndOf="@id/tripIon"
                     app:layout_constraintTop_toTopOf="parent"
                     android:id="@+id/oneway"
@@ -384,7 +402,7 @@
                 <EditText
                     android:layout_width="150dp"
                     android:layout_height="wrap_content"
-                    android:hint="Round Trip"
+                    android:hint="@string/roundTrip"
                     app:layout_constraintStart_toEndOf="@id/oneway"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -416,7 +434,7 @@
                 <EditText
                     android:layout_width="150dp"
                     android:layout_height="wrap_content"
-                    android:hint="Depart"
+                    android:hint="@string/depart"
                     app:layout_constraintStart_toEndOf="@id/calIcon"
                     app:layout_constraintTop_toTopOf="parent"
                     android:id="@+id/depart"
@@ -429,7 +447,7 @@
                 <EditText
                     android:layout_width="150dp"
                     android:layout_height="wrap_content"
-                    android:hint="Return"
+                    android:hint="@string/returning"
                     app:layout_constraintStart_toEndOf="@id/depart"
                     app:layout_constraintTop_toTopOf="parent"
                     android:id="@+id/ret"
@@ -461,7 +479,7 @@
                 <EditText
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
-                android:hint="Economy"
+                android:hint="@string/economy"
                 app:layout_constraintStart_toEndOf="@id/passIcon"
                 app:layout_constraintTop_toTopOf="parent"
                 android:id="@+id/econs"
@@ -474,7 +492,7 @@
                 <EditText
                     android:layout_width="150dp"
                     android:layout_height="wrap_content"
-                    android:hint="Traveller"
+                    android:hint="@string/traveller"
                     app:layout_constraintStart_toEndOf="@id/econs"
                     app:layout_constraintTop_toTopOf="parent"
                     android:id="@+id/traveller"
@@ -493,7 +511,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     android:background="#0000ff"
-                    android:text="Find Flight"
+                    android:text="@string/findFlight"
                     android:textColor="#fff"
                     android:textStyle="bold"
                     android:textAllCaps="false"
