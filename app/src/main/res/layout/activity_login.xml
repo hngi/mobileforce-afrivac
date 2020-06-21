@@ -103,6 +103,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:clickable="true"
                     android:text="Click Here"
                     android:textAlignment="textStart"
                     android:textColor="@color/colorBlue"

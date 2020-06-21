@@ -23,6 +23,7 @@
         <activity
             android:name=".LoginActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity android:name=".ForgetPasswordActivity"/>
         <activity
             android:name=".SplashscreenActivity"
             android:theme="@style/AppTheme.splashScreen" >
