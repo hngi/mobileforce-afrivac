@@ -97,7 +97,7 @@ public class BookingActivity extends AppCompatActivity {
         int year = cal.get(Calendar.YEAR);
         int month = cal.get(Calendar.MONTH);
         int day = cal.get(Calendar.DAY_OF_MONTH);
-
+//THE dialog that will make the date picker pop up or display to the user. 
         DatePickerDialog dialog = new DatePickerDialog(BookingActivity.this,
                 android.R.style.Theme_Holo_Dialog,
                 mDateSetListener, day, month, year);
