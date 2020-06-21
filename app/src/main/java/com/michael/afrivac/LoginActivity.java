@@ -26,7 +26,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private EditText email, password;
     private String Email, Password;
-    private TextView sign_in;
+    private TextView sign_in, signUp, forgotPassword;
     private FirebaseAuth mAuth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,10 +39,16 @@ public class LoginActivity extends AppCompatActivity {
         password = findViewById(R.id.signin_password);
         sign_in = findViewById(R.id.singin_into_account);
 
+        signUp = findViewById(R.id.singin_goto_signup);
+        forgotPassword = findViewById(R.id.signin_forgot_password);
+         Email = email.getText().toString().trim();
+         Password = password.getText().toString().trim();
+
 
         sign_in.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                  Email = email.getText().toString().trim();
                  Password = password.getText().toString().trim();
 
@@ -55,9 +61,26 @@ public class LoginActivity extends AppCompatActivity {
                 }else {
                     checkNetwork();
                 }
+                //startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                //finish();
+
             }
+        });
 
+        signUp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), SignUpActivity.class));
+                finish();
+            }
+        });
 
+        forgotPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), ForgetPasswordActivity.class));
+                finish();
+            }
         });
     }
     private void checkNetwork(){
@@ -68,7 +91,7 @@ public class LoginActivity extends AppCompatActivity {
                     if (task.isSuccessful()){
                         Log.d("login", "signInWithEmail:success");
                         FirebaseUser user = mAuth.getCurrentUser();
-                        startActivity(new Intent(LoginActivity.this, OnboardscreenActivity.class));
+                        startActivity(new Intent(LoginActivity.this, MainActivity.class));
                     }else {
                         Log.w("sign in", "signInWithEmail:failure", task.getException());
                         Toast.makeText(LoginActivity.this, "Authentication failed...", Toast.LENGTH_LONG).show();

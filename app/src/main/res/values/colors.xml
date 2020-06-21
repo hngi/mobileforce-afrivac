@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#008577</color>
-    <color name="colorPrimaryDark">#00574B</color>
-    <color name="colorAccent">#D81B60</color>
+    <color name="colorPrimary">#3913B8</color>
+    <color name="colorPrimaryDark">#2600A5</color>
+    <color name="colorAccent">#E64513</color>
 
     <color name="colorWhite">#FFFFFF</color>
     <color name="colorGrey">#323131</color>
     <color name="colorLightGrey">#535051</color>
     <color name="colorBlack">#FF000000</color>
     <color name="colorBlue">#3913B8</color>
+    <color name="drawerColor">#3913B8</color>
 
     <color name="stroke">#C4C4C4</color>
     <color name="roundBtn">#3913B8</color>
