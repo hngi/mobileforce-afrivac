@@ -98,6 +98,7 @@ public class AuthViewModel {
                             public void onComplete(@NonNull Task<Void> task) {
                                 if(task.isSuccessful()){
                                     Log.d(TAG, "Save Account Info: success");
+                                    helper.toastMessage(view.getContext(), "Save Account Info: success");
                                     helper.gotoMainActivity(view.getContext());
                                 }
                             }
