@@ -4,23 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+
+    android:background="@color/white"
     android:orientation="vertical">
 
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        tools:ignore="UseCompoundDrawables">
 
-        <ImageView
-            android:id="@+id/questions_imageView"
-            android:layout_width="24dp"
-            android:layout_height="match_parent"
-            android:layout_marginStart="40dp"
-            android:layout_marginTop="12dp"
-            android:contentDescription="@string/questions_image"
-            android:paddingTop="2dp"
-            android:src="@drawable/ic_baseline_message_24" />
 
         <!--TODO use onClick or onClickListener to see the answers to the questions-->
         <TextView
@@ -28,24 +22,30 @@
             style="@style/questionsStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:drawableStart="@drawable/ic_baseline_message_24"
+            android:elegantTextHeight="true"
             android:fontFamily="@font/poppins_bold"
+            android:textAlignment="center"
+            android:textSize="15sp"
             tools:text="@string/question_1" />
         <!--TODO: use setVisibility to get the visibility of the spinner-->
-        <Spinner
-            android:id="@+id/answers_spinner"
-            android:layout_width="@dimen/dimension_30dp"
-            android:layout_height="30dp"
-            android:layout_marginTop="12dp"
-            android:background="@drawable/ic_baseline_keyboard_arrow_down_24"
-            android:visibility="gone" />
+        <ImageView
+            android:id="@+id/arrow_down_iv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:visibility="gone"
+            android:src="@drawable/ic_baseline_keyboard_arrow_down_24"
+            android:contentDescription="@string/arrow_down" />
+
     </LinearLayout>
     <!--TODO: use setVisibility to get the visibility of the view-->
     <View
         android:id="@+id/answers_view_line"
-        android:layout_width="298dp"
+        android:layout_width="278dp"
         android:layout_height="1dp"
         android:layout_marginStart="70dp"
-        android:layout_marginTop="@dimen/dimension_10dp"
+        android:layout_marginTop="10dp"
         android:background="@android:color/darker_gray"
         android:visibility="gone" />
     <!--TODO: use setVisibility to get the visibility of the message-->
@@ -54,9 +54,10 @@
         style="@style/answerStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:baselineAligned="false"
+        android:fontFamily="@font/poppins_light"
         android:textColor="@android:color/darker_gray"
         android:visibility="gone"
-        android:fontFamily="@font/poppins_light"
         tools:text="why the contents of the team's index.php to the index.php on the repl repository
 copy the contents of the team's script folder on your computer to another location on your computer
 ie you are duplicating the scripts folder on your pc/mac
