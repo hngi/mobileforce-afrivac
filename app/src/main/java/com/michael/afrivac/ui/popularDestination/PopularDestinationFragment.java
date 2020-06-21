@@ -1,4 +1,4 @@
-package com.michael.afrivac.ui.gallery;
+package com.michael.afrivac.ui.popularDestination;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,21 +10,21 @@ import androidx.annotation.Nullable;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.michael.afrivac.R;
 
-public class GalleryFragment extends Fragment {
+public class PopularDestinationFragment extends Fragment {
 
-    private GalleryViewModel galleryViewModel;
+    private PopularDestinationViewModel popularDestinationViewModel;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        galleryViewModel = new ViewModelProvider(this).get(GalleryViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_gallery, container, false);
-        final TextView textView = root.findViewById(R.id.text_gallery);
-        galleryViewModel.getText().observe(this, new Observer<String>() {
+        popularDestinationViewModel =
+                ViewModelProviders.of(this).get(PopularDestinationViewModel.class);
+        View root = inflater.inflate(R.layout.fragment_destination, container, false);
+        final TextView textView = root.findViewById(R.id.text_send);
+        popularDestinationViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
                 textView.setText(s);

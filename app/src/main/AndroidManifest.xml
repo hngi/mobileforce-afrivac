@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.michael.afrivac">
+    package="com.michael.afrivac" >
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -10,8 +10,13 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity android:name=".payment_page"></activity>
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name=".Main2Activity"
+            android:label="@string/title_activity_main2"
+            android:theme="@style/AppTheme.NoActionBar" >
+        </activity>
+        <activity android:name=".payment_page" />
         <activity android:name=".BookingActivity" />
         <activity android:name=".SignUpActivity" />
         <activity
@@ -22,7 +27,7 @@
         <activity android:name=".ForgetPasswordActivity" />
         <activity
             android:name=".SplashscreenActivity"
-            android:theme="@style/AppTheme.splashScreen">
+            android:theme="@style/AppTheme.splashScreen" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -33,6 +38,7 @@
         <activity
             android:name=".MainActivity"
             android:theme="@style/AppTheme.NoActionBar" />
+
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />

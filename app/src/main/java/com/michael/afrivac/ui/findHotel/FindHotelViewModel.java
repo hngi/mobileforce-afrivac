@@ -1,16 +1,16 @@
-package com.michael.afrivac.ui.slideshow;
+package com.michael.afrivac.ui.findHotel;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class SlideshowViewModel extends ViewModel {
+public class FindHotelViewModel extends ViewModel {
 
     private MutableLiveData<String> mText;
 
-    public SlideshowViewModel() {
+    public FindHotelViewModel() {
         mText = new MutableLiveData<>();
-        mText.setValue("This is slideshow fragment");
+        mText.setValue("This is find hotel fragment");
     }
 
     public LiveData<String> getText() {
