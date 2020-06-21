@@ -13,6 +13,7 @@
         android:theme="@style/AppTheme">
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         <activity android:name=".BookingPageActivity"></activity>
         <activity android:name=".BookingPage" />
 =======
@@ -21,6 +22,10 @@
 =======
         <activity android:name=".BookingActivity"></activity>
 >>>>>>> 4ad23553c445b2f74a58f1c5411add3b30bddb6e
+=======
+        <activity android:name=".payment_page"></activity>
+        <activity android:name=".BookingActivity" />
+>>>>>>> 06763717f6c82172e259a3a9601ff2051f5f2cd9
         <activity android:name=".SignUpActivity" />
         <activity
             android:name=".LoginActivity"
@@ -41,6 +46,7 @@
             android:name=".MainActivity"
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
             android:theme="@style/AppTheme.NoActionBar" />
 =======
             android:theme="@style/AppTheme.NoActionBar"></activity>
@@ -48,6 +54,9 @@
 =======
             android:theme="@style/AppTheme.NoActionBar"></activity>
 >>>>>>> 4ad23553c445b2f74a58f1c5411add3b30bddb6e
+=======
+            android:theme="@style/AppTheme.NoActionBar" />
+>>>>>>> 06763717f6c82172e259a3a9601ff2051f5f2cd9
 
         <meta-data
             android:name="preloaded_fonts"
