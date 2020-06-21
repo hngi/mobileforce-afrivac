@@ -65,6 +65,7 @@
     <string name="or">OR</string>
     <string name="payLater">Pay at Hotel</string>
     <string name="line">A line</string>
+    <string name="sign_in_with_google">Sign in with Google</string>
     <string name="cocoon_hotel">Cocoon Hotel</string>
     <string name="confirmation">Confirmation</string>
     <string name="room_type">Room Type</string>
