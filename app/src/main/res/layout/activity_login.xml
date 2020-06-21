@@ -30,7 +30,7 @@
                 android:textSize="33sp"
                 android:textStyle="bold"
                 android:textAlignment="center"
-                app:cit_drawableStart="@drawable/logo"
+                app:cit_drawableStart="@drawable/logo_black"
                 app:cit_iconWidth="40dp"
                 app:cit_iconHeight="40dp"
                 app:cit_iconColor="@color/colorBlack"/>
@@ -103,6 +103,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:clickable="true"
                     android:text="Click Here"
                     android:textAlignment="textStart"
                     android:textColor="@color/colorBlue"

@@ -19,6 +19,7 @@
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity android:name=".ProfilePageActivity" />
         <activity android:name=".OnboardscreenActivity" />
+        <activity android:name=".ForgetPasswordActivity"/>
         <activity
             android:name=".SplashscreenActivity"
             android:theme="@style/AppTheme.splashScreen">

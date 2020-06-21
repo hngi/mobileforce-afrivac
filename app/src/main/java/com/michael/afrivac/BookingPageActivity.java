@@ -8,6 +8,7 @@ package com.michael.afrivac;
         import android.util.Log;
         import android.view.View;
         import android.widget.Button;
+        import android.widget.CheckBox;
         import android.widget.DatePicker;
         import android.widget.EditText;
         import android.widget.ImageView;
@@ -22,13 +23,14 @@ public class BookingPage extends AppCompatActivity  {
                             public static class BookingDetails{
                             EditText checkInDate, checkOutDate; // variables to store the check-in and check-out dates of the user
                             EditText numberOfGuests, numberOfRooms; // edit field variables used to take in the number of guest and rooms the user wants
-                            EditText fullName, Email;
+                            EditText fullName, Email, additionalInfo;
+                            CheckBox useCabService, reservingForSomeone;
                             }
 
                             ImageView dropDownCheckIn, dropDownCheckOut ; // variable to access the dropdown image view icon.
                             DatePickerDialog.OnDateSetListener mDateSetListener;
                             Button payNowButton, payAtHotel;
-                            EditText dateSelected, numberOfGuests, numberOfRooms;
+                            EditText dateSelected, GuestsNumberSelected, RoomsNumberSelected;
 
 
                             @Override
@@ -36,12 +38,14 @@ public class BookingPage extends AppCompatActivity  {
                                 super.onCreate(savedInstanceState);
                                 setContentView(R.layout.activity_booking_page);
                                 final BookingDetails person = new BookingDetails();
-                                person.checkInDate = (EditText) findViewById(R.id.Check_in_date);
+                                person.checkInDate =  (EditText) findViewById(R.id.Check_in_date);
                                 person.checkOutDate = (EditText) findViewById(R.id.Check_out_date);
-                                dropDownCheckIn = findViewById(R.id.check_in_arrow);
+                                dropDownCheckIn = (ImageView) findViewById(R.id.check_in_arrow);
                                 payNowButton = (Button) findViewById(R.id.Pay_button);
-                                numberOfGuests = (EditText)findViewById(R.id.no_of_guests);
-                                numberOfRooms = (EditText)findViewById(R.id.no_of_rooms);
+                                GuestsNumberSelected = (EditText) findViewById(R.id.no_of_guests);
+                                RoomsNumberSelected = (EditText) findViewById(R.id.no_of_rooms);
+                                person.numberOfGuests = GuestsNumberSelected;
+                                person.numberOfRooms = RoomsNumberSelected;
 
                                          /*
                                 an on-click event is set to the image view attached to the check-in edit view in order to create a calendar dialog
