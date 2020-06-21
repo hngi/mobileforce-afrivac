@@ -66,6 +66,7 @@
     <string name="or">OR</string>
     <string name="payLater">Pay at Hotel</string>
     <string name="line">A line</string>
+    <string name="sign_in_with_google">Sign in with Google</string>
     <string name="cocoon_hotel">Cocoon Hotel</string>
     <string name="confirmation">Confirmation</string>
     <string name="room_type">Room Type</string>
@@ -80,6 +81,8 @@
     <string name="n12_000">N12,000</string>
     <string name="edit_room_details">Edit Room Details</string>
     <string name="sat_19_june_2020">Sat 19 June 2020</string>
+
+
     <string name="enter_your_message">Enter your message</string>
     <string name="contact_us">Contact us</string>
     <string name="arrow_down">arrow down</string>
@@ -91,10 +94,13 @@
     <string name="contact_us_msg">Tell us more and we\'ll help you</string>
     <string name="feedback">Send feedback</string>
     <string name="terms_and_conditions">Terms and conditions</string>
+
     <string name="find_hotel_text">Find Hotel</string>
+
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="edit_profile">Edit Profile</string>
+
 
 </resources>
