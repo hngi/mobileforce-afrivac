@@ -19,6 +19,9 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.FirebaseDatabase;
+import com.michael.afrivac.Auth.AuthViewModel;
+import com.michael.afrivac.Util.Helper;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -26,55 +29,34 @@ public class LoginActivity extends AppCompatActivity {
     private String Email, Password;
     private TextView sign_in, signUp, forgotPassword;
     private FirebaseAuth mAuth;
+    private FirebaseUser user;
+    private AuthViewModel authViewModel;
+    private Helper helper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        email = findViewById(R.id.signin_email);
-        password = findViewById(R.id.signin_password);
+        mAuth = FirebaseAuth.getInstance();
+        authViewModel = new AuthViewModel();
+        helper = new Helper();
+
         sign_in = findViewById(R.id.singin_into_account);
         signUp = findViewById(R.id.singin_goto_signup);
         forgotPassword = findViewById(R.id.signin_forgot_password);
 
-         Email = email.getText().toString().trim();
-         Password = password.getText().toString().trim();
-
-
-        //Email = email.getText().toString().trim();
-        // Password = password.getText().toString().trim();
-
-
         sign_in.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                 //Email = email.getText().toString().trim();
-                 //Password = password.getText().toString().trim();
-
-                if (TextUtils.isEmpty(Email)){
-                    email.setError("enter your email");
-                    return;
-
-                }if (TextUtils.isEmpty(Password)){
-                    password.setError("enter password");
-                }else {
-                    checkNetwork();
-                }
-                //startActivity(new Intent(getApplicationContext(), MainActivity.class));
-                //finish();
-
-                startActivity(new Intent(getApplicationContext(), MainActivity.class));
-                finish();
+                authViewModel.logIn(v);
             }
         });
 
         signUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), SignUpActivity.class));
-                finish();
+                helper.gotoSignUpActivity(getApplicationContext());
             }
         });
 
@@ -96,17 +78,14 @@ public class LoginActivity extends AppCompatActivity {
                     if (task.isSuccessful()){
                         Log.d("login", "signInWithEmail:success");
                         FirebaseUser user = mAuth.getCurrentUser();
-                        updateUI(user);
                         startActivity(new Intent(LoginActivity.this, MainActivity.class));
                     }else {
                         Log.w("sign in", "signInWithEmail:failure", task.getException());
                         Toast.makeText(LoginActivity.this, "Authentication failed...", Toast.LENGTH_LONG).show();
-                        updateUI(null);
                     }
 
                 }
             });
-
         }else {
             Toast.makeText(getApplicationContext(), "network error", Toast.LENGTH_LONG).show();
         }
@@ -119,11 +98,11 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     public void onStart() {
         super.onStart();
-        // Check if user is signed in (non-null) and update UI accordingly.
-        FirebaseUser currentUser = mAuth.getCurrentUser();
-        updateUI(currentUser);
-    }
+        user = FirebaseAuth.getInstance().getCurrentUser();
+        if(user != null){
+            helper.toastMessage(this, "user ID is: "+ user.getUid());
+            helper.gotoMainActivity(this);
+        }
 
-    private void updateUI(FirebaseUser currentUser) {
     }
 }
