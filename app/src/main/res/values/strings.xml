@@ -14,7 +14,12 @@
     <string name="saved_destination">Saved Destination</string>
     <string name="password">Password</string>
     <string name="user_image">User image</string>
+    <string name="need_more_help">Need more help?</string>
+    <string name="contact_us_msg">Tell us more and we\'ll help you</string>
+    <string name="feedback">Send feedback</string>
+    <string name="terms_and_conditions">Terms and conditions</string>
     <string name="edit_profile">Edit Profile</string>
+    <string name="back_arrow_button">back arrow button</string>
     <string name="_234_8012345678">+234 8012345678</string>
     <string name="back_arrow">back arrow</string>
     <string name="azeez_hng_com">Azeez@hng.com</string>
@@ -23,6 +28,10 @@
     <string name="hidden_password">********</string>
     <string name="apps_logo">logo</string>
     <string name="subtittle">subtittle</string>
+    <string name="contact_us">Contact us</string>
+    <string name="support_text">Support</string>
+    <string name="describe_issues">Describe your issue</string>
+    <string name="frequently_asked_questions">Frequently asked questions</string>
     <string name="title">title</string>
     <string name="title_activity_main3">Main3Activity</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
