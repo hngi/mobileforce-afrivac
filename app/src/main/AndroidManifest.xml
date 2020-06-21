@@ -12,11 +12,15 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 <<<<<<< HEAD
+<<<<<<< HEAD
         <activity android:name=".BookingPageActivity"></activity>
         <activity android:name=".BookingPage" />
 =======
         <activity android:name=".BookingActivity"></activity>
 >>>>>>> ed7f795ed2e84a447e75aa1820108f155e578e06
+=======
+        <activity android:name=".BookingActivity"></activity>
+>>>>>>> 4ad23553c445b2f74a58f1c5411add3b30bddb6e
         <activity android:name=".SignUpActivity" />
         <activity
             android:name=".LoginActivity"
@@ -36,10 +40,14 @@
         <activity
             android:name=".MainActivity"
 <<<<<<< HEAD
+<<<<<<< HEAD
             android:theme="@style/AppTheme.NoActionBar" />
 =======
             android:theme="@style/AppTheme.NoActionBar"></activity>
 >>>>>>> ed7f795ed2e84a447e75aa1820108f155e578e06
+=======
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+>>>>>>> 4ad23553c445b2f74a58f1c5411add3b30bddb6e
 
         <meta-data
             android:name="preloaded_fonts"
