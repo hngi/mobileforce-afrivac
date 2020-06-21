@@ -5,41 +5,16 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
-<<<<<<< HEAD
-=======
-import android.util.Log;
->>>>>>> 4ad23553c445b2f74a58f1c5411add3b30bddb6e
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
-<<<<<<< HEAD
-
-import java.util.Calendar;
-=======
-import android.widget.Toast;
 
 import java.util.Calendar;
 
-public class BookingActivity extends AppCompatActivity  {
-    /*
-     *creating a booking details class that can hold all the user details so that they can be easily accessible
-     */
-    public static class BookingDetails{
-        EditText checkInDate, checkOutDate; // variables to store the check-in and check-out dates of the user
-        EditText numberOfGuests, numberOfRooms; // edit field variables used to take in the number of guest and rooms the user wants
-        EditText fullName, Email, additionalInfo;
-        CheckBox useCabService, reservingForSomeone;
-    }
-
-    ImageView dropDownCheckIn, dropDownCheckOut ; // variable to access the dropdown image view icon.
-    DatePickerDialog.OnDateSetListener mDateSetListener;
-    Button payNowButton, payAtHotel;
-    EditText dateSelected, GuestsNumberSelected, RoomsNumberSelected;
->>>>>>> 4ad23553c445b2f74a58f1c5411add3b30bddb6e
-
+public class BookingActivity extends AppCompatActivity {
 
     /*
      *creating a booking details class that can hold all the user details so that they can be easily accessible
@@ -61,17 +36,11 @@ public class BookingActivity extends AppCompatActivity  {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_booking);
         final BookingDetails person = new BookingDetails();
-<<<<<<< HEAD
         ImageView dropDownCheckIn, dropDownCheckOut ; // variable to access the dropdown image view icon.
         person.checkInDate =  (EditText) findViewById(R.id.check_in_date);
         person.checkOutDate = (EditText) findViewById(R.id.check_out_date);
         dropDownCheckIn = (ImageView) findViewById(R.id.check_in_arrow);
         dropDownCheckOut = (ImageView) findViewById(R.id.check_out_arrow);
-=======
-        person.checkInDate =  (EditText) findViewById(R.id.check_in_date);
-        person.checkOutDate = (EditText) findViewById(R.id.check_out_date);
-        dropDownCheckIn = (ImageView) findViewById(R.id.check_in_arrow);
->>>>>>> 4ad23553c445b2f74a58f1c5411add3b30bddb6e
         payNowButton = (Button) findViewById(R.id.pay_button);
         GuestsNumberSelected = (EditText) findViewById(R.id.no_of_guests);
         RoomsNumberSelected = (EditText) findViewById(R.id.no_of_rooms);
