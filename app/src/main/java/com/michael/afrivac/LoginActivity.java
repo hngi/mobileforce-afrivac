@@ -28,6 +28,7 @@ public class LoginActivity extends AppCompatActivity {
     private String Email, Password;
     private TextView sign_in, signUp, forgotPassword;
     private FirebaseAuth mAuth;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,7 +42,12 @@ public class LoginActivity extends AppCompatActivity {
 
         signUp = findViewById(R.id.singin_goto_signup);
         forgotPassword = findViewById(R.id.signin_forgot_password);
+
          Email = email.getText().toString().trim();
+         Password = password.getText().toString().trim();
+
+
+        Email = email.getText().toString().trim();
          Password = password.getText().toString().trim();
 
 
@@ -61,8 +67,8 @@ public class LoginActivity extends AppCompatActivity {
                 }else {
                     checkNetwork();
                 }
-                //startActivity(new Intent(LoginActivity.this, MainActivity.class));
-                //finish();
+                startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                finish();
 
             }
         });
