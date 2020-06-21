@@ -29,6 +29,7 @@
                 android:orientation="horizontal">
 
                 <ImageView
+                    android:visibility="invisible"
                     android:id="@+id/back_button_sImageView"
                     android:layout_width="24dp"
                     android:layout_height="24dp"
