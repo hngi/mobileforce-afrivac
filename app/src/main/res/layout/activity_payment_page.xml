@@ -1,0 +1,396 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".payment_page">
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="46dp"
+                android:layout_marginTop="30dp">
+
+                <ImageView
+                    android:id="@+id/arrow"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    app:srcCompat="@drawable/arrow" />
+
+                <TextView
+                    android:id="@+id/cocoon_hotel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="6dp"
+                    android:fontFamily="@font/poppins"
+                    android:text="@string/cocoon_hotel"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/profile_image"
+                    android:layout_width="40dp"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentEnd="true"
+                    android:src="@drawable/lady"
+
+                    app:civ_border_color="@color/white"
+                    app:civ_border_width="2dp" />
+
+
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/textView7"
+                android:layout_width="wrap_content"
+                android:layout_height="37dp"
+
+                android:layout_marginTop="30dp"
+
+                android:fontFamily="@font/poppins"
+                android:text="@string/confirmation"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/imageView4"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                app:srcCompat="@drawable/rectangle" />
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="35dp">
+
+                <TextView
+                    android:id="@+id/room_type"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins"
+                    android:text="@string/room_type"
+                    android:textColor="@color/textColor"
+                    android:textSize="@dimen/txtSize" />
+
+                <TextView
+                    android:id="@+id/deluxe_room"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:fontFamily="@font/poppins"
+                    android:text="@string/deluxe_rooms"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/txtSize"
+                    android:textStyle="bold" />
+
+                <View
+                    android:id="@+id/view1"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_below="@id/room_type"
+                    android:background="@color/stroke" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp">
+
+                <TextView
+                    android:id="@+id/room"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins"
+                    android:text="Room"
+                    android:textColor="@color/textColor"
+                    android:textSize="@dimen/txtSize" />
+
+                <TextView
+                    android:id="@+id/some_id"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:fontFamily="@font/poppins"
+                    android:text="1"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/txtSize"
+                    android:textStyle="bold" />
+
+                <View
+                    android:id="@+id/view2"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_below="@id/room"
+                    android:background="@color/stroke" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp">
+
+                <TextView
+                    android:id="@+id/guests"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins"
+                    android:text="@string/guest"
+                    android:textColor="@color/textColor"
+                    android:textSize="@dimen/txtSize" />
+
+                <TextView
+                    android:id="@+id/adults"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:fontFamily="@font/poppins"
+                    android:text="@string/_2_adults"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/txtSize"
+                    android:textStyle="bold" />
+
+                <View
+                    android:id="@+id/view3"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_below="@id/guests"
+                    android:background="@color/stroke" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp">
+
+                <TextView
+                    android:id="@+id/nights"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins"
+                    android:text="@string/night"
+                    android:textColor="@color/textColor"
+                    android:textSize="@dimen/txtSize" />
+
+                <TextView
+                    android:id="@+id/some_id1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:fontFamily="@font/poppins"
+                    android:text="1"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/txtSize"
+                    android:textStyle="bold" />
+
+                <View
+                    android:id="@+id/view4"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_below="@id/nights"
+                    android:background="@color/stroke" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp">
+
+                <TextView
+                    android:id="@+id/guest2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins"
+                    android:text="@string/guest"
+                    android:textColor="@color/textColor"
+                    android:textSize="@dimen/txtSize" />
+
+                <TextView
+                    android:id="@+id/adults2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:fontFamily="@font/poppins"
+                    android:text="@string/_2_adults"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/txtSize"
+                    android:textStyle="bold" />
+
+                <View
+                    android:id="@+id/view5"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_below="@id/guest2"
+                    android:background="@color/stroke" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp">
+
+                <TextView
+                    android:id="@+id/check_in"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins"
+                    android:text="@string/check_in"
+                    android:textColor="@color/textColor"
+                    android:textSize="@dimen/txtSize" />
+
+                <TextView
+                    android:id="@+id/check_out"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:fontFamily="@font/poppins"
+                    android:text="@string/check_out"
+                    android:textColor="@color/textColor"
+                    android:textSize="@dimen/txtSize" />
+
+                <ImageView
+                    android:id="@+id/vector"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_below="@id/check_in"
+                    android:layout_marginTop="10dp"
+                    app:srcCompat="@drawable/ic_event_black_24dp" />
+
+                <TextView
+                    android:id="@+id/date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/check_out"
+                    android:layout_marginLeft="22dp"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/fri_19_june_2020"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/txtSize"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:id="@+id/vector1"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_below="@id/check_out"
+                    android:layout_alignLeft="@id/date1"
+                    android:layout_marginLeft="-23dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="20dp"
+                    app:srcCompat="@drawable/ic_event_black_24dp" />
+
+                <TextView
+                    android:id="@+id/date1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/check_out"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginLeft="180dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="4dp"
+                    android:text="@string/sat_19_june_2020"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/txtSize"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/date1"
+                    android:layout_marginTop="35dp"
+                    android:text="@string/edit_room_details"
+                    android:textColor="@color/colorBlue"
+                    android:textSize="@dimen/txtSize" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp">
+
+                <TextView
+                    android:id="@+id/total"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:text="Total"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/txtSize"
+                    android:textStyle="bold" />
+
+                <View
+                    android:id="@+id/view6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="1dp"
+                    android:layout_below="@id/total"
+                    android:background="@color/stroke" />
+
+                <ImageView
+                    android:id="@+id/mastercard_logo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/view6"
+                    android:layout_marginTop="15dp"
+                    app:srcCompat="@drawable/master_logo" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/view6"
+                    android:layout_alignLeft="@id/mastercard_logo"
+                    android:layout_marginLeft="46dp"
+                    android:layout_marginTop="15dp"
+                    android:text="@string/_96_78"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/txtSize" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/view6"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="15dp"
+                    android:text="@string/n12_000"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+            </RelativeLayout>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/curved_edge"
+                android:text="Pay"
+                android:textAllCaps="false"
+                android:textColor="@color/white" />
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
