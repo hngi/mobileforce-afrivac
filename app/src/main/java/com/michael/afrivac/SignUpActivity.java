@@ -3,6 +3,7 @@ package com.michael.afrivac;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -19,7 +20,7 @@ import com.google.firebase.auth.FirebaseUser;
 
 import java.util.Scanner;
 
-public class SignUpActivity extends AppCompatActivity implements View.OnClickListener {
+public class SignUpActivity extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
     EditText Username;
@@ -46,16 +47,24 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
         String PasswordAuth;
         mAuth = FirebaseAuth.getInstance();
 
+        ToSignIn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+                finish();
+            }
+        });
+
     }
 
 
-    @Override
+    /*@Override
     public void onClick(View view) {
         if (view.getId() == R.id.toSignIn) {
             Intent intent = new Intent(SignUpActivity.this, LoginActivity.class);
             startActivity(intent);
         }
-    }
+    }*/
 
     public void SignUp(View view) {
         String email;

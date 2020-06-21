@@ -47,16 +47,16 @@ public class LoginActivity extends AppCompatActivity {
          Password = password.getText().toString().trim();
 
 
-        Email = email.getText().toString().trim();
-         Password = password.getText().toString().trim();
+        //Email = email.getText().toString().trim();
+        // Password = password.getText().toString().trim();
 
 
         sign_in.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                 Email = email.getText().toString().trim();
-                 Password = password.getText().toString().trim();
+                 //Email = email.getText().toString().trim();
+                 //Password = password.getText().toString().trim();
 
                 if (TextUtils.isEmpty(Email)){
                     email.setError("enter your email");
@@ -67,8 +67,8 @@ public class LoginActivity extends AppCompatActivity {
                 }else {
                     checkNetwork();
                 }
-                startActivity(new Intent(getApplicationContext(), MainActivity.class));
-                finish();
+                //startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                //finish();
 
             }
         });
@@ -97,10 +97,12 @@ public class LoginActivity extends AppCompatActivity {
                     if (task.isSuccessful()){
                         Log.d("login", "signInWithEmail:success");
                         FirebaseUser user = mAuth.getCurrentUser();
+                        updateUI(user);
                         startActivity(new Intent(LoginActivity.this, MainActivity.class));
                     }else {
                         Log.w("sign in", "signInWithEmail:failure", task.getException());
                         Toast.makeText(LoginActivity.this, "Authentication failed...", Toast.LENGTH_LONG).show();
+                        updateUI(null);
                     }
 
                 }
@@ -114,5 +116,15 @@ public class LoginActivity extends AppCompatActivity {
         ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
         return activeNetworkInfo != null && activeNetworkInfo.isConnected();
+    }
+    @Override
+    public void onStart() {
+        super.onStart();
+        // Check if user is signed in (non-null) and update UI accordingly.
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        updateUI(currentUser);
+    }
+
+    private void updateUI(FirebaseUser currentUser) {
     }
 }
