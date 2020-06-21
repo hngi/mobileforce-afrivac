@@ -66,4 +66,18 @@
     <string name="payLater">Pay at Hotel</string>
     <string name="line">A line</string>
     <string name="sign_in_with_google">Sign in with Google</string>
+    <string name="cocoon_hotel">Cocoon Hotel</string>
+    <string name="confirmation">Confirmation</string>
+    <string name="room_type">Room Type</string>
+    <string name="deluxe_rooms">Deluxe Rooms</string>
+    <string name="guest">Guest</string>
+    <string name="_2_adults">2 Adults</string>
+    <string name="night">Night</string>
+    <string name="check_in">Check-in</string>
+    <string name="check_out">Check-out</string>
+    <string name="fri_19_june_2020">Fri 19 June 2020</string>
+    <string name="_96_78">(96** **** *** 78)</string>
+    <string name="n12_000">N12,000</string>
+    <string name="edit_room_details">Edit Room Details</string>
+    <string name="sat_19_june_2020">Sat 19 June 2020</string>
 </resources>
