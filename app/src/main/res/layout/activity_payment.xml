@@ -1,0 +1,321 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:background="#fff">
+
+    <HorizontalScrollView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:scrollbars="none">
+
+        <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#fff">
+
+            <!-- top -->
+            <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/relLayout1"
+                    android:layout_marginTop="26dp"
+                    android:layout_marginStart="39dp"
+                    android:layout_marginLeft="39dp"
+                    android:layout_marginEnd="20dp">
+
+                <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                >
+
+                    <ImageView
+                            android:id="@+id/options_line_img"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/back_arrow"
+                            android:layout_centerInParent="true"
+                            android:layout_alignParentLeft="true"
+                            android:layout_alignParentStart="true"
+                    />
+
+                    <TextView
+                            android:id="@+id/hotel_name_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/cocoon_hotel"
+                            android:textSize="18sp"
+                            app:fontFamily="@font/poppins"
+                            android:textStyle="bold"
+                            android:textColor="#000000"
+                            android:layout_marginLeft="106dp"
+                            android:layout_marginStart="106dp"
+                            android:layout_centerVertical="true"/>
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                            android:id="@+id/profile_image"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:src="@drawable/profile"
+                            android:layout_marginLeft="309dp"
+                            android:layout_marginStart="309dp"
+
+                    />
+
+
+                </RelativeLayout>
+
+
+            </RelativeLayout>
+
+            <!-- body -->
+            <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="99dp"
+                    android:layout_marginLeft="39dp"
+                    android:id="@+id/relLayout2">
+
+                <RelativeLayout
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                >
+
+                    <TextView
+                            android:id="@+id/payment_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/payment"
+                            android:textSize="18sp"
+                            android:textColor="#000000"
+                            android:fontFamily="@font/poppins"
+                            android:textStyle="bold"
+                    />
+
+                    <TextView
+                            android:id="@+id/payment_method_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/paymentMethod"
+                            android:textSize="14sp"
+                            android:textColor="#000"
+                            android:fontFamily="@font/poppins"
+                            android:layout_marginTop="54dp"
+                    />
+
+                    <RelativeLayout
+                            android:id="@+id/relLayout3"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="83dp">
+
+                        <EditText
+                                android:id="@+id/paypal_edit_text"
+                                android:layout_width="105dp"
+                                android:layout_height="50dp"
+                                android:hint="@string/paypal"
+                                android:textSize="14sp"
+                                android:textColorHint="#C4C4C4"
+                                android:textAlignment="center"
+                                android:fontFamily="@font/poppins"
+                                android:background="@drawable/edit_text_round"
+                                android:singleLine="true"
+                        />
+
+                        <Button
+                                android:id="@+id/credit_debit_button"
+                                android:layout_width="105dp"
+                                android:layout_height="50dp"
+                                android:background="@drawable/button_round_edge"
+                                android:text="@string/creditDebit"
+                                android:textSize="14sp"
+                                android:textColor="#FFF"
+                                android:fontFamily="@font/poppins"
+                                android:textAllCaps="false"
+                                android:layout_marginLeft="114dp"
+                                android:layout_marginStart="114dp"
+                        />
+
+                        <EditText
+                                android:id="@+id/my_wallet_text"
+                                android:layout_width="105dp"
+                                android:layout_height="50dp"
+                                android:hint="@string/myWallet"
+                                android:textSize="14sp"
+                                android:textAlignment="center"
+                                android:textColorHint="#C4C4C4"
+                                android:fontFamily="@font/poppins"
+                                android:background="@drawable/edit_text_round"
+                                android:singleLine="true"
+                                android:layout_marginLeft="228dp"
+                                android:layout_marginStart="228dp"
+                        />
+
+
+                    </RelativeLayout>
+
+                    <TextView
+                            android:id="@+id/card_number_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/cardNumber"
+                            android:textSize="12sp"
+                            android:textColor="#464646"
+                            android:fontFamily="@font/poppins"
+                            android:layout_marginTop="174dp"
+                    />
+
+                    <EditText
+                            android:id="@+id/card_number_input"
+                            android:layout_width="333dp"
+                            android:layout_height="41dp"
+                            android:hint="@string/hiddenCardNumber"
+                            android:letterSpacing="0.4"
+                            android:textSize="12sp"
+                            android:textAlignment="center"
+                            android:background="@drawable/edit_text_round"
+                            android:drawableLeft="@drawable/mastercard_logo"
+                            android:drawableStart="@drawable/mastercard_logo"
+                            android:layout_marginTop="196dp"
+                            android:fontFamily="@font/poppins"
+                            android:singleLine="true"
+                            android:inputType="number"
+                    />
+
+                    <TextView
+                            android:id="@+id/valid_until_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/validUntil"
+                            android:textSize="12sp"
+                            android:textColor="#464646"
+                            android:fontFamily="@font/poppins"
+                            android:layout_marginTop="257dp"
+                    />
+
+                    <TextView
+                            android:id="@+id/cvv_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/cvv"
+                            android:textSize="12sp"
+                            android:textColor="#464646"
+                            android:fontFamily="@font/poppins"
+                            android:layout_marginTop="257dp"
+                            android:layout_marginStart="170dp"
+                    />
+
+                    <EditText
+                            android:id="@+id/valid_until_input"
+                            android:layout_width="163dp"
+                            android:layout_height="41dp"
+                            android:hint="@string/monthYear"
+                            android:textColorHint="#C4C4C4"
+                            android:textSize="12sp"
+                            android:paddingLeft="10dp"
+                            android:background="@drawable/edit_text_round"
+                            android:fontFamily="@font/poppins"
+                            android:layout_marginTop="279dp"
+                            android:singleLine="true"
+                    />
+
+                    <TextView
+                            android:id="@+id/cvv_info"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="*The last 3 digits at the back of your card"
+                            android:textSize="8sp"
+                            android:textColor="#464646"
+                            android:fontFamily="@font/poppins"
+                            android:layout_marginTop="325dp"
+                            android:layout_marginStart="170dp"
+                    />
+
+                    <EditText
+
+                            android:id="@+id/cvv_input"
+                            android:layout_width="163dp"
+                            android:layout_height="41dp"
+                            android:hint="@string/cvvHint"
+                            android:textColorHint="#C4C4C4"
+                            android:letterSpacing="0.4"
+                            android:textSize="12sp"
+                            android:paddingLeft="10dp"
+                            android:background="@drawable/edit_text_round"
+                            android:layout_marginTop="279dp"
+                            android:layout_marginStart="170dp"
+                            android:fontFamily="@font/poppins"
+                            android:singleLine="true"
+                            android:inputType="number"
+                    />
+
+                    <TextView
+                            android:id="@+id/card_name_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/cardNumber"
+                            android:textSize="12sp"
+                            android:textColor="#464646"
+                            android:fontFamily="@font/poppins"
+                            android:layout_marginTop="342dp"
+                    />
+
+                    <EditText
+                            android:id="@+id/card_name_input"
+                            android:layout_width="333dp"
+                            android:layout_height="41dp"
+                            android:textSize="12sp"
+                            android:textAlignment="center"
+                            android:background="@drawable/edit_text_round"
+                            android:layout_marginTop="365dp"
+                            android:fontFamily="@font/poppins"
+                            android:singleLine="true"
+                            android:inputType="number"
+                    />
+
+
+                </RelativeLayout>
+
+            </RelativeLayout>
+
+            <!-- bottom -->
+            <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="538dp"
+                    android:layout_marginLeft="39dp"
+                    android:id="@+id/relLayout4">
+
+                <Button
+                        android:id="@+id/confirm_button"
+                        android:layout_width="333dp"
+                        android:layout_height="57dp"
+                        android:background="@drawable/button_round"
+                        android:text="@string/proceedToConfirm"
+                        android:textSize="18sp"
+                        android:textColor="#FFF"
+                        android:fontFamily="@font/poppins"
+                        android:textAllCaps="false"
+                />
+
+                <TextView
+                        android:id="@+id/secure_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/securePayment"
+                        android:textSize="12sp"
+                        android:textColor="#464646"
+                        android:fontFamily="@font/poppins"
+                        android:layout_marginTop="65dp"
+                        android:layout_marginStart="52dp"
+                        android:drawableStart="@drawable/lock"
+                />
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+    </HorizontalScrollView>
+
+</ScrollView>
