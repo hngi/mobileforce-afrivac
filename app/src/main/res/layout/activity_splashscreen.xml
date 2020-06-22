@@ -1,21 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/splash_layout"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/splash_res"
     tools:context=".SplashscreenActivity">
 
     <ImageView
         android:id="@+id/logo"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:contentDescription="@string/apps_logo"
-        android:src="@drawable/splash_screen"
-        android:scaleType="centerCrop"
+        android:layout_width="@dimen/dimension_41dp"
+        android:layout_height="@dimen/dimension_67dp"
+        android:layout_marginStart="187dp"
+        android:layout_marginTop="621dp"
+        android:layout_marginEnd="186dp"
+        android:layout_marginBottom="208dp"
+        android:src="@drawable/logo"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.685" />
+
+    <TextView
+        android:id="@+id/afrivac_text_view"
+        android:layout_width="185dp"
+        android:layout_height="72dp"
+        android:layout_marginStart="115dp"
+        android:layout_marginTop="722dp"
+        android:layout_marginEnd="114dp"
+        android:layout_marginBottom="102dp"
+        android:fontFamily="@font/poppins"
+        android:text="AfriVac"
+        android:textColor="@color/colorWhite"
+        android:textSize="@dimen/dimension_48sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.72" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
