@@ -88,7 +88,7 @@ class PopularDestinationRVAdapter extends RecyclerView.Adapter<PopularDestinatio
 
         int resId = current.isFavorite() ?
                 R.drawable.ic_baseline_favorite_24 :
-                R.drawable.ic_baseline_favorite_border_24;
+                R.drawable.ic_favorite_border_black_24dp;
 
         holder.favoriteIcon.setImageResource(resId);
         holder.favoriteIcon.setOnClickListener(new View.OnClickListener() {
