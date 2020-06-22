@@ -150,4 +150,11 @@
     <string name="feedback">Send feedback</string>
     <string name="terms_and_conditions">Terms and conditions</string>
     <string name="find_hotel_text">Find Hotel</string>
+    <string name="enter_email">Please enter your valid email</string>
+    <string name="enter_email2">Please check your email for reset link</string>
+    <string name="error">Error Occurred</string>
+    <string name="authFailed">Authentication failed…</string>
+    <string name="netError">network error</string>
+    <string name="userId">user ID is: </string>
+    <string name="two" translatable="false">02</string>
 </resources>

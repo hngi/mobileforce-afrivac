@@ -120,4 +120,12 @@
     <string name="feedback">Envoyer des commentaires</string>
     <string name="terms_and_conditions">Termes et conditions</string>
     <string name="find_hotel_text">Trouver un hôtel</string>
+    <string name="find_hotel">Trouver un hôtel</string>
+    <string name="enter_email">veuillez saisir un email valide</string>
+    <string name="hello_blank_fragment">Bonjour fragment vierge</string>
+    <string name="enter_email2">Veuillez vérifier votre e-mail pour le lien de réinitialisation</string>
+    <string name="error">Erreur est survenue</string>
+    <string name="authFailed">Authentification échouée…</string>
+    <string name="netError">erreur réseau</string>
+    <string name="userId">L\'ID utilisateur est:</string>
 </resources>
