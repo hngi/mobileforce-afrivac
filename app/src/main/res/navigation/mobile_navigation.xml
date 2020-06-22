@@ -3,7 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/nav_home">
+    app:startDestination="@+id/nav_popular_destination">
+
+<!--    TODO: Change start destination to home-->
 
     <fragment
         android:id="@+id/nav_home"
@@ -40,4 +42,10 @@
         android:name="com.michael.afrivac.ui.send.SendFragment"
         android:label="@string/menu_send"
         tools:layout="@layout/fragment_send" />
+
+    <fragment
+        android:id="@+id/nav_popular_destination"
+        android:name="com.michael.afrivac.ui.popular_destination.PopularDestinationFragment"
+        android:label="@string/popular_destination"
+        tools:layout="@layout/fragment_popular_destination" />
 </navigation>
