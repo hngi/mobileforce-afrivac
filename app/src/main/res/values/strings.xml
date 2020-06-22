@@ -1,5 +1,7 @@
-<resources>
-    <string name="app_name">AfriVac</string>
+<resources >
+<string name="app_name">AfriVac</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="azeez_adeleke">Azeez Adeleke</string>
     <string name="my_account">My Account</string>
     <string name="nigeria">Nigeria</string>
@@ -25,8 +27,8 @@
     <string name="subtittle">subtittle</string>
     <string name="title">title</string>
     <string name="title_activity_main3">Main3Activity</string>
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="navigation_drawer_open">Open</string>
+    <string name="navigation_drawer_close">Close</string>
     <string name="nav_header_title">Android Studio</string>
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
@@ -37,10 +39,11 @@
     <string name="menu_share">Share</string>
     <string name="menu_send">Send</string>
     <string name="action_settings">Settings</string>
-    <string name="popular_destination">Popular Destinations</string>
+    <string name="popular_destination">Popular Destination</string>
     <string name="logout">Logout</string>
     <string name="account">Account</string>
     <string name="support">Support</string>
+    <string name="find_hotel">Find Hotel</string>
     <string name="completeBooking">Complete your booking at cocoon luxury</string>
     <string name="hotelName">Cocoon Hotel</string>
     <string name="checkInDetails">Check-in Details</string>
