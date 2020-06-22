@@ -7,30 +7,24 @@ import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
-<<<<<<< HEAD
-=======
 import android.text.TextUtils;
->>>>>>> fb27f761e2cf34d643e04c5824c2433ef481cc73
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-
-<<<<<<< HEAD
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.ApiException;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-
-public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
-
-    int RC_SIGN_IN = 0;
-    GoogleSignInClient mGoogleSignInClient;
-=======
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.michael.afrivac.Auth.AuthViewModel;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -40,8 +34,10 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.michael.afrivac.Auth.AuthViewModel;
 import com.michael.afrivac.Util.Helper;
 
-public class LoginActivity extends AppCompatActivity {
->>>>>>> fb27f761e2cf34d643e04c5824c2433ef481cc73
+public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
+
+    int RC_SIGN_IN = 0;
+    GoogleSignInClient mGoogleSignInClient;
 
     private EditText email, password;
     private String Email, Password;
@@ -55,7 +51,7 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-<<<<<<< HEAD
+
         //initializing Google Signup features
 //        signInButton = findViewById(R.id.signin_with_google);
         email = findViewById(R.id.signin_email);
@@ -68,7 +64,7 @@ public class LoginActivity extends AppCompatActivity {
 
         final String Email = email.getText().toString().trim();
         final String Password = password.getText().toString().trim();
-=======
+
 
         mAuth = FirebaseAuth.getInstance();
         authViewModel = new AuthViewModel();
@@ -77,7 +73,7 @@ public class LoginActivity extends AppCompatActivity {
         sign_in = findViewById(R.id.singin_into_account);
         signUp = findViewById(R.id.singin_goto_signup);
         forgotPassword = findViewById(R.id.signin_forgot_password);
->>>>>>> fb27f761e2cf34d643e04c5824c2433ef481cc73
+
 
         sign_in.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -142,7 +138,7 @@ public class LoginActivity extends AppCompatActivity {
             handleSignInResult(task);
         }
     }
-<<<<<<< HEAD
+
     private void handleSignInResult(Task<GoogleSignInAccount> completedTask) {
         try {
             GoogleSignInAccount account = completedTask.getResult(ApiException.class);
@@ -155,20 +151,16 @@ public class LoginActivity extends AppCompatActivity {
             Toast.makeText(LoginActivity.this, "FAILED", Toast.LENGTH_SHORT).show();
         }
     }
-    @Override
-    protected void onStart(){
-        // Check for existing Google Sign In account, if the user is already signed in
-        // the GoogleSignInAccount will be non-null.
-        GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
-            if (account != null){
-                startActivity(new Intent (LoginActivity.this, MainActivity.class));
-            }
-            super.onStart();
-    }
+//    @Override
+//    protected void onStart(){
+//        // Check for existing Google Sign In account, if the user is already signed in
+//        // the GoogleSignInAccount will be non-null.
+//        GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
+//            if (account != null){
+//                startActivity(new Intent (LoginActivity.this, MainActivity.class));
+//            }
+//            super.onStart();
 
-
-}
-=======
 
     private void checkNetwork(){
         if (isNetWorkAvailable()){
@@ -205,6 +197,16 @@ public class LoginActivity extends AppCompatActivity {
             helper.gotoMainActivity(this);
         }
 
+        // Check for existing Google Sign In account, if the user is already signed in
+        // the GoogleSignInAccount will be non-null.
+        GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
+        if (account != null){
+            startActivity(new Intent (LoginActivity.this, MainActivity.class));
+        }
+        super.onStart();
+
     }
+
+
 }
->>>>>>> fb27f761e2cf34d643e04c5824c2433ef481cc73
+
