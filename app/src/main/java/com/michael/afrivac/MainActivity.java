@@ -13,6 +13,7 @@ import com.michael.afrivac.ui.popularDestination.PopularDestinationFragment;
 import com.michael.afrivac.ui.support.SupportFragment;
 import com.google.firebase.auth.FirebaseAuth;
 
+import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 
@@ -49,8 +50,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private ActionBarDrawerToggle toggle;
     FirebaseAuth mAuth;
     Toolbar toolbar;
-    DrawerLayout drawer;
-    NavigationView navigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -115,7 +114,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -195,6 +193,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         //make this method blank
         return true;
     }
+
 }
 
  /*   public void convertCurrency(View view){

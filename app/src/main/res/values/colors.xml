@@ -17,4 +17,6 @@
     <color name="roundBtn2">#4D3913B8</color>
     <color name="black">#000000</color>
     <color name="white">#FFF</color>
+
+    <color name="ScreenBackground">#F2F6FF</color>
 </resources>
