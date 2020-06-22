@@ -1,5 +1,6 @@
 package com.michael.afrivac.ui.popular_destination;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.lifecycle.Observer;
@@ -11,6 +12,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.KeyEvent;
@@ -32,6 +34,7 @@ import com.michael.afrivac.model.PopularPlaces;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class PopularDestinationFragment extends Fragment {
     RecyclerView popularPlacesRV;
@@ -104,6 +107,19 @@ public class PopularDestinationFragment extends Fragment {
                 }
             }
         });
+
+        requireActivity().getOnBackPressedDispatcher().addCallback(getViewLifecycleOwner(),
+                new OnBackPressedCallback(true) {
+                    @Override
+                    public void handleOnBackPressed() {
+                        if (popularDestinationViewModel.getState().getValue()
+                                != PopularDestinationViewModel.State.NORMAL) {
+                            popularDestinationViewModel.getState().setValue(PopularDestinationViewModel.State.NORMAL);
+                        } else {
+                            NavHostFragment.findNavController(PopularDestinationFragment.this).popBackStack();
+                        }
+                    }
+                });
         return view;
     }
 
