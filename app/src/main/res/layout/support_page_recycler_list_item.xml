@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+
+    android:background="@color/white"
+    android:orientation="vertical">
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        tools:ignore="UseCompoundDrawables">
+
+
+        <!--TODO use onClick or onClickListener to see the answers to the questions-->
+        <TextView
+            android:id="@+id/questions_tv"
+            style="@style/questionsStyle"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/ic_baseline_message_24"
+            android:elegantTextHeight="true"
+            android:fontFamily="@font/poppins_light"
+            android:textStyle="bold"
+            android:textAlignment="viewEnd"
+            android:textSize="15sp"
+            tools:text="How many people can join a tour?" />
+        <!--TODO: use setVisibility to get the visibility of the spinner-->
+        <ImageView
+            android:id="@+id/arrow_down_iv"
+            android:layout_width="34dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:contentDescription="@string/arrow_down"
+            android:src="@drawable/ic_baseline_keyboard_arrow_down_24"
+            android:visibility="gone" />
+
+    </LinearLayout>
+    <!--TODO: use setVisibility to get the visibility of the view-->
+    <View
+        android:id="@+id/answers_view_line"
+        android:layout_width="287dp"
+        android:layout_height="1dp"
+        android:layout_marginStart="85dp"
+        android:layout_marginTop="2dp"
+        android:background="@android:color/darker_gray"
+        android:visibility="gone" />
+    <!--TODO: use setVisibility to get the visibility of the message-->
+    <TextView
+        android:id="@+id/answer_tv"
+        style="@style/answerStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:baselineAligned="false"
+        android:fontFamily="@font/poppins_light"
+        android:textColor="@android:color/darker_gray"
+        android:visibility="gone"
+        tools:text="why the contents of the team's index.php to the index.php on the repl repository
+copy the contents of the team's script folder on your computer to another location on your computer
+ie you are duplicating the scripts folder on your pc/mac
+delete about 95% of the scripts there, but leave yours and just a few
+this wi" />
+</LinearLayout>
+
+

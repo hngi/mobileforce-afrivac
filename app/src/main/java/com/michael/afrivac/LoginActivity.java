@@ -1,15 +1,23 @@
 package com.michael.afrivac;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
+<<<<<<< HEAD
+=======
+import android.text.TextUtils;
+>>>>>>> fb27f761e2cf34d643e04c5824c2433ef481cc73
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+<<<<<<< HEAD
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -22,13 +30,32 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     int RC_SIGN_IN = 0;
     GoogleSignInClient mGoogleSignInClient;
+=======
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.FirebaseDatabase;
+import com.michael.afrivac.Auth.AuthViewModel;
+import com.michael.afrivac.Util.Helper;
+
+public class LoginActivity extends AppCompatActivity {
+>>>>>>> fb27f761e2cf34d643e04c5824c2433ef481cc73
 
     private EditText email, password;
+    private String Email, Password;
     private TextView sign_in, signUp, forgotPassword;
+    private FirebaseAuth mAuth;
+    private FirebaseUser user;
+    private AuthViewModel authViewModel;
+    private Helper helper;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+<<<<<<< HEAD
         //initializing Google Signup features
 //        signInButton = findViewById(R.id.signin_with_google);
         email = findViewById(R.id.signin_email);
@@ -41,20 +68,28 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         final String Email = email.getText().toString().trim();
         final String Password = password.getText().toString().trim();
+=======
+
+        mAuth = FirebaseAuth.getInstance();
+        authViewModel = new AuthViewModel();
+        helper = new Helper();
+
+        sign_in = findViewById(R.id.singin_into_account);
+        signUp = findViewById(R.id.singin_goto_signup);
+        forgotPassword = findViewById(R.id.signin_forgot_password);
+>>>>>>> fb27f761e2cf34d643e04c5824c2433ef481cc73
 
         sign_in.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), MainActivity.class));
-                finish();
+                authViewModel.logIn(v);
             }
         });
 
         signUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), SignUpActivity.class));
-                finish();
+                helper.gotoSignUpActivity(getApplicationContext());
             }
         });
 
@@ -107,6 +142,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             handleSignInResult(task);
         }
     }
+<<<<<<< HEAD
     private void handleSignInResult(Task<GoogleSignInAccount> completedTask) {
         try {
             GoogleSignInAccount account = completedTask.getResult(ApiException.class);
@@ -132,3 +168,43 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
 
 }
+=======
+
+    private void checkNetwork(){
+        if (isNetWorkAvailable()){
+            mAuth.signInWithEmailAndPassword(Email, Password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+
+                @Override
+                public void onComplete(@NonNull Task<AuthResult> task) {
+                    if (task.isSuccessful()){
+                        Log.d("login", "signInWithEmail:success");
+                        FirebaseUser user = mAuth.getCurrentUser();
+                        startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                    }else {
+                        Log.w("sign in", "signInWithEmail:failure", task.getException());
+                        Toast.makeText(LoginActivity.this, "Authentication failed...", Toast.LENGTH_LONG).show();
+                    }
+
+                }
+            });
+        }else {
+            Toast.makeText(getApplicationContext(), "network error", Toast.LENGTH_LONG).show();
+        }
+    }
+    private boolean isNetWorkAvailable(){
+        ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
+    }
+    @Override
+    public void onStart() {
+        super.onStart();
+        user = FirebaseAuth.getInstance().getCurrentUser();
+        if(user != null){
+            helper.toastMessage(this, "user ID is: "+ user.getUid());
+            helper.gotoMainActivity(this);
+        }
+
+    }
+}
+>>>>>>> fb27f761e2cf34d643e04c5824c2433ef481cc73
