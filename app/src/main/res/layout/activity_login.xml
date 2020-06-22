@@ -36,7 +36,7 @@
                 <com.google.android.material.textview.MaterialTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="AfriVac"
+                    android:text="@string/app_name"
                     android:textAppearance="@style/TextAppearance.AppCompat.Body2"
                     android:textColor="@color/colorBlack"
                     android:textSize="40sp"
@@ -51,7 +51,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dimension_30dp"
-                android:text="Welcome Back,"
+                android:text="@string/welcomeBack"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body2"
                 android:textColor="@color/colorBlack"
                 android:textSize="@dimen/dimension_30sp" />
@@ -60,7 +60,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dimension_25dp"
-                android:text="Email"
+                android:text="@string/email"
                 android:textColor="@color/colorGrey"
                 android:textSize="18sp" />
 
@@ -82,7 +82,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dimension_10dp"
-                android:text="Password"
+                android:text="@string/password"
                 android:textColor="@color/colorGrey"
                 android:textSize="18sp" />
 
@@ -112,7 +112,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Forgot Password? "
+                    android:text="@string/forgotPassword"
                     android:textAlignment="textEnd"
                     android:textColor="@color/colorGrey"
                     android:textSize="18sp" />
@@ -123,7 +123,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:clickable="true"
-                    android:text="Click Here"
+                    android:text="@string/clickHere"
                     android:textAlignment="textStart"
                     android:textColor="@color/colorBlue"
                     android:textSize="18sp" />
@@ -134,7 +134,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dimension_40dp"
-                android:text="Sign in with Google "
+                android:text="@string/signInGoogle"
                 android:textAlignment="center"
                 android:textColor="@color/colorBlack"
                 android:textSize="21sp"
@@ -151,7 +151,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dimension_10dp"
-                android:text="Sign in with Facebook "
+                android:text="@string/signInFacebook"
                 android:textAlignment="center"
                 android:textColor="@color/colorBlack"
                 android:textSize="21sp"
@@ -181,7 +181,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="OR"
+                    android:text="@string/or"
                     android:textAlignment="center"
                     android:textColor="@color/colorLightGrey"
                     android:textSize="18sp"
@@ -203,7 +203,7 @@
                 android:background="@drawable/circular_drawable03"
                 android:paddingTop="@dimen/dimension_15dp"
                 android:paddingBottom="@dimen/dimension_15dp"
-                android:text="Sign In"
+                android:text="@string/signIn"
                 android:textAlignment="center"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body2"
                 android:textColor="@color/colorWhite"
@@ -222,7 +222,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Don't have an account? "
+                    android:text="@string/dontHaveAccount"
                     android:textAlignment="textEnd"
                     android:textColor="@color/colorGrey"
                     android:textSize="18sp" />
@@ -233,7 +233,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
                     android:clickable="true"
-                    android:text="Sign Up"
+                    android:text="@string/signUp"
                     android:textAlignment="textStart"
                     android:textColor="@color/colorBlue"
                     android:textSize="18sp" />
