@@ -1,14 +1,10 @@
 package com.michael.afrivac;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
-import android.widget.ImageView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.michael.afrivac.sharePref.SharePref;
 
@@ -30,7 +26,7 @@ public class SplashscreenActivity extends AppCompatActivity {
                 if (sharePref.getIsUserLoggedIn()) {
                     startActivity(new Intent(getApplicationContext(), MainActivity.class));
                 } else {
-                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                    Intent intent = new Intent(getApplicationContext(), OnboardscreenActivity.class);
 
                     startActivity(intent);
                 }

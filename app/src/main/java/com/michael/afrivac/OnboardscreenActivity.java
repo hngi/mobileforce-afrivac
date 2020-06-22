@@ -11,6 +11,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.michael.afrivac.Util.Helper;
+
 public class OnboardscreenActivity extends AppCompatActivity {
 
     ImageView dash_1, dash_2, rightArrow, leftArrow;
@@ -18,10 +20,13 @@ public class OnboardscreenActivity extends AppCompatActivity {
     ConstraintLayout layout;
     Button button;
 
+    Helper helper;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_onboarding);
+        helper  = new Helper();
 
         dash_1 = findViewById(R.id.dash_1);
         dash_2 = findViewById(R.id.dash_2);
@@ -66,8 +71,8 @@ public class OnboardscreenActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), BookingActivity.class);
-                startActivity(intent);
+                helper.gotoLoginAcitivity(getApplicationContext());
+                finish();
             }
         });
     }
