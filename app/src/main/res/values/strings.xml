@@ -1,5 +1,6 @@
-<resources >
-<string name="app_name">AfriVac</string>
+<resources>
+
+    <string name="app_name">AfriVac</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="azeez_adeleke" translatable="false">Azeez Adeleke</string>
@@ -27,8 +28,8 @@
     <string name="subtittle">subtittle</string>
     <string name="title">title</string>
     <string name="title_activity_main3" translatable="false">Main3Activity</string>
-    <string name="navigation_drawer_open">Open</string>
-    <string name="navigation_drawer_close">Close</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="nav_header_title" translatable="false">Android Studio</string>
     <string name="nav_header_subtitle" translatable="false">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
