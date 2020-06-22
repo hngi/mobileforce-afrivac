@@ -122,7 +122,7 @@
     <string name="figure1" translatable="false">1</string>
     <string name="total">Total</string>
     <string name="pay">Pay</string>
-    <string name="visitWhere">Hi Adeleke, \nWhere would you like to visit?</string>
+    <string name="visitWhere">Hi Adeleke,  Where would you like to visit?</string>
     <string name="discoverAfrica">Discover Africa</string>
     <string name="cairo">Cairo</string>
     <string name="egypt">Egypt</string>
@@ -130,7 +130,7 @@
     <string name="kenya" translatable="false">Kenya</string>
     <string name="destinationInfo" translatable="false">Lorem ipsum dolor fhdhjdkdkk fnfnnf\nwhhhffffkkfkfffsjssjnsjj\nywyoufhfhhffffywyey</string>
     <string name="_4_1" translatable="false">4.1</string>
-    <string name="_2_731">(2,731)</string>
+    <string name="_2_731" translatable="false">(2,731)</string>
     <string name="confirmPassword">Confirm Password</string>
     <string name="readAndAgreed">I have read and agreed to</string>
     <string name="terms_and_agreement">Terms and agreement</string>
@@ -139,7 +139,6 @@
     <string name="contact_us">Contact us</string>
     <string name="arrow_down">arrow down</string>
     <string name="back_arrow_button">back arrow button</string>
-    <string name="support_text">Support</string>
     <string name="describe_issues">Describe your issue</string>
     <string name="frequently_asked_questions">Frequently asked questions</string>
     <string name="need_more_help">Need more help?</string>
