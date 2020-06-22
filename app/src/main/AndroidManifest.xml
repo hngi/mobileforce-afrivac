@@ -11,17 +11,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme" >
-        <activity android:name=".ContactUsActivity2" />
 
+        <activity android:name=".ContactUsActivity2" />
         <activity android:name=".LocationActivity"
-            android:theme="@style/AppTheme.NoActionBar"
-           />
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".payment_page" />
         <activity android:name=".BookingActivity" />
         <activity android:name=".SignUpActivity" />
-        <activity android:name=".LocationActivity" />
-        <activity
-            android:name=".LoginActivity" />
+        <activity android:name=".LoginActivity" />
         <activity android:name=".ProfilePageActivity" />
         <activity android:name=".OnboardscreenActivity" />
         <activity android:name=".ForgetPasswordActivity" />
