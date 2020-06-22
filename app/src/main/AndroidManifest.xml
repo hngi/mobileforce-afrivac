@@ -19,7 +19,6 @@
         <activity android:name=".BookingActivity" />
         <activity android:name=".SignUpActivity" />
         <activity android:name=".LoginActivity" />
-        <activity android:name=".ProfilePageActivity" />
         <activity android:name=".OnboardscreenActivity" />
         <activity android:name=".ForgetPasswordActivity" />
         <activity
