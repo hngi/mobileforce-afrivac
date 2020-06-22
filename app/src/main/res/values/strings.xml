@@ -151,4 +151,7 @@
     <string name="feedback">Send feedback</string>
     <string name="terms_and_conditions">Terms and conditions</string>
     <string name="find_hotel_text">Find Hotel</string>
+    <string name="near_me">Find Hotels Near Me</string>
+    <string name="name1">BW StarFire </string>
+    <string name="name2">Victoria island, Lagos</string>
 </resources>
