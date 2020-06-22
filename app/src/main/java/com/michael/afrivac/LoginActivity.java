@@ -174,13 +174,13 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                         startActivity(new Intent(LoginActivity.this, MainActivity.class));
                     }else {
                         Log.w("sign in", "signInWithEmail:failure", task.getException());
-                        Toast.makeText(LoginActivity.this, "Authentication failed...", Toast.LENGTH_LONG).show();
+                        Toast.makeText(LoginActivity.this, getString(R.string.authFailed), Toast.LENGTH_LONG).show();
                     }
 
                 }
             });
         }else {
-            Toast.makeText(getApplicationContext(), "network error", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), getString(R.string.netError), Toast.LENGTH_LONG).show();
         }
     }
     private boolean isNetWorkAvailable(){
@@ -193,7 +193,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         super.onStart();
         user = FirebaseAuth.getInstance().getCurrentUser();
         if(user != null){
-            helper.toastMessage(this, "user ID is: "+ user.getUid());
+            helper.toastMessage(this, getString(R.string.userId)+ user.getUid());
             helper.gotoMainActivity(this);
         }
 

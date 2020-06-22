@@ -10,10 +10,10 @@
     <string name="my_destinations">Mes Destinations</string>
     <string name="invite_friends">Inviter des amis</string>
     <string name="saved_destination">Destinations enregistrées</string>
-    <string name="password">mot de passe</string>
+    <string name="password">Mot de passe</string>
     <string name="user_image">" Image d'utilisateur"</string>
     <string name="edit_profile">" Editer le profil"</string>
-    <string name="back_arrow">" flèche arrière"</string>
+    <string name="back_arrow">" flèche retour"</string>
     <string name="male">mâle</string>
     <string name="title">titre</string>
     <string name="subtittle">" sous-titre"</string>
@@ -55,7 +55,6 @@
     <string name="payLater">Payer à l\'hôtel</string>
     <string name="line">Une ligne</string>
     <string name="payNow">Payez maintenant</string>
-    <string name="_2_731">(2,731)</string>
     <string name="room_type">Type de chambre</string>
     <string name="deluxe_rooms">" Chambres Deluxe"</string>
     <string name="guest">l\' invité</string>
@@ -110,4 +109,23 @@
     <string name="readAndAgreed">J\'ai lu et accepté</string>
     <string name="terms_and_agreement">Termes et accord</string>
     <string name="existingAccount">Vous avez déjà un compte?</string>
+    <string name="contact_us">Nous Contacter</string>
+    <string name="enter_your_message">Entrez votre message</string>
+    <string name="arrow_down">flèche vers le bas</string>
+    <string name="back_arrow_button">bouton flèche arrière</string>
+    <string name="describe_issues">Décrivez vos problèmes</string>
+    <string name="frequently_asked_questions">Questions fréquemment posées</string>
+    <string name="need_more_help">Besoin d\'aide?</string>
+    <string name="contact_us_msg">Dites-nous en plus et nous vous aiderons</string>
+    <string name="feedback">Envoyer des commentaires</string>
+    <string name="terms_and_conditions">Termes et conditions</string>
+    <string name="find_hotel_text">Trouver un hôtel</string>
+    <string name="find_hotel">Trouver un hôtel</string>
+    <string name="enter_email">veuillez saisir un email valide</string>
+    <string name="hello_blank_fragment">Bonjour fragment vierge</string>
+    <string name="enter_email2">Veuillez vérifier votre e-mail pour le lien de réinitialisation</string>
+    <string name="error">Erreur est survenue</string>
+    <string name="authFailed">Authentification échouée…</string>
+    <string name="netError">erreur réseau</string>
+    <string name="userId">L\'ID utilisateur est:</string>
 </resources>
