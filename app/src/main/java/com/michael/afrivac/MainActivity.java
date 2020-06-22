@@ -9,7 +9,7 @@ import com.google.android.material.snackbar.Snackbar;
 import com.michael.afrivac.ui.account.AccountFragment;
 import com.michael.afrivac.ui.findHotel.FindHotelFragment;
 import com.michael.afrivac.ui.home.HomeFragment;
-import com.michael.afrivac.ui.popularDestination.PopularDestinationFragment;
+import com.michael.afrivac.ui.popular_destination.PopularDestinationFragment;
 import com.michael.afrivac.ui.support.SupportFragment;
 import com.google.firebase.auth.FirebaseAuth;
 
