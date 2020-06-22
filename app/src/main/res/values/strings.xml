@@ -1,5 +1,7 @@
-<resources>
-    <string name="app_name">AfriVac</string>
+<resources >
+<string name="app_name">AfriVac</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="azeez_adeleke">Azeez Adeleke</string>
     <string name="my_account">My Account</string>
     <string name="nigeria">Nigeria</string>
