@@ -1,5 +1,8 @@
 <resources>
+
     <string name="app_name">AfriVac</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="azeez_adeleke" translatable="false">Azeez Adeleke</string>
     <string name="my_account">My Account</string>
     <string name="nigeria" translatable="false">Nigeria</string>
@@ -37,10 +40,11 @@
     <string name="menu_share">Share</string>
     <string name="menu_send">Send</string>
     <string name="action_settings">Settings</string>
-    <string name="popular_destination">Popular Destinations</string>
+    <string name="popular_destination">Popular Destination</string>
     <string name="logout">Logout</string>
     <string name="account">Account</string>
     <string name="support">Support</string>
+    <string name="find_hotel">Find Hotel</string>
     <string name="completeBooking">Complete your booking at cocoon luxury</string>
     <string name="checkInDetails">Check-in Details</string>
     <string name="checkIn">Check-in</string>

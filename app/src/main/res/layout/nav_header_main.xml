@@ -15,13 +15,11 @@
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="wrap_content"
-        android:layout_gravity="end"
-
+        android:layout_gravity="end|center_vertical"
+        android:foregroundGravity="center_vertical"
         android:layout_height="wrap_content"
         android:contentDescription="@string/nav_header_desc"
         android:paddingTop="@dimen/nav_header_vertical_spacing"
         app:srcCompat="@drawable/ic_close_black_24dp" />
-
-
 
 </LinearLayout>

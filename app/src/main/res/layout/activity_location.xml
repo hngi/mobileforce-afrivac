@@ -1,524 +1,131 @@
+
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
+    android:layout_width="wrap_content"
     android:layout_height="match_parent"
     tools:context=".LocationActivity"
     android:padding="0dp"
     android:fitsSystemWindows="true">
 
     <ScrollView
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:scrollbars="vertical">
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <ImageView
-                android:id="@+id/hotel"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:scaleType="fitXY"
-                android:src="@drawable/hotel"/>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
+            <RelativeLayout
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:id="@+id/sliderLayout"
-                android:layout_below="@id/hotel"
-                    android:layout_marginTop="5dp">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/dotsText"
-                        android:text="@string/overview"
-                        android:layout_gravity="center_horizontal"
-                        android:textStyle="bold"
-                        android:textSize="20sp"/>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/dots"
-                        android:orientation="horizontal"
-                        android:gravity="center_horizontal"
-                        android:layout_marginStart="20dp"
-                        android:layout_marginEnd="20dp"/>
-
-                <androidx.viewpager.widget.ViewPager
-                    android:layout_width="match_parent"
-                    android:layout_height="280dp"
-                    android:id="@+id/slideViewPager"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginEnd="20dp"
-                    android:paddingStart="20dp"
-                    android:paddingEnd="20dp"/>
-
-            </LinearLayout>
-
-            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/sliderLayout"
-                android:layout_marginStart="20dp"
-                android:layout_marginEnd="20dp"
-                android:id="@+id/imgCons">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    android:text="Photos"
-                    android:layout_marginBottom="5dp"
-                    android:textSize="25sp"
-                    android:textStyle="bold"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/viewAll"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    android:textColor="#0000ff"
-                    android:textSize="10sp"
-                    android:layout_marginBottom="5dp"
-                    android:id="@+id/viewAll"
-                    />
+                android:id="@+id/locImage">
 
                 <ImageView
-                    android:layout_width="170dp"
-                    android:layout_height="300dp"
-                    android:id="@+id/img2"
-                    android:src="@drawable/img2"
-                    app:layout_constraintTop_toBottomOf="@id/viewAll"
-                    app:layout_constraintStart_toStartOf="parent"
-                    android:fadingEdge="horizontal"
-                    android:layout_marginEnd="20dp" />
+                    android:id="@+id/myImageView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/hotel"
+                    android:scaleType="fitXY"/>
 
                 <LinearLayout
-                    android:layout_width="150dp"
-                    android:layout_height="280dp"
-                    app:layout_constraintStart_toEndOf="@id/img2"
-                    app:layout_constraintTop_toBottomOf="@+id/viewAll"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/linText"
                     android:orientation="vertical"
-                    android:maxHeight="300dp"
-                    android:maxWidth="100dp"
-                    android:id="@+id/imgLinear"
-                    android:layout_marginBottom="5dp">
-
-                <ImageView
-                    android:layout_width="150dp"
-                    android:layout_height="130dp"
-                    android:id="@+id/img1"
-                    android:src="@drawable/img1"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintRight_toRightOf="parent"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="20dp"
-                    app:layout_constraintStart_toEndOf="@id/img2"
-                    android:scaleType="centerCrop"
-                    android:layout_marginBottom="5dp"/>
-
-                <ImageView
-                    android:layout_width="150dp"
-                    android:layout_height="123dp"
-                    android:id="@+id/img3"
-                    android:src="@drawable/img3"
-                    app:layout_constraintTop_toBottomOf="@id/img1"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginEnd="5dp"
-                    app:layout_constraintStart_toEndOf="@id/img2"
-                    android:scaleType="centerCrop"/>
-                </LinearLayout>
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/imgLinear"
-                    android:id="@+id/hotelsLinear"
-                    android:layout_marginTop="8dp">
+                    android:layout_alignParentBottom="true">
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        android:text="@string/hotels"
-                        android:layout_marginBottom="5dp"
-                        android:textSize="20sp"
-                        android:textStyle="bold"
-                        android:id="@+id/hotels"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/viewAll"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        android:textColor="#0000ff"
-                        android:textSize="15dp"
-                        android:layout_marginBottom="5dp"
-                        android:id="@+id/viewAll2"
-                        />
-
-                    <ImageView
-                        android:layout_width="150dp"
-                        android:layout_height="150dp"
-                        android:id="@+id/img5"
-                        android:src="@drawable/hotel2"
-                        app:layout_constraintTop_toBottomOf="@id/hotels"
-                        app:layout_constraintRight_toRightOf="parent"
-                        android:layout_marginStart="5dp"
-                        app:layout_constraintStart_toStartOf="parent"
-                        android:scaleType="centerCrop"/>
-
-                    <ImageView
-                        android:layout_width="150dp"
-                        android:layout_height="150dp"
-                        android:id="@+id/img4"
-                        android:src="@drawable/hotel3"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/viewAll2"
-                        android:layout_marginStart="10dp"
-                        android:layout_marginEnd="5dp"
-                        app:layout_constraintStart_toEndOf="@id/img5"
-                        android:scaleType="centerCrop"
-                        android:layout_marginTop="5dp"/>
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-            </androidx.constraintlayout.widget.ConstraintLayout>
-            
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/imgCons"
-                android:id="@+id/myCons">
-                
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/WhatToDoInEgypt"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    android:textSize="25dp"
-                    android:id="@+id/whatTxt"
-                    android:layout_marginStart="25dp"
-                    android:layout_marginTop="8dp"/>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintTop_toBottomOf="@id/whatTxt"
-                    android:orientation="horizontal"
-                    android:id="@+id/pyramid"
-                    android:layout_marginStart="15dp"
-                    android:layout_marginBottom="10dp">
-                    
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/img3"/>
+                        android:layout_marginStart="20dp"
+                        android:layout_marginEnd="20dp"
+                        android:text="The Coccon Luxury"
+                        android:textColor="#fff"
+                        android:textSize="20dp"
+                        android:textStyle="bold" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:layout_marginStart="10dp">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/pyramidOfGaza"
-                        android:fontFamily="monospace"
-                        android:textStyle="bold"
-                        android:textSize="15dp"/>
+                        android:id="@+id/hotDetails"
+                        android:orientation="horizontal"
+                        android:layout_alignParentBottom="true">
 
                         <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:src="@drawable/find"/>
-
-                    </LinearLayout>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintTop_toBottomOf="@id/pyramid"
-                    android:orientation="horizontal"
-                    android:id="@+id/synix"
-                    android:layout_marginStart="15dp"
-                    android:layout_marginTop="10dp">
-
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/img3"/>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:layout_marginStart="10dp">
+                            android:layout_width="100dp"
+                            android:layout_height="30dp"
+                            android:src="@drawable/star"
+                            android:layout_gravity="start"
+                            android:layout_marginStart="10dp"/>
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/egyptianMusuem"
-                            android:fontFamily="monospace"
+                            android:text="4.1 (2100)"
+                            android:textColor="#fff"
+                            android:textSize="20sp"
                             android:textStyle="bold"
-                            android:textSize="15dp"/>
+                            android:layout_marginStart="5dp"/>
 
-                        <ImageView
+                        <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:src="@drawable/find"/>
+                            android:layout_gravity="end"
+                            android:layout_marginStart="40dp"
+                            android:layout_marginEnd="10dp"
+                            android:layout_marginBottom="5dp">
 
+                            <ImageView
+                                android:layout_width="50dp"
+                                android:layout_height="30dp"
+                                android:src="@drawable/share"
+                                />
+
+                            <ImageView
+                                android:layout_width="50dp"
+                                android:layout_height="30dp"
+                                android:src="@drawable/favorite"
+                                />
+
+                        </LinearLayout>
                     </LinearLayout>
                 </LinearLayout>
-            </androidx.constraintlayout.widget.ConstraintLayout>
+            </RelativeLayout>
 
-            <androidx.constraintlayout.widget.ConstraintLayout
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/myCons"
-                android:layout_marginStart="15dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="10dp">
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:id="@+id/sliderLayout"
+                android:layout_below="@id/locImage"
+                android:layout_marginTop="5dp">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    android:text="@string/flightDetails"
-                    android:id="@+id/flightDetails"
-                    android:layout_marginBottom="90dp"
-                    android:textStyle="bold"
-                    android:textSize="15sp"/>
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintTop_toBottomOf="@id/flightDetails"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    android:id="@+id/c1"
-                    android:layout_marginTop="10dp">
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/find"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    android:id="@+id/findIcon"/>
-
-                <EditText
-                    android:layout_width="300dp"
-                    android:layout_height="50dp"
-                    android:hint="@string/from"
-                    app:layout_constraintStart_toEndOf="@id/findIcon"
-                    app:layout_constraintTop_toTopOf="parent"
-                    android:id="@+id/from"
-                    android:background="@drawable/buttongrey"
-                    android:padding="10dp"
-                    android:textColorHint="#000"
-                    app:layout_constraintEnd_toEndOf="parent"/>
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintTop_toBottomOf="@id/c1"
-                    app:layout_constraintStart_toStartOf="parent"
-                    android:id="@+id/c2"
-                    android:layout_marginTop="10dp"
-                    app:layout_constraintEnd_toEndOf="parent">
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/plane"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    android:id="@+id/planeIcon"
-                    android:layout_marginTop="5dp"/>
-
-                <EditText
-                    android:layout_width="300dp"
-                    android:layout_height="50dp"
-                    android:hint="@string/destination"
-                    app:layout_constraintStart_toEndOf="@id/planeIcon"
-                    app:layout_constraintTop_toTopOf="parent"
-                    android:id="@+id/destination"
-                    android:background="@drawable/buttongrey"
-                    android:padding="10dp"
-                    android:textColorHint="#000"
-                    />
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/c3"
-                    app:layout_constraintTop_toBottomOf="@id/c2"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    android:layout_marginTop="10dp">
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_baseline_repeat_one_24"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    android:id="@+id/tripIon"
+                <include
+                    android:id="@+id/myToolbar"
+                    layout="@layout/location_toolbar"
                     />
 
-                <EditText
-                    android:layout_width="150dp"
+                <com.google.android.material.tabs.TabLayout
+                    android:id="@+id/tabLayout"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/oneWay"
-                    app:layout_constraintStart_toEndOf="@id/tripIon"
-                    app:layout_constraintTop_toTopOf="parent"
-                    android:id="@+id/oneway"
-                    android:background="@drawable/buttongrey"
-                    android:padding="15dp"
-                    android:textColorHint="#000"
-                    android:layout_marginEnd="5dp"/>
+                    android:background="#fff"
+                    android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"/>
 
-                <EditText
-                    android:layout_width="150dp"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/roundTrip"
-                    app:layout_constraintStart_toEndOf="@id/oneway"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    android:id="@+id/roundTrip"
-                    android:background="@drawable/buttongrey"
-                    android:padding="15dp"
-                    android:textColorHint="#000"
-                    android:layout_marginStart="2dp"/>
-                </androidx.constraintlayout.widget.ConstraintLayout>
+                <androidx.viewpager.widget.ViewPager
+                    android:layout_width="match_parent"
+                    android:layout_height="1000dp"
+                    android:id="@+id/slideViewPager"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp"
+                    android:layout_below="@id/tabLayout"/>
 
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/c4"
-                    app:layout_constraintTop_toBottomOf="@id/c3"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    android:layout_marginTop="10dp">
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_baseline_calendar_today_24"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    android:id="@+id/calIcon"
-                    />
-
-                <EditText
-                    android:layout_width="150dp"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/depart"
-                    app:layout_constraintStart_toEndOf="@id/calIcon"
-                    app:layout_constraintTop_toTopOf="parent"
-                    android:id="@+id/depart"
-                    android:background="@drawable/buttongrey"
-                    android:padding="15dp"
-                    android:textColorHint="#000"
-                    android:layout_marginStart="2dp"
-                    />
-
-                <EditText
-                    android:layout_width="150dp"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/returning"
-                    app:layout_constraintStart_toEndOf="@id/depart"
-                    app:layout_constraintTop_toTopOf="parent"
-                    android:id="@+id/ret"
-                    android:background="@drawable/buttongrey"
-                    android:padding="15dp"
-                    android:textColorHint="#000"
-                    android:layout_marginStart="2dp"
-                    />
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/c5"
-                        app:layout_constraintTop_toBottomOf="@id/c4"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        android:layout_marginTop="10dp">
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/passenger"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    android:id="@+id/passIcon"
-                    />
-
-                <EditText
-                android:layout_width="150dp"
-                android:layout_height="wrap_content"
-                android:hint="@string/economy"
-                app:layout_constraintStart_toEndOf="@id/passIcon"
-                app:layout_constraintTop_toTopOf="parent"
-                android:id="@+id/econs"
-                    android:background="@drawable/buttongrey"
-                    android:padding="15dp"
-                    android:textColorHint="#000"
-                    android:layout_marginStart="2dp"
-                    />
-
-                <EditText
-                    android:layout_width="150dp"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/traveller"
-                    app:layout_constraintStart_toEndOf="@id/econs"
-                    app:layout_constraintTop_toTopOf="parent"
-                    android:id="@+id/traveller"
-                    android:background="@drawable/buttongrey"
-                    android:padding="15dp"
-                    android:textColorHint="#000"
-                    android:layout_marginStart="2dp"
-                    />
-                    </androidx.constraintlayout.widget.ConstraintLayout>
-
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintTop_toBottomOf="@id/c5"
-                    android:layout_marginTop="10dp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    android:background="#0000ff"
-                    android:text="@string/findFlight"
-                    android:textColor="#fff"
-                    android:textStyle="bold"
-                    android:textAllCaps="false"
-                    android:layout_marginBottom="10dp"/>
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
+            </RelativeLayout>
         </RelativeLayout>
     </ScrollView>
 </RelativeLayout>
