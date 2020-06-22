@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -10,7 +10,7 @@
     <RelativeLayout
         android:id="@+id/relative"
         android:layout_width="match_parent"
-        android:layout_height="1000dp">
+        android:layout_height="match_parent">
 
 
         <LinearLayout
@@ -248,10 +248,10 @@
         </LinearLayout>
 
         <Button
+            android:id="@+id/signUp"
             android:layout_width="300dp"
             android:layout_height="40dp"
             android:layout_alignParentStart="true"
-
             android:layout_alignParentEnd="true"
             android:layout_marginStart="49dp"
             android:layout_marginTop="620dp"
@@ -259,7 +259,6 @@
             android:layout_marginBottom="-22dp"
             android:background="@drawable/curve"
             android:fontFamily="@font/poppins_light"
-            android:onClick="SignUp"
             android:text="SIGN-UP"
             android:textColor="#ffffff"
             android:textStyle="bold"
@@ -353,143 +352,6 @@
 
     </RelativeLayout>
 
-
-
-    <!-- <TextView
-         android:layout_width="120dp"
-         android:layout_height="wrap_content"
-         android:layout_marginBottom="8dp"
-         android:fontFamily="@font/poppins_light"
-         android:text="Email"
-         android:textColor="#000000"
-         app:layout_constraintBottom_toTopOf="@+id/email"
-         app:layout_constraintEnd_toEndOf="parent"
-         app:layout_constraintHorizontal_bias="0.213"
-         app:layout_constraintStart_toStartOf="parent" />
-
-     <EditText
-         android:id="@+id/email"
-         android:layout_width="300dp"
-         android:layout_height="40dp"
-         android:layout_marginTop="52dp"
-         android:inputType="textEmailAddress"
-         android:paddingLeft="20dp"
-         android:background="@drawable/edittext_border"
-         app:layout_constraintEnd_toEndOf="parent"
-         app:layout_constraintHorizontal_bias="0.495"
-         app:layout_constraintStart_toStartOf="parent"
-         app:layout_constraintTop_toBottomOf="@+id/username" />
-
-     <TextView
-         android:layout_width="120dp"
-         android:layout_height="wrap_content"
-         android:layout_marginBottom="8dp"
-         android:text="Phone"
-         android:fontFamily="@font/poppins_light"
-         android:textColor="#000000"
-         app:layout_constraintBottom_toTopOf="@+id/phone"
-         app:layout_constraintEnd_toEndOf="parent"
-         app:layout_constraintHorizontal_bias="0.213"
-         app:layout_constraintStart_toStartOf="parent" />
-
-     <EditText
-         android:id="@+id/phone"
-         android:layout_width="300dp"
-         android:layout_height="40dp"
-         android:layout_marginTop="52dp"
-         android:inputType="phone"
-         android:paddingLeft="20dp"
-         android:background="@drawable/edittext_border"
-         app:layout_constraintEnd_toEndOf="parent"
-         app:layout_constraintStart_toStartOf="parent"
-         app:layout_constraintTop_toBottomOf="@+id/email" />
-
-     <TextView
-         android:layout_width="120dp"
-         android:layout_height="wrap_content"
-         android:layout_marginBottom="8dp"
-         android:text="Country"
-         android:fontFamily="@font/poppins_light"
-         android:textColor="#000000"
-         app:layout_constraintBottom_toTopOf="@+id/country"
-         app:layout_constraintEnd_toEndOf="parent"
-         app:layout_constraintHorizontal_bias="0.213"
-         app:layout_constraintStart_toStartOf="parent" />
-
-     <EditText
-         android:id="@+id/country"
-         android:layout_width="300dp"
-         android:layout_height="40dp"
-         android:layout_marginTop="52dp"
-
-         android:paddingLeft="20dp"
-         android:background="@drawable/edittext_border"
-         app:layout_constraintEnd_toEndOf="parent"
-         app:layout_constraintHorizontal_bias="0.504"
-         app:layout_constraintStart_toStartOf="parent"
-         app:layout_constraintTop_toBottomOf="@+id/phone" />
-
-     <TextView
-         android:layout_width="120dp"
-         android:layout_height="wrap_content"
-         android:layout_marginBottom="8dp"
-         android:text="Password"
-         android:fontFamily="@font/poppins_light"
-         android:textColor="#000000"
-         app:layout_constraintBottom_toTopOf="@+id/password"
-         app:layout_constraintEnd_toEndOf="parent"
-         app:layout_constraintHorizontal_bias="0.213"
-         app:layout_constraintStart_toStartOf="parent"
-         />
-
-     <EditText
-         android:id="@+id/password"
-         android:layout_width="300dp"
-         android:layout_height="40dp"
-         android:layout_marginTop="52dp"
-         android:background="@drawable/edittext_border"
-         android:inputType="textPassword"
-         android:paddingLeft="20dp"
-         app:layout_constraintEnd_toEndOf="parent"
-         app:layout_constraintHorizontal_bias="0.504"
-         app:layout_constraintStart_toStartOf="parent"
-         app:layout_constraintTop_toBottomOf="@+id/country" />
-
-     <TextView
-         android:layout_width="170dp"
-         android:layout_height="wrap_content"
-         android:layout_marginBottom="8dp"
-         android:text="Confirm Password"
-         android:fontFamily="@font/poppins_light"
-         android:textColor="#000000"
-         app:layout_constraintBottom_toTopOf="@+id/confirmpassword"
-         app:layout_constraintEnd_toEndOf="parent"
-         app:layout_constraintHorizontal_bias="0.213"
-         app:layout_constraintStart_toStartOf="parent" />
-
-     <EditText
-         android:id="@+id/confirmpassword"
-         android:layout_width="300dp"
-         android:layout_height="40dp"
-         android:layout_marginTop="56dp"
-         android:paddingLeft="20dp"
-         android:inputType="textPassword"
-         android:background="@drawable/edittext_border"
-         app:layout_constraintEnd_toEndOf="parent"
-         app:layout_constraintHorizontal_bias="0.504"
-         app:layout_constraintStart_toStartOf="parent"
-         app:layout_constraintTop_toBottomOf="@+id/password" />
-
-     <Button
-         android:layout_width="300dp"
-         android:layout_height="40dp"
-         android:background="@drawable/curve"
-         app:layout_constraintEnd_toEndOf="parent"
-         app:layout_constraintHorizontal_bias="0.527"
-         app:layout_constraintStart_toStartOf="parent"
-         app:layout_constraintTop_toTopOf="parent" />
-     -->
-
-</RelativeLayout>
+</androidx.core.widget.NestedScrollView>
 
 

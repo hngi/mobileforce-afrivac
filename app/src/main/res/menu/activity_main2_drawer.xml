@@ -18,8 +18,12 @@
             android:icon="@drawable/ic_location_on_black_24dp"
             android:title="@string/popular_destination" />
         <item
+            android:id="@+id/nav_findhotel"
+            android:icon="@drawable/ic_hotel_black_24dp"
+            android:title="@string/find_hotel_text" />
+        <item
             android:id="@+id/nav_support"
-            android:icon="@drawable/ic_assignment_late_black_24dp"
+            android:icon="@drawable/ic_support_24px"
             android:title="@string/support" />
         <item
             android:id="@+id/nav_logout"

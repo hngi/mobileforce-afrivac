@@ -14,26 +14,38 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="20dp"
+            android:padding="@dimen/dimension_30dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
-
-            <com.google.android.material.textview.MaterialTextView
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dimension_50dp"
-                android:text="AfriVac"
-                android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-                android:textColor="@color/colorBlack"
-                android:textSize="33sp"
-                android:textStyle="bold"
-                android:textAlignment="center"
-                app:cit_drawableStart="@drawable/logo"
-                app:cit_iconWidth="40dp"
-                app:cit_iconHeight="40dp"
-                app:cit_iconColor="@color/colorBlack"/>
+                android:layout_marginTop="40dp"
+                android:layout_gravity="center"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <ImageView
+                    android:layout_width="45dp"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/logo_black"
+                    android:paddingLeft="@dimen/dimension_10dp"/>
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="AfriVac"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="40sp"
+                    android:textStyle="bold"
+                    android:paddingLeft="@dimen/dimension_10dp"
+                    android:layout_gravity="left">
+                </com.google.android.material.textview.MaterialTextView>
+
+            </LinearLayout>
 
             <TextView
                 android:layout_width="match_parent"
@@ -42,7 +54,7 @@
                 android:text="Welcome Back,"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body2"
                 android:textColor="@color/colorBlack"
-                android:textSize="@dimen/dimension_25sp" />
+                android:textSize="@dimen/dimension_30sp" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -60,7 +72,10 @@
                 android:inputType="textEmailAddress"
                 android:textColor="@color/colorBlack"
                 android:textSize="21sp"
-                android:padding="@dimen/dimension_5dp"
+                android:paddingTop="@dimen/dimension_10dp"
+                android:paddingBottom="@dimen/dimension_10dp"
+                android:paddingLeft="@dimen/dimension_15dp"
+                android:paddingRight="@dimen/dimension_15dp"
                 android:background="@drawable/circular_drawable01"/>
 
             <TextView
@@ -79,51 +94,57 @@
                 android:inputType="textPassword"
                 android:textColor="@color/colorBlack"
                 android:textSize="21sp"
-                android:padding="@dimen/dimension_5dp"
+                android:paddingTop="@dimen/dimension_10dp"
+                android:paddingBottom="@dimen/dimension_10dp"
+                android:paddingLeft="@dimen/dimension_15dp"
+                android:paddingRight="@dimen/dimension_15dp"
                 android:background="@drawable/circular_drawable01" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dimension_10dp"
+                android:layout_gravity="center"
                 android:orientation="horizontal"
                 android:weightSum="2">
 
                 <TextView
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Forgot Password? "
                     android:textAlignment="textEnd"
-                    android:textColor="@color/colorBlack"
+                    android:textColor="@color/colorGrey"
                     android:textSize="18sp" />
 
                 <TextView
                     android:id="@+id/signin_forgot_password"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:clickable="true"
                     android:text="Click Here"
                     android:textAlignment="textStart"
                     android:textColor="@color/colorBlue"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
+                    android:textSize="18sp" />
             </LinearLayout>
 
             <com.github.aakira.compoundicontextview.CompoundIconTextView
                 android:id="@+id/signin_with_google"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dimension_60"
+                android:layout_marginTop="@dimen/dimension_40dp"
                 android:text="Sign in with Google "
                 android:textAlignment="center"
                 android:textColor="@color/colorBlack"
                 android:textSize="21sp"
-                android:padding="@dimen/dimension_5dp"
+                android:paddingTop="@dimen/dimension_15dp"
+                android:paddingBottom="@dimen/dimension_15dp"
+                android:paddingLeft="@dimen/dimension_25dp"
                 android:background="@drawable/circular_drawable02"
                 app:cit_drawableStart="@drawable/google"
-                app:cit_iconWidth="@dimen/dimension_25dp"
-                app:cit_iconHeight="@dimen/dimension_25dp"/>
+                app:cit_iconWidth="@dimen/dimension_30dp"
+                app:cit_iconHeight="@dimen/dimension_30dp"/>
 
             <com.github.aakira.compoundicontextview.CompoundIconTextView
                 android:id="@+id/signin_with_facebook"
@@ -134,16 +155,18 @@
                 android:textAlignment="center"
                 android:textColor="@color/colorBlack"
                 android:textSize="21sp"
-                android:padding="@dimen/dimension_5dp"
+                android:paddingTop="@dimen/dimension_15dp"
+                android:paddingBottom="@dimen/dimension_15dp"
+                android:paddingLeft="@dimen/dimension_25dp"
                 android:background="@drawable/circular_drawable02"
                 app:cit_drawableStart="@drawable/facebook"
-                app:cit_iconWidth="@dimen/dimension_25dp"
-                app:cit_iconHeight="@dimen/dimension_25dp"/>
+                app:cit_iconWidth="@dimen/dimension_30dp"
+                app:cit_iconHeight="@dimen/dimension_30dp"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dimension_15"
+                android:layout_marginTop="@dimen/dimension_10dp"
                 android:orientation="horizontal"
                 android:weightSum="3">
 
@@ -152,7 +175,7 @@
                     android:layout_height="1dp"
                     android:layout_gravity="center"
                     android:layout_weight="1"
-                    android:background="@color/colorGrey" />
+                    android:background="@color/colorLightGrey" />
 
                 <TextView
                     android:layout_width="match_parent"
@@ -169,16 +192,17 @@
                     android:layout_height="1dp"
                     android:layout_gravity="center"
                     android:layout_weight="1"
-                    android:background="@color/colorGrey" />
+                    android:background="@color/colorLightGrey" />
             </LinearLayout>
 
             <TextView
                 android:id="@+id/singin_into_account"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dimension_15"
+                android:layout_marginTop="@dimen/dimension_10dp"
                 android:background="@drawable/circular_drawable03"
-                android:padding="7dp"
+                android:paddingTop="@dimen/dimension_15dp"
+                android:paddingBottom="@dimen/dimension_15dp"
                 android:text="Sign In"
                 android:textAlignment="center"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body2"
@@ -189,31 +213,30 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dimension_20dp"
-                android:layout_marginBottom="@dimen/dimension_20dp"
-                android:orientation="horizontal"
-                android:weightSum="3">
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/dimension_25dp"
+                android:layout_marginBottom="@dimen/dimension_25dp"
+                android:orientation="horizontal">
 
                 <TextView
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Don't have an account? "
                     android:textAlignment="textEnd"
-                    android:textColor="@color/colorBlack"
+                    android:textColor="@color/colorGrey"
                     android:textSize="18sp" />
 
                 <TextView
                     android:id="@+id/singin_goto_signup"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
                     android:clickable="true"
                     android:text="Sign Up"
                     android:textAlignment="textStart"
                     android:textColor="@color/colorBlue"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
+                    android:textSize="18sp" />
             </LinearLayout>
 
         </LinearLayout>
