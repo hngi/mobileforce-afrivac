@@ -52,7 +52,7 @@ public class FindHotelViewModel extends AndroidViewModel {
                     R.drawable.wiegts,
                     R.drawable.pool,
                     false,
-                    3.4,
+                    4.4,
                     5000
             ));
         };

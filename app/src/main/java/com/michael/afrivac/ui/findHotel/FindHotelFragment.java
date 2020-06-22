@@ -59,7 +59,7 @@ public class FindHotelFragment extends Fragment {
         findHotelRecyclerAdapter = new FindHotelRecyclerAdapter(getContext(), new FindHotelRecyclerAdapter.OnItemSelectedListener() {
             @Override
             public void onItemSelected(int selectedPosition) {
-
+                Toast.makeText(getContext(), "You clicked an item", Toast.LENGTH_SHORT).show();
             }
         });
         findHotelRecycler.setAdapter(findHotelRecyclerAdapter);
