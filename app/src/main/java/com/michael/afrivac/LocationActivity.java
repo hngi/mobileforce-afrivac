@@ -53,9 +53,5 @@ public class LocationActivity extends AppCompatActivity {
 
             }
         });
-
-
     }
-
-
 }

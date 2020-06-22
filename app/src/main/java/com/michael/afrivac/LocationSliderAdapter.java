@@ -58,6 +58,5 @@ public class LocationSliderAdapter  extends FragmentStatePagerAdapter {
                 return null;
         }
     }
-
 }
 

@@ -125,9 +125,7 @@
                     android:layout_below="@id/tabLayout"/>
 
             </RelativeLayout>
-
-
-
         </RelativeLayout>
     </ScrollView>
 </RelativeLayout>
+
