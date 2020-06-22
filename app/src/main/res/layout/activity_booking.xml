@@ -36,7 +36,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
-                android:text="@string/hotelName"
+                android:text="@string/cocoon_hotel"
                 android:textColor="#000"
                 android:textSize="20sp"
                 android:textStyle="bold"
@@ -293,7 +293,8 @@
                 android:id="@+id/who_reserve_checkbox"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical" />
+                android:layout_gravity="center_vertical"
+                android:buttonTint="@color/colorPrimary"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -312,7 +313,8 @@
                 android:id="@+id/want_cab_checkbox"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical" />
+                android:layout_gravity="center_vertical"
+                android:buttonTint="@color/colorPrimary" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -327,7 +329,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
             android:background="@drawable/button_border"
-            android:text="@string/pay"
+            android:text="@string/payNow"
             android:textAllCaps="false"
             android:textColor="#fff"
             android:textStyle="bold" />
