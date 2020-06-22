@@ -12,34 +12,23 @@
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/nav_gallery"
-        android:name="com.michael.afrivac.ui.gallery.GalleryFragment"
+        android:id="@+id/nav_account"
+        android:name="com.michael.afrivac.ui.account.AccountFragment"
         android:label="@string/menu_gallery"
-        tools:layout="@layout/fragment_gallery" />
+        tools:layout="@layout/fragment_account" />
 
     <fragment
-        android:id="@+id/nav_slideshow"
-        android:name="com.michael.afrivac.ui.slideshow.SlideshowFragment"
+        android:id="@+id/nav_support"
+        android:name="com.michael.afrivac.ui.support.SupportFragment"
         android:label="@string/menu_slideshow"
-        tools:layout="@layout/fragment_slideshow" />
+        tools:layout="@layout/fragment_support" />
 
     <fragment
-        android:id="@+id/nav_tools"
-        android:name="com.michael.afrivac.ui.tools.ToolsFragment"
-        android:label="@string/menu_tools"
-        tools:layout="@layout/fragment_tools" />
-
-    <fragment
-        android:id="@+id/nav_share"
-        android:name="com.michael.afrivac.ui.share.ShareFragment"
+        android:id="@+id/nav_findhotel"
+        android:name="com.michael.afrivac.ui.findHotel.FindHotelFragment"
         android:label="@string/menu_share"
-        tools:layout="@layout/fragment_share" />
+        tools:layout="@layout/fragment_find_hotel" />
 
-    <fragment
-        android:id="@+id/nav_send"
-        android:name="com.michael.afrivac.ui.send.SendFragment"
-        android:label="@string/menu_send"
-        tools:layout="@layout/fragment_send" />
 
     <fragment
         android:id="@+id/nav_popular_destination"
