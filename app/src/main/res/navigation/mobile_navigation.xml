@@ -40,4 +40,10 @@
         android:name="com.michael.afrivac.ui.send.SendFragment"
         android:label="@string/menu_send"
         tools:layout="@layout/fragment_send" />
+
+    <fragment
+        android:id="@+id/nav_popular_destination"
+        android:name="com.michael.afrivac.ui.popular_destination.PopularDestinationFragment"
+        android:label="@string/popular_destination"
+        tools:layout="@layout/fragment_popular_destination" />
 </navigation>
