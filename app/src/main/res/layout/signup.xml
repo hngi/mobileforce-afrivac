@@ -248,10 +248,10 @@
         </LinearLayout>
 
         <Button
+            android:id="@+id/signUp"
             android:layout_width="300dp"
             android:layout_height="40dp"
             android:layout_alignParentStart="true"
-
             android:layout_alignParentEnd="true"
             android:layout_marginStart="49dp"
             android:layout_marginTop="620dp"
@@ -259,7 +259,6 @@
             android:layout_marginBottom="-22dp"
             android:background="@drawable/curve"
             android:fontFamily="@font/poppins_light"
-            android:onClick="SignUp"
             android:text="@string/signUp"
             android:textColor="#ffffff"
             android:textStyle="bold"
