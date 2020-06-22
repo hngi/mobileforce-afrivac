@@ -8,18 +8,15 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.SearchView;
-import android.widget.TextView;
 
-import androidx.annotation.Nullable;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProviders;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.michael.afrivac.LocationActivity;
-import com.michael.afrivac.LoginActivity;
-import com.michael.afrivac.ProfilePageActivity;
 import com.michael.afrivac.R;
+import com.michael.afrivac.ui.account.AccountFragment;
 
 public class HomeFragment extends Fragment {
 
@@ -121,8 +118,10 @@ public class HomeFragment extends Fragment {
         profile_image.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), ProfilePageActivity.class);
-                startActivity(intent);
+                Fragment fragment = new AccountFragment();
+                FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
+                fragmentTransaction.replace(R.id.nav_host_fragment, fragment);
+                fragmentTransaction.commit();
             }
         });
 

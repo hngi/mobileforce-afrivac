@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.michael.afrivac" >
+    package="com.michael.afrivac">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -19,7 +19,6 @@
         <activity android:name=".BookingActivity" />
         <activity android:name=".SignUpActivity" />
         <activity android:name=".LoginActivity" />
-        <activity android:name=".ProfilePageActivity" />
         <activity android:name=".OnboardscreenActivity" />
         <activity android:name=".ForgetPasswordActivity" />
         <activity

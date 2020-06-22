@@ -15,8 +15,7 @@
         android:layout_height="60dp"
         android:orientation="horizontal"
         android:paddingStart="16dp"
-        android:paddingEnd="16dp"
-        android:layout_weight="0">
+        android:paddingEnd="16dp">
 
         <ImageButton
             android:id="@+id/menuButton"
@@ -42,26 +41,42 @@
             tools:src="@drawable/profile_image" />
     </LinearLayout>
 
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="15dp"
+        android:orientation="horizontal">
+
     <AutoCompleteTextView
         android:id="@+id/searchTV"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="15dp"
         android:background="@drawable/grey_ring"
-        android:drawableEnd="@drawable/ic_search"
         android:fontFamily="@font/poppins_regular"
         android:hint="Find Destination"
         android:dropDownHeight="230dp"
         android:paddingStart="21dp"
         android:paddingTop="3dp"
-        android:paddingEnd="21dp"
+        android:paddingEnd="50dp"
         android:singleLine="true"
+        android:textColor="@color/textColor"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageButton
+            android:id="@+id/search_end_button"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_gravity="end"
+            android:paddingEnd="21dp"
+            android:paddingStart="8dp"
+            android:background="@null"
+            android:src="@drawable/ic_search"/>
+    </FrameLayout>
 
     <TextView
         android:id="@+id/textView2"
