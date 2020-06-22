@@ -6,6 +6,7 @@ import android.os.Bundle;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
+import com.michael.afrivac.Util.Helper;
 import com.michael.afrivac.ui.account.AccountFragment;
 import com.michael.afrivac.ui.findHotel.FindHotelFragment;
 import com.michael.afrivac.ui.home.HomeFragment;
@@ -48,6 +49,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     private AppBarConfiguration mAppBarConfiguration;
     private ActionBarDrawerToggle toggle;
+    private Helper helper;
     FirebaseAuth mAuth;
     Toolbar toolbar;
 
@@ -66,6 +68,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
+        //helper class
+        helper = new Helper();
+
         displaySelectedScreen(R.id.nav_home);
 
         mAuth = FirebaseAuth.getInstance();
@@ -82,6 +87,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 //        navigationView = findViewById(R.id.nav_view);
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
+        /*mAppBarConfiguration = new AppBarConfiguration.Builder(
+                R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow,
+                R.id.nav_tools, R.id.nav_share, R.id.nav_send,
+                R.id.nav_popular_destination)
+                .setDrawerLayout(drawer)
+                .build();
+        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
+        NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
+        NavigationUI.setupWithNavController(navigationView, navController);*/
+      
 //        mAppBarConfiguration = new AppBarConfiguration.Builder(
 //                R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow,
 //                R.id.nav_tools, R.id.nav_share, R.id.nav_send)
@@ -110,9 +125,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     private void logout() {
         FirebaseAuth.getInstance().signOut();
-        Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        startActivity(intent);
+        helper.gotoLoginAcitivity(this);
+        finish();
     }
 
     @Override
