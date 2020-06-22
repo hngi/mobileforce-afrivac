@@ -86,7 +86,6 @@ public class PopularDestinationFragment extends Fragment {
         avatarButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // TODO Show profile
             }
         });
 
