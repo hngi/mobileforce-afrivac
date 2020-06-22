@@ -11,6 +11,7 @@ import com.michael.afrivac.ui.findHotel.FindHotelFragment;
 import com.michael.afrivac.ui.home.HomeFragment;
 import com.michael.afrivac.ui.popularDestination.PopularDestinationFragment;
 import com.michael.afrivac.ui.support.SupportFragment;
+import com.google.firebase.auth.FirebaseAuth;
 
 import android.view.MenuItem;
 import android.view.View;
@@ -46,6 +47,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     private AppBarConfiguration mAppBarConfiguration;
     private ActionBarDrawerToggle toggle;
+    FirebaseAuth mAuth;
+    Toolbar toolbar;
+    DrawerLayout drawer;
+    NavigationView navigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,7 +69,18 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         displaySelectedScreen(R.id.nav_home);
 
+        mAuth = FirebaseAuth.getInstance();
 
+//        FloatingActionButton fab = findViewById(R.id.fab);
+//        fab.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+//                        .setAction("Action", null).show();
+//            }
+//        });
+//        drawer = findViewById(R.id.drawer_layout);
+//        navigationView = findViewById(R.id.nav_view);
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
 //        mAppBarConfiguration = new AppBarConfiguration.Builder(
@@ -75,10 +91,31 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 //        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
 //        NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
 //        NavigationUI.setupWithNavController(navigationView, navController);
-
-
-        //add this line to display menu1 when the activity is loaded
+//
+//        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+//            private MenuItem menuItem;
+//
+//            @Override
+//            public boolean onNavigationItemSelected(MenuItem menuItem) {
+//                this.menuItem = menuItem;
+//                int id = menuItem.getItemId();
+//                if (id == R.id.nav_logout) {
+//                    logout();
+//                }
+//                drawer.closeDrawer(GravityCompat.START);
+//                return true;
+//            }
+//        });
     }
+
+
+    private void logout() {
+        FirebaseAuth.getInstance().signOut();
+        Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
+    }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -136,8 +173,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 fragment = new SupportFragment();
                 break;
             case R.id.nav_logout:
-                //TODO: Implement logout
-                Toast.makeText(this, "LOG OUT USER", Toast.LENGTH_SHORT).show();
+                logout();
                 break;
         }
 
@@ -147,7 +183,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             ft.replace(R.id.nav_host_fragment, fragment);
             ft.commit();
         }
-
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
     }
@@ -155,7 +190,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
-
         //calling the method display selected screen and passing the id of selected menu
         displaySelectedScreen(item.getItemId());
         //make this method blank
