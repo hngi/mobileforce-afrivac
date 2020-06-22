@@ -6,6 +6,7 @@ import android.os.Bundle;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
+import com.michael.afrivac.Util.Helper;
 import com.michael.afrivac.ui.account.AccountFragment;
 import com.michael.afrivac.ui.findHotel.FindHotelFragment;
 import com.michael.afrivac.ui.home.HomeFragment;
@@ -48,6 +49,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     private AppBarConfiguration mAppBarConfiguration;
     private ActionBarDrawerToggle toggle;
+    private Helper helper;
     FirebaseAuth mAuth;
     Toolbar toolbar;
 
@@ -65,6 +67,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        //helper class
+        helper = new Helper();
 
         displaySelectedScreen(R.id.nav_home);
 
@@ -110,9 +115,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     private void logout() {
         FirebaseAuth.getInstance().signOut();
-        Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        startActivity(intent);
+        helper.gotoLoginAcitivity(this);
+        finish();
     }
 
     @Override
