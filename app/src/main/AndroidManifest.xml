@@ -19,6 +19,7 @@
         <activity android:name=".payment_page" />
         <activity android:name=".BookingActivity" />
         <activity android:name=".SignUpActivity" />
+        <activity android:name=".LocationActivity" />
         <activity
             android:name=".LoginActivity" />
         <activity android:name=".ProfilePageActivity" />
