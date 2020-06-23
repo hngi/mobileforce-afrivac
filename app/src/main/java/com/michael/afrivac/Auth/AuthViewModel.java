@@ -47,6 +47,8 @@ public class AuthViewModel {
         phoneNumberStr = phoneNumber.getText().toString();
         countryStr = country.getText().toString();
 
+        final Helper helper1 = new Helper(view.getContext());
+
         if(emailStr.trim().isEmpty()){
             helper.toastMessage(view.getContext(), "Enter Email Address");
             email.requestFocus();
@@ -71,6 +73,9 @@ public class AuthViewModel {
             helper.toastMessage(view.getContext(), "Enter your country of origin");
             country.requestFocus();
         }else{
+            //helper function to start progress dialog
+            helper1.progressDialogStart("Login to User Account", "Please wait while we log-in into your account");
+
             mAuth.createUserWithEmailAndPassword(emailStr, passwordStr).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                 @SuppressLint("LongLogTag")
                 @Override
@@ -87,7 +92,6 @@ public class AuthViewModel {
 
                         HashMap<String, String> hashMap = new HashMap<>();
                         hashMap.put("id", userID);
-                        hashMap.put("Full Name", fullName);
                         hashMap.put("username", userNameStr);
                         hashMap.put("email", emailStr);
                         hashMap.put("number", phoneNumberStr);
@@ -97,13 +101,20 @@ public class AuthViewModel {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
                                 if(task.isSuccessful()){
+                                    helper1.progressDialogEnd();
                                     Log.d(TAG, "Save Account Info: success");
                                     helper.toastMessage(view.getContext(), "Save Account Info: success");
                                     helper.gotoMainActivity(view.getContext());
+                                }else {
+                                    helper1.progressDialogEnd();
+                                    Log.w(TAG, "saveAccountInfo:failure", task.getException());
+                                    helper.toastMessage(view.getContext(), "Failed to save account info \n" + task.getException().getMessage());
                                 }
                             }
                         });
                     }else{
+                        //dismiss progress dialog
+                        helper1.progressDialogEnd();
                         // If sign in fails, display a message to the user.
                         Log.w(TAG, "createUserWithEmail:failure", task.getException());
                         helper.toastMessage(view.getContext(), "Failed to Register \n" + task.getException().getMessage());
@@ -120,6 +131,8 @@ public class AuthViewModel {
         emailStr = email.getText().toString();
         passwordStr = password.getText().toString();
 
+        final Helper helper1 = new Helper(view.getContext());
+
         if(emailStr.trim().isEmpty()){
             helper.toastMessage(view.getContext(), "Enter Email Address");
         }else if(!Patterns.EMAIL_ADDRESS.matcher(emailStr).matches()){
@@ -129,16 +142,21 @@ public class AuthViewModel {
         }else if(passwordStr.length() <6){
             helper.toastMessage(view.getContext(), "Fill Password field");
         }else{
+            //helper function to start progress dialog
+            helper1.progressDialogStart("Login to User Account", "Please wait while we log-in into your account");
+
             mAuth.signInWithEmailAndPassword(emailStr, passwordStr).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                 @SuppressLint("LongLogTag")
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if(task.isSuccessful()){
+                        helper1.progressDialogEnd();
                         Log.d(TAG, "signInWithEmail: Success");
                         helper.gotoMainActivity(view.getContext());
                         helper.toastMessage(view.getContext(), "You are logged in successfully");
                     }
                     else{
+                        helper1.progressDialogEnd();
                         Log.d(TAG, "signInWithEmail: Failure", task.getException());
                         helper.toastMessage(view.getContext(), "Failed to login \n" + task.getException().getMessage());
                     }
