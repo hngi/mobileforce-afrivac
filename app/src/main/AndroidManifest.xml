@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.michael.afrivac">
 
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -11,12 +14,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ContactUsActivity2"></activity>
+        <activity android:name=".GoogleMap">
+
+        </activity>
+        <activity android:name=".ContactUsActivity2" />
         <activity android:name=".payment_page" />
         <activity android:name=".BookingActivity" />
         <activity android:name=".SignUpActivity" />
-        <activity
-            android:name=".LoginActivity" />
+        <activity android:name=".LoginActivity" />
         <activity android:name=".ProfilePageActivity" />
         <activity android:name=".OnboardscreenActivity" />
         <activity android:name=".ForgetPasswordActivity" />
@@ -28,12 +33,21 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
         <activity
             android:name=".MainActivity"
             android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.SEARCH" />
+            </intent-filter>
         </activity>
+        <uses-library android:name="org.apache.http.legacy"
+            android:required="false"/>
 
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/map_key"></meta-data>
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />

@@ -1,0 +1,19 @@
+package com.michael.afrivac.Util;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class SourceData {
+    public List<String>SourceData() {
+        ArrayList<String> Data= new ArrayList<>();
+        Data.add("Egypt");
+        Data.add("Nairobi");
+        Data.add("Kenya");
+        Data.add("Nigeria");
+        Data.add("South Africa");
+        Data.add("Ghana");
+        Data.add("Cairo");
+        return Data;
+    }
+
+}
