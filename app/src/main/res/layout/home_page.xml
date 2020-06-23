@@ -1,4 +1,4 @@
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_height="match_parent"
     android:layout_width="match_parent"
@@ -46,9 +46,9 @@
             android:textSize="20sp"
             android:textStyle="bold" />
         <TextView
-            android:layout_width="216dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/where_will_you_like_to_go"
+            android:text= "@string/where_would_you_like_to_visit"
             android:textColor="#000"
             android:textSize="20sp"
             android:textStyle="bold" />
@@ -83,7 +83,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
                 android:layout_marginTop="40dp">
                 <ImageView
                     android:layout_width="wrap_content"
@@ -95,7 +95,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/rectangel_121"
-                    android:layout_marginStart="3dp">
+                    android:layout_marginStart="3dp"
+                    android:contentDescription="@string/rectangle_button">
 
                 </ImageView>
                 <ImageView
@@ -109,14 +110,16 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/Ellipse_20"
-                    android:layout_marginStart="3dp">
+                    android:layout_marginStart="3dp"
+                    android:contentDescription="@string/round_button">
 
                 </ImageView>
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/Ellipse_20"
-                    android:layout_marginStart="3dp">
+                    android:layout_marginStart="3dp"
+                    android:contentDescription="@string/round_button">
 
                 </ImageView>
 
@@ -127,7 +130,8 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp">
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp">
             <androidx.cardview.widget.CardView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -138,13 +142,13 @@
                     android:layout_height="169dp"
                     android:scaleType="centerCrop"
                     android:src="@drawable/camel"
-                    android:contentDescription="camel_photo">
+                    android:contentDescription="@string/camel_photo">
 
                 </ImageView>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Cairo"
+                    android:text="@string/cairo"
                     android:layout_marginBottom="10dp"
                     android:fontFamily="@font/poppins"
                     android:textSize="30sp"
@@ -163,13 +167,14 @@
                         android:layout_height="50dp"
                         android:id="@+id/gps"
                         android:src="@drawable/gps"
-                        android:layout_marginLeft="20dp">
+                        android:layout_marginStart="20dp"
+                        android:contentDescription="gps">
 
                     </ImageView>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Egpyt"
+                        android:text="@string/egpyt"
                         android:layout_marginStart="5dp"
                         android:textAlignment="center"
                         android:textStyle="bold"
@@ -177,7 +182,7 @@
                         android:layout_marginTop="@dimen/dimension_20dp"
                         android:textSize="20sp"
                         android:textColor="@color/white"
-                        android:layout_toRightOf="@id/gps">
+                        android:layout_toEndOf="@id/gps">
 
                     </TextView>
 
@@ -189,8 +194,8 @@
                 android:layout_height="wrap_content"
                 app:cardCornerRadius="25dp"
                 android:id="@+id/girl_2"
-                android:layout_toRightOf="@id/camel_photo"
-                android:layout_marginLeft="25dp">
+                android:layout_toEndOf="@id/camel_photo"
+                android:layout_marginStart="25dp">
                 <ImageView
                     android:layout_width="169dp"
                     android:layout_height="169dp"
@@ -221,14 +226,15 @@
                         android:layout_height="50dp"
                         android:id="@+id/gps"
                         android:src="@drawable/gps"
-                        android:layout_marginLeft="20dp"
-                        tools:ignore="DuplicateIds">
+                        android:layout_marginStart="20dp"
+                        tools:ignore="DuplicateIds"
+                        android:contentDescription="@string/gps">
 
                     </ImageView>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Kenya"
+                        android:text="@string/kenya"
                         android:layout_marginStart="5dp"
                         android:textStyle="bold"
                         android:fontFamily="@font/poppins"
@@ -236,7 +242,7 @@
                         android:layout_marginTop="@dimen/dimension_20dp"
                         android:textSize="20sp"
                         android:textColor="@color/white"
-                        android:layout_toRightOf="@id/gps">
+                        android:layout_toEndOf="@id/gps">
 
                     </TextView>
 
@@ -262,7 +268,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:cardCornerRadius="10dp"
-            app:cardUseCompatPadding="true">
+            app:cardUseCompatPadding="true"
+            android:layout_marginTop="10dp"
+            app:cardElevation="5dp"
+            android:layout_marginBottom="5dp">
 
         <RelativeLayout
         android:layout_width="match_parent"
@@ -274,16 +283,17 @@
             android:layout_height="140dp"
             android:layout_marginEnd="10dp"
             android:scaleType="centerCrop"
-            android:src="@drawable/Cairro">
+            android:src="@drawable/cairo_cardview"
+            android:contentDescription="@string/cairo_description">
 
         </ImageView>
 
         <TextView
-            android:id="@+id/titlle"
+            android:id="@+id/title_cairo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@id/cairo"
-            android:text="Cairo"
+            android:layout_toEndOf="@id/cairo"
+            android:text="@string/cairo_view"
             android:textColor="@color/black"
             android:textSize="20sp">
 
@@ -293,16 +303,16 @@
             android:id="@+id/country_description"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/titlle"
-            android:layout_toRightOf="@id/cairo"
-            android:text="Egypt"
+            android:layout_below="@id/title_cairo"
+            android:layout_toEndOf="@id/cairo"
+            android:text="@string/egypt"
             android:textColor="#3913B8"
             android:textSize="15sp">
 
         </TextView>
 
         <ImageView
-            android:id="@+id/loveIcon"
+            android:id="@+id/love_icon_cairo"
             android:layout_width="20dp"
             android:layout_height="20dp"
             android:layout_alignParentEnd="true"
@@ -312,11 +322,11 @@
         </ImageView>
 
         <TextView
-            android:id="@+id/country_describe"
+            android:id="@+id/country_story"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/country_description"
-            android:layout_toRightOf="@id/cairo"
+            android:layout_toEndOf="@id/cairo"
             android:text="@string/cairoDescription">
 
         </TextView>
@@ -324,57 +334,47 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/country_describe"
-            android:layout_toRightOf="@+id/cairo"
+            android:layout_below="@id/country_story"
+            android:layout_toEndOf="@+id/cairo"
             android:orientation="horizontal">
 
             <ImageView
-                android:id="star1"
+                android:id="@+id/star_one_cairo"
                 android:layout_width="wrap_content"
                 android:layout_height="20dp"
-                android:layout_below="@id/country_describe"
-                android:layout_toRightOf="@id/cairo"
                 android:src="@drawable/StarBright">
 
             </ImageView>
 
             <ImageView
-                android:id="star2"
+                android:id="@+id/star_two_cairo"
                 android:layout_width="wrap_content"
                 android:layout_height="20dp"
-                android:layout_below="@id/country_describe"
-                android:layout_toRightOf="@id/star1"
                 android:src="@drawable/StarBright">
 
             </ImageView>
 
             <ImageView
-                android:id="star3"
+                android:id="@+id/star_three_cairo"
                 android:layout_width="wrap_content"
                 android:layout_height="20dp"
-                android:layout_below="@id/country_describe"
-                android:layout_toRightOf="@id/cairo"
                 android:src="@drawable/StarBright">
 
             </ImageView>
 
             <ImageView
-                android:id="star3"
+                android:id="@+id/star_four_cairo"
                 android:layout_width="wrap_content"
                 android:layout_height="20dp"
-                android:layout_below="@id/country_describe"
-                android:layout_toRightOf="@id/cairo"
                 android:src="@drawable/StarBright">
 
             </ImageView>
 
             <ImageView
-                android:id="star5"
+                android:id="@+id/star_five_cairo"
                 android:layout_width="wrap_content"
                 android:layout_height="20dp"
-                android:layout_below="@id/country_describe"
-                android:layout_toRightOf="@id/cairo"
-                android:src="@drawable/Stardull">
+                android:src="@drawable/star_dull">
 
             </ImageView>
 
@@ -382,7 +382,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5dp"
-                android:text="4.1"
+                android:text="@string/rating"
                 android:textColor="@color/black"
                 android:textStyle="bold">
 
@@ -392,7 +392,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
-                android:text="(2,731)"
+                android:text="@string/rating_votes"
                 android:textColor="@color/black">
 
             </TextView>
@@ -410,7 +410,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:cardCornerRadius="10dp"
-            app:cardUseCompatPadding="true">
+            app:cardUseCompatPadding="true"
+            android:layout_marginBottom="5dp">
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -422,48 +423,49 @@
                     android:layout_height="120dp"
                     android:layout_marginEnd="10dp"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/mauritus">
+                    android:src="@drawable/mauritius">
 
                 </ImageView>
 
                 <TextView
-                    android:id="@+id/titlle"
+                    android:id="@+id/mauritius_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_toRightOf="@id/mauritius"
-                    android:text="Mauritius"
+                    android:layout_toEndOf="@id/mauritius"
+                    android:text="@string/mauritius_country"
                     android:textColor="@color/black"
                     android:textSize="20sp">
 
                 </TextView>
 
                 <TextView
-                    android:id="@+id/country_description"
+                    android:id="@+id/country_description_mauritius"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/titlle"
-                    android:layout_toRightOf="@id/mauritius"
-                    android:text="Madagascar"
+                    android:layout_below="@id/mauritius_title"
+                    android:layout_toEndOf="@id/mauritius"
+                    android:text="@string/madagascar"
                     android:textColor="#3913B8"
                     android:textSize="15sp">
 
                 </TextView>
 
                 <ImageView
-                    android:id="@+id/loveIcon"
+                    android:id="@+id/love_icon_mauritius"
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:layout_alignParentEnd="true"
                     android:layout_marginEnd="30dp"
-                    android:src="@drawable/loveImage">
+                    android:src="@drawable/loveImage"
+                    android:contentDescription="@string/mauritius_love_icon">
 
                 </ImageView>
 
                 <TextView
-                    android:id="@+id/country_describe"
+                    android:id="@+id/country_story_mauritius"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/country_description"
+                    android:layout_below="@id/country_description_mauritius"
                     android:layout_toEndOf="@id/mauritius"
                     android:text="@string/mauritius">
 
@@ -472,12 +474,12 @@
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/country_describe"
+                    android:layout_below="@id/country_story_mauritius"
                     android:layout_toEndOf="@+id/mauritius"
                     android:orientation="horizontal">
 
                     <ImageView
-                        android:id="star1"
+                        android:id="@+id/star_one_mauritius"
                         android:layout_width="wrap_content"
                         android:layout_height="20dp"
                         android:src="@drawable/StarBright">
@@ -485,7 +487,7 @@
                     </ImageView>
 
                     <ImageView
-                        android:id="star2"
+                        android:id="@+id/star_two_mauritius"
                         android:layout_width="wrap_content"
                         android:layout_height="20dp"
                         android:src="@drawable/StarBright">
@@ -493,7 +495,7 @@
                     </ImageView>
 
                     <ImageView
-                        android:id="star3"
+                        android:id="@+id/star_three_mauritius"
                         android:layout_width="wrap_content"
                         android:layout_height="20dp"
                         android:src="@drawable/StarBright">
@@ -501,7 +503,7 @@
                     </ImageView>
 
                     <ImageView
-                        android:id="star3"
+                        android:id="@+id/star_four_mauritius"
                         android:layout_width="wrap_content"
                         android:layout_height="20dp"
                         android:src="@drawable/StarBright">
@@ -509,10 +511,10 @@
                     </ImageView>
 
                     <ImageView
-                        android:id="star5"
+                        android:id="@+id/star_five_mauritius"
                         android:layout_width="wrap_content"
                         android:layout_height="20dp"
-                        android:src="@drawable/Stardull">
+                        android:src="@drawable/star_dull">
 
                     </ImageView>
 
@@ -544,7 +546,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:cardCornerRadius="10dp"
-            app:cardUseCompatPadding="true">
+            app:cardUseCompatPadding="true"
+            android:layout_marginBottom="5dp">
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -561,7 +564,7 @@
                 </ImageView>
 
                 <TextView
-                    android:id="@+id/titlle"
+                    android:id="@+id/title_capetown"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_toEndOf="@id/capetown"
@@ -572,10 +575,10 @@
                 </TextView>
 
                 <TextView
-                    android:id="@+id/country_description"
+                    android:id="@+id/country_description_capetown"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/titlle"
+                    android:layout_below="@id/title_capetown"
                     android:layout_toEndOf="@id/capetown"
                     android:text="@string/south_africa"
                     android:textColor="#3913B8"
@@ -584,7 +587,7 @@
                 </TextView>
 
                 <ImageView
-                    android:id="@+id/loveIcon"
+                    android:id="@+id/love_icon_capetown"
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:layout_alignParentEnd="true"
@@ -597,7 +600,7 @@
                     android:id="@+id/country_describe"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/country_description"
+                    android:layout_below="@id/country_description_capetown"
                     android:layout_toEndOf="@id/capetown"
                     android:text="@string/mauritius">
 
@@ -611,7 +614,16 @@
                     android:orientation="horizontal">
 
                     <ImageView
-                        android:id="star1"
+                        android:id="@+id/star_one_capetown"
+                        android:layout_width="wrap_content"
+                        android:layout_height="20dp"
+                        android:src="@drawable/StarBright"
+                        android:contentDescription="@string/rating_star">
+
+                    </ImageView>
+
+                    <ImageView
+                        android:id="@+id/star_two_capetown"
                         android:layout_width="wrap_content"
                         android:layout_height="20dp"
                         android:src="@drawable/StarBright">
@@ -619,7 +631,7 @@
                     </ImageView>
 
                     <ImageView
-                        android:id="star2"
+                        android:id="@+id/star_three_capetown"
                         android:layout_width="wrap_content"
                         android:layout_height="20dp"
                         android:src="@drawable/StarBright">
@@ -627,7 +639,7 @@
                     </ImageView>
 
                     <ImageView
-                        android:id="star3"
+                        android:id="@+id/star_four_capetown"
                         android:layout_width="wrap_content"
                         android:layout_height="20dp"
                         android:src="@drawable/StarBright">
@@ -635,18 +647,11 @@
                     </ImageView>
 
                     <ImageView
-                        android:id="star3"
+                        android:id="@+id/star_five_capetown"
                         android:layout_width="wrap_content"
                         android:layout_height="20dp"
-                        android:src="@drawable/StarBright">
-
-                    </ImageView>
-
-                    <ImageView
-                        android:id="star5"
-                        android:layout_width="wrap_content"
-                        android:layout_height="20dp"
-                        android:src="@drawable/Stardull">
+                        android:src="@drawable/star_dull"
+                        android:contentDescription="@string/rating">
 
                     </ImageView>
 
@@ -695,10 +700,10 @@
                 </ImageView>
 
                 <TextView
-                    android:id="@+id/titlle"
+                    android:id="@+id/title_saotome"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_toRightOf="@id/saotome"
+                    android:layout_toEndOf="@id/saotome"
                     android:text="@string/country_saotome"
                     android:textColor="@color/black"
                     android:textSize="20sp"
@@ -707,10 +712,10 @@
                 </TextView>
 
                 <TextView
-                    android:id="@+id/country_description"
+                    android:id="@+id/country_description_saotome"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/titlle"
+                    android:layout_below="@id/title_saotome"
                     android:layout_toEndOf="@id/saotome"
                     android:text="@string/guinea"
                     android:textColor="#3913B8"
@@ -719,7 +724,7 @@
                 </TextView>
 
                 <ImageView
-                    android:id="@+id/loveIcon"
+                    android:id="@+id/love_icon_saotome"
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:layout_alignParentEnd="true"
@@ -729,10 +734,10 @@
                 </ImageView>
 
                 <TextView
-                    android:id="@+id/country_describe"
+                    android:id="@+id/country_describe_saotome"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/country_description"
+                    android:layout_below="@id/country_description_saotome"
                     android:layout_toEndOf="@id/saotome"
                     android:text="@string/mauritius"
                     tools:ignore="DuplicateIds">
@@ -742,12 +747,12 @@
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/country_describe"
+                    android:layout_below="@id/country_describe_saotome"
                     android:layout_toEndOf="@+id/saotome"
                     android:orientation="horizontal">
 
                     <ImageView
-                        android:id="star1"
+                        android:id="@+id/star_one_saotome"
                         android:layout_width="wrap_content"
                         android:layout_height="20dp"
                         android:src="@drawable/StarBright">
@@ -755,7 +760,7 @@
                     </ImageView>
 
                     <ImageView
-                        android:id="star2"
+                        android:id="@+id/star_two_saotome"
                         android:layout_width="wrap_content"
                         android:layout_height="20dp"
                         android:src="@drawable/StarBright">
@@ -763,7 +768,7 @@
                     </ImageView>
 
                     <ImageView
-                        android:id="star3"
+                        android:id="@+id/star_three_saotome"
                         android:layout_width="wrap_content"
                         android:layout_height="20dp"
                         android:src="@drawable/StarBright">
@@ -771,7 +776,7 @@
                     </ImageView>
 
                     <ImageView
-                        android:id="star3"
+                        android:id="@+id/star_four_saotome"
                         android:layout_width="wrap_content"
                         android:layout_height="20dp"
                         android:src="@drawable/StarBright">
@@ -779,10 +784,10 @@
                     </ImageView>
 
                     <ImageView
-                        android:id="star5"
+                        android:id="@+id/star_five_saotome"
                         android:layout_width="wrap_content"
                         android:layout_height="20dp"
-                        android:src="@drawable/Stardull">
+                        android:src="@drawable/star_dull">
 
                     </ImageView>
 
@@ -809,8 +814,8 @@
                 </LinearLayout>
             </RelativeLayout>
         </androidx.cardview.widget.CardView>
-        
+
     </LinearLayout>
 
 
-</ScrollView>
+</androidx.core.widget.NestedScrollView>

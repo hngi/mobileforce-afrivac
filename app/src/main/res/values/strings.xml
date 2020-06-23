@@ -80,7 +80,6 @@
     <string name="n12_000" translatable="false">N12,000</string>
     <string name="edit_room_details">Edit Room Details</string>
     <string name="sat_19_june_2020">Sat 19 June 2020</string>
-<<<<<<< HEAD
     <string name="discover_africa">Discover Africa</string>
     <string name="greeting">Hi Adeleke, <b>Where will you like to go</b></string>
     <string name="cairoDescription">The desert heat, the noisy streets and the sheer size of Cairo will leave even the most adaptable traveler with a serious case of culture shock </string>
@@ -90,8 +89,7 @@
     <string name="s_o_tom_e">São Tomé e</string>
     <string name="cairo">Cairo</string>
     <string name="hi_adeleke">Hi Adeleke,</string>
-    <string name="where_will_you_like_to_go">where will you like to go</string>
-=======
+    <string name="where_would_you_like_to_visit">where would you like to visit</string>
     <string name="reset">Reset</string>
     <string name="forgotPassword">Forgot Password?</string>
     <string name="overview">Overview</string>
@@ -190,5 +188,18 @@
     <string name="south_africa">South Africa</string>
     <string name="country_saotome">São Tomé e</string>
     <string name="guinea">Guinea</string>
-    >>>>>>> 41564b98eceb2eb766c347153d80bac2c8002299
+    <string name="round_button">round_button</string>
+    <string name="rectangle_button">rectangle_button</string>
+    <string name="camel_photo">camel_photo</string>
+    <string name="cairo">Cairo</string>
+    <string name="egpyt">Egpyt</string>
+    <string name="gps">gps</string>
+    <string name="kenya">Kenya</string>
+    <string name="cairo_view">Cairo</string>
+    <string name="egypt">Egypt</string>
+    <string name="madagascar">Madagascar</string>
+    <string name="mauritius_country">Mauritius</string>
+    <string name="mauritius_love_icon">mauritius_love_icon</string>
+    <string name="rating_star">rating_star</string>
+    <string name="cairo_description">cairo_description</string>
 </resources>
