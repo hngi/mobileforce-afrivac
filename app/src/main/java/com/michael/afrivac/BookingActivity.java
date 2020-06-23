@@ -83,7 +83,7 @@ public class BookingActivity extends AppCompatActivity {
 
     }           //method declaration for the payment page activity
     public void openActivityBookingPage(){
-        Intent intent = new Intent(this, MainActivity.class);
+        Intent intent = new Intent(this, payment_page.class);
         startActivity(intent);
 
     }

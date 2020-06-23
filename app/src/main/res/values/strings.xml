@@ -79,4 +79,14 @@
     <string name="n12_000">N12,000</string>
     <string name="edit_room_details">Edit Room Details</string>
     <string name="sat_19_june_2020">Sat 19 June 2020</string>
+    <string name="discover_africa">Discover Africa</string>
+    <string name="greeting">Hi Adeleke, <b>Where will you like to go</b></string>
+    <string name="cairoDescription">The desert heat, the noisy streets and the sheer size of Cairo will leave even the most adaptable traveler with a serious case of culture shock </string>
+    <string name="mauritius">Santoroni is the world best blue shining city. every year lot of traveler visited here</string>
+    <string name="south_africa">South Africa</string>
+    <string name="capetown">Capetown</string>
+    <string name="s_o_tom_e">São Tomé e</string>
+    <string name="cairo">Cairo</string>
+    <string name="hi_adeleke">Hi Adeleke,</string>
+    <string name="where_will_you_like_to_go">where will you like to go</string>
 </resources>
