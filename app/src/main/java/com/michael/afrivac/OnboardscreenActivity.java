@@ -48,7 +48,7 @@ public class OnboardscreenActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 layout.setBackgroundResource(R.drawable.onboarding_2);
-                number.setText("02");
+                number.setText(R.string.two);
                 rightArrow.setImageResource(R.drawable.front_after);
                 leftArrow.setImageResource(R.drawable.back_after);
                 dash_1.setImageResource(R.drawable.dash_2);
@@ -60,7 +60,7 @@ public class OnboardscreenActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 layout.setBackgroundResource(R.drawable.onboarding_1);
-                number.setText("01");
+                number.setText(R.string.one);
                 rightArrow.setImageResource(R.drawable.ic_baseline_arrow_forward_ios_24);
                 leftArrow.setImageResource(R.drawable.ic_baseline_arrow_back_ios_24);
                 dash_1.setImageResource(R.drawable.dash);

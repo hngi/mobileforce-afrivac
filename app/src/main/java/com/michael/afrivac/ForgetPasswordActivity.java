@@ -37,7 +37,7 @@ public class ForgetPasswordActivity extends AppCompatActivity {
                  final String mail = email.getText().toString().trim();
                 if (mail.isEmpty())
                 {
-                    email.setError("Please enter your valid email");
+                    email.setError(getString(R.string.enter_email));
                     email.requestFocus();
                 }else {
                     {
@@ -46,11 +46,11 @@ public class ForgetPasswordActivity extends AppCompatActivity {
                             public void onComplete(@NonNull Task<Void> task) {
                                 if (task.isSuccessful()){
                                     Toast.makeText(ForgetPasswordActivity.this,
-                                            "Please check your email for reset link", Toast.LENGTH_SHORT).show();
+                                            getString(R.string.enter_email2), Toast.LENGTH_SHORT).show();
                                     startActivity(new Intent(getApplicationContext(), LoginActivity.class));//Change the signUpActivity to signinActivity
                                 }else {
                                     String message = task.getException().getMessage();
-                                    Toast.makeText(ForgetPasswordActivity.this, "Error Occurred" + message, Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(ForgetPasswordActivity.this, getString(R.string.error) + message, Toast.LENGTH_SHORT).show();
                                 }
                             }
                         });
