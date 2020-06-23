@@ -80,18 +80,13 @@
     <string name="n12_000" translatable="false">N12,000</string>
     <string name="edit_room_details">Edit Room Details</string>
     <string name="sat_19_june_2020">Sat 19 June 2020</string>
-<<<<<<< HEAD
-    <string name="discover_africa">Discover Africa</string>
-    <string name="greeting">Hi Adeleke, <b>Where will you like to go</b></string>
-    <string name="cairoDescription">The desert heat, the noisy streets and the sheer size of Cairo will leave even the most adaptable traveler with a serious case of culture shock </string>
-    <string name="mauritius">Santoroni is the world best blue shining city. every year lot of traveler visited here</string>
-    <string name="south_africa">South Africa</string>
-    <string name="capetown">Capetown</string>
-    <string name="s_o_tom_e">São Tomé e</string>
-    <string name="cairo">Cairo</string>
-    <string name="hi_adeleke">Hi Adeleke,</string>
-    <string name="where_will_you_like_to_go">where will you like to go</string>
-=======
+    <string name="discover_africa" translatable="false">Discover Africa</string>
+    <string name="greeting" translatable="false">Hi Adeleke, <b>Where will you like to go</b></string>
+    <string name="cairoDescription" translatable="false">The desert heat, the noisy streets and the sheer size of Cairo will leave even the most adaptable traveler with a serious case of culture shock </string>
+    <string name="mauritius" translatable="false">Santoroni is the world best blue shining city. every year lot of traveler visited here</string>
+    <string name="s_o_tom_e" translatable="false">São Tomé e</string>
+    <string name="hi_adeleke" translatable="false">Hi Adeleke,</string>
+    <string name="where_will_you_like_to_go" translatable="false">where will you like to go</string>
     <string name="reset">Reset</string>
     <string name="forgotPassword">Forgot Password?</string>
     <string name="overview">Overview</string>
@@ -142,7 +137,6 @@
     <string name="discoverAfrica">Discover Africa</string>
     <string name="cairo">Cairo</string>
     <string name="egypt">Egypt</string>
-    <string name="nairobi" translatable="false">Nairobi</string>
     <string name="kenya" translatable="false">Kenya</string>
     <string name="destinationInfo" translatable="false">Lorem ipsum dolor fhdhjdkdkk fnfnnf\nwhhhffffkkfkfffsjssjnsjj\nywyoufhfhhffffywyey</string>
     <string name="_4_1" translatable="false">4.1</string>
@@ -162,7 +156,7 @@
     <string name="feedback">Send feedback</string>
     <string name="terms_and_conditions">Terms and conditions</string>
     <string name="find_hotel_text">Find Hotel</string>
-    <string name="card_name">Card Name</string>
+    <string name="card_name" translatable="false">Card Name</string>
     <string name="enter_email">Please enter your valid email</string>
     <string name="enter_email2">Please check your email for reset link</string>
     <string name="error">Error Occurred</string>
@@ -170,25 +164,24 @@
     <string name="netError">network error</string>
     <string name="userId">user ID is: </string>
     <string name="two" translatable="false">02</string>
-    <string name="delete_my_account">Delete My Account</string>
-    <string name="my_destination">My Destination</string>
-    <string name="my_wallet">My Wallet</string>
-    <string name="add_a_photo">Add a photo</string>
-    <string name="location">Location</string>
-    <string name="while_using">While Using</string>
-    <string name="push_notification">Push Notification</string>
-    <string name="two_step_verification">Two-Step Verification</string>
-    <string name="enabled">Enabled</string>
-    <string name="near_me">Find Hotels Near Me</string>
-    <string name="name1">BW StarFire </string>
-    <string name="name2">Victoria island, Lagos</string>
-    <string name="camel_photo">camel_photo</string>
-    <string name="nairobi">Nairobi</string>
-    <string name="rating">4.1</string>
-    <string name="rating_votes">(2,731)</string>
-    <string name="capetown">Capetown</string>
-    <string name="south_africa">South Africa</string>
-    <string name="country_saotome">São Tomé e</string>
-    <string name="guinea">Guinea</string>
-    >>>>>>> 41564b98eceb2eb766c347153d80bac2c8002299
+    <string name="delete_my_account" translatable="false">Delete My Account</string>
+    <string name="my_destination" translatable="false">My Destination</string>
+    <string name="my_wallet" translatable="false">My Wallet</string>
+    <string name="add_a_photo" translatable="false">Add a photo</string>
+    <string name="location" translatable="false">Location</string>
+    <string name="while_using" translatable="false">While Using</string>
+    <string name="push_notification" translatable="false">Push Notification</string>
+    <string name="two_step_verification" translatable="false">Two-Step Verification</string>
+    <string name="enabled" translatable="false">Enabled</string>
+    <string name="near_me" translatable="false">Find Hotels Near Me</string>
+    <string name="name1" translatable="false">BW StarFire </string>
+    <string name="name2" translatable="false">Victoria island, Lagos</string>
+    <string name="camel_photo" translatable="false">camel_photo</string>
+    <string name="nairobi" translatable="false">Nairobi</string>
+    <string name="rating" translatable="false">4.1</string>
+    <string name="rating_votes" translatable="false">(2,731)</string>
+    <string name="capetown" translatable="false">Capetown</string>
+    <string name="south_africa" translatable="false">South Africa</string>
+    <string name="country_saotome" translatable="false">São Tomé e</string>
+    <string name="guinea" translatable="false">Guinea</string>
 </resources>
