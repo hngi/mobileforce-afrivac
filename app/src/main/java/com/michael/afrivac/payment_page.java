@@ -18,6 +18,10 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.michael.afrivac.Util.Helper;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.Button;
 
 import java.util.HashMap;
 
@@ -37,6 +41,11 @@ public class payment_page extends AppCompatActivity {
     private String hotelNameStr;
     public String TAG = "com/michael/afrivac/payment_page.java";
 
+public class payment_page extends AppCompatActivity {
+
+    Button buttonPay;
+    Animation animation;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,7 +55,6 @@ public class payment_page extends AppCompatActivity {
         data = FirebaseDatabase.getInstance().getReference().child("RoomPaymentInfo").child(user.getUid());
         helper = new Helper();
 
-        payButton = findViewById(R.id.pay);
         roomType = findViewById(R.id.deluxe_room);
         roomNumber = findViewById(R.id.some_id);
         guest = findViewById(R.id.adults);
@@ -54,7 +62,8 @@ public class payment_page extends AppCompatActivity {
         payAmount = findViewById(R.id.pay_amount);
         hotelName = findViewById(R.id.cocoon_hotel);
 
-        payButton.setOnClickListener(new View.OnClickListener() {
+        buttonPay = findViewById(R.id.button_pay);
+        buttonPay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 roomTypeStr = roomType.getText().toString().trim();
@@ -65,11 +74,31 @@ public class payment_page extends AppCompatActivity {
 
                 //hotel name
                 hotelNameStr = hotelName.getText().toString().trim();
+              
+                animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.button_anim);
+                buttonPay.startAnimation(animation);
+                animation.setAnimationListener(new Animation.AnimationListener() {
+                    @Override
+                    public void onAnimationStart(Animation animation) {}
 
-                confirmPayment();
+                    @Override
+                    public void onAnimationEnd(Animation animation) {
+                        // TODO: Continue the OnClickListener Implementation
+                        confirmPayment();
+                    }
 
+                    @Override
+                    public void onAnimationRepeat(Animation animation) {}
+                });
             }
         });
+      
+        /*payButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });*/
     }
 
     public void confirmPayment(){
@@ -121,7 +150,5 @@ public class payment_page extends AppCompatActivity {
                     Log.w(TAG, "room payment: failure", task.getException());
                     helper.toastMessage(getApplicationContext(), "payment and room reservation failed \n" + task.getException().getMessage());
                 }
-            }
-        });
     }
 }
