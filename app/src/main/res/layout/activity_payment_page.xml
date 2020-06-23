@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".payment_page">
+
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -125,7 +126,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/poppins"
-                    android:text="Room"
+                    android:text="@string/room"
                     android:textColor="@color/textColor"
                     android:textSize="@dimen/txtSize" />
 
@@ -135,7 +136,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
                     android:fontFamily="@font/poppins"
-                    android:text="1"
+                    android:text="@string/figure1"
                     android:textColor="@color/black"
                     android:textSize="@dimen/txtSize"
                     android:textStyle="bold" />
@@ -201,7 +202,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
                     android:fontFamily="@font/poppins"
-                    android:text="1"
+                    android:text="@string/figure1"
                     android:textColor="@color/black"
                     android:textSize="@dimen/txtSize"
                     android:textStyle="bold" />
@@ -257,7 +258,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/poppins"
-                    android:text="@string/check_in"
+                    android:text="@string/checkIn"
                     android:textColor="@color/textColor"
                     android:textSize="@dimen/txtSize" />
 
@@ -267,7 +268,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
                     android:fontFamily="@font/poppins"
-                    android:text="@string/check_out"
+                    android:text="@string/checkOut"
                     android:textColor="@color/textColor"
                     android:textSize="@dimen/txtSize" />
 
@@ -336,7 +337,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
-                    android:text="Total"
+                    android:text="@string/total"
                     android:textColor="@color/black"
                     android:textSize="@dimen/txtSize"
                     android:textStyle="bold" />
@@ -368,6 +369,7 @@
                     android:textSize="@dimen/txtSize" />
 
                 <TextView
+                    android:id="@+id/pay_amount"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/view6"
@@ -380,12 +382,13 @@
             </RelativeLayout>
 
             <Button
+                android:id="@+id/button_pay"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:layout_marginBottom="20dp"
                 android:background="@drawable/curved_edge"
-                android:text="Pay"
+                android:text="@string/pay"
                 android:textAllCaps="false"
                 android:textColor="@color/white" />
 

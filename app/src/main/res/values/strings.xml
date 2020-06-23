@@ -1,10 +1,13 @@
 <resources>
+
     <string name="app_name">AfriVac</string>
-    <string name="azeez_adeleke">Azeez Adeleke</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="azeez_adeleke" translatable="false">Azeez Adeleke</string>
     <string name="my_account">My Account</string>
-    <string name="nigeria">Nigeria</string>
+    <string name="nigeria" translatable="false">Nigeria</string>
     <string name="username">Username</string>
-    <string name="email">Email</string>
+    <string name="email" translatable="false">Email</string>
     <string name="phone">Phone</string>
     <string name="country">Country</string>
     <string name="gender">Gender</string>
@@ -15,20 +18,20 @@
     <string name="password">Password</string>
     <string name="user_image">User image</string>
     <string name="edit_profile">Edit Profile</string>
-    <string name="_234_8012345678">+234 8012345678</string>
+    <string name="_234_8012345678" translatable="false">+234 8012345678</string>
     <string name="back_arrow">back arrow</string>
-    <string name="azeez_hng_com">Azeez@hng.com</string>
+    <string name="azeez_hng_com" translatable="false">Azeez@hng.com</string>
     <string name="male">Male</string>
     <string name="english">English</string>
-    <string name="hidden_password">********</string>
-    <string name="apps_logo">logo</string>
+    <string name="hidden_password" translatable="false">********</string>
+    <string name="apps_logo" translatable="false">logo</string>
     <string name="subtittle">subtittle</string>
     <string name="title">title</string>
-    <string name="title_activity_main3">Main3Activity</string>
+    <string name="title_activity_main3" translatable="false">Main3Activity</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="nav_header_title">Android Studio</string>
-    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_title" translatable="false">Android Studio</string>
+    <string name="nav_header_subtitle" translatable="false">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="menu_home">Home</string>
     <string name="menu_gallery">Gallery</string>
@@ -37,12 +40,12 @@
     <string name="menu_share">Share</string>
     <string name="menu_send">Send</string>
     <string name="action_settings">Settings</string>
-    <string name="popular_destination">Popular Destinations</string>
+    <string name="popular_destination">Popular Destination</string>
     <string name="logout">Logout</string>
     <string name="account">Account</string>
     <string name="support">Support</string>
+    <string name="find_hotel">Find Hotel</string>
     <string name="completeBooking">Complete your booking at cocoon luxury</string>
-    <string name="hotelName">Cocoon Hotel</string>
     <string name="checkInDetails">Check-in Details</string>
     <string name="checkIn">Check-in</string>
     <string name="checkOut">Check-out</string>
@@ -61,30 +64,97 @@
     <string name="additionalInfo">Enter any additional request/information</string>
     <string name="reserveFor">I\'m making the reservation on behalf of someone else</string>
     <string name="cab">Yes, I\'d like a cab service as well</string>
-    <string name="pay">Pay Now</string>
+    <string name="payNow">Pay Now</string>
     <string name="or">OR</string>
     <string name="payLater">Pay at Hotel</string>
     <string name="line">A line</string>
-    <string name="sign_in_with_google">Sign in with Google</string>
-    <string name="cocoon_hotel">Cocoon Hotel</string>
-    <string name="confirmation">Confirmation</string>
+    <string name="cocoon_hotel" translatable="false">Cocoon Hotel</string>
+    <string name="confirmation" translatable="false">Confirmation</string>
     <string name="room_type">Room Type</string>
     <string name="deluxe_rooms">Deluxe Rooms</string>
     <string name="guest">Guest</string>
     <string name="_2_adults">2 Adults</string>
     <string name="night">Night</string>
-    <string name="check_in">Check-in</string>
-    <string name="check_out">Check-out</string>
     <string name="fri_19_june_2020">Fri 19 June 2020</string>
-    <string name="_96_78">(96** **** *** 78)</string>
-    <string name="n12_000">N12,000</string>
+    <string name="_96_78" translatable="false">(96** **** *** 78)</string>
+    <string name="n12_000" translatable="false">N12,000</string>
     <string name="edit_room_details">Edit Room Details</string>
     <string name="sat_19_june_2020">Sat 19 June 2020</string>
+<<<<<<< HEAD
+    <string name="discover_africa">Discover Africa</string>
+    <string name="greeting">Hi Adeleke, <b>Where will you like to go</b></string>
+    <string name="cairoDescription">The desert heat, the noisy streets and the sheer size of Cairo will leave even the most adaptable traveler with a serious case of culture shock </string>
+    <string name="mauritius">Santoroni is the world best blue shining city. every year lot of traveler visited here</string>
+    <string name="south_africa">South Africa</string>
+    <string name="capetown">Capetown</string>
+    <string name="s_o_tom_e">São Tomé e</string>
+    <string name="cairo">Cairo</string>
+    <string name="hi_adeleke">Hi Adeleke,</string>
+    <string name="where_will_you_like_to_go">where will you like to go</string>
+=======
+    <string name="reset">Reset</string>
+    <string name="forgotPassword">Forgot Password?</string>
+    <string name="overview">Overview</string>
+    <string name="viewAll">View All</string>
+    <string name="hotels">Hotels</string>
+    <string name="WhatToDoInEgypt">What to do in Egypt</string>
+    <string name="pyramidOfGaza">Pyramid of Gaza</string>
+    <string name="egyptianMusuem">Synix Egyptian Museum</string>
+    <string name="flightDetails">Flight Details</string>
+    <string name="from">From</string>
+    <string name="destination" translatable="false">Cairo, International CAI</string>
+    <string name="oneWay">One Way</string>
+    <string name="roundTrip">Round Trip</string>
+    <string name="depart">Depart</string>
+    <string name="returning">Return</string>
+    <string name="economy">Economy</string>
+    <string name="traveller">Traveller</string>
+    <string name="findFlight">Find Flight</string>
+    <string name="welcomeBack">Welcome Back,</string>
+    <string name="clickHere">Click here</string>
+    <string name="signInGoogle">Sign-in with Google</string>
+    <string name="signInFacebook">Sign-in with Facebook</string>
+    <string name="signIn">Sign In</string>
+    <string name="dontHaveAccount">Don\'t have an account?</string>
+    <string name="signUp">Sign Up</string>
+    <string name="getStarted">Get Started</string>
+    <string name="aNewWay">A new way  to Travel</string>
+    <string name="introText" translatable="false">lorem ispum dolor sit amet, \nconsectetur adipiscing eiit</string>
+    <string name="one" translatable="false">01</string>
+    <string name="payment">Payment</string>
+    <string name="paymentMethod">Pay Later</string>
+    <string name="paypal" translatable="false">PayPal</string>
+    <string name="creditDebit">Credit/Debit</string>
+    <string name="myWallet">My Wallet</string>
+    <string name="cardNumber">Card Number</string>
+    <string name="hiddenCardNumber" translatable="false">**** **** **** ****</string>
+    <string name="cvv" translatable="false">CVV*</string>
+    <string name="monthYear">Month / Year</string>
+    <string name="cvvHint" translatable="false">***</string>
+    <string name="proceedToConfirm">Proceed to Confirm</string>
+    <string name="validUntil">Valid until</string>
+    <string name="securePayment">This is a secure SSL encrypted payment</string>
+    <string name="room">Room</string>
+    <string name="figure1" translatable="false">1</string>
+    <string name="total">Total</string>
+    <string name="pay">Pay</string>
+    <string name="visitWhere">Hi Adeleke,  Where would you like to visit?</string>
+    <string name="discoverAfrica">Discover Africa</string>
+    <string name="cairo">Cairo</string>
+    <string name="egypt">Egypt</string>
+    <string name="nairobi" translatable="false">Nairobi</string>
+    <string name="kenya" translatable="false">Kenya</string>
+    <string name="destinationInfo" translatable="false">Lorem ipsum dolor fhdhjdkdkk fnfnnf\nwhhhffffkkfkfffsjssjnsjj\nywyoufhfhhffffywyey</string>
+    <string name="_4_1" translatable="false">4.1</string>
+    <string name="_2_731" translatable="false">(2,731)</string>
+    <string name="confirmPassword">Confirm Password</string>
+    <string name="readAndAgreed">I have read and agreed to</string>
+    <string name="terms_and_agreement">Terms and agreement</string>
+    <string name="existingAccount">Already have an account?</string>
     <string name="enter_your_message">Enter your message</string>
     <string name="contact_us">Contact us</string>
     <string name="arrow_down">arrow down</string>
     <string name="back_arrow_button">back arrow button</string>
-    <string name="support_text">Support</string>
     <string name="describe_issues">Describe your issue</string>
     <string name="frequently_asked_questions">Frequently asked questions</string>
     <string name="need_more_help">Need more help?</string>
@@ -92,4 +162,33 @@
     <string name="feedback">Send feedback</string>
     <string name="terms_and_conditions">Terms and conditions</string>
     <string name="find_hotel_text">Find Hotel</string>
+    <string name="card_name">Card Name</string>
+    <string name="enter_email">Please enter your valid email</string>
+    <string name="enter_email2">Please check your email for reset link</string>
+    <string name="error">Error Occurred</string>
+    <string name="authFailed">Authentication failed…</string>
+    <string name="netError">network error</string>
+    <string name="userId">user ID is: </string>
+    <string name="two" translatable="false">02</string>
+    <string name="delete_my_account">Delete My Account</string>
+    <string name="my_destination">My Destination</string>
+    <string name="my_wallet">My Wallet</string>
+    <string name="add_a_photo">Add a photo</string>
+    <string name="location">Location</string>
+    <string name="while_using">While Using</string>
+    <string name="push_notification">Push Notification</string>
+    <string name="two_step_verification">Two-Step Verification</string>
+    <string name="enabled">Enabled</string>
+    <string name="near_me">Find Hotels Near Me</string>
+    <string name="name1">BW StarFire </string>
+    <string name="name2">Victoria island, Lagos</string>
+    <string name="camel_photo">camel_photo</string>
+    <string name="nairobi">Nairobi</string>
+    <string name="rating">4.1</string>
+    <string name="rating_votes">(2,731)</string>
+    <string name="capetown">Capetown</string>
+    <string name="south_africa">South Africa</string>
+    <string name="country_saotome">São Tomé e</string>
+    <string name="guinea">Guinea</string>
+    >>>>>>> 41564b98eceb2eb766c347153d80bac2c8002299
 </resources>
