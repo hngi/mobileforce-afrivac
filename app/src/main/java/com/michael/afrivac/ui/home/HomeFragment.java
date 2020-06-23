@@ -118,6 +118,8 @@ public class HomeFragment extends Fragment {
         profile_image.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //Intent intent = new Intent(getActivity(), ProfilePageActivity.class);
+                //startActivity(intent);
                 Fragment fragment = new AccountFragment();
                 FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
                 fragmentTransaction.replace(R.id.nav_host_fragment, fragment);
