@@ -22,6 +22,7 @@ public class AccountFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
         accountViewModel = new ViewModelProvider(this).get(AccountViewModel.class);
         View root = inflater.inflate(R.layout.fragment_account, container, false);
+        
 
         return root;
     }
