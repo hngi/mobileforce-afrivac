@@ -103,7 +103,7 @@
         android:fontFamily="@font/poppins_bold"
         android:text="@string/aNewWay"
         android:textColor="#ffffff"
-        android:textSize="36sp"
+        android:textSize="30sp"
         app:layout_constraintStart_toStartOf="@+id/imageView2"
         app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
