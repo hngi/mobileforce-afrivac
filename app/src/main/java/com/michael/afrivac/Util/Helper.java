@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.michael.afrivac.BookingActivity;
+import com.michael.afrivac.EditAccountInfoActivity;
 import com.michael.afrivac.LocationActivity;
 import com.michael.afrivac.LoginActivity;
 import com.michael.afrivac.MainActivity;
@@ -98,6 +99,12 @@ public class Helper {
 
     public void gotoLocationActivity(Context context){
         intent = new Intent(context, LocationActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        context.startActivity(intent);
+    }
+
+    public void gotoEditAccountActivity(Context context) {
+        intent = new Intent(context, EditAccountInfoActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         context.startActivity(intent);
     }
