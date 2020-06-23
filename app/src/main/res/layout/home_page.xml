@@ -33,7 +33,7 @@
             android:layout_marginStart="16dp"
             android:fontFamily="@font/poppins"
             android:textColor="@color/black"
-            android:text="Hi Adeleke, \nWhere would you like to visit?"
+            android:text="@string/visitWhere"
             android:textSize="18sp" />
         <SearchView
             android:padding="8dp"
@@ -56,7 +56,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="36sp"
                 android:fontFamily="@font/poppins"
-                android:text="Discover Africa"
+                android:text="@string/discoverAfrica"
                 android:layout_marginStart="16dp"
                 />
             <Button
@@ -111,7 +111,7 @@
                     android:layout_marginTop="55dp"
                     android:fontFamily="@font/poppins"
                     android:gravity="bottom"
-                    android:text="Cairo"
+                    android:text="@string/cairo"
                     android:textColor="@color/white"
                     android:textSize="26sp"/>
                 <ImageView
@@ -127,7 +127,7 @@
                     android:layout_marginTop="95dp"
                     android:fontFamily="@font/poppins"
                     android:gravity="bottom"
-                    android:text="Egypt"
+                    android:text="@string/egypt"
                     android:textColor="@color/white"
                     android:textSize="16sp"/>
             </RelativeLayout>
@@ -147,7 +147,7 @@
                     android:layout_marginTop="55dp"
                     android:fontFamily="@font/poppins"
                     android:gravity="bottom"
-                    android:text="Nairobi"
+                    android:text="@string/nairobi"
                     android:textColor="@color/white"
                     android:textSize="26sp"/>
                 <ImageView
@@ -163,7 +163,7 @@
                     android:layout_marginTop="95dp"
                     android:fontFamily="@font/poppins"
                     android:gravity="bottom"
-                    android:text="Kenya"
+                    android:text="@string/kenya"
                     android:textColor="@color/white"
                     android:textSize="16sp"/>
             </RelativeLayout>
@@ -177,7 +177,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Popular Destination"
+            android:text="@string/popular_destination"
             android:textColor="@color/black"
             android:textSize="36sp"
             android:layout_marginStart="16dp"
@@ -206,7 +206,7 @@
                 android:layout_marginTop="1dp"
                 android:fontFamily="@font/poppins"
                 android:gravity="bottom"
-                android:text="Nairobi"
+                android:text="@string/nairobi"
                 android:textColor="@color/black"
                 android:textSize="23sp" />
             <TextView
@@ -216,7 +216,7 @@
                 android:layout_marginStart="110dp"
                 android:layout_marginTop="28dp"
                 android:fontFamily="@font/poppins"
-                android:text="Kenya"
+                android:text="@string/kenya"
                 android:textColor="#3913B8"
                 android:textSize="14sp"/>
             <TextView
@@ -227,7 +227,7 @@
                 android:layout_marginTop="1dp"
                 android:layout_below="@+id/city"
                 android:fontFamily="@font/poppins"
-                android:text="Lorem ipsum dolor fhdhjdkdkk fnfnnf\nwhhhffffkkfkfffsjssjnsjj\nywyoufhfhhffffywyey"
+                android:text="@string/destinationInfo"
                 android:textColor="#99000000"
                 android:textSize="11sp"/>
             <LinearLayout
@@ -274,7 +274,7 @@
                     android:textSize="10sp"
                     android:textColor="#99000000"
                     android:fontFamily="@font/poppins"
-                    android:text="4.1"
+                    android:text="@string/_4_1"
                     android:layout_marginTop="8dp"
                     android:layout_marginStart="8dp"/>
                 <TextView
@@ -284,7 +284,7 @@
                     android:textSize="10sp"
                     android:textColor="#99000000"
                     android:fontFamily="@font/poppins"
-                    android:text="(2,731)"
+                    android:text="@string/_2_731"
                     android:layout_marginTop="8dp"/>
 
             </LinearLayout>
