@@ -5,8 +5,8 @@
     <color name="colorAccent">#E64513</color>
 
     <color name="colorWhite">#FFFFFF</color>
-    <color name="colorGrey">#323131</color>
-    <color name="colorLightGrey">#535051</color>
+    <color name="colorGrey">#464646</color>
+    <color name="colorLightGrey">#919191</color>
     <color name="colorBlack">#FF000000</color>
     <color name="colorBlue">#3913B8</color>
     <color name="drawerColor">#3913B8</color>
@@ -17,4 +17,6 @@
     <color name="roundBtn2">#4D3913B8</color>
     <color name="black">#000000</color>
     <color name="white">#FFF</color>
+
+    <color name="ScreenBackground">#F2F6FF</color>
 </resources>
