@@ -182,5 +182,13 @@
     <string name="near_me">Find Hotels Near Me</string>
     <string name="name1">BW StarFire </string>
     <string name="name2">Victoria island, Lagos</string>
->>>>>>> 41564b98eceb2eb766c347153d80bac2c8002299
+    <string name="camel_photo">camel_photo</string>
+    <string name="nairobi">Nairobi</string>
+    <string name="rating">4.1</string>
+    <string name="rating_votes">(2,731)</string>
+    <string name="capetown">Capetown</string>
+    <string name="south_africa">South Africa</string>
+    <string name="country_saotome">São Tomé e</string>
+    <string name="guinea">Guinea</string>
+    >>>>>>> 41564b98eceb2eb766c347153d80bac2c8002299
 </resources>
