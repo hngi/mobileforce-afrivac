@@ -81,7 +81,7 @@
     <string name="edit_room_details">Edit Room Details</string>
     <string name="sat_19_june_2020">Sat 19 June 2020</string>
     <string name="reset">Reset</string>
-    <string name="forgotPassword">Forgot Password?</string>
+    <string name="forgotPassword">Forgot Password? </string>
     <string name="overview">Overview</string>
     <string name="viewAll">View All</string>
     <string name="hotels">Hotels</string>
@@ -151,4 +151,7 @@
     <string name="feedback">Send feedback</string>
     <string name="terms_and_conditions">Terms and conditions</string>
     <string name="find_hotel_text">Find Hotel</string>
+    <string name="welcome_back">Welcome Back,</string>
+    <string name="sign_in_wit">Sign in with Google</string>
+    <string name="sign_in_fb">Sign in with Facebook</string>
 </resources>
