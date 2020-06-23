@@ -1,4 +1,5 @@
 package com.michael.afrivac.Util;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.view.View;
@@ -12,7 +13,22 @@ import com.michael.afrivac.SignUpActivity;
 
 public class Helper {
     Intent intent;
+    ProgressDialog progressDialog;
     public Helper(){
+    }
+
+    //progress dialog functions
+    public void progressDialogStart(Context context, String titleMessage, String detailMessage){
+        progressDialog = new ProgressDialog(context);
+        progressDialog.setTitle(titleMessage);
+        progressDialog.setMessage(detailMessage);
+        progressDialog.show();
+        progressDialog.setCanceledOnTouchOutside(true);
+    }
+
+    public void progressDialogEnd(Context context){
+        progressDialog = new ProgressDialog(context);
+        progressDialog.dismiss();
     }
 
     public void toastMessage(Context context, String message){
