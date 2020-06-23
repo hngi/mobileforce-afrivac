@@ -167,4 +167,7 @@
     <string name="push_notification">Push Notification</string>
     <string name="two_step_verification">Two-Step Verification</string>
     <string name="enabled">Enabled</string>
+    <string name="near_me">Find Hotels Near Me</string>
+    <string name="name1">BW StarFire </string>
+    <string name="name2">Victoria island, Lagos</string>
 </resources>
