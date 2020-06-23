@@ -83,6 +83,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 //                        .setAction("Action", null).show();
 //            }
 //        });
+         drawer = findViewById(R.id.drawer_layout);
+         navigationView = findViewById(R.id.nav_view);
 //        drawer = findViewById(R.id.drawer_layout);
 //        navigationView = findViewById(R.id.nav_view);
         // Passing each menu ID as a set of Ids because each
