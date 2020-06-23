@@ -56,7 +56,7 @@ public class SplashscreenActivity extends AppCompatActivity {
                 if (sharePref.getIsUserLoggedIn()) {
                     startActivity(new Intent(getApplicationContext(), MainActivity.class));
                 } else {
-                    Intent i = new Intent(SplashscreenActivity.this, MainActivity.class);
+                    Intent i = new Intent(SplashscreenActivity.this, OnboardscreenActivity.class);
                     //Intent is used to switch from one activity to another.
 
                     startActivity(i);
