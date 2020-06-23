@@ -3,6 +3,9 @@ package com.michael.afrivac;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.annotation.SuppressLint;
 import android.app.Dialog;
@@ -34,6 +37,7 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.michael.afrivac.model.UserInformation;
+import com.michael.afrivac.ui.account.AccountFragment;
 
 import java.io.IOException;
 import java.util.Objects;
@@ -120,21 +124,26 @@ public class EditAccountInfoActivity extends AppCompatActivity implements View.O
     @Override
     public void onClick(View view) {
         if (view==btnsave){
+            Fragment fragment = new AccountFragment();
             if (imagePath == null) {
 
                 Drawable drawable = this.getResources().getDrawable(R.drawable.profile_image);
                 Bitmap bitmap = BitmapFactory.decodeResource(getResources(),R.drawable.profile_image);
                 // openSelectProfilePictureDialog();
                 userInformation();
-                // sendUserData();
+                // sendUserData();;
+                FragmentManager manager = getSupportFragmentManager();
+                FragmentTransaction transaction = manager.beginTransaction();
+                startActivity(new Intent(this, MainActivity.class));
                 finish();
-                startActivity(new Intent(EditAccountInfoActivity.this, ProfilePageActivity.class));
             }
             else {
                 userInformation();
                 sendUserData();
+                FragmentManager manager = getSupportFragmentManager();
+                FragmentTransaction transaction = manager.beginTransaction();
+                startActivity(new Intent(this, MainActivity.class));
                 finish();
-                startActivity(new Intent(EditAccountInfoActivity.this, ProfilePageActivity.class));
             }
         }
     }
