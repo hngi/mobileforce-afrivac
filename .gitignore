@@ -14,3 +14,16 @@
 /captures
 .externalNativeBuild
 .cxx
+
+# dependencies
+**/node_modules
+**/requests
+**/.eslintrc.js
+**/.eslintignore
+
+# testing
+/coverage
+
+# production
+**/build
+**/.env

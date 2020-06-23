@@ -6,6 +6,8 @@ import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.DatePicker;
@@ -29,7 +31,7 @@ public class BookingActivity extends AppCompatActivity {
     DatePickerDialog.OnDateSetListener mDateSetListener;
     Button payNowButton, payAtHotel;
     EditText dateSelected, GuestsNumberSelected, RoomsNumberSelected;
-
+    Animation animation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +44,7 @@ public class BookingActivity extends AppCompatActivity {
         dropDownCheckIn = (ImageView) findViewById(R.id.check_in_arrow);
         dropDownCheckOut = (ImageView) findViewById(R.id.check_out_arrow);
         payNowButton = (Button) findViewById(R.id.pay_button);
+        payAtHotel = (Button) findViewById(R.id.pay_later_button);
         GuestsNumberSelected = (EditText) findViewById(R.id.no_of_guests);
         RoomsNumberSelected = (EditText) findViewById(R.id.no_of_rooms);
         person.numberOfGuests = GuestsNumberSelected;
@@ -77,7 +80,40 @@ public class BookingActivity extends AppCompatActivity {
         payNowButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                openActivityBookingPage();
+                animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.button_anim);
+                payNowButton.startAnimation(animation);
+                animation.setAnimationListener(new Animation.AnimationListener() {
+                    @Override
+                    public void onAnimationStart(Animation animation) {}
+
+                    @Override
+                    public void onAnimationEnd(Animation animation) {
+                        openActivityBookingPage();
+                    }
+
+                    @Override
+                    public void onAnimationRepeat(Animation animation) {}
+                });
+            }
+        });
+
+        payAtHotel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.button_anim);
+                payAtHotel.startAnimation(animation);
+                animation.setAnimationListener(new Animation.AnimationListener() {
+                    @Override
+                    public void onAnimationStart(Animation animation) {}
+
+                    @Override
+                    public void onAnimationEnd(Animation animation) {
+                        openActivityBookingPage();
+                    }
+
+                    @Override
+                    public void onAnimationRepeat(Animation animation) {}
+                });
             }
         });
 

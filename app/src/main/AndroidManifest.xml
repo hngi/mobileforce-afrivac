@@ -14,10 +14,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
         <activity android:name=".GoogleMap">
 
         </activity>
         <activity android:name=".ContactUsActivity2" />
+        <activity android:name=".EditAccountInfoActivity"></activity>
+
+        <activity android:name=".PaymentActivity"></activity>
+        <activity
+            android:name=".LocationActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+
         <activity android:name=".payment_page" />
         <activity android:name=".BookingActivity" />
         <activity android:name=".SignUpActivity" />
