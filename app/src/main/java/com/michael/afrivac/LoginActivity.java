@@ -59,7 +59,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         signUp = findViewById(R.id.singin_goto_signup);
         forgotPassword = findViewById(R.id.signin_forgot_password);
 
-
+        helper = new Helper();
 
         final String Email = email.getText().toString().trim();
         final String Password = password.getText().toString().trim();

@@ -369,6 +369,7 @@
                     android:textSize="@dimen/txtSize" />
 
                 <TextView
+                    android:id="@+id/pay_amount"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/view6"
