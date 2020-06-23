@@ -8,6 +8,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -36,6 +38,7 @@ public class SignUpActivity extends AppCompatActivity {
     EditText ConfirmPassword;
     TextView ToSignIn;
     Button  signUp;
+    Animation animation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,8 +52,21 @@ public class SignUpActivity extends AppCompatActivity {
 
         signUp.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                authViewModel.SignUp(v);
+            public void onClick(final View v) {
+                animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.button_anim);
+                signUp.startAnimation(animation);
+                animation.setAnimationListener(new Animation.AnimationListener() {
+                    @Override
+                    public void onAnimationStart(Animation animation) {}
+
+                    @Override
+                    public void onAnimationEnd(Animation animation) {
+                        authViewModel.SignUp(v);
+                    }
+
+                    @Override
+                    public void onAnimationRepeat(Animation animation) {}
+                });
             }
         });
 
