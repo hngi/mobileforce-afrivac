@@ -14,6 +14,7 @@
         <activity android:name=".EditAccountInfoActivity">
 
         </activity>
+        <activity android:name=".PaymentActivity"></activity>
         <activity android:name=".ContactUsActivity2" />
         <activity
             android:name=".LocationActivity"

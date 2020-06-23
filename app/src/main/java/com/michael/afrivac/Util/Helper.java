@@ -9,16 +9,23 @@ import com.michael.afrivac.BookingActivity;
 import com.michael.afrivac.LocationActivity;
 import com.michael.afrivac.LoginActivity;
 import com.michael.afrivac.MainActivity;
+import com.michael.afrivac.PaymentActivity;
 import com.michael.afrivac.SignUpActivity;
+import com.michael.afrivac.payment_page;
 
 public class Helper {
+    Context context;
     Intent intent;
     ProgressDialog progressDialog;
     public Helper(){
     }
 
+    public Helper(Context context){
+        this.context = context;
+    }
+
     //progress dialog functions
-    public void progressDialogStart(Context context, String titleMessage, String detailMessage){
+    public void progressDialogStart(String titleMessage, String detailMessage){
         progressDialog = new ProgressDialog(context);
         progressDialog.setTitle(titleMessage);
         progressDialog.setMessage(detailMessage);
@@ -26,8 +33,7 @@ public class Helper {
         progressDialog.setCanceledOnTouchOutside(true);
     }
 
-    public void progressDialogEnd(Context context){
-        progressDialog = new ProgressDialog(context);
+    public void progressDialogEnd(){
         progressDialog.dismiss();
     }
 
@@ -55,6 +61,18 @@ public class Helper {
 
     public void gotoBookingActivity(Context context){
         intent = new Intent(context, BookingActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        context.startActivity(intent);
+    }
+
+    public void gotoPaymentActivity(Context context){
+        intent = new Intent(context, PaymentActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        context.startActivity(intent);
+    }
+
+    public void gotoConfirmationPageActivity(Context context){
+        intent = new Intent(context, payment_page.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         context.startActivity(intent);
     }
