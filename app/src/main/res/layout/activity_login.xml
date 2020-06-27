@@ -36,14 +36,13 @@
                 <com.google.android.material.textview.MaterialTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:paddingLeft="@dimen/dimension_10dp"
                     android:text="@string/app_name"
                     android:textAppearance="@style/TextAppearance.AppCompat.Body2"
                     android:textColor="@color/colorBlack"
-                    android:textSize="40sp"
-                    android:textStyle="bold"
-                    android:paddingLeft="@dimen/dimension_10dp"
-                    android:layout_gravity="left">
-                </com.google.android.material.textview.MaterialTextView>
+                    android:textSize="24sp"
+                    android:textStyle="bold"></com.google.android.material.textview.MaterialTextView>
 
             </LinearLayout>
 
@@ -54,7 +53,7 @@
                 android:text="@string/welcomeBack"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body2"
                 android:textColor="@color/colorBlack"
-                android:textSize="@dimen/dimension_30sp" />
+                android:textSize="18sp" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -66,17 +65,17 @@
 
             <EditText
                 android:id="@+id/signin_email"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="338dp"
+                android:layout_height="40dp"
                 android:layout_marginTop="@dimen/dimension_5dp"
+                android:background="@drawable/circular_drawable01"
                 android:inputType="textEmailAddress"
-                android:textColor="@color/colorBlack"
-                android:textSize="21sp"
-                android:paddingTop="@dimen/dimension_10dp"
-                android:paddingBottom="@dimen/dimension_10dp"
                 android:paddingLeft="@dimen/dimension_15dp"
+                android:paddingTop="@dimen/dimension_10dp"
                 android:paddingRight="@dimen/dimension_15dp"
-                android:background="@drawable/circular_drawable01"/>
+                android:paddingBottom="@dimen/dimension_10dp"
+                android:textColor="@color/colorBlack"
+                android:textSize="21sp" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -88,17 +87,17 @@
 
             <EditText
                 android:id="@+id/signin_password"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="338dp"
+                android:layout_height="40dp"
                 android:layout_marginTop="@dimen/dimension_5dp"
+                android:background="@drawable/circular_drawable01"
                 android:inputType="textPassword"
-                android:textColor="@color/colorBlack"
-                android:textSize="21sp"
-                android:paddingTop="@dimen/dimension_10dp"
-                android:paddingBottom="@dimen/dimension_10dp"
                 android:paddingLeft="@dimen/dimension_15dp"
+                android:paddingTop="@dimen/dimension_10dp"
                 android:paddingRight="@dimen/dimension_15dp"
-                android:background="@drawable/circular_drawable01" />
+                android:paddingBottom="@dimen/dimension_10dp"
+                android:textColor="@color/colorBlack"
+                android:textSize="21sp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
