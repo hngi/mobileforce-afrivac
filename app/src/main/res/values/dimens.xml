@@ -14,6 +14,7 @@
     <dimen name="dimension_60">60dp</dimen>
     <dimen name="dimension_21sp">21sp</dimen>
     <dimen name="dimension_18sp">18sp</dimen>
+    <dimen name="dimension_14sp">14sp</dimen>
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="nav_header_vertical_spacing">8dp</dimen>
@@ -26,4 +27,8 @@
     <dimen name="dimension_41dp">41dp</dimen>
     <dimen name="dimension_67dp">67dp</dimen>
     <dimen name="dimension_48sp">48sp</dimen>
+    <dimen name="dimension_104">104dp</dimen>
+    <dimen name="dimension_90">90dp</dimen>
+    <dimen name="dimension_36dp">36dp</dimen>
+    <dimen name="profile_image">130dp</dimen>
 </resources>
