@@ -20,10 +20,13 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.Gravity;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -42,7 +45,7 @@ import com.michael.afrivac.ui.account.AccountFragment;
 import java.io.IOException;
 import java.util.Objects;
 
-public class EditAccountInfoActivity extends AppCompatActivity implements View.OnClickListener {
+public class EditAccountInfoActivity extends AppCompatActivity implements View.OnClickListener, AdapterView.OnItemSelectedListener {
 
     private static final String TAG = EditAccountInfoActivity.class.getSimpleName();
     Button btnsave;
@@ -201,6 +204,16 @@ public class EditAccountInfoActivity extends AppCompatActivity implements View.O
 
     @Override
     public void onPointerCaptureChanged(boolean hasCapture) {
+
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
 
     }
 }

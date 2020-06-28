@@ -184,4 +184,10 @@
     <string name="south_africa" translatable="false">South Africa</string>
     <string name="country_saotome" translatable="false">São Tomé e</string>
     <string name="guinea" translatable="false">Guinea</string>
+    <string-array name="languages">
+        <item>English</item>
+        <item>France</item>
+        <item>Spanish</item>
+    </string-array>
+    <string name="phoneNumb" translatable="false">+234 7061815056</string>
 </resources>
