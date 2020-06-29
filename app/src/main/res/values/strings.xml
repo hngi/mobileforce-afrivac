@@ -184,4 +184,15 @@
     <string name="south_africa" translatable="false">South Africa</string>
     <string name="country_saotome" translatable="false">São Tomé e</string>
     <string name="guinea" translatable="false">Guinea</string>
+    <string name="salute_message">Hi Adeleke \nwhere would you like to visit</string>
+    <string name="home_page_top_message">Hi Adeleke, \nwhere will you like to vist?</string>
+    <string name="find_destination">Find Destination</string>
+    <string name="popular_destinations">Popular Destinations</string>
+    <string name="descriptive_text">The desert heat, the noisy streets and the sheer size of Cairo will leave even the most adaptable traveler with a serious case of culture shock</string>
+    <string name="mauritus_text">Mauritus</string>
+    <string name="madagascar_text">Madagascar</string>
+    <string name="mauritus_descriptive_text">Santoroni is the world best blue shining city. every year lot of travler visited here</string>
+    <string name="rate_4_1">4.1</string>
+    <string name="reviewa_2_731">(2,731)</string>
+    <string name="cape_town_description">Santoroni is the world best blue shining city. every year lot of travler visited here</string>
 </resources>

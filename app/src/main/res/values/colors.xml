@@ -19,4 +19,6 @@
     <color name="white">#FFF</color>
 
     <color name="ScreenBackground">#F2F6FF</color>
+    <color name="sub_text_blue">#3913B8</color>
+    <color name="description_color">#464646</color>
 </resources>
