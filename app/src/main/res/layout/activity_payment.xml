@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            xmlns:app="http://schemas.android.com/apk/res-auto"
-            android:background="#fff">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="#fff"
+    tools:context=".PaymentActivity">
 
     <HorizontalScrollView
             android:layout_width="wrap_content"
@@ -255,7 +257,7 @@
                             android:id="@+id/card_name_text"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/cardNumber"
+                            android:text="@string/card_name"
                             android:textSize="12sp"
                             android:textColor="#464646"
                             android:fontFamily="@font/poppins"
@@ -311,6 +313,7 @@
                         android:layout_marginTop="65dp"
                         android:layout_marginStart="52dp"
                         android:drawableStart="@drawable/lock"
+                        android:drawablePadding="5dp"
                 />
             </RelativeLayout>
 

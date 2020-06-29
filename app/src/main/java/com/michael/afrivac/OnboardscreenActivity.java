@@ -7,6 +7,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -21,6 +23,7 @@ public class OnboardscreenActivity extends AppCompatActivity {
     Button button;
 
     Helper helper;
+    Animation animation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +51,7 @@ public class OnboardscreenActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 layout.setBackgroundResource(R.drawable.onboarding_2);
-                number.setText("02");
+                number.setText(R.string.two);
                 rightArrow.setImageResource(R.drawable.front_after);
                 leftArrow.setImageResource(R.drawable.back_after);
                 dash_1.setImageResource(R.drawable.dash_2);
@@ -60,7 +63,7 @@ public class OnboardscreenActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 layout.setBackgroundResource(R.drawable.onboarding_1);
-                number.setText("01");
+                number.setText(R.string.one);
                 rightArrow.setImageResource(R.drawable.ic_baseline_arrow_forward_ios_24);
                 leftArrow.setImageResource(R.drawable.ic_baseline_arrow_back_ios_24);
                 dash_1.setImageResource(R.drawable.dash);
@@ -71,8 +74,21 @@ public class OnboardscreenActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                helper.gotoLoginAcitivity(getApplicationContext());
-                finish();
+                animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.button_anim);
+                button.startAnimation(animation);
+                animation.setAnimationListener(new Animation.AnimationListener() {
+                    @Override
+                    public void onAnimationStart(Animation animation) {}
+
+                    @Override
+                    public void onAnimationEnd(Animation animation) {
+                        helper.gotoLoginAcitivity(getApplicationContext());
+                        finish();
+                    }
+
+                    @Override
+                    public void onAnimationRepeat(Animation animation) {}
+                });
             }
         });
     }

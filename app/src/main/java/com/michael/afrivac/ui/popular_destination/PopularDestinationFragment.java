@@ -15,6 +15,9 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -36,10 +39,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+import static android.content.ContentValues.TAG;
+
 public class PopularDestinationFragment extends Fragment {
     RecyclerView popularPlacesRV;
     private AutoCompleteTextView searchTV;
-    ImageButton menuButton, avatarButton;
+    ImageButton menuButton, avatarButton, search_end_button;
 
     private PopularDestinationViewModel popularDestinationViewModel;
     private PopularDestinationRVAdapter popularDestinationRVAdapter;
@@ -60,6 +65,7 @@ public class PopularDestinationFragment extends Fragment {
         popularPlacesRV = view.findViewById(R.id.popularDestinationRV);
         menuButton = view.findViewById(R.id.menuButton);
         avatarButton = view.findViewById(R.id.avatarButton);
+        search_end_button = view.findViewById(R.id.search_end_button);
         searchTV = view.findViewById(R.id.searchTV);
 
         popularDestinationRVAdapter = new PopularDestinationRVAdapter(getContext(), new PopularDestinationRVAdapter.OnItemSelectedListener() {
@@ -134,10 +140,33 @@ public class PopularDestinationFragment extends Fragment {
                 if (actionId == EditorInfo.IME_ACTION_DONE || actionId == EditorInfo.IME_ACTION_NEXT) {
                     searchTV.dismissDropDown();
                     hideKeyboardFrom(v);
+                    v.clearFocus();
                     searchInDB(searchTV.getText().toString());
                     handled = true;
                 }
                 return handled;
+            }
+        });
+        final View.OnClickListener searchClearer = new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                searchTV.setText(null);
+            }
+        };
+        searchTV.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
+            @Override
+            public void afterTextChanged(Editable editable) {
+                if (editable == null || editable.toString() == null || editable.toString().equals("")) {
+                    search_end_button.setImageResource(R.drawable.ic_search);
+                    search_end_button.setOnClickListener(null);
+                } else {
+                    search_end_button.setImageResource(R.drawable.ic_round_highlight_off_24);
+                    search_end_button.setOnClickListener(searchClearer);
+                }
             }
         });
     }

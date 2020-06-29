@@ -11,6 +11,7 @@
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        android:layout_margin="6dp"
         android:id="@+id/reviewDetails">
 
         <LinearLayout
@@ -23,9 +24,10 @@
             app:layout_constraintEnd_toStartOf="@id/ratingsbar">
 
             <TextView
+                android:id="@+id/displayRating"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="4.1"
+                android:text="0.0"
                 android:textSize="40sp"
                 android:textStyle="bold"
                 android:textColor="#000"
@@ -34,13 +36,23 @@
                 android:layout_weight="1"
                 />
 
-            <ImageView
-                android:layout_width="100dp"
-                android:layout_height="30dp"
-                android:src="@drawable/star"
-                android:layout_marginStart="10dp"
-                android:layout_weight="1"
-                android:layout_gravity="center"/>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginStart="20dp"
+                >
+
+            <RatingBar
+                android:id="@+id/ratingBar2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:numStars="5"
+                android:stepSize=".5"/>
+
+            </LinearLayout>
+
 
             <TextView
                 android:layout_width="wrap_content"
@@ -71,6 +83,7 @@
         </LinearLayout>
 
         <Button
+            android:id="@+id/addReview"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@id/ratingsbar"
@@ -84,6 +97,7 @@
             android:textSize="15sp"
             android:padding="12dp"
             />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
