@@ -195,4 +195,11 @@
     <string name="rate_4_1">4.1</string>
     <string name="reviewa_2_731">(2,731)</string>
     <string name="cape_town_description">Santoroni is the world best blue shining city. every year lot of travler visited here</string>
+    <string-array name="languages">
+        <item>English</item>
+        <item>France</item>
+        <item>Spanish</item>
+    </string-array>
+    <string name="phoneNumb" translatable="false">+234 7061815056</string>
+    <string name="saveProf" translatable="false">Save Changes</string>
 </resources>
