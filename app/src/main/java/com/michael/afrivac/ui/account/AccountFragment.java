@@ -31,7 +31,7 @@ public class AccountFragment extends Fragment {
         View root = inflater.inflate(R.layout.fragment_account, container, false);
         helper = new Helper();
 
-        editButton = root.findViewById(R.id.btn_edit);
+        editButton = root.findViewById(R.id.btn_edit2);
         editButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
