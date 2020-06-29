@@ -97,6 +97,8 @@ public class AuthViewModel {
                         hashMap.put("number", phoneNumberStr);
                         hashMap.put("country", countryStr);
                         hashMap.put("profileImageUrl", "default");
+                        hashMap.put("language", "default");
+                        hashMap.put("gender", "default");
                         reference.setValue(hashMap).addOnCompleteListener(new OnCompleteListener<Void>() {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
