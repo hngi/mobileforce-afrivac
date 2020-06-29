@@ -38,6 +38,7 @@
                 android:layout_marginStart="@dimen/dimension_10dp"
                 android:fontFamily="@font/poppins"
                 android:text="@string/azeez_adeleke"
+                android:textColor="@color/colorGrey"
                 android:textSize="@dimen/txtSize" />
 
             <TextView
@@ -47,62 +48,57 @@
                 android:layout_below="@+id/full_name"
                 android:layout_marginStart="@dimen/dimension_10dp"
                 android:drawableStart="@drawable/place"
-                android:drawableTint="@color/aColor"
+                android:drawableTint="#8352fd"
                 android:fontFamily="@font/poppins"
                 android:text="@string/nigeria"
+                android:textColor="@color/colorGrey"
                 android:textSize="@dimen/txtSize" />
 
             <ImageView
                 android:id="@+id/profile_image1"
                 android:layout_width="@dimen/profile_image"
                 android:layout_height="@dimen/profile_image"
-                android:layout_marginStart="@dimen/dimension_90"
+                android:layout_alignParentEnd="true"
                 android:layout_marginTop="@dimen/dimension_30dp"
                 android:layout_marginEnd="@dimen/dimension_10dp"
-                android:layout_toEndOf="@+id/my_account"
                 android:contentDescription="@string/user_image"
-                android:src="@drawable/pics" />
+                android:src="@drawable/pics"/>
 
             <ImageView
                 android:layout_width="@dimen/dimension_36dp"
                 android:layout_height="@dimen/dimension_36dp"
+                android:layout_alignStart="@id/profile_image1"
                 android:layout_alignBottom="@+id/profile_image1"
-                android:layout_marginStart="@dimen/dimension_90"
-                android:layout_marginEnd="@dimen/dimension_10dp"
-                android:layout_toEndOf="@+id/my_account"
                 android:adjustViewBounds="true"
-                android:backgroundTint="@color/black"
-                android:src="@drawable/ic_baseline_add_a_photo_24" />
+                android:backgroundTint="#000000"
+                android:src="@drawable/ic_baseline_add_a_photo_24"  />
 
             <Button
                 android:id="@+id/btn_save"
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/dimension_40dp"
                 android:layout_below="@+id/profile_image1"
-                android:layout_marginStart="@dimen/dimension_90"
+                android:layout_alignStart="@id/profile_image1"
                 android:layout_marginTop="@dimen/dimension_10dp"
-                android:layout_marginEnd="@dimen/dimension_10dp"
-                android:layout_toEndOf="@+id/my_account"
                 android:background="@drawable/curved_edge"
                 android:padding="@dimen/dimension_10dp"
                 android:text="@string/saveProf"
                 android:textAppearance="@style/TextAppearance.AppCompat.Small"
-                android:textColor="#FFFFFF" />
+                android:textColor="#FFFFFF"  />
 
 
             <TextView
                 android:id="@+id/username"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/place"
+                android:layout_below="@+id/btn_save"
                 android:layout_marginStart="@dimen/dimension_10dp"
-                android:layout_marginTop="19dp"
                 android:fontFamily="@font/poppins"
-                android:paddingTop="@dimen/dimension_20dp"
+                android:paddingTop="@dimen/dimension_10dp"
                 android:text="@string/username"
-                android:textColor="@color/black"
+                android:textColor="#000000"
                 android:textSize="@dimen/dimension_14sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"/>
 
             <EditText
                 android:id="@+id/user_name_edit2"
@@ -151,6 +147,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignBaseline="@+id/email"
                 android:layout_alignEnd="@+id/email_view"
+                android:layout_marginEnd="@dimen/dimension_10dp"
                 android:layout_toEndOf="@+id/email"
                 android:textColor="@color/black"
                 android:autofillHints="@string/enter_email"
@@ -307,23 +304,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignBaseline="@+id/language"
-                android:layout_alignEnd="@+id/language_view"
+                android:layout_alignEnd="@+id/gender_view"
                 android:layout_toEndOf="@+id/language"
                 android:drawableEnd="@drawable/ic_baseline_keyboard_arrow_down_24"
                 android:text="@string/english"
                 android:textColor="@color/black"
                 android:textAlignment="viewEnd"
                 android:textSize="@dimen/txtSize" />
-
-            <View
-                android:id="@+id/language_view"
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_below="@+id/language"
-                android:layout_marginStart="@dimen/dimension_10dp"
-                android:layout_marginTop="1dp"
-                android:layout_marginEnd="@dimen/dimension_10dp"
-                android:background="@color/lineColor" />
         </RelativeLayout>
 
     </LinearLayout>

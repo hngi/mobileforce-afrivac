@@ -37,6 +37,7 @@
                     android:layout_marginStart="@dimen/dimension_10dp"
                     android:fontFamily="@font/poppins"
                     android:text="@string/azeez_adeleke"
+                    android:textColor="@color/colorGrey"
                     android:textSize="@dimen/txtSize" />
 
                 <TextView
@@ -49,26 +50,24 @@
                     android:drawableTint="#8352fd"
                     android:fontFamily="@font/poppins"
                     android:text="@string/nigeria"
+                    android:textColor="@color/colorGrey"
                     android:textSize="@dimen/txtSize" />
 
                 <ImageView
                     android:id="@+id/profile_image"
                     android:layout_width="@dimen/profile_image"
                     android:layout_height="@dimen/profile_image"
-                    android:layout_marginStart="@dimen/dimension_90"
+                    android:layout_alignParentEnd="true"
                     android:layout_marginTop="@dimen/dimension_30dp"
                     android:layout_marginEnd="@dimen/dimension_10dp"
-                    android:layout_toEndOf="@+id/my_account"
                     android:contentDescription="@string/user_image"
                     android:src="@drawable/pics" />
 
                 <ImageView
                     android:layout_width="@dimen/dimension_36dp"
                     android:layout_height="@dimen/dimension_36dp"
+                    android:layout_alignStart="@id/profile_image"
                     android:layout_alignBottom="@+id/profile_image"
-                    android:layout_marginStart="@dimen/dimension_90"
-                    android:layout_marginEnd="@dimen/dimension_10dp"
-                    android:layout_toEndOf="@+id/my_account"
                     android:adjustViewBounds="true"
                     android:backgroundTint="#000000"
                     android:src="@drawable/ic_baseline_add_a_photo_24" />
@@ -78,10 +77,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="@dimen/dimension_40dp"
                     android:layout_below="@+id/profile_image"
-                    android:layout_marginStart="@dimen/dimension_90"
+                    android:layout_alignStart="@id/profile_image"
                     android:layout_marginTop="@dimen/dimension_10dp"
-                    android:layout_marginEnd="@dimen/dimension_10dp"
-                    android:layout_toEndOf="@+id/my_account"
                     android:background="@drawable/curved_edge"
                     android:padding="@dimen/dimension_10dp"
                     android:text="@string/edit_profile"
@@ -93,16 +90,14 @@
                     android:id="@+id/username"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/place"
+                    android:layout_below="@+id/btn_edit2"
                     android:layout_marginStart="@dimen/dimension_10dp"
-                    android:layout_marginTop="@dimen/dimension_20dp"
                     android:fontFamily="@font/poppins"
-                    android:paddingTop="@dimen/dimension_20dp"
+                    android:paddingTop="@dimen/dimension_10dp"
                     android:text="@string/username"
                     android:textColor="#000000"
                     android:textSize="@dimen/dimension_14sp"
                     android:textStyle="bold" />
-
 
                 <TextView
                     android:id="@+id/user_name_edit"
@@ -114,9 +109,9 @@
                     android:autofillHints="@string/username"
                     android:background="@android:color/transparent"
                     android:drawableEnd="@drawable/ic_baseline_keyboard_arrow_right_24"
-                    android:textColor="@color/black"
                     android:text="@string/azeez_adeleke"
                     android:textAlignment="viewEnd"
+                    android:textColor="@color/black"
                     android:textSize="@dimen/txtSize" />
 
                 <View
@@ -140,9 +135,9 @@
                     android:paddingTop="@dimen/dimension_20dp"
                     android:text="@string/email"
                     android:textColor="@color/black"
-                    android:textStyle="bold"
                     android:textFontWeight="600"
-                    android:textSize="@dimen/dimension_14sp" />
+                    android:textSize="@dimen/dimension_14sp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/edit_email"
@@ -150,6 +145,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignBaseline="@+id/email"
                     android:layout_alignEnd="@+id/email_view"
+                    android:layout_marginEnd="@dimen/dimension_10dp"
                     android:layout_toEndOf="@+id/email"
                     android:autofillHints="@string/enter_email"
                     android:background="@android:color/transparent"
@@ -181,9 +177,9 @@
                     android:paddingTop="@dimen/dimension_20dp"
                     android:text="@string/phone"
                     android:textColor="@color/black"
-                    android:textStyle="bold"
                     android:textFontWeight="600"
-                    android:textSize="@dimen/dimension_14sp" />
+                    android:textSize="@dimen/dimension_14sp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/edit_phone"
@@ -196,8 +192,8 @@
                     android:background="@android:color/transparent"
                     android:drawableEnd="@drawable/ic_baseline_keyboard_arrow_right_24"
                     android:text="@string/phoneNumb"
-                    android:textColor="@color/black"
                     android:textAlignment="viewEnd"
+                    android:textColor="@color/black"
                     android:textSize="@dimen/txtSize"
                     tools:ignore="TextFields" />
 
@@ -222,9 +218,9 @@
                     android:paddingTop="@dimen/dimension_20dp"
                     android:text="@string/country"
                     android:textColor="@color/black"
-                    android:textStyle="bold"
                     android:textFontWeight="600"
-                    android:textSize="@dimen/dimension_14sp" />
+                    android:textSize="@dimen/dimension_14sp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/user_location"
@@ -258,9 +254,9 @@
                     android:paddingTop="@dimen/dimension_20dp"
                     android:text="@string/gender"
                     android:textColor="@color/black"
-                    android:textStyle="bold"
                     android:textFontWeight="600"
-                    android:textSize="@dimen/dimension_14sp" />
+                    android:textSize="@dimen/dimension_14sp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/user_gender1"
@@ -269,10 +265,10 @@
                     android:layout_alignBaseline="@+id/gender"
                     android:layout_alignEnd="@+id/gender_view"
                     android:layout_toEndOf="@+id/gender"
-                    android:textColor="@color/black"
                     android:drawableEnd="@drawable/ic_baseline_keyboard_arrow_down_24"
                     android:text="@string/male"
                     android:textAlignment="viewEnd"
+                    android:textColor="@color/black"
                     android:textSize="@dimen/txtSize" />
 
                 <View
@@ -296,9 +292,9 @@
                     android:paddingTop="@dimen/dimension_20dp"
                     android:text="@string/language"
                     android:textColor="@color/black"
-                    android:textStyle="bold"
                     android:textFontWeight="600"
-                    android:textSize="@dimen/dimension_14sp" />
+                    android:textSize="@dimen/dimension_14sp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/user_language1"
@@ -307,10 +303,10 @@
                     android:layout_alignBaseline="@+id/language"
                     android:layout_alignEnd="@+id/language_view"
                     android:layout_toEndOf="@+id/language"
-                    android:textColor="@color/black"
                     android:drawableEnd="@drawable/ic_baseline_keyboard_arrow_down_24"
                     android:text="@string/english"
                     android:textAlignment="viewEnd"
+                    android:textColor="@color/black"
                     android:textSize="@dimen/txtSize" />
 
                 <View
@@ -331,15 +327,15 @@
                     android:layout_below="@+id/language_view"
                     android:layout_marginStart="@dimen/dimension_10dp"
                     android:layout_marginTop="@dimen/dimension_10dp"
-                    android:layout_marginEnd="@dimen/dimension_10dp"
+                    android:layout_marginEnd="@dimen/dimension_20dp"
                     android:drawableEnd="@drawable/notification"
                     android:fontFamily="@font/poppins"
                     android:paddingTop="@dimen/dimension_20dp"
                     android:text="@string/push_notification"
                     android:textColor="@color/black"
-                    android:textStyle="bold"
                     android:textFontWeight="600"
-                    android:textSize="@dimen/dimension_14sp" />
+                    android:textSize="@dimen/dimension_14sp"
+                    android:textStyle="bold" />
 
                 <View
                     android:id="@+id/notification_view"
@@ -362,10 +358,10 @@
                     android:fontFamily="@font/poppins"
                     android:paddingTop="@dimen/dimension_20dp"
                     android:text="@string/location"
-                    android:textStyle="bold"
                     android:textColor="@color/black"
                     android:textFontWeight="600"
-                    android:textSize="@dimen/dimension_14sp" />
+                    android:textSize="@dimen/dimension_14sp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/location_point"
@@ -373,13 +369,11 @@
                     android:layout_height="wrap_content"
                     android:layout_alignBaseline="@+id/location"
                     android:layout_alignEnd="@+id/location_view"
-                    android:layout_marginStart="9dp"
-                    android:layout_marginEnd="0dp"
                     android:layout_toEndOf="@+id/location"
-                    android:textColor="@color/black"
                     android:drawableEnd="@drawable/ic_baseline_keyboard_arrow_right_24"
                     android:text="@string/while_using"
                     android:textAlignment="viewEnd"
+                    android:textColor="@color/black"
                     android:textSize="@dimen/txtSize" />
 
                 <View
@@ -404,23 +398,22 @@
                     android:paddingTop="@dimen/dimension_20dp"
                     android:text="@string/two_step_verification"
                     android:textColor="@color/black"
-                    android:textStyle="bold"
                     android:textFontWeight="600"
-                    android:textSize="@dimen/dimension_14sp" />
+                    android:textSize="@dimen/dimension_14sp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/user_security"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignBaseline="@+id/security"
-                    android:layout_toEndOf="@+id/security"
                     android:layout_alignEnd="@id/location_point"
-                    android:textColor="@color/black"
+                    android:layout_toEndOf="@+id/security"
                     android:drawableEnd="@drawable/ic_baseline_keyboard_arrow_down_24"
                     android:text="@string/enabled"
                     android:textAlignment="viewEnd"
+                    android:textColor="@color/black"
                     android:textSize="@dimen/txtSize" />
-
 
 
             </RelativeLayout>
