@@ -13,9 +13,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".EditAccountInfoActivity"></activity>
-
-        <activity android:name=".PaymentActivity"></activity>
+        <activity android:name=".WalletPageActivity" android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".EditAccountInfoActivity" />
+        <activity android:name=".PaymentActivity" />
         <activity android:name=".ContactUsActivity2" />
         <activity
             android:name=".LocationActivity"
@@ -38,6 +38,7 @@
         </activity>
         <activity
             android:name=".MainActivity"
+            android:theme="@style/AppTheme.splashScreen"></activity>
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.splashScreen">
         </activity>
