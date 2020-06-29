@@ -2,6 +2,14 @@
 
     <string name="app_name">AfriVac</string>
     <!-- TODO: Remove or change this placeholder text -->
+    <string name="mywallet">My Wallet</string>
+    <string name="hotelName">Cocoon Hotel</string>
+    <string name="pay_pal">Pay Pal</string>
+    <string name="credit_debit">Credit/Debit</string>
+    <string name="lastDigits">The last 3 digits at the back of your card</string>
+    <string name="save_details">Save Details</string>
+    <string name="secure_payment">This a secure ssl encrypted payment </string>
+    <string name="paymentmethod">Payment Method</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="azeez_adeleke" translatable="false">Azeez Adeleke</string>
     <string name="my_account">My Account</string>
@@ -166,7 +174,7 @@
     <string name="two" translatable="false">02</string>
     <string name="delete_my_account" translatable="false">Delete My Account</string>
     <string name="my_destination" translatable="false">My Destination</string>
-    <string name="my_wallet" translatable="false">My Wallet</string>
+    <string name="my_wallet">My Wallet</string>
     <string name="add_a_photo" translatable="false">Add a photo</string>
     <string name="location" translatable="false">Location</string>
     <string name="while_using" translatable="false">While Using</string>

@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">AfriVac</string>
+    <string name="mywallet">mon portefeuille</string>
+    <string name="hotelName">Cocoon Hotel</string>
+    <string name="pay_pal">Pay Pal</string>
+    <string name="credit_debit">Credit/Debit</string>
+    <string name="lastDigits">The last 3 digits at the back of your card</string>
+    <string name="save_details">Save Details</string>
+    <string name="secure_payment">This a secure ssl encrypted payment </string>
+    <string name="paymentmethod">Payment Method</string>
     <string name="my_account">Mi Cuenta</string>
     <string name="username">Nombre de usuario</string>
     <string name="phone">Número de teléfono</string>

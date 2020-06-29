@@ -62,4 +62,8 @@ dependencies {
     //google authentication library
     implementation 'com.google.android.gms:play-services-auth:18.0.0'
 
+    //dependencies for a Master Card Input
+    implementation "androidx.appcompat:appcompat:1.1.0"
+    implementation "com.uphyca:creditcardedittext:1.3"
+
 }
