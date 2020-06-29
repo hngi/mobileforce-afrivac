@@ -70,7 +70,7 @@
                     android:layout_alignBottom="@+id/profile_image"
                     android:adjustViewBounds="true"
                     android:backgroundTint="#000000"
-                    android:src="@drawable/ic_baseline_add_a_photo_24" />
+                    android:src="@drawable/ic_baseline_add_a_photo_24"  />
 
                 <Button
                     android:id="@+id/btn_edit2"
@@ -109,6 +109,7 @@
                     android:autofillHints="@string/username"
                     android:background="@android:color/transparent"
                     android:drawableEnd="@drawable/ic_baseline_keyboard_arrow_right_24"
+                    android:drawableTint="@color/colorLightGrey"
                     android:text="@string/azeez_adeleke"
                     android:textAlignment="viewEnd"
                     android:textColor="@color/black"
@@ -149,6 +150,7 @@
                     android:layout_toEndOf="@+id/email"
                     android:autofillHints="@string/enter_email"
                     android:background="@android:color/transparent"
+                    android:drawableTint="@color/colorLightGrey"
                     android:text="@string/azeez_hng_com"
                     android:textAlignment="viewEnd"
                     android:textColor="@color/black"
@@ -190,6 +192,7 @@
                     android:layout_toEndOf="@+id/phone"
                     android:autofillHints="@string/phone"
                     android:background="@android:color/transparent"
+                    android:drawableTint="@color/colorLightGrey"
                     android:drawableEnd="@drawable/ic_baseline_keyboard_arrow_right_24"
                     android:text="@string/phoneNumb"
                     android:textAlignment="viewEnd"
@@ -265,6 +268,7 @@
                     android:layout_alignBaseline="@+id/gender"
                     android:layout_alignEnd="@+id/gender_view"
                     android:layout_toEndOf="@+id/gender"
+                    android:drawableTint="@color/colorLightGrey"
                     android:drawableEnd="@drawable/ic_baseline_keyboard_arrow_down_24"
                     android:text="@string/male"
                     android:textAlignment="viewEnd"
@@ -303,6 +307,7 @@
                     android:layout_alignBaseline="@+id/language"
                     android:layout_alignEnd="@+id/language_view"
                     android:layout_toEndOf="@+id/language"
+                    android:drawableTint="@color/colorLightGrey"
                     android:drawableEnd="@drawable/ic_baseline_keyboard_arrow_down_24"
                     android:text="@string/english"
                     android:textAlignment="viewEnd"
@@ -370,6 +375,7 @@
                     android:layout_alignBaseline="@+id/location"
                     android:layout_alignEnd="@+id/location_view"
                     android:layout_toEndOf="@+id/location"
+                    android:drawableTint="@color/colorLightGrey"
                     android:drawableEnd="@drawable/ic_baseline_keyboard_arrow_right_24"
                     android:text="@string/while_using"
                     android:textAlignment="viewEnd"
@@ -409,6 +415,7 @@
                     android:layout_alignBaseline="@+id/security"
                     android:layout_alignEnd="@id/location_point"
                     android:layout_toEndOf="@+id/security"
+                    android:drawableTint="@color/colorLightGrey"
                     android:drawableEnd="@drawable/ic_baseline_keyboard_arrow_down_24"
                     android:text="@string/enabled"
                     android:textAlignment="viewEnd"
@@ -447,6 +454,7 @@
                     android:layout_marginEnd="@dimen/dimension_10dp"
                     android:textColor="@color/colorGrey"
                     android:fontFamily="@font/poppins"
+                    android:drawableTint="@color/colorBlack"
                     android:drawableEnd="@drawable/ic_baseline_keyboard_arrow_right_24"
                     android:text="@string/my_wallet"
                     android:textSize="@dimen/dimension_14sp" />
@@ -483,6 +491,7 @@
                     android:textColor="@color/colorGrey"
                     android:layout_marginEnd="@dimen/dimension_10dp"
                     android:fontFamily="@font/poppins"
+                    android:drawableTint="@color/colorBlack"
                     android:drawableEnd="@drawable/ic_baseline_keyboard_arrow_right_24"
                     android:text="@string/my_destination"
                     android:textSize="@dimen/dimension_14sp" />
@@ -521,6 +530,7 @@
                     android:layout_marginEnd="@dimen/dimension_10dp"
                     android:fontFamily="@font/poppins"
                     android:drawableEnd="@drawable/ic_baseline_keyboard_arrow_right_24"
+                    android:drawableTint="@color/colorBlack"
                     android:text="@string/saved_destination"
                     android:textSize="@dimen/dimension_14sp" />
 
@@ -558,6 +568,7 @@
                     android:textColor="@color/colorGrey"
                     android:fontFamily="@font/poppins"
                     android:drawableEnd="@drawable/ic_baseline_keyboard_arrow_right_24"
+                    android:drawableTint="@color/colorBlack"
                     android:text="@string/invite_friends"
                     android:textSize="@dimen/dimension_14sp" />
 
@@ -577,6 +588,7 @@
                     android:textColor="@color/colorGrey"
                     android:fontFamily="@font/poppins"
                     android:drawableEnd="@drawable/ic_baseline_keyboard_arrow_right_24"
+                    android:drawableTint="@color/colorBlack"
                     android:layout_marginStart="@dimen/dimension_10dp"
                     android:layout_marginEnd="@dimen/dimension_10dp"
                     android:text="@string/delete_my_account"
