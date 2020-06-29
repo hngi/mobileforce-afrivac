@@ -114,6 +114,7 @@
                     android:autofillHints="@string/username"
                     android:background="@android:color/transparent"
                     android:drawableEnd="@drawable/ic_baseline_keyboard_arrow_right_24"
+                    android:textColor="@color/black"
                     android:text="@string/azeez_adeleke"
                     android:textAlignment="viewEnd"
                     android:textSize="@dimen/txtSize" />
@@ -154,6 +155,7 @@
                     android:background="@android:color/transparent"
                     android:text="@string/azeez_hng_com"
                     android:textAlignment="viewEnd"
+                    android:textColor="@color/black"
                     android:textSize="@dimen/txtSize"
                     tools:ignore="TextFields" />
 
@@ -194,6 +196,7 @@
                     android:background="@android:color/transparent"
                     android:drawableEnd="@drawable/ic_baseline_keyboard_arrow_right_24"
                     android:text="@string/phoneNumb"
+                    android:textColor="@color/black"
                     android:textAlignment="viewEnd"
                     android:textSize="@dimen/txtSize"
                     tools:ignore="TextFields" />
@@ -266,6 +269,7 @@
                     android:layout_alignBaseline="@+id/gender"
                     android:layout_alignEnd="@+id/gender_view"
                     android:layout_toEndOf="@+id/gender"
+                    android:textColor="@color/black"
                     android:drawableEnd="@drawable/ic_baseline_keyboard_arrow_down_24"
                     android:text="@string/male"
                     android:textAlignment="viewEnd"
@@ -303,6 +307,7 @@
                     android:layout_alignBaseline="@+id/language"
                     android:layout_alignEnd="@+id/language_view"
                     android:layout_toEndOf="@+id/language"
+                    android:textColor="@color/black"
                     android:drawableEnd="@drawable/ic_baseline_keyboard_arrow_down_24"
                     android:text="@string/english"
                     android:textAlignment="viewEnd"
@@ -371,6 +376,7 @@
                     android:layout_marginStart="9dp"
                     android:layout_marginEnd="0dp"
                     android:layout_toEndOf="@+id/location"
+                    android:textColor="@color/black"
                     android:drawableEnd="@drawable/ic_baseline_keyboard_arrow_right_24"
                     android:text="@string/while_using"
                     android:textAlignment="viewEnd"
@@ -409,6 +415,7 @@
                     android:layout_alignBaseline="@+id/security"
                     android:layout_toEndOf="@+id/security"
                     android:layout_alignEnd="@id/location_point"
+                    android:textColor="@color/black"
                     android:drawableEnd="@drawable/ic_baseline_keyboard_arrow_down_24"
                     android:text="@string/enabled"
                     android:textAlignment="viewEnd"
