@@ -160,6 +160,7 @@
             app:layout_constraintTop_toBottomOf="@+id/textView8" />
 
 
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
@@ -726,6 +727,10 @@
             </RelativeLayout>
                 </androidx.cardview.widget.CardView>
         </RelativeLayout>
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
 </LinearLayout>
 </ScrollView>
