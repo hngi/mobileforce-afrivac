@@ -5,6 +5,7 @@ import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
@@ -61,7 +62,7 @@ public class AuthViewModel {
             helper.toastMessage(view.getContext(), "Fill Password field");
             password.requestFocus();
         }else if(passwordStr.length() <6 || confirmPasswordStr.length() < 6){
-            helper.toastMessage(view.getContext(), "Fill Password field");
+            helper.toastMessage(view.getContext(), "Your password must be at least 6 characters long");
         }else if(!confirmPasswordStr.equals(passwordStr)){
             helper.toastMessage(view.getContext(), "Passwords do not Match");
         }else if(phoneNumberStr.trim().isEmpty()){
@@ -86,12 +87,14 @@ public class AuthViewModel {
                         helper.toastMessage(view.getContext(), "You are logged in successfully");
 
                         FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+                        assert firebaseUser != null;
                         String userID = firebaseUser.getUid();
                         String fullName = firebaseUser.getDisplayName();
                         DatabaseReference reference = databaseReference.child(userID);
 
                         HashMap<String, String> hashMap = new HashMap<>();
                         hashMap.put("id", userID);
+                        hashMap.put("Full Name", fullName);
                         hashMap.put("username", userNameStr);
                         hashMap.put("email", emailStr);
                         hashMap.put("number", phoneNumberStr);
@@ -103,8 +106,12 @@ public class AuthViewModel {
                                 if(task.isSuccessful()){
                                     helper1.progressDialogEnd();
                                     Log.d(TAG, "Save Account Info: success");
-                                    helper.toastMessage(view.getContext(), "Save Account Info: success");
-                                    helper.gotoMainActivity(view.getContext());
+
+                                    //call the email verification method and sign the user.
+                                    // Redirect them to the login activity
+                                    sendVerEmail(view);
+                                    FirebaseAuth.getInstance().signOut();
+                                    helper.gotoLoginAcitivity(view.getContext());
                                 }else {
                                     helper1.progressDialogEnd();
                                     Log.w(TAG, "saveAccountInfo:failure", task.getException());
@@ -164,4 +171,27 @@ public class AuthViewModel {
             });
         }
     }
+
+    //method for sending email verification upon registration(sign-up)
+    private void sendVerEmail(@NonNull final View view){
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user !=  null){
+            user.sendEmailVerification()
+                    .addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            if (task.isSuccessful()){
+                                Toast.makeText(view.getContext(), "Email verification sent " +
+                                                "\nPlease check your inbox for verification message",
+                                        Toast.LENGTH_LONG).show();
+                            } else {
+                                Toast.makeText(view.getContext(), "Could not send Email verification sent ",
+                                        Toast.LENGTH_SHORT).show();
+
+                            }
+                        }
+                    });
+        }
+    }
+
 }
