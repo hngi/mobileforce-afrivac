@@ -190,4 +190,5 @@
         <item>Spanish</item>
     </string-array>
     <string name="phoneNumb" translatable="false">+234 7061815056</string>
+    <string name="saveProf" translatable="false">Save Changes</string>
 </resources>
