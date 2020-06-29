@@ -74,7 +74,7 @@
                     android:src="@drawable/ic_baseline_add_a_photo_24" />
 
                 <Button
-                    android:id="@+id/btn_save"
+                    android:id="@+id/btn_edit2"
                     android:layout_width="wrap_content"
                     android:layout_height="@dimen/dimension_40dp"
                     android:layout_below="@+id/profile_image"
@@ -84,7 +84,7 @@
                     android:layout_toEndOf="@+id/my_account"
                     android:background="@drawable/curved_edge"
                     android:padding="@dimen/dimension_10dp"
-                    android:text="Save changes"
+                    android:text="@string/edit_profile"
                     android:textAppearance="@style/TextAppearance.AppCompat.Small"
                     android:textColor="#FFFFFF" />
 
@@ -114,8 +114,8 @@
                     android:autofillHints="@string/username"
                     android:background="@android:color/transparent"
                     android:drawableEnd="@drawable/ic_baseline_keyboard_arrow_right_24"
-                    android:text="@string/azeez_adeleke"
                     android:textColor="@color/black"
+                    android:text="@string/azeez_adeleke"
                     android:textAlignment="viewEnd"
                     android:textSize="@dimen/txtSize" />
 
@@ -139,7 +139,8 @@
                     android:fontFamily="@font/poppins"
                     android:paddingTop="@dimen/dimension_20dp"
                     android:text="@string/email"
-                    android:textColor="#000000"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
                     android:textFontWeight="600"
                     android:textSize="@dimen/dimension_14sp" />
 
@@ -153,8 +154,8 @@
                     android:autofillHints="@string/enter_email"
                     android:background="@android:color/transparent"
                     android:text="@string/azeez_hng_com"
-                    android:textColor="@color/black"
                     android:textAlignment="viewEnd"
+                    android:textColor="@color/black"
                     android:textSize="@dimen/txtSize"
                     tools:ignore="TextFields" />
 
@@ -179,7 +180,8 @@
                     android:fontFamily="@font/poppins"
                     android:paddingTop="@dimen/dimension_20dp"
                     android:text="@string/phone"
-                    android:textColor="#000000"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
                     android:textFontWeight="600"
                     android:textSize="@dimen/dimension_14sp" />
 
@@ -219,7 +221,8 @@
                     android:fontFamily="@font/poppins"
                     android:paddingTop="@dimen/dimension_20dp"
                     android:text="@string/country"
-                    android:textColor="#000000"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
                     android:textFontWeight="600"
                     android:textSize="@dimen/dimension_14sp" />
 
@@ -254,12 +257,13 @@
                     android:fontFamily="@font/poppins"
                     android:paddingTop="@dimen/dimension_20dp"
                     android:text="@string/gender"
-                    android:textColor="#000000"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
                     android:textFontWeight="600"
                     android:textSize="@dimen/dimension_14sp" />
 
                 <TextView
-                    android:id="@+id/user_gender"
+                    android:id="@+id/user_gender1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignBaseline="@+id/gender"
@@ -291,12 +295,13 @@
                     android:fontFamily="@font/poppins"
                     android:paddingTop="@dimen/dimension_20dp"
                     android:text="@string/language"
-                    android:textColor="#000000"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
                     android:textFontWeight="600"
                     android:textSize="@dimen/dimension_14sp" />
 
                 <TextView
-                    android:id="@+id/user_language"
+                    android:id="@+id/user_language1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignBaseline="@+id/language"
@@ -318,50 +323,12 @@
                     android:layout_marginEnd="@dimen/dimension_10dp"
                     android:background="#C4616060" />
 
-                <TextView
-                    android:id="@+id/password"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/language_view"
-                    android:layout_marginStart="@dimen/dimension_10dp"
-                    android:layout_marginTop="@dimen/dimension_10dp"
-                    android:fontFamily="@font/poppins"
-                    android:paddingTop="@dimen/dimension_20dp"
-                    android:text="@string/password"
-                    android:textColor="#000000"
-                    android:textFontWeight="600"
-                    android:textSize="@dimen/dimension_14sp" />
-
-                <TextView
-                    android:id="@+id/user_password"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignBaseline="@+id/password"
-                    android:layout_alignEnd="@+id/password_view"
-                    android:layout_toEndOf="@+id/password"
-                    android:background="@android:color/transparent"
-                    android:drawableEnd="@drawable/ic_baseline_keyboard_arrow_right_24"
-                    android:text="@string/hidden_password"
-                    android:textColor="@color/black"
-                    android:textAlignment="viewEnd"
-                    android:layout_marginStart="@dimen/dimension_40dp"
-                    android:textSize="@dimen/txtSize" />
-
-                <View
-                    android:id="@+id/password_view"
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_below="@+id/password"
-                    android:layout_marginStart="@dimen/dimension_10dp"
-                    android:layout_marginTop="1dp"
-                    android:layout_marginEnd="@dimen/dimension_10dp"
-                    android:background="#C4616060" />
 
                 <TextView
                     android:id="@+id/push_notification"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/password_view"
+                    android:layout_below="@+id/language_view"
                     android:layout_marginStart="@dimen/dimension_10dp"
                     android:layout_marginTop="@dimen/dimension_10dp"
                     android:layout_marginEnd="@dimen/dimension_10dp"
@@ -369,7 +336,8 @@
                     android:fontFamily="@font/poppins"
                     android:paddingTop="@dimen/dimension_20dp"
                     android:text="@string/push_notification"
-                    android:textColor="#000000"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
                     android:textFontWeight="600"
                     android:textSize="@dimen/dimension_14sp" />
 
@@ -394,7 +362,8 @@
                     android:fontFamily="@font/poppins"
                     android:paddingTop="@dimen/dimension_20dp"
                     android:text="@string/location"
-                    android:textColor="#000000"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
                     android:textFontWeight="600"
                     android:textSize="@dimen/dimension_14sp" />
 
@@ -402,10 +371,12 @@
                     android:id="@+id/location_point"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/black"
                     android:layout_alignBaseline="@+id/location"
                     android:layout_alignEnd="@+id/location_view"
+                    android:layout_marginStart="9dp"
+                    android:layout_marginEnd="0dp"
                     android:layout_toEndOf="@+id/location"
+                    android:textColor="@color/black"
                     android:drawableEnd="@drawable/ic_baseline_keyboard_arrow_right_24"
                     android:text="@string/while_using"
                     android:textAlignment="viewEnd"
@@ -432,7 +403,8 @@
                     android:fontFamily="@font/poppins"
                     android:paddingTop="@dimen/dimension_20dp"
                     android:text="@string/two_step_verification"
-                    android:textColor="#000000"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
                     android:textFontWeight="600"
                     android:textSize="@dimen/dimension_14sp" />
 
@@ -443,9 +415,9 @@
                     android:layout_alignBaseline="@+id/security"
                     android:layout_toEndOf="@+id/security"
                     android:layout_alignEnd="@id/location_point"
+                    android:textColor="@color/black"
                     android:drawableEnd="@drawable/ic_baseline_keyboard_arrow_down_24"
                     android:text="@string/enabled"
-                    android:textColor="@color/black"
                     android:textAlignment="viewEnd"
                     android:textSize="@dimen/txtSize" />
 
@@ -456,7 +428,7 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="@dimen/dimension_20dp"
                 android:background="#ffffff"
                 android:padding="@dimen/dimension_20dp">
 
@@ -606,19 +578,16 @@
                 android:padding="@dimen/dimension_20dp">
 
                 <TextView
-                    android:id="@+id/delete"
+                    android:id="@+id/deleteAcc"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/dimension_10dp"
-                    android:layout_marginTop="@dimen/dimension_10dp"
-                    android:layout_marginEnd="@dimen/dimension_10dp"
-                    android:drawableEnd="@drawable/ic_baseline_keyboard_arrow_right_24"
-                    android:paddingTop="@dimen/dimension_20dp"
+                    android:textColor="@color/colorGrey"
                     android:fontFamily="@font/poppins"
-                    android:textFontWeight="600"
+                    android:drawableEnd="@drawable/ic_baseline_keyboard_arrow_right_24"
+                    android:layout_marginStart="@dimen/dimension_10dp"
+                    android:layout_marginEnd="@dimen/dimension_10dp"
                     android:text="@string/delete_my_account"
-                    android:textSize="@dimen/dimension_14sp"
-                    android:textStyle="bold" />
+                    android:textSize="@dimen/dimension_14sp" />
 
             </RelativeLayout>
 

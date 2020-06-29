@@ -10,6 +10,7 @@
     <color name="colorBlack">#FF000000</color>
     <color name="colorBlue">#3913B8</color>
     <color name="drawerColor">#3913B8</color>
+    <color name="aColor">#8352fd</color>
 
     <color name="stroke">#C4C4C4</color>
     <color name="textColor">#464646</color>
@@ -20,4 +21,6 @@
     <color name="lineColor">#C4616060</color>
 
     <color name="ScreenBackground">#F2F6FF</color>
+    <color name="sub_text_blue">#3913B8</color>
+    <color name="description_color">#464646</color>
 </resources>
