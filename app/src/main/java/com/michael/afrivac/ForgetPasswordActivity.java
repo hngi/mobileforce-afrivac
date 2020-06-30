@@ -29,50 +29,50 @@ public class ForgetPasswordActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_forget_password);
 
-        email = findViewById(R.id.signin_email);
-        reset = findViewById(R.id.reset_password);
-
-        mAuth = FirebaseAuth.getInstance();
-
-        reset.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.button_anim);
-                reset.startAnimation(animation);
-                animation.setAnimationListener(new Animation.AnimationListener() {
-                    @Override
-                    public void onAnimationStart(Animation animation) {}
-
-                    @Override
-                    public void onAnimationEnd(Animation animation) {
-                        final String mail = email.getText().toString().trim();
-                        if (mail.isEmpty())
-                        {
-                            email.setError("Please enter your valid email");
-                            email.requestFocus();
-                        }else {
-                            {
-                                mAuth.sendPasswordResetEmail(mail).addOnCompleteListener(new OnCompleteListener<Void>() {
-                                    @Override
-                                    public void onComplete(@NonNull Task<Void> task) {
-                                        if (task.isSuccessful()){
-                                            Toast.makeText(ForgetPasswordActivity.this,
-                                                    "Please check your email for reset link", Toast.LENGTH_SHORT).show();
-                                            startActivity(new Intent(getApplicationContext(), LoginActivity.class));//Change the signUpActivity to signinActivity
-                                        }else {
-                                            String message = task.getException().getMessage();
-                                            Toast.makeText(ForgetPasswordActivity.this, "Error Occurred" + message, Toast.LENGTH_SHORT).show();
-                                        }
-                                    }
-                                });
-                            }
-                        }
-                    }
-
-                    @Override
-                    public void onAnimationRepeat(Animation animation) {}
-                });
-            }
-        });
+//        email = findViewById(R.id.signin_email);
+//        reset = findViewById(R.id.reset_password);
+//
+//        mAuth = FirebaseAuth.getInstance();
+//
+//        reset.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.button_anim);
+//                reset.startAnimation(animation);
+//                animation.setAnimationListener(new Animation.AnimationListener() {
+//                    @Override
+//                    public void onAnimationStart(Animation animation) {}
+//
+//                    @Override
+//                    public void onAnimationEnd(Animation animation) {
+//                        final String mail = email.getText().toString().trim();
+//                        if (mail.isEmpty())
+//                        {
+//                            email.setError("Please enter your valid email");
+//                            email.requestFocus();
+//                        }else {
+//                            {
+//                                mAuth.sendPasswordResetEmail(mail).addOnCompleteListener(new OnCompleteListener<Void>() {
+//                                    @Override
+//                                    public void onComplete(@NonNull Task<Void> task) {
+//                                        if (task.isSuccessful()){
+//                                            Toast.makeText(ForgetPasswordActivity.this,
+//                                                    "Please check your email for reset link", Toast.LENGTH_SHORT).show();
+//                                            startActivity(new Intent(getApplicationContext(), LoginActivity.class));//Change the signUpActivity to signinActivity
+//                                        }else {
+//                                            String message = task.getException().getMessage();
+//                                            Toast.makeText(ForgetPasswordActivity.this, "Error Occurred" + message, Toast.LENGTH_SHORT).show();
+//                                        }
+//                                    }
+//                                });
+//                            }
+//                        }
+//                    }
+//
+//                    @Override
+//                    public void onAnimationRepeat(Animation animation) {}
+//                });
+//            }
+//        });
     }
 }
