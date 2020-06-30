@@ -17,6 +17,7 @@ import com.michael.afrivac.ui.popular_destination.PopularDestinationFragment;
 import com.michael.afrivac.ui.support.SupportFragment;
 import com.google.firebase.auth.FirebaseAuth;
 
+import android.os.Handler;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
@@ -50,6 +51,9 @@ import android.widget.Toast;
 import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+
+    //creating fragment object
+    Fragment fragment = null;
 
     private AppBarConfiguration mAppBarConfiguration;
     private ActionBarDrawerToggle toggle;
@@ -142,6 +146,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         return true;
     }
 
+    boolean doubleBackToExitPressedOnce = false;
 
     @Override
     public void onBackPressed() {
@@ -149,26 +154,50 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
-           // super.onBackPressed();
-        }
+            //get the home fragment
+            fragment = getSupportFragmentManager().findFragmentByTag("HomeFragment");
+            if(fragment != null && fragment.isVisible()){
+                if(doubleBackToExitPressedOnce){
+                    new AlertDialog.Builder(this)
+                            .setIcon(R.drawable.logo_black)
+                            .setTitle("Exit App?")
+                            .setMessage("Are you sure you want to exit AfriVac?")
+                            .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                    finish();
+                                }
+                            })
+                            .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                    //Toast.makeText(MainActivity.this, "Welcome back", Toast.LENGTH_SHORT).show();
+                                }
+                            })
+                            .show();
+                    /*super.onBackPressed();
+                    return;*/
+                }
+                this.doubleBackToExitPressedOnce = true;
+                helper.toastMessage(this, "Please click back again to exit");
 
-        new AlertDialog.Builder(this)
-                .setIcon(R.drawable.logo_black)
-                .setTitle("Exit App?")
-                .setMessage("Are you sure you want to exit AfriVac?")
-                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                //delay to clear the double back pressed to false
+                new Handler().postDelayed(new Runnable() {
                     @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        finish();
+                    public void run() {
+                        doubleBackToExitPressedOnce = false;
                     }
-                })
-                .setNegativeButton("No", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        //Toast.makeText(MainActivity.this, "Welcome back", Toast.LENGTH_SHORT).show();
-                    }
-                })
-                .show();
+                }, 2000);
+            }else {
+                reLoadMainActivity();
+            }
+           //super.onBackPressed();
+        }
+    }
+
+    public void reLoadMainActivity(){
+        startActivity(new Intent(this, MainActivity.class));
+        finish();
     }
 
     @Override
@@ -199,25 +228,29 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     private void displaySelectedScreen(int itemId) {
 
-        //creating fragment object
-        Fragment fragment = null;
-
+        //string tag for fragment object
+        String fragment_tag = "null";
         //initializing the fragment object which is selected
         switch (itemId) {
             case R.id.nav_home:
                 fragment = new HomeFragment();
+                fragment_tag = "HomeFragment";
                 break;
             case R.id.nav_account:
                 fragment = new AccountFragment();
+                fragment_tag = "AccountFragment";
                 break;
             case R.id.nav_destination:
                 fragment = new PopularDestinationFragment();
+                fragment_tag = "PopularDestinationFragment";
                 break;
             case R.id.nav_hotel:
                 fragment = new FindHotelFragment();
+                fragment_tag = "FindHotelFragment";
                 break;
             case R.id.nav_support:
                 fragment = new SupportFragment();
+                fragment_tag = "SupportFragment";
                 break;
             case R.id.nav_logout:
                 logout();
@@ -227,7 +260,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         //replacing the fragment
         if (fragment != null) {
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-            ft.replace(R.id.nav_host_fragment, fragment);
+            ft.replace(R.id.nav_host_fragment, fragment, fragment_tag);
             ft.commit();
         }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
