@@ -193,6 +193,7 @@
     <string name="capetown" translatable="false">Capetown</string>
     <string name="south_africa" translatable="false">South Africa</string>
     <string name="country_saotome" translatable="false">São Tomé e</string>
+    <string name="guinea" translatable="false">Guinea</string>
     <string name="salute_message">Hi Adeleke \nwhere would you like to visit</string>
     <string name="home_page_top_message">Hi Adeleke, \nwhere will you like to vist?</string>
     <string name="find_destination">Find Destination</string>
