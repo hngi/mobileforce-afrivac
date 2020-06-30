@@ -1,6 +1,7 @@
 package com.michael.afrivac.ui.popular_destination;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,26 +14,100 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.michael.afrivac.R;
+import com.michael.afrivac.Util.FirebaseUtil;
 import com.michael.afrivac.model.PopularPlaces;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.util.ArrayList;
 import java.util.List;
 
 class PopularDestinationRVAdapter extends RecyclerView.Adapter<PopularDestinationRVAdapter.PopularPlacesRVAdapterVH> {
     private PopularDestinationRVAdapter.OnItemSelectedListener onItemSelectedListener;
-    private List<PopularPlaces> popularPlaces;
+    private List<PopularPlaces> popularPlaces=new ArrayList<>();
     private Context context;
+    private FirebaseDatabase mFirebaseDatabase;
+    private DatabaseReference mDatabaseReference;
+    private ChildEventListener mChildListener;
+
+
+;
 
     public PopularDestinationRVAdapter(Context context, OnItemSelectedListener onItemSelectedListener) {
         this.context = context;
         this.onItemSelectedListener = onItemSelectedListener;
+        mFirebaseDatabase = FirebaseUtil.mFirebaseDatabase;
+        mDatabaseReference = FirebaseDatabase.getInstance().getReference("popular_destinatio");
+        //this.popularPlaces = FirebaseUtil.sPopularPlaces;
+               //FirebaseUtil.openFbReference("popular_destinatio");
+
+        mDatabaseReference.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+
+
+
+                String country=dataSnapshot.child("country").getValue().toString();
+                String destination=dataSnapshot.child("name").getValue().toString();
+                String description=dataSnapshot.child("description").getValue().toString();
+                String image=dataSnapshot.child("image").getValue().toString();
+                double rate= Double.parseDouble(dataSnapshot.child("rating_number").getValue().toString());
+                int engagement= Integer.parseInt(dataSnapshot.child("review_number").getValue().toString());
+
+                boolean isFavourite=false;
+
+
+                PopularPlaces td = new PopularPlaces(country,
+                        destination,
+                        description,image,
+                        isFavourite,rate,engagement);
+
+
+
+                popularPlaces.add(td);
+
+                notifyItemInserted(popularPlaces.size()-1);
+
+            }
+
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+
+
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+
+
+
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
     }
 
     public void setDestinations(List<PopularPlaces> popularPlaces) {
-        this.popularPlaces = popularPlaces;
-        notifyDataSetChanged();
+        //this.popularPlaces = popularPlaces;
+       // this.popularPlaces = FirebaseUtil.sPopularPlaces;
+       // notifyDataSetChanged();
     }
 
     class PopularPlacesRVAdapterVH extends RecyclerView.ViewHolder implements View.OnClickListener {
@@ -71,7 +146,7 @@ class PopularDestinationRVAdapter extends RecyclerView.Adapter<PopularDestinatio
     public void onBindViewHolder(@NonNull PopularPlacesRVAdapterVH holder, final int position) {
         final PopularPlaces current = popularPlaces.get(position);
         Glide.with(context)
-                .load(current.getImageUrl())
+                .load(current.getImage())
                 .placeholder(R.drawable.ic_account_circle_black_24dp)
                 .into(holder.image);
         holder.destination.setText(current.getDestination());
