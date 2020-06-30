@@ -18,15 +18,6 @@
             android:background="#ffffff"
             android:padding="20dp">
 
-            <ImageView
-                android:id="@+id/back_arrow"
-                android:layout_width="40dp"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_baseline_arrow_back_24"
-                android:layout_marginTop="20dp"
-                android:layout_marginStart="10dp"
-                android:contentDescription="@string/back_arrow" />
-
             <TextView
                 android:id="@+id/my_account"
                 android:layout_width="wrap_content"
@@ -34,7 +25,6 @@
                 android:text="@string/my_account"
                 android:textSize="24sp"
                 android:layout_marginStart="10dp"
-                android:layout_below="@+id/back_arrow"
                 android:layout_marginTop="20dp"
                 android:textStyle="bold"
                 />

@@ -83,22 +83,21 @@ public class EditAccountInfoActivity extends AppCompatActivity implements View.O
         }
         databaseReference = FirebaseDatabase.getInstance().getReference();
 
-        userName = (EditText)findViewById(R.id.user_name_edit);
-        email = (EditText)findViewById(R.id.edit_email);
-        phoneNumber = (EditText)findViewById(R.id.edit_phone);
+        userName = (EditText)findViewById(R.id.user_name_edit2);
+        phoneNumber = (EditText)findViewById(R.id.edit_phone2);
 
         btnsave= findViewById(R.id.btn_save);
 
         FirebaseUser user = firebaseAuth.getCurrentUser();
         btnsave.setOnClickListener(this);
 
-        textViewemailname= findViewById(R.id.email);
+        textViewemailname= findViewById(R.id.edit_email2);
 
 
         // TODO: to change gender
         gender = findViewById(R.id.gender);
 
-        profileImageView = findViewById(R.id.profile_image);
+        profileImageView = findViewById(R.id.profile_image1);
 
         firebaseStorage = FirebaseStorage.getInstance();
         storageReference = firebaseStorage.getReference();

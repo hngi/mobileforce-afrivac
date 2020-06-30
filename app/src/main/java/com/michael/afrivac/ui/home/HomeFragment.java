@@ -1,32 +1,21 @@
 package com.michael.afrivac.ui.home;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.SearchView;
-import android.widget.TextView;
 
-import androidx.annotation.Nullable;
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProviders;
-import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.viewpager2.widget.ViewPager2;
 
 import com.michael.afrivac.LocationActivity;
-import com.michael.afrivac.LoginActivity;
-import com.michael.afrivac.ProfilePageActivity;
 import com.michael.afrivac.R;
 import com.michael.afrivac.ui.account.AccountFragment;
 
@@ -41,42 +30,42 @@ public class HomeFragment extends Fragment {
     SearchView searchView;
     private int radius;
 
-    public View onCreateView(@NonNull LayoutInflater inflater,
-                             ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater,  ViewGroup container, Bundle savedInstanceState) {
 //        homeViewModel =
 //                ViewModelProviders.of(this).get(HomeViewModel.class);
         View root = inflater.inflate(R.layout.fragment_home, container, false);
 
+
         // cards
-        cairo = root.findViewById(R.id.camelCard);
+        cairo = root.findViewById(R.id.caira_card);
         nairobi = root.findViewById(R.id.nairobi_card);
-        popular = root.findViewById(R.id.pop1);
-        pop2 = root.findViewById(R.id.pop2);
-        pop3 = root.findViewById(R.id.pop3);
+        popular = root.findViewById(R.id.caira_card);
+        pop2 = root.findViewById(R.id.madagascar_card);
+        pop3 = root.findViewById(R.id.são_tomé_e_card);
         //profile image
         profile_image = root.findViewById(R.id.profile_image);
 
         // fav icons
         favorite = root.findViewById(R.id.fav);
-        fav2 = root.findViewById(R.id.fav_2);
-        fav3 = root.findViewById(R.id.fav_3);
+        fav2 = root.findViewById(R.id.fav2);
+        fav3 = root.findViewById(R.id._fav2);
 
         //rating stars
-        star1 = root.findViewById(R.id.star1);
-        star2 = root.findViewById(R.id.star2);
-        star3 = root.findViewById(R.id.star3);
-        star4 = root.findViewById(R.id.star4);
-        star5 = root.findViewById(R.id.star5);
-        pop2_star1 = root.findViewById(R.id.pop2_star1);
-        pop2star2 = root.findViewById(R.id.pop2_star2);
-        pop2_star3 = root.findViewById(R.id.pop2_star3);
-        pop2_star4 = root.findViewById(R.id.pop2_star4);
-        pop2_star5 = root.findViewById(R.id.pop2_star5);
-        pop3_star1 = root.findViewById(R.id.pop3_star1);
-        pop3star2 = root.findViewById(R.id.pop3_star2);
-        pop3_star3 = root.findViewById(R.id.pop3_star3);
-        pop3_star4 = root.findViewById(R.id.pop3_star4);
-        pop3_star5 = root.findViewById(R.id.pop3_star5);
+        star1 = root.findViewById(R.id.star2);
+        star2 = root.findViewById(R.id.star3);
+        star3 = root.findViewById(R.id.star4);
+        star4 = root.findViewById(R.id.star5);
+        star5 = root.findViewById(R.id.empty_Star);
+        pop2_star1 = root.findViewById(R.id.s_tar3);
+        pop2star2 = root.findViewById(R.id.s_tar2);
+        pop2_star3 = root.findViewById(R.id.s_tar4);
+        pop2_star4 = root.findViewById(R.id.s_tar5);
+        pop2_star5 = root.findViewById(R.id.empty_Star);
+        pop3_star1 = root.findViewById(R.id._star_2);
+        pop3star2 = root.findViewById(R.id._star_3);
+        pop3_star3 = root.findViewById(R.id._star_4);
+        pop3_star4 = root.findViewById(R.id._star_5);
+        pop3_star5 = root.findViewById(R.id._emptyStar);
 
         radius =64;
 
