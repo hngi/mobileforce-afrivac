@@ -4,6 +4,8 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
+import static android.content.Context.MODE_PRIVATE;
+
 public class SharePref {
 
     private static final String LAST_LOGGED_IN = "LAST_LOGGED_IN";
@@ -77,7 +79,7 @@ public class SharePref {
     }
 
     public void saveLoginDetails(String token, String firstname, String lastname, String email) {
-        sharedPreferences = context.getSharedPreferences("LoginDetails", Context.MODE_PRIVATE);
+        sharedPreferences = context.getSharedPreferences("LoginDetails", MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString("Token", token);
         editor.putString("Firstname", firstname);
@@ -87,22 +89,22 @@ public class SharePref {
     }
 
     public String getMyToken() {
-        sharedPreferences = context.getSharedPreferences("LoginDetails", Context.MODE_PRIVATE);
+        sharedPreferences = context.getSharedPreferences("LoginDetails", MODE_PRIVATE);
         return sharedPreferences.getString("Token", "");
     }
 
     public String getUserFirstname() {
-        sharedPreferences = context.getSharedPreferences("LoginDetails", Context.MODE_PRIVATE);
+        sharedPreferences = context.getSharedPreferences("LoginDetails", MODE_PRIVATE);
         return sharedPreferences.getString("Firstname", "");
     }
 
     public String getUserLastname() {
-        sharedPreferences = context.getSharedPreferences("LoginDetails", Context.MODE_PRIVATE);
+        sharedPreferences = context.getSharedPreferences("LoginDetails", MODE_PRIVATE);
         return sharedPreferences.getString("Lastname", "");
     }
 
     public String getUserEmail() {
-        sharedPreferences = context.getSharedPreferences("LoginDetails", Context.MODE_PRIVATE);
+        sharedPreferences = context.getSharedPreferences("LoginDetails", MODE_PRIVATE);
         return sharedPreferences.getString("Email", "");
     }
 
@@ -126,6 +128,14 @@ public class SharePref {
     public Boolean getIsUserLoggedIn() {
         return sharedPreferences.getBoolean(USER_LOGIN_STATE, false);
     }
+
+  public Boolean getFirstTime() {
+        boolean isFirstTime = sharedPreferences.getBoolean("firstTime",true);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+       editor.putBoolean("firstTime",false);
+       editor.apply();
+       return isFirstTime;
+  }
 
     public void setIsUserLoggedIn(Boolean isUserLoggedIn) {
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
