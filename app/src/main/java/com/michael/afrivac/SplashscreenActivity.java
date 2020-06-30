@@ -53,10 +53,12 @@ public class SplashscreenActivity extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                if (sharePref.getIsUserLoggedIn()) {
-                    startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                //Display OnBoarding Screen for First Time user
+                if (sharePref.getFirstTime()) {
+                    startActivity(new Intent(getApplicationContext(), OnboardscreenActivity.class));
                 } else {
-                    Intent i = new Intent(SplashscreenActivity.this, OnboardscreenActivity.class);
+                    //Display LoginActivity Screen for old user
+                    Intent i = new Intent(SplashscreenActivity.this, LoginActivity.class);
                     //Intent is used to switch from one activity to another.
 
                     startActivity(i);
