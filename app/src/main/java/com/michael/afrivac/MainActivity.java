@@ -8,6 +8,7 @@ import android.os.Bundle;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
+import com.google.firebase.auth.FirebaseUser;
 import com.michael.afrivac.Util.Helper;
 import com.michael.afrivac.ui.account.AccountFragment;
 import com.michael.afrivac.ui.findHotel.FindHotelFragment;
@@ -170,6 +171,17 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 .show();
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        if(currentUser == null){
+            helper.gotoLoginAcitivity(this);
+        }
+
+    }
+
+
 //    @Override
 //    public boolean onSupportNavigateUp() {
 //        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
@@ -232,41 +244,3 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
 }
-
- /*   public void convertCurrency(View view){
-    EditText editText = (EditText) findViewById(R.id.edtText);
-    int currency = Integer.parseInt(editText.getText().toString());
-    double result;
-
-    private AppBarConfiguration mAppBarConfiguration;
-
-    switch (currency){
-    case 1: //Dollar to Naira
-    double dollar = 360;
-    result = currency * dollar;
-    break;
-    case 2: //Pounds to Naira
-    double pounds = 450;
-    result = currency * pounds;
-    break;
-
-    default:
-    throw new IllegalStateException("Unexpected value: " + currency);
-    }
-
-    Toast.makeText(MainActivity.this, Double.toString(result), Toast.LENGTH_LONG).show();
-    }*/
-
- /*
-
-
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
-        return true;
-    }
-
-
-  */
