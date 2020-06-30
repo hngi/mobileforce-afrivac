@@ -13,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.text.Editable;
@@ -30,8 +31,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.michael.afrivac.MainActivity;
 import com.michael.afrivac.R;
+import com.michael.afrivac.Util.FirebaseUtil;
 import com.michael.afrivac.model.DestinationSuggestion;
 import com.michael.afrivac.model.PopularPlaces;
 
@@ -48,6 +55,9 @@ public class PopularDestinationFragment extends Fragment {
 
     private PopularDestinationViewModel popularDestinationViewModel;
     private PopularDestinationRVAdapter popularDestinationRVAdapter;
+    final  ArrayList<PopularPlaces>   popularPlaces= new ArrayList<>();
+
+
 
     public static PopularDestinationFragment newInstance() {
         return new PopularDestinationFragment();
@@ -59,14 +69,18 @@ public class PopularDestinationFragment extends Fragment {
 
         ((MainActivity) requireActivity()).getSupportActionBar().hide();
 
+
+
+
         popularDestinationViewModel = ViewModelProviders.of(this).get(PopularDestinationViewModel.class);
         View view = inflater.inflate(R.layout.fragment_popular_destination, container, false);
 
-        popularPlacesRV = view.findViewById(R.id.nav_popular_destination);
+        popularPlacesRV = view.findViewById(R.id.popularDestinationRV);
         menuButton = view.findViewById(R.id.menuButton);
         avatarButton = view.findViewById(R.id.avatarButton);
         search_end_button = view.findViewById(R.id.search_end_button);
         searchTV = view.findViewById(R.id.searchTV);
+        popularPlacesRV.setLayoutManager(new LinearLayoutManager(getContext()));
 
         popularDestinationRVAdapter = new PopularDestinationRVAdapter(getContext(), new PopularDestinationRVAdapter.OnItemSelectedListener() {
             @Override
@@ -104,6 +118,7 @@ public class PopularDestinationFragment extends Fragment {
             public void onChanged(PopularDestinationViewModel.State state) {
                 switch (state) {
                     case NORMAL:
+                        popularDestinationRVAdapter.setDestinations(popularPlaces);
                         popularDestinationRVAdapter.setDestinations(popularDestinationViewModel.initialPopularPlaces);
                         extractSuggestions();
                         break;
@@ -179,6 +194,9 @@ public class PopularDestinationFragment extends Fragment {
                     R.layout.item_autocomplete, getSuggestions());
             searchTV.setAdapter(autoCompleteAdapter);
         }
+
+
+
     }
 
     private void searchInDB(String text) {
