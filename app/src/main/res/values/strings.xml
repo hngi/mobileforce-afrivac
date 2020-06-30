@@ -95,9 +95,9 @@
     <string name="s_o_tom_e" translatable="false">São Tomé e</string>
     <string name="hi_adeleke" translatable="false">Hi Adeleke,</string>
     <string name="where_will_you_like_to_go" translatable="false">where will you like to go</string>
-    <string name="submit">Submit</string>
-    <string name="newpassword">New Password</string>
-    <string name="confirmpassword">Confirm Password</string>
+    <string name="submit" translatable="false">Submit</string>
+    <string name="newpassword" translatable="false">New Password</string>
+    <string name="confirmpassword" translatable="false">Confirm Password</string>
     <string name="forgotPassword">Forgot Password?  -</string>
     <string name="overview">Overview</string>
     <string name="viewAll">View All</string>
@@ -176,7 +176,7 @@
     <string name="two" translatable="false">02</string>
     <string name="delete_my_account" translatable="false">Delete My Account</string>
     <string name="my_destination" translatable="false">My Destination</string>
-    <string name="my_wallet">My Wallet</string>
+    <string name="my_wallet" translatable="false">My Wallet</string>
     <string name="add_a_photo" translatable="false">Add a photo</string>
     <string name="location" translatable="false">Location</string>
     <string name="while_using" translatable="false">While Using</string>
@@ -194,17 +194,17 @@
     <string name="south_africa" translatable="false">South Africa</string>
     <string name="country_saotome" translatable="false">São Tomé e</string>
     <string name="guinea" translatable="false">Guinea</string>
-    <string name="salute_message">Hi Adeleke \nwhere would you like to visit</string>
-    <string name="home_page_top_message">Hi Adeleke, \nwhere will you like to vist?</string>
-    <string name="find_destination">Find Destination</string>
-    <string name="popular_destinations">Popular Destinations</string>
-    <string name="descriptive_text">The desert heat, the noisy streets and the sheer size of Cairo will leave even the most adaptable traveler with a serious case of culture shock</string>
-    <string name="mauritus_text">Mauritus</string>
-    <string name="madagascar_text">Madagascar</string>
-    <string name="mauritus_descriptive_text">Santoroni is the world best blue shining city. every year lot of travler visited here</string>
-    <string name="rate_4_1">4.1</string>
-    <string name="reviewa_2_731">(2,731)</string>
-    <string name="cape_town_description">Santoroni is the world best blue shining city. every year lot of travler visited here</string>
+    <string name="salute_message" translatable="false">Hi Adeleke \nwhere would you like to visit</string>
+    <string name="home_page_top_message" translatable="false">Hi Adeleke, \nwhere will you like to vist?</string>
+    <string name="find_destination" translatable="false">Find Destination</string>
+    <string name="popular_destinations" translatable="false">Popular Destinations</string>
+    <string name="descriptive_text" translatable="false">The desert heat, the noisy streets and the sheer size of Cairo will leave even the most adaptable traveler with a serious case of culture shock</string>
+    <string name="mauritus_text" translatable="false">Mauritus</string>
+    <string name="madagascar_text" translatable="false">Madagascar</string>
+    <string name="mauritus_descriptive_text" translatable="false">Santoroni is the world best blue shining city. every year lot of travler visited here</string>
+    <string name="rate_4_1" translatable="false">4.1</string>
+    <string name="reviewa_2_731" translatable="false">(2,731)</string>
+    <string name="cape_town_description" translatable="false">Santoroni is the world best blue shining city. every year lot of travler visited here</string>
     <string-array name="languages">
         <item>English</item>
         <item>France</item>
