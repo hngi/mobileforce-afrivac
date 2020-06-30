@@ -62,7 +62,7 @@ public class PopularDestinationFragment extends Fragment {
         popularDestinationViewModel = ViewModelProviders.of(this).get(PopularDestinationViewModel.class);
         View view = inflater.inflate(R.layout.fragment_popular_destination, container, false);
 
-        popularPlacesRV = view.findViewById(R.id.popularDestinationRV);
+        popularPlacesRV = view.findViewById(R.id.nav_popular_destination);
         menuButton = view.findViewById(R.id.menuButton);
         avatarButton = view.findViewById(R.id.avatarButton);
         search_end_button = view.findViewById(R.id.search_end_button);

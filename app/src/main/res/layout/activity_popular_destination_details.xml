@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context=".PopularDestinationDetailsActivity"
+    android:fitsSystemWindows="true"
+    android:padding="0dp">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fillViewport="true"
+        android:scrollbars="vertical">
+
+        <RelativeLayout android:id="@+id/scroll_layouts"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_height="280dp"
+        android:layout_width="match_parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:id="@+id/relative_destination">
+
+    <ImageView
+        android:id="@+id/destination_detail_image"
+        android:layout_width="match_parent"
+        android:layout_height="280dp"
+        android:src="@drawable/cairo_img"
+        android:scaleType="fitXY"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/white_back_arrow"
+                android:layout_alignParentStart="true"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="@dimen/dimension_20dp"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/share"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="@dimen/dimension_20dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/linText"
+        android:orientation="vertical"
+        android:layout_alignParentBottom="true">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:text="Cairo"
+            android:textColor="#fff"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/hotDetails"
+            android:orientation="horizontal"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="5dp"
+            android:layout_alignParentBottom="true">
+
+            <RatingBar
+                android:id="@+id/MyRating"
+                style="?android:attr/ratingBarStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:isIndicator="true"
+                android:numStars="5"
+                android:stepSize="0.1"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="10dp"
+                android:scaleX=".9"
+                android:scaleY="1.0"
+                android:transformPivotX="0dp"
+                android:transformPivotY="0dp"
+                android:max="5"
+                android:rating="4.1"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="4.1 (2100)"
+                android:textColor="#fff"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:layout_marginStart="5dp"
+                android:layout_gravity="center_vertical"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="end">
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/favorite"
+                    android:layout_marginStart="50dp" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:id="@+id/sliderLayout"
+        android:layout_below="@+id/relative_destination"
+        android:layout_marginTop="5dp">
+
+        <include
+            android:id="@+id/myToolbar"
+            layout="@layout/location_toolbar"
+            />
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tabLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#fff"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"/>
+
+        <com.michael.afrivac.CustomViewPager
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/slideViewPager"
+            android:layout_below="@id/tabLayout"/>
+
+    </RelativeLayout>
+        </RelativeLayout>
+    </ScrollView>
+</RelativeLayout>

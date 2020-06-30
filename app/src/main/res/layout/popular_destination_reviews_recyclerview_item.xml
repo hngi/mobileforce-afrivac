@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:id="@+id/linear1"
+        android:layout_marginTop="@dimen/dimension_5dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/dimension_10dp">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/profile_image"
+            android:layout_width="96dp"
+            android:layout_height="96dp"
+            android:src="@drawable/user1"
+            app:civ_border_width="2dp"
+            app:civ_border_color="#FF000000"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="100dp"
+            android:orientation="vertical"
+            android:layout_marginStart="10dp"
+            android:layout_weight="1">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Pascal Fortran"
+                android:textStyle="bold"
+                android:textSize="15dp"
+                android:layout_weight="1"
+                android:id="@+id/username_review"
+                android:textColor="#000"/>
+
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="30dp"
+                android:src="@drawable/star"
+                android:layout_weight="1"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="12/12/2010"
+                android:textStyle="italic"
+                android:textSize="15sp"
+                android:layout_weight="1"
+                android:id="@+id/reviewDate"/>
+        </LinearLayout>
+    </LinearLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Amazing"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="3dp"
+        android:id="@+id/review_remark"
+        android:textColor="#000"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse"
+        android:id="@+id/users_review"
+        android:textStyle="bold"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"/>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#000"
+        android:layout_marginBottom="@dimen/dimension_10dp"
+        app:layout_constraintTop_toBottomOf="@id/linear1"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

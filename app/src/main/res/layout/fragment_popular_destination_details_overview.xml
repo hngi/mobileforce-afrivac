@@ -1,0 +1,662 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".PopularDestinationDetailsOverviewFragment"
+    android:paddingStart="10dp"
+    android:paddingEnd="10dp">
+
+    <TextView
+        android:id="@+id/txtOverview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dimension_10dp"
+        android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."/>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_below="@id/txtOverview"
+            android:layout_marginTop="@dimen/dimension_10dp"
+            android:id="@+id/photo_viewall">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Photos"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:textColor="#000"
+                android:textStyle="bold"
+                android:textSize="20sp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="View All"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:textStyle="normal"
+                android:textColor="#0000ff"
+                android:textSize="17sp"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/photo_viewall"
+                android:layout_marginTop="@dimen/dimension_10dp"
+                android:id="@+id/photo_destination">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/photos1"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:id="@+id/photo1"/>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/photo2"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:id="@+id/photo2"/>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/photo3"
+                    app:layout_constraintTop_toBottomOf="@id/photo2"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:id="@+id/photo3"
+                    android:layout_marginTop="15dp"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_below="@id/photo_destination"
+                android:layout_marginTop="@dimen/dimension_10dp"
+                android:id="@+id/hotels_viewall">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Hotels"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:textColor="#000"
+                    android:textStyle="bold"
+                    android:textSize="20sp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="View All"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:textStyle="normal"
+                    android:textColor="#0000ff"
+                    android:textSize="17sp"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/hotels_viewall"
+                android:id="@+id/hotels_img">
+
+                <RelativeLayout
+                    android:layout_height="140dp"
+                    android:layout_width="wrap_content"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:id="@+id/relative_hotel1">
+
+                    <ImageView
+                        android:id="@+id/destination_detail_image"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/hotel1_img"
+                        android:scaleType="fitXY"/>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginBottom="@dimen/dimension_10dp"
+                        android:layout_marginStart="@dimen/dimension_5dp">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Conrad Cairo"
+                            android:textColor="#fff"
+                            android:textSize="15sp"
+                            android:textStyle="bold" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/hotDetails"
+                            android:orientation="horizontal"
+                            android:layout_marginEnd="20dp"
+                            android:layout_marginBottom="10dp"
+                            >
+
+                            <ImageView
+                                android:layout_width="30dp"
+                                android:layout_height="30dp"
+                                android:src="@drawable/star"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginStart="10dp"
+                                />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="4.1 (2100)"
+                                android:textColor="#fff"
+                                android:textSize="10sp"
+                                android:textStyle="bold"
+                                android:layout_marginStart="5dp"
+                                android:layout_gravity="center_vertical"/>
+
+                        </LinearLayout>
+                    </LinearLayout>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_height="140dp"
+                    android:layout_width="0dp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:id="@+id/relative_hotel2">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/hotel2_img"
+                        android:scaleType="fitXY"/>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginBottom="@dimen/dimension_10dp"
+                        android:layout_marginStart="@dimen/dimension_5dp">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Cairo Mairioft Hotel \n OmmarKayam Casino"
+                            android:textColor="#fff"
+                            android:textSize="10dp"
+                            android:textStyle="bold" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_marginEnd="20dp"
+                            android:layout_marginBottom="10dp"
+                            >
+
+                            <ImageView
+                                android:layout_width="30dp"
+                                android:layout_height="30dp"
+                                android:src="@drawable/star"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginStart="10dp"
+                                />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="4.1 (2100)"
+                                android:textColor="#fff"
+                                android:textSize="15sp"
+                                android:textStyle="bold"
+                                android:layout_marginStart="5dp"
+                                android:layout_gravity="center_vertical"/>
+
+                        </LinearLayout>
+                    </LinearLayout>
+                </RelativeLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/WhatToDoInEgypt"
+                android:layout_below="@id/hotels_img"
+                android:layout_marginTop="@dimen/dimension_15dp"
+                android:textColor="#000"
+                android:id="@+id/whatToDo"/>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/whatToDo"
+                android:id="@+id/whatToDoDetails"
+                android:layout_marginTop="@dimen/dimension_10dp">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/img_what_to_do1"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:id="@+id/imgWhatToDo1"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Pyramid Of Giza"
+                    app:layout_constraintStart_toEndOf="@id/imgWhatToDo1"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:layout_marginStart="20dp"
+                    android:textSize="20sp"
+                    android:id="@+id/txtPyramidOfGiza"/>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/find"
+                    app:layout_constraintTop_toBottomOf="@id/txtPyramidOfGiza"
+                    app:layout_constraintStart_toEndOf="@id/imgWhatToDo1"
+                    android:layout_marginStart="@dimen/dimension_20dp"
+                    android:id="@+id/imgfindPyramid"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@id/txtPyramidOfGiza"
+                    app:layout_constraintStart_toEndOf="@id/imgfindPyramid"
+                    android:text="Nazziet El-Semman"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#000"
+                android:id="@+id/separator1"
+                android:layout_below="@+id/whatToDoDetails"
+                android:layout_marginTop="@dimen/dimension_10dp"/>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/separator1"
+                android:id="@+id/whatToDoDetails2"
+                android:layout_marginTop="@dimen/dimension_10dp">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/img_what_to_do2"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:id="@+id/imgWhatToDo2"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Synix Egyptian Museum"
+                    app:layout_constraintStart_toEndOf="@id/imgWhatToDo2"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:layout_marginStart="20dp"
+                    android:textSize="20sp"
+                    android:id="@+id/txtSynixEgyptian"/>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/find"
+                    app:layout_constraintTop_toBottomOf="@id/txtSynixEgyptian"
+                    app:layout_constraintStart_toEndOf="@id/imgWhatToDo2"
+                    android:layout_marginStart="@dimen/dimension_20dp"
+                    android:id="@+id/imgFindSynix"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@id/txtSynixEgyptian"
+                    app:layout_constraintStart_toEndOf="@id/imgFindSynix"
+                    android:text="Tahir Square Rd, Tahir Square"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#000"
+                android:id="@+id/separator2"
+                android:layout_below="@+id/whatToDoDetails2"
+                android:layout_marginTop="@dimen/dimension_10dp"/>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/separator2"
+                android:id="@+id/whatToDoDetails3"
+                android:layout_marginTop="@dimen/dimension_10dp">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/img_what_to_do2"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:id="@+id/imgWhatToDo3"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Saqqara Boat Cruize"
+                    app:layout_constraintStart_toEndOf="@id/imgWhatToDo3"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:layout_marginStart="20dp"
+                    android:textSize="20sp"
+                    android:id="@+id/txtSaqqaraBoat"/>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/find"
+                    app:layout_constraintTop_toBottomOf="@id/txtSaqqaraBoat"
+                    app:layout_constraintStart_toEndOf="@id/imgWhatToDo3"
+                    android:layout_marginStart="@dimen/dimension_20dp"
+                    android:id="@+id/imgFindSaqqara"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@id/txtSaqqaraBoat"
+                    app:layout_constraintStart_toEndOf="@id/imgFindSaqqara"
+                    android:text="Maadi"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#000"
+                android:id="@+id/separator3"
+                android:layout_below="@+id/whatToDoDetails3"
+                android:layout_marginTop="@dimen/dimension_10dp"/>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+        android:layout_below="@id/separator3"
+        android:id="@+id/con_txt_ffd"
+        android:layout_marginBottom="@dimen/dimension_10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimension_10dp"
+            android:text="Find Flight Deals"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:id="@+id/txtFindFlights"
+            android:textColor="#000"
+            android:textStyle="bold"
+            android:textSize="15sp"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/con_txt_ffd"
+        android:id="@+id/con_img_edt_from">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/find"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:id="@+id/imgFrom"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <EditText
+            android:layout_width="290dp"
+            android:padding="@dimen/dimension_10dp"
+            android:layout_height="@dimen/dimension_50dp"
+            android:layout_marginTop="@dimen/dimension_5dp"
+            android:layout_marginBottom="@dimen/dimension_5dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:background="@drawable/round_white_background"
+            android:hint="From"
+            android:id="@+id/edtFrom"
+            android:layout_marginStart="@dimen/dimension_25dp"
+            android:focusedByDefault="false"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/con_img_edt_from"
+        android:id="@+id/con_img_edt_Airport"
+        android:layout_marginTop="@dimen/dimension_10dp">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/plane"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:id="@+id/imgPlane"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+
+        <EditText
+            android:layout_width="290dp"
+            android:padding="@dimen/dimension_10dp"
+            android:layout_height="@dimen/dimension_50dp"
+            android:layout_marginTop="@dimen/dimension_5dp"
+            android:layout_marginBottom="@dimen/dimension_5dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:background="@drawable/round_white_background"
+            android:hint="Cairo, International CAI"
+            android:id="@+id/edtAirport"
+            android:layout_marginStart="@dimen/dimension_25dp"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/con_img_edt_Airport"
+        android:id="@+id/con_img_edt_trip"
+        android:layout_marginTop="@dimen/dimension_10dp">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/round_trip_icon"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:id="@+id/imgTrip"
+            />
+        <Button
+        android:layout_width="140dp"
+            android:padding="10dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="@dimen/dimension_5dp"
+        android:layout_marginBottom="@dimen/dimension_5dp"
+        app:layout_constraintStart_toEndOf="@+id/imgTrip"
+        app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginStart="12dp"
+        android:text="One Trip"
+            android:textColor="#000"
+            android:textAllCaps="false"
+        android:id="@+id/btnOneTrip"
+            android:gravity="center"
+            android:background="@drawable/round_white_background"
+            />
+
+        <Button
+            android:layout_width="140dp"
+            android:padding="@dimen/dimension_10dp"
+            android:layout_height="@dimen/dimension_50dp"
+            android:layout_marginTop="@dimen/dimension_5dp"
+            android:layout_marginBottom="@dimen/dimension_5dp"
+            app:layout_constraintStart_toEndOf="@+id/btnOneTrip"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginStart="@dimen/dimension_10dp"
+            android:background="@drawable/round_blue_background"
+            android:text="Round Trip"
+            android:textColor="#fff"
+            android:id="@+id/btnRoundTrip"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/con_img_edt_trip"
+        android:id="@+id/con_img_edt_Cal"
+        android:layout_marginTop="@dimen/dimension_10dp">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_baseline_calendar_today_24"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:id="@+id/imgCal"
+            android:layout_marginStart="5dp"/>
+
+        <TextView
+            android:layout_width="140dp"
+            android:padding="@dimen/dimension_10dp"
+            android:layout_height="@dimen/dimension_50dp"
+            android:layout_marginTop="@dimen/dimension_5dp"
+            android:layout_marginBottom="@dimen/dimension_5dp"
+            app:layout_constraintStart_toEndOf="@+id/imgCal"
+            app:layout_constraintTop_toTopOf="parent"
+            android:background="@drawable/round_white_background"
+            android:layout_marginStart="10dp"
+            android:text="Depart"
+            android:textColor="#000"
+            android:id="@+id/txtDepart"
+            style="@style/Widget.AppCompat.TextView.SpinnerItem"
+            android:textAlignment="center"
+            />
+
+        <TextView
+            android:layout_width="140dp"
+            android:padding="@dimen/dimension_10dp"
+            android:layout_height="@dimen/dimension_50dp"
+            android:layout_marginTop="@dimen/dimension_5dp"
+            android:layout_marginBottom="@dimen/dimension_5dp"
+            app:layout_constraintStart_toEndOf="@+id/txtDepart"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginStart="@dimen/dimension_10dp"
+            android:background="@drawable/round_white_background"
+            android:text="Return"
+            android:textColor="#000"
+            android:id="@+id/txtReturn"
+            style="@style/Widget.AppCompat.TextView.SpinnerItem"
+            android:textAlignment="center"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/con_img_edt_Cal"
+        android:id="@+id/con_img_edt_Traveller_No"
+        android:layout_marginTop="@dimen/dimension_10dp">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/passenger"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:id="@+id/imgTravellerNo"
+            android:layout_marginStart="5dp"/>
+
+        <TextView
+            android:layout_width="140dp"
+            android:padding="@dimen/dimension_10dp"
+            android:layout_height="@dimen/dimension_50dp"
+            android:layout_marginTop="@dimen/dimension_5dp"
+            android:layout_marginBottom="@dimen/dimension_5dp"
+            app:layout_constraintStart_toEndOf="@+id/imgTravellerNo"
+            app:layout_constraintTop_toTopOf="parent"
+            android:background="@drawable/round_white_background"
+            android:layout_marginStart="10dp"
+            android:text="Economy"
+            android:textColor="#000"
+            android:id="@+id/txtClass"
+            android:textAlignment="center"/>
+
+        <TextView
+            android:layout_width="140dp"
+            android:padding="@dimen/dimension_10dp"
+            android:layout_height="@dimen/dimension_50dp"
+            android:layout_marginTop="@dimen/dimension_5dp"
+            android:layout_marginBottom="@dimen/dimension_5dp"
+            app:layout_constraintStart_toEndOf="@+id/txtClass"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginStart="@dimen/dimension_10dp"
+            android:background="@drawable/round_white_background"
+            android:text="1 Traveller"
+            android:textColor="#000"
+            android:id="@+id/txtNoOfTravellers"
+            style="@style/Widget.AppCompat.TextView.SpinnerItem"
+            android:textAlignment="center"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/dimension_10dp"
+        android:layout_marginTop="@dimen/dimension_10dp"
+        android:layout_below="@id/con_img_edt_Traveller_No">
+
+        <Button
+            android:layout_width="160dp"
+            android:padding="@dimen/dimension_10dp"
+            android:paddingStart="@dimen/dimension_20dp"
+            android:paddingEnd="@dimen/dimension_20dp"
+            android:layout_height="@dimen/dimension_50dp"
+            android:layout_marginTop="@dimen/dimension_5dp"
+            android:layout_marginBottom="@dimen/dimension_5dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:background="@drawable/rounded_blue_background"
+            android:text="Find Flight"
+            android:textStyle="bold"
+            android:textColor="#fff"
+            android:id="@+id/btnFindFlight"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</RelativeLayout>

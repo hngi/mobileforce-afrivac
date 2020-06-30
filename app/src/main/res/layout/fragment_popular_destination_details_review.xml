@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:fillViewport="true"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".PopularDestinationDetailsReviewFragment"
+    android:paddingStart="@dimen/dimension_10dp"
+    android:paddingEnd="@dimen/dimension_10dp"
+    android:orientation="vertical">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_margin="6dp"
+        android:id="@+id/reviewDetails">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:id="@+id/ratings"
+            app:layout_constraintEnd_toStartOf="@id/ratingsbar">
+
+            <TextView
+                android:id="@+id/displayRating"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="4.1"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                android:textColor="#000"
+                android:layout_marginStart="10dp"
+                android:layout_gravity="center"
+                android:layout_weight="2"
+                />
+
+                <RatingBar
+                    android:id="@+id/ratingBar2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:numStars="5"
+                    android:stepSize=".5"
+                    style="?android:attr/ratingBarStyleSmall"
+                    android:rating="4.1"
+                    android:isIndicator="true"
+                    android:layout_marginStart="10dp"
+                    android:scaleX=".9"
+                    android:scaleY="1.0"
+                    android:transformPivotX="0dp"
+                    android:transformPivotY="0dp"
+                    android:max="5"
+                    />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="(2600)"
+                android:layout_weight="2"
+                android:layout_gravity="center"
+                android:textSize="10sp"
+                android:textColor="#0000ff"
+                android:textStyle="bold"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/ratingsbar"
+            app:layout_constraintStart_toEndOf="@+id/ratings"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="200dp"
+                android:layout_height="100dp"
+                android:src="@drawable/reviews3"
+                android:layout_marginBottom="5dp"/>
+
+
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/addReview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/ratingsbar"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:text="Add Review"
+            android:textColor="#0000ff"
+            android:paddingStart="@dimen/dimension_30dp"
+            android:paddingEnd="@dimen/dimension_30dp"
+            android:background="@drawable/white_bg_blue_stroke"
+            android:layout_marginTop="10dp"
+            android:textAllCaps="false"
+            android:textSize="15sp"
+            android:padding="12dp"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/reviewDetails"
+        android:layout_marginTop="@dimen/dimension_10dp"
+        android:visibility="gone"
+        android:id="@+id/submit_review_cons">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            app:layout_constraintTop_toTopOf="parent"
+            android:src="@drawable/star"
+            android:id="@+id/ratingsStar"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Describe Your Experience"
+            android:textStyle="normal"
+            android:layout_marginTop="10dp"
+            app:layout_constraintTop_toBottomOf="@id/ratingsStar"
+            app:layout_constraintStart_toStartOf="parent"
+            android:id="@+id/txtDesc"
+            android:layout_marginStart="@dimen/dimension_15dp"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:inputType="text"
+            app:layout_constraintTop_toBottomOf="@+id/txtDesc"
+            android:background="@drawable/round_white_background"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="@dimen/dimension_15dp"
+            android:paddingStart="10dp"
+            android:id="@+id/edtDesc"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tell Us More (optional)"
+            android:textStyle="normal"
+            android:layout_marginTop="15dp"
+            app:layout_constraintTop_toBottomOf="@id/edtDesc"
+            app:layout_constraintStart_toStartOf="parent"
+            android:id="@+id/txtTell"
+            android:layout_marginStart="@dimen/dimension_15dp"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:inputType="text"
+            app:layout_constraintTop_toBottomOf="@+id/txtTell"
+            android:background="@drawable/round_white_background"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="@dimen/dimension_15dp"
+            android:paddingStart="10dp"
+            android:paddingEnd="@dimen/dimension_10dp"
+            android:id="@+id/edtTell"/>
+
+        <Button
+            android:id="@+id/submitReview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/edtTell"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:text="Submit Review"
+            android:textColor="#0000ff"
+            android:paddingStart="@dimen/dimension_30dp"
+            android:paddingEnd="@dimen/dimension_30dp"
+            android:background="@drawable/white_bg_blue_stroke"
+            android:layout_marginTop="10dp"
+            android:textAllCaps="false"
+            android:textSize="15sp"
+            android:padding="12dp"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/userRecyclerViewReview"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </LinearLayout>

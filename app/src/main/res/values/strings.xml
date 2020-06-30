@@ -1,5 +1,20 @@
 <resources>
 
+    <string name="flight_prompt">Flight Type</string>
+    <string name="no_travellers_prompt">Number Of Travellers</string>
+
+    <string-array name="flightType">
+        <item>Economy</item>
+        <item>First Class</item>
+    </string-array>
+
+    <string-array name="numberOfTravelers">
+        <item>1 Traveller</item>
+        <item>2 Travellers</item>
+        <item>3 Travellers</item>
+    </string-array>
+
+
     <string name="app_name">AfriVac</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="mywallet">My Wallet</string>
