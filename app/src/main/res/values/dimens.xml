@@ -31,4 +31,10 @@
     <dimen name="dimension_90">90dp</dimen>
     <dimen name="dimension_36dp">36dp</dimen>
     <dimen name="profile_image">130dp</dimen>
+    <dimen name="dimension4dp">4dp</dimen>
+    <dimen name="dimension16dp">16dp</dimen>
+    <dimen name="dimentsion32dp">32dp</dimen>
+    <dimen name="dimension48dp">48dp</dimen>
+    <dimen name="dimension8dp">8dp</dimen>
+    <dimen name="dimen10sp">10sp</dimen>
 </resources>
