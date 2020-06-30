@@ -1,18 +1,45 @@
 package com.michael.afrivac.model;
 
 public class PopularPlaces {
-    private String country, destination, description, imageUrl;
+    private String country, destination, description, image;
     private boolean isFavorite;
     private double rating;
     private int engagement;
 
-    public PopularPlaces(String country, String destination, String description, String imageUrl, boolean isFavorite, double rating, int engagement) {
+    public PopularPlaces() {
+    }
+
+    public PopularPlaces(String country, String destination, String description, String image, boolean isFavorite, double rating, int engagement) {
         this.country = country;
         this.destination = destination;
         this.description = description;
-        this.imageUrl = imageUrl;
+        this.image = image;
         this.isFavorite = isFavorite;
         this.rating = rating;
+        this.engagement = engagement;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    public void setDestination(String destination) {
+        this.destination = destination;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public void setRating(double rating) {
+        this.rating = rating;
+    }
+
+    public void setEngagement(int engagement) {
         this.engagement = engagement;
     }
 
@@ -32,8 +59,8 @@ public class PopularPlaces {
         return description;
     }
 
-    public String getImageUrl() {
-        return imageUrl;
+    public String getImage() {
+        return image;
     }
 
     public boolean isFavorite() {
