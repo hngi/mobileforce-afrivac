@@ -51,7 +51,7 @@ public class PaymentActivity extends AppCompatActivity {
             helper.toastMessage(this, "Enter card Number");
             cardNumber.requestFocus();
         }else if(cardNumberStr.length() < 12){
-            helper.toastMessage(this, "Enter a valid card number");
+            helper.toastMessage(this, "Enter a val" + "id card number");
             cardNumber.requestFocus();
         }else if(validityStr.trim().isEmpty()){
             helper.toastMessage(this, "Enter validity");
