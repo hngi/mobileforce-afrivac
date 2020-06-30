@@ -1,5 +1,7 @@
 package com.michael.afrivac;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -146,8 +148,26 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
-            super.onBackPressed();
+           // super.onBackPressed();
         }
+
+        new AlertDialog.Builder(this)
+                .setIcon(R.drawable.logo_black)
+                .setTitle("Exit App?")
+                .setMessage("Are you sure you want to exit AfriVac?")
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        finish();
+                    }
+                })
+                .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        //Toast.makeText(MainActivity.this, "Welcome back", Toast.LENGTH_SHORT).show();
+                    }
+                })
+                .show();
     }
 
 //    @Override
