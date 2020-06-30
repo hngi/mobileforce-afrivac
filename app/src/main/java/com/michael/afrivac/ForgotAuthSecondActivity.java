@@ -9,6 +9,6 @@ public class ForgotAuthSecondActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_forgot_auth_second);
+        setContentView(R.layout.forgot_auth_second);
     }
 }
