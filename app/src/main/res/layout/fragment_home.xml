@@ -73,8 +73,7 @@
         android:id="@+id/first"
         android:layout_width="0dp"
         android:layout_weight="1"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/dimension_5dp">
+        android:layout_height="195dp">
 
 
 
@@ -83,6 +82,7 @@
             android:id="@+id/discover_egypt"
             android:layout_width="195dp"
             android:layout_height="195dp"
+            android:layout_marginEnd="2dp"
             android:layout_marginStart="4dp"
             app:srcCompat="@drawable/left_image" />
 
@@ -99,7 +99,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="103dp"
+            android:layout_marginTop="120dp"
             android:text="@string/cairo"
             android:textColor="#FFFFFF"
             android:textSize="24sp"
@@ -122,14 +122,14 @@
     <RelativeLayout
         android:layout_width="0dp"
         android:layout_weight="1"
-        android:layout_height="wrap_content">
+        android:layout_height="195dp">
 
 
         <ImageView
             android:id="@+id/imageView7"
             android:layout_width="195dp"
             android:layout_height="195dp"
-            android:layout_marginStart="4dp"
+            android:layout_marginStart="2dp"
             android:layout_marginEnd="4dp"
             app:srcCompat="@drawable/right_image" />
 
@@ -138,7 +138,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="104dp"
+            android:layout_marginTop="120dp"
             android:text="@string/nairobi"
             android:textColor="#FFFFFF"
             android:textSize="24sp"
@@ -201,6 +201,8 @@
     app:cardElevation="@dimen/dimension_10dp"
     android:padding="10dp"
     android:clickable="true"
+    android:layout_marginTop="20dp"
+    android:layout_marginBottom="20dp"    
     android:focusable="true"
     app:cardBackgroundColor="@color/colorWhite">
 
@@ -337,6 +339,7 @@
                 android:layout_margin="@dimen/dimension_5dp"
                 android:layout_below="@+id/caira_card"
                 android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
                 android:padding="10dp"
                 app:cardBackgroundColor="@color/colorWhite"
                 android:focusable="true">
@@ -472,6 +475,7 @@
                     android:clickable="true"
                     android:layout_margin="@dimen/dimension_5dp"
                     android:layout_marginTop="20dp"
+                    android:layout_marginBottom="20dp"
                     android:layout_below="@+id/nairobi_card"
                     android:padding="10dp"
                     app:cardBackgroundColor="@color/colorWhite"
@@ -611,6 +615,7 @@
                     android:clickable="true"
                     android:layout_margin="@dimen/dimension_5dp"
                     android:layout_marginTop="20dp"
+                    android:layout_marginBottom="20dp"
                     app:cardBackgroundColor="@color/colorWhite"
                     android:focusable="true"
                     android:padding="10dp"
