@@ -26,6 +26,7 @@
         app:civ_border_width="2dp" />
 
     <TextView
+        android:padding="10dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
@@ -59,49 +60,38 @@
         android:textColor="@color/black"
         android:textStyle="bold"/>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/dimension_5dp"
-        tools:layout_editor_absoluteX="1dp">
+        android:gravity="center"
+        android:layout_margin="@dimen/dimension_5dp"
+        android:orientation="horizontal">
+
+
+    <RelativeLayout
+        android:id="@+id/first"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dimension_5dp">
+
 
 
         <ImageView
-            android:id="@+id/imageView3"
-            android:layout_width="165dp"
-            android:layout_height="165dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+
+            android:id="@+id/discover_egypt"
+            android:layout_width="195dp"
+            android:layout_height="195dp"
+            android:layout_marginStart="4dp"
             app:srcCompat="@drawable/left_image" />
 
         <ImageView
+            android:layout_below="@+id/textView5"
             android:id="@+id/imageView6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView5"
-            app:srcCompat="@drawable/place" />
-
-        <ImageView
-            android:id="@+id/imageView7"
-            android:layout_width="165dp"
-            android:layout_height="165dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintDimensionRatio="1"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/imageView3"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/right_image" />
-
-        <ImageView
-            android:id="@+id/imageView8"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            app:layout_constraintStart_toStartOf="@+id/imageView7"
-            app:layout_constraintTop_toBottomOf="@+id/textView8"
             app:srcCompat="@drawable/place" />
 
         <TextView
@@ -113,9 +103,35 @@
             android:text="@string/cairo"
             android:textColor="#FFFFFF"
             android:textSize="24sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:fontFamily="@font/poppins"
+            android:text="@string/egypt"
+            android:layout_below="@+id/textView5"
+            android:layout_toEndOf="@id/imageView6"
+            android:textColor="#FFFFFF"
+            android:textSize="14sp" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="wrap_content">
+
+
+        <ImageView
+            android:id="@+id/imageView7"
+            android:layout_width="195dp"
+            android:layout_height="195dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="4dp"
+            app:srcCompat="@drawable/right_image" />
 
         <TextView
             android:id="@+id/textView8"
@@ -126,25 +142,16 @@
             android:text="@string/nairobi"
             android:textColor="#FFFFFF"
             android:textSize="24sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="@+id/imageView7"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/imageView7"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/textView6"
+        <ImageView
+            android:layout_below="@+id/textView8"
+            android:id="@+id/imageView8"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
-            android:fontFamily="@font/poppins"
-            android:text="@string/egypt"
-            android:textColor="#FFFFFF"
-            android:textSize="14sp"
-            app:layout_constraintEnd_toEndOf="@+id/imageView3"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toEndOf="@+id/imageView6"
-            app:layout_constraintTop_toBottomOf="@+id/textView5" />
+            android:layout_marginStart="16dp"
+            app:srcCompat="@drawable/place" />
+
 
         <TextView
             android:id="@+id/textView9"
@@ -152,16 +159,18 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/poppins"
             android:text="@string/kenya"
+            android:layout_below="@+id/textView8"
+            android:layout_toEndOf="@id/imageView8"
             android:textColor="#FFFFFF"
-            android:textSize="14sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toEndOf="@+id/imageView8"
-            app:layout_constraintTop_toBottomOf="@+id/textView8" />
+            android:textSize="14sp" />
 
 
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </RelativeLayout>
+
+    </LinearLayout>
+
+
 
 
     <TextView
@@ -190,6 +199,7 @@
     android:layout_marginStart="@dimen/dimension_10dp"
     app:cardCornerRadius="@dimen/dimension_10dp"
     app:cardElevation="@dimen/dimension_10dp"
+    android:padding="10dp"
     android:clickable="true"
     android:focusable="true"
     app:cardBackgroundColor="@color/colorWhite">
@@ -326,7 +336,8 @@
                 android:clickable="true"
                 android:layout_margin="@dimen/dimension_5dp"
                 android:layout_below="@+id/caira_card"
-                android:layout_marginTop="12dp"
+                android:layout_marginTop="20dp"
+                android:padding="10dp"
                 app:cardBackgroundColor="@color/colorWhite"
                 android:focusable="true">
 
@@ -460,8 +471,9 @@
                     app:cardElevation="@dimen/dimension_10dp"
                     android:clickable="true"
                     android:layout_margin="@dimen/dimension_5dp"
-                    android:layout_marginTop="12dp"
+                    android:layout_marginTop="20dp"
                     android:layout_below="@+id/nairobi_card"
+                    android:padding="10dp"
                     app:cardBackgroundColor="@color/colorWhite"
                     android:focusable="true">
 
@@ -598,9 +610,10 @@
                     app:cardElevation="@dimen/dimension_10dp"
                     android:clickable="true"
                     android:layout_margin="@dimen/dimension_5dp"
-                    android:layout_marginTop="12dp"
+                    android:layout_marginTop="20dp"
                     app:cardBackgroundColor="@color/colorWhite"
                     android:focusable="true"
+                    android:padding="10dp"
                     android:layout_below="@+id/madagascar_card">
 
 
@@ -727,10 +740,6 @@
             </RelativeLayout>
                 </androidx.cardview.widget.CardView>
         </RelativeLayout>
-
-    <androidx.viewpager2.widget.ViewPager2
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
 
 </LinearLayout>
 </ScrollView>
