@@ -27,6 +27,14 @@
         app:itemTextColor="@color/white"
         app:menu="@menu/activity_main2_drawer" />
 
+    <FrameLayout
+        android:id="@+id/placeHolder"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+
+    </FrameLayout>
+
 
 
 </androidx.drawerlayout.widget.DrawerLayout>
