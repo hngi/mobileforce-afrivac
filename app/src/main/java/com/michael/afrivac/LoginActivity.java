@@ -148,7 +148,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             @Override
             public void onClick(View view) {
 
-                startActivity(new Intent(getApplicationContext(), ForgotAuthFirstActivity.class));
+                startActivity(new Intent(getApplicationContext(), ForgetPasswordActivity.class));
 
                 finish();
             }
