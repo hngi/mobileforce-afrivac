@@ -14,6 +14,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".WalletPageActivity" android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".ForgotAuthFirstActivity" />
+        <activity android:name=".ForgotAuthSecondActivity" />
         <activity android:name=".EditAccountInfoActivity" />
         <activity android:name=".PaymentActivity" />
         <activity android:name=".ContactUsActivity2" />
@@ -23,7 +25,8 @@
         <activity android:name=".payment_page" />
         <activity android:name=".BookingActivity" />
         <activity android:name=".SignUpActivity" />
-        <activity android:name=".LoginActivity" />
+        <activity android:name=".LoginActivity"
+                  android:theme="@style/LoginTheme"/>
         <activity android:name=".ProfilePageActivity" />
         <activity android:name=".OnboardscreenActivity" />
         <activity android:name=".ForgetPasswordActivity" />
