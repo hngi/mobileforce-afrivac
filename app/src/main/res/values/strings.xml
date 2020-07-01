@@ -11,6 +11,7 @@
     <string name="secure_payment">This a secure ssl encrypted payment </string>
     <string name="paymentmethod">Payment Method</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="reset">Reset</string>
     <string name="azeez_adeleke" translatable="false">Azeez Adeleke</string>
     <string name="my_account">My Account</string>
     <string name="nigeria" translatable="false">Nigeria</string>
@@ -116,9 +117,9 @@
     <string name="traveller">Traveller</string>
     <string name="findFlight">Find Flight</string>
     <string name="welcomeBack">Welcome Back</string>
-    <string name="clickHere">   Click here</string>
-    <string name="signInGoogle">Sign-in with Google</string>
-    <string name="signInFacebook">Sign-in with Facebook</string>
+    <string name="clickHere">Click here</string>
+    <string name="signInGoogle">Sign in with Google</string>
+    <string name="signInFacebook">Sign in with Facebook</string>
     <string name="signIn">Sign In</string>
     <string name="dontHaveAccount">Don\'t have an account?</string>
     <string name="signUp">Sign Up</string>
@@ -213,4 +214,11 @@
     <string name="phoneNumb" translatable="false">+234 7061815056</string>
     <string name="saveProf" translatable="false">Save Changes</string>
     <string name="placedesc">An image of a city</string>
+    <string name="registration" translatable="false">REGISTRATION</string>
+    <string name="terms" translatable="false">I have read and agreed to Terms and agreement.</string>
+    <string name="recover_email_text" translatable="false">"Enter the email adress regsitered with your afrivac account "</string>
+    <string name="verification_code_text" translatable="false">we just sent a verification code to dele******1@gmail.com</string>
+    <string name="enter_verification_code" translatable="false">Enter Verification Code</string>
+    <string name="noverificationcode" translatable="false">Didn’t Recieve a verification code?</string>
+    <string name="resend" translatable="false">Resend</string>
 </resources>
