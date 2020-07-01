@@ -5,14 +5,15 @@
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".PopularDestinationDetailsOverviewFragment"
-    android:paddingStart="10dp"
-    android:paddingEnd="10dp">
+    >
 
     <TextView
         android:id="@+id/txtOverview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/dimension_10dp"
+        android:layout_marginStart="@dimen/dimension_20dp"
+        android:layout_marginEnd="@dimen/dimension_20dp"
         android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."/>
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -21,7 +22,9 @@
             android:orientation="horizontal"
             android:layout_below="@id/txtOverview"
             android:layout_marginTop="@dimen/dimension_10dp"
-            android:id="@+id/photo_viewall">
+            android:id="@+id/photo_viewall"
+            android:layout_marginStart="@dimen/dimension_20dp"
+            android:layout_marginEnd="@dimen/dimension_20dp">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -50,7 +53,11 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/photo_viewall"
                 android:layout_marginTop="@dimen/dimension_10dp"
-                android:id="@+id/photo_destination">
+                android:id="@+id/photo_destination"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="@dimen/dimension_20dp"
+                android:layout_marginEnd="@dimen/dimension_20dp">
 
                 <ImageView
                     android:layout_width="wrap_content"
@@ -58,7 +65,9 @@
                     android:src="@drawable/photos1"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    android:id="@+id/photo1"/>
+                    app:layout_constraintEnd_toStartOf="@id/photo2"
+                    android:id="@+id/photo1"
+                    android:layout_marginEnd="@dimen/dimension_20dp"/>
 
                 <ImageView
                     android:layout_width="wrap_content"
@@ -66,6 +75,7 @@
                     android:src="@drawable/photo2"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/photo1"
                     android:id="@+id/photo2"/>
 
                 <ImageView
@@ -74,8 +84,10 @@
                     android:src="@drawable/photo3"
                     app:layout_constraintTop_toBottomOf="@id/photo2"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/photo1"
                     android:id="@+id/photo3"
-                    android:layout_marginTop="15dp"/>
+                    android:layout_marginTop="15dp"
+                    android:layout_marginStart="@dimen/dimension_20dp"/>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -85,7 +97,9 @@
                 android:orientation="horizontal"
                 android:layout_below="@id/photo_destination"
                 android:layout_marginTop="@dimen/dimension_10dp"
-                android:id="@+id/hotels_viewall">
+                android:id="@+id/hotels_viewall"
+                android:layout_marginStart="@dimen/dimension_20dp"
+                android:layout_marginEnd="@dimen/dimension_20dp">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -113,14 +127,18 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/hotels_viewall"
-                android:id="@+id/hotels_img">
+                android:id="@+id/hotels_img"
+                android:layout_marginStart="@dimen/dimension_20dp"
+                android:layout_marginEnd="@dimen/dimension_20dp">
 
                 <RelativeLayout
                     android:layout_height="140dp"
                     android:layout_width="wrap_content"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    android:id="@+id/relative_hotel1">
+                    app:layout_constraintEnd_toStartOf="@id/relative_hotel2"
+                    android:id="@+id/relative_hotel1"
+                    android:layout_marginEnd="@dimen/dimension_20dp">
 
                     <ImageView
                         android:id="@+id/destination_detail_image"
@@ -143,7 +161,8 @@
                             android:text="Conrad Cairo"
                             android:textColor="#fff"
                             android:textSize="15sp"
-                            android:textStyle="bold" />
+                            android:textStyle="bold"
+                            android:layout_marginStart="@dimen/dimension_10dp"/>
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -178,10 +197,12 @@
 
                 <RelativeLayout
                     android:layout_height="140dp"
-                    android:layout_width="0dp"
+                    android:layout_width="wrap_content"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    android:id="@+id/relative_hotel2">
+                    app:layout_constraintStart_toEndOf="@id/relative_hotel1"
+                    android:id="@+id/relative_hotel2"
+                    >
 
                     <ImageView
                         android:layout_width="wrap_content"
@@ -244,14 +265,18 @@
                 android:layout_below="@id/hotels_img"
                 android:layout_marginTop="@dimen/dimension_15dp"
                 android:textColor="#000"
-                android:id="@+id/whatToDo"/>
+                android:id="@+id/whatToDo"
+                android:layout_marginStart="@dimen/dimension_20dp"
+                android:layout_marginEnd="@dimen/dimension_20dp"/>
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/whatToDo"
                 android:id="@+id/whatToDoDetails"
-                android:layout_marginTop="@dimen/dimension_10dp">
+                android:layout_marginTop="@dimen/dimension_10dp"
+                android:layout_marginStart="@dimen/dimension_20dp"
+                android:layout_marginEnd="@dimen/dimension_20dp">
 
                 <ImageView
                     android:layout_width="wrap_content"
@@ -259,7 +284,7 @@
                     android:src="@drawable/img_what_to_do1"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    android:id="@+id/imgWhatToDo1"/>
+                    android:id="@+id/imgWhatToDo1" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -295,14 +320,18 @@
                 android:background="#000"
                 android:id="@+id/separator1"
                 android:layout_below="@+id/whatToDoDetails"
-                android:layout_marginTop="@dimen/dimension_10dp"/>
+                android:layout_marginTop="@dimen/dimension_10dp"
+                android:layout_marginEnd="@dimen/dimension_20dp"
+                android:layout_marginStart="@dimen/dimension_20dp"/>
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/separator1"
                 android:id="@+id/whatToDoDetails2"
-                android:layout_marginTop="@dimen/dimension_10dp">
+                android:layout_marginTop="@dimen/dimension_10dp"
+                android:layout_marginStart="@dimen/dimension_20dp"
+                android:layout_marginEnd="@dimen/dimension_20dp">
 
                 <ImageView
                     android:layout_width="wrap_content"
@@ -346,14 +375,18 @@
                 android:background="#000"
                 android:id="@+id/separator2"
                 android:layout_below="@+id/whatToDoDetails2"
-                android:layout_marginTop="@dimen/dimension_10dp"/>
+                android:layout_marginTop="@dimen/dimension_10dp"
+                android:layout_marginStart="@dimen/dimension_20dp"
+                android:layout_marginEnd="@dimen/dimension_20dp"/>
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/separator2"
                 android:id="@+id/whatToDoDetails3"
-                android:layout_marginTop="@dimen/dimension_10dp">
+                android:layout_marginTop="@dimen/dimension_10dp"
+                android:layout_marginStart="@dimen/dimension_20dp"
+                android:layout_marginEnd="@dimen/dimension_20dp">
 
                 <ImageView
                     android:layout_width="wrap_content"
@@ -397,14 +430,18 @@
                 android:background="#000"
                 android:id="@+id/separator3"
                 android:layout_below="@+id/whatToDoDetails3"
-                android:layout_marginTop="@dimen/dimension_10dp"/>
+                android:layout_marginTop="@dimen/dimension_10dp"
+                android:layout_marginStart="@dimen/dimension_20dp"
+                android:layout_marginEnd="@dimen/dimension_20dp"/>
 
     <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
         android:layout_below="@id/separator3"
         android:id="@+id/con_txt_ffd"
-        android:layout_marginBottom="@dimen/dimension_10dp">
+        android:layout_marginBottom="@dimen/dimension_10dp"
+        android:layout_marginStart="@dimen/dimension_20dp"
+        android:layout_marginEnd="@dimen/dimension_20dp">
 
         <TextView
             android:layout_width="wrap_content"
@@ -423,7 +460,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/con_txt_ffd"
-        android:id="@+id/con_img_edt_from">
+        android:id="@+id/con_img_edt_from"
+        android:layout_marginStart="@dimen/dimension_20dp"
+        android:layout_marginEnd="@dimen/dimension_20dp">
 
         <ImageView
             android:layout_width="wrap_content"
@@ -435,12 +474,12 @@
             app:layout_constraintBottom_toBottomOf="parent"/>
 
         <EditText
-            android:layout_width="290dp"
+            android:layout_width="match_parent"
             android:padding="@dimen/dimension_10dp"
             android:layout_height="@dimen/dimension_50dp"
             android:layout_marginTop="@dimen/dimension_5dp"
             android:layout_marginBottom="@dimen/dimension_5dp"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="@id/imgFrom"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             android:background="@drawable/round_white_background"
@@ -455,7 +494,9 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/con_img_edt_from"
         android:id="@+id/con_img_edt_Airport"
-        android:layout_marginTop="@dimen/dimension_10dp">
+        android:layout_marginTop="@dimen/dimension_10dp"
+        android:layout_marginStart="@dimen/dimension_20dp"
+        android:layout_marginEnd="@dimen/dimension_20dp">
 
         <ImageView
             android:layout_width="wrap_content"
@@ -468,12 +509,12 @@
 
 
         <EditText
-            android:layout_width="290dp"
+            android:layout_width="match_parent"
             android:padding="@dimen/dimension_10dp"
             android:layout_height="@dimen/dimension_50dp"
             android:layout_marginTop="@dimen/dimension_5dp"
             android:layout_marginBottom="@dimen/dimension_5dp"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="@id/imgPlane"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             android:background="@drawable/round_white_background"
@@ -487,7 +528,9 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/con_img_edt_Airport"
         android:id="@+id/con_img_edt_trip"
-        android:layout_marginTop="@dimen/dimension_10dp">
+        android:layout_marginTop="@dimen/dimension_10dp"
+        android:layout_marginStart="@dimen/dimension_20dp"
+        android:layout_marginEnd="@dimen/dimension_20dp">
 
         <ImageView
             android:layout_width="wrap_content"
@@ -499,14 +542,15 @@
             android:id="@+id/imgTrip"
             />
         <Button
-        android:layout_width="140dp"
+        android:layout_width="145dp"
             android:padding="10dp"
         android:layout_height="50dp"
         android:layout_marginTop="@dimen/dimension_5dp"
         android:layout_marginBottom="@dimen/dimension_5dp"
         app:layout_constraintStart_toEndOf="@+id/imgTrip"
+            app:layout_constraintEnd_toStartOf="@id/btnRoundTrip"
         app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginStart="12dp"
+            android:layout_marginStart="3dp"
         android:text="One Trip"
             android:textColor="#000"
             android:textAllCaps="false"
@@ -516,14 +560,15 @@
             />
 
         <Button
-            android:layout_width="140dp"
+            android:layout_width="145dp"
             android:padding="@dimen/dimension_10dp"
             android:layout_height="@dimen/dimension_50dp"
             android:layout_marginTop="@dimen/dimension_5dp"
             android:layout_marginBottom="@dimen/dimension_5dp"
             app:layout_constraintStart_toEndOf="@+id/btnOneTrip"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginStart="@dimen/dimension_10dp"
+            android:layout_marginStart="@dimen/dimension_5dp"
             android:background="@drawable/round_blue_background"
             android:text="Round Trip"
             android:textColor="#fff"
@@ -536,7 +581,9 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/con_img_edt_trip"
         android:id="@+id/con_img_edt_Cal"
-        android:layout_marginTop="@dimen/dimension_10dp">
+        android:layout_marginTop="@dimen/dimension_10dp"
+        android:layout_marginStart="@dimen/dimension_20dp"
+        android:layout_marginEnd="@dimen/dimension_20dp">
 
         <ImageView
             android:layout_width="wrap_content"
@@ -545,8 +592,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            android:id="@+id/imgCal"
-            android:layout_marginStart="5dp"/>
+            android:id="@+id/imgCal" />
 
         <TextView
             android:layout_width="140dp"
@@ -557,7 +603,7 @@
             app:layout_constraintStart_toEndOf="@+id/imgCal"
             app:layout_constraintTop_toTopOf="parent"
             android:background="@drawable/round_white_background"
-            android:layout_marginStart="10dp"
+            android:layout_marginStart="5dp"
             android:text="Depart"
             android:textColor="#000"
             android:id="@+id/txtDepart"
@@ -573,7 +619,7 @@
             android:layout_marginBottom="@dimen/dimension_5dp"
             app:layout_constraintStart_toEndOf="@+id/txtDepart"
             app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginStart="@dimen/dimension_10dp"
+            android:layout_marginStart="@dimen/dimension_5dp"
             android:background="@drawable/round_white_background"
             android:text="Return"
             android:textColor="#000"
@@ -588,7 +634,9 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/con_img_edt_Cal"
         android:id="@+id/con_img_edt_Traveller_No"
-        android:layout_marginTop="@dimen/dimension_10dp">
+        android:layout_marginTop="@dimen/dimension_10dp"
+        android:layout_marginStart="@dimen/dimension_20dp"
+        android:layout_marginEnd="@dimen/dimension_20dp">
 
         <ImageView
             android:layout_width="wrap_content"
@@ -597,8 +645,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            android:id="@+id/imgTravellerNo"
-            android:layout_marginStart="5dp"/>
+            android:id="@+id/imgTravellerNo" />
 
         <TextView
             android:layout_width="140dp"
@@ -623,7 +670,7 @@
             android:layout_marginBottom="@dimen/dimension_5dp"
             app:layout_constraintStart_toEndOf="@+id/txtClass"
             app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginStart="@dimen/dimension_10dp"
+            android:layout_marginStart="@dimen/dimension_5dp"
             android:background="@drawable/round_white_background"
             android:text="1 Traveller"
             android:textColor="#000"
