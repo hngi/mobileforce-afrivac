@@ -105,7 +105,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
-        NavigationUI.setupWithNavController(navigationView, navController);*/
+        NavigationUI.setupWithNavController(navigationView, navController);
       
 //        mAppBarConfiguration = new AppBarConfiguration.Builder(
 //                R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow,
@@ -129,7 +129,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 //                drawer.closeDrawer(GravityCompat.START);
 //                return true;
 //            }
-//        });
+          });*/
     }
 
 
