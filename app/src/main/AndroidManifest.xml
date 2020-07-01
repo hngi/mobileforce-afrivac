@@ -19,6 +19,7 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".ForgotAuthFirstActivity" />
         <activity android:name=".ForgotAuthSecondActivity" />
+
         <activity android:name=".EditAccountInfoActivity" />
         <activity android:name=".PaymentActivity" />
         <activity android:name=".ContactUsActivity2" />
@@ -46,10 +47,17 @@
             android:theme="@style/AppTheme.splashScreen"
             android:screenOrientation="portrait">
         </activity>
+<!--            android:screenOrientation="portrait"-->
+<!--            android:theme="@style/AppTheme.splashScreen">-->
 
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
-    </application>
+
+        </application>
+
+
+
+
 
 </manifest>

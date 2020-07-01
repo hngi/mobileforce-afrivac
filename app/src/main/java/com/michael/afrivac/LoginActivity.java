@@ -9,6 +9,7 @@ import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
+import android.util.Patterns;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -24,6 +25,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
@@ -46,6 +48,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private Helper helper;
     private Button googleSignIn, facebookSignIn;
     private Animation animation;
+    private FirebaseAuth.AuthStateListener mAuthStateListener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +62,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         sign_in = findViewById(R.id.singin_into_account);
         signUp = findViewById(R.id.singin_goto_signup);
         forgotPassword = findViewById(R.id.signin_forgot_password);
+
+        setupFirebaseAuth();
 
         helper = new Helper();
 
@@ -88,7 +93,27 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
                     @Override
                     public void onAnimationEnd(Animation animation) {
-                        authViewModel.logIn(v);
+                        if(!isEmpty(email.getText().toString()) && !isEmpty(password.getText().toString())){
+                            FirebaseAuth.getInstance().signInWithEmailAndPassword(email.getText().toString(), password.getText().toString())
+                                    .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<AuthResult> task) {
+                                        }
+                                    }).addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception e) {
+                                    String message = e.getMessage();
+                                    Toast.makeText(LoginActivity.this, "Error Occurred " + message,
+                                            Toast.LENGTH_SHORT).show();
+                                }
+                            });
+                        }else if(isEmpty(email.getText().toString())) {
+                            Toast.makeText(LoginActivity.this, "Please enter email", Toast.LENGTH_SHORT).show();
+                        } else if (isEmpty(password.getText().toString())) {
+                            Toast.makeText(LoginActivity.this, "Please enter password", Toast.LENGTH_SHORT).show();
+                        } else if(!Patterns.EMAIL_ADDRESS.matcher(email.getText().toString()).matches()){
+                            Toast.makeText(LoginActivity.this, "Please enter valid email", Toast.LENGTH_SHORT).show();
+                        }
                     }
 
                     @Override
@@ -245,14 +270,51 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
         return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
+//    @Override
+//    public void onStart() {
+//        super.onStart();
+//        user = FirebaseAuth.getInstance().getCurrentUser();
+//        if(user != null){
+//            helper.toastMessage(this, getString(R.string.userId)+ user.getUid());
+//            helper.gotoMainActivity(this);
+//        }
+//
+//        // Check for existing Google Sign In account, if the user is already signed in
+//        // the GoogleSignInAccount will be non-null.
+//        GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
+//        if (account != null){
+//            startActivity(new Intent (LoginActivity.this, MainActivity.class));
+//        }
+//        super.onStart();
+//
+//    }
+
+    private void setupFirebaseAuth(){
+        mAuthStateListener = new FirebaseAuth.AuthStateListener(){
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+                FirebaseUser user = firebaseAuth.getCurrentUser();
+                if(user!=null){
+                    if (user.isEmailVerified()){
+                        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                        startActivity(intent);
+                        finish();
+                        Toast.makeText(LoginActivity.this, "Authenticated with " + user.getEmail(),
+                                Toast.LENGTH_SHORT).show();
+                    }else{
+                        Toast.makeText(LoginActivity.this, "Please check your email inbox for your verification link",
+                                Toast.LENGTH_SHORT).show();
+                        FirebaseAuth.getInstance().signOut();
+                    }
+                }
+            }
+        };
+    }
+
     @Override
     public void onStart() {
         super.onStart();
-        user = FirebaseAuth.getInstance().getCurrentUser();
-        if(user != null){
-            helper.toastMessage(this, getString(R.string.userId)+ user.getUid());
-            helper.gotoMainActivity(this);
-        }
+        mAuth.addAuthStateListener(mAuthStateListener);
 
         // Check for existing Google Sign In account, if the user is already signed in
         // the GoogleSignInAccount will be non-null.
@@ -261,7 +323,16 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             startActivity(new Intent (LoginActivity.this, MainActivity.class));
         }
         super.onStart();
-
+    }
+    @Override
+    public void onStop() {
+        super.onStop();
+        if (mAuthStateListener != null) {
+            FirebaseAuth.getInstance().removeAuthStateListener(mAuthStateListener);
+        }
+    }
+    private boolean isEmpty(String string) {
+        return string.equals("");
     }
 
 
