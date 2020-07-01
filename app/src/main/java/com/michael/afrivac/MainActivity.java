@@ -178,8 +178,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     /*super.onBackPressed();
                     return;*/
                 }
-                this.doubleBackToExitPressedOnce = true;
-                helper.toastMessage(this, "Please click back again to exit");
+                //if user back pressed once
+                if(doubleBackToExitPressedOnce == false){
+                    this.doubleBackToExitPressedOnce = true;
+                    helper.toastMessage(this, "Please click back again to exit");
+                }
 
                 //delay to clear the double back pressed to false
                 new Handler().postDelayed(new Runnable() {
