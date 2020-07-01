@@ -47,6 +47,9 @@
             android:theme="@style/AppTheme.splashScreen"
             android:screenOrientation="portrait">
         </activity>
+<!--            android:screenOrientation="portrait"-->
+<!--            android:theme="@style/AppTheme.splashScreen">-->
+
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
