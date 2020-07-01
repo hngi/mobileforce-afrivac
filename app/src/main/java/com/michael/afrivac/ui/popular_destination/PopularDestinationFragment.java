@@ -7,6 +7,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -37,6 +38,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.michael.afrivac.MainActivity;
+import com.michael.afrivac.PopularDestinationDetailsActivity;
 import com.michael.afrivac.R;
 import com.michael.afrivac.Util.FirebaseUtil;
 import com.michael.afrivac.model.DestinationSuggestion;
@@ -85,7 +87,8 @@ public class PopularDestinationFragment extends Fragment {
         popularDestinationRVAdapter = new PopularDestinationRVAdapter(getContext(), new PopularDestinationRVAdapter.OnItemSelectedListener() {
             @Override
             public void onItemSelected(int selectedPosition) {
-                Toast.makeText(getContext(), "Clicked", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getContext(), PopularDestinationDetailsActivity.class);
+                startActivity(intent);
             }
         });
         popularPlacesRV.setAdapter(popularDestinationRVAdapter);
