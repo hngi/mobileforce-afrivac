@@ -1,11 +1,14 @@
 package com.michael.afrivac;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
+import com.google.firebase.auth.FirebaseUser;
 import com.michael.afrivac.Util.Helper;
 import com.michael.afrivac.ui.account.AccountFragment;
 import com.michael.afrivac.ui.findHotel.FindHotelFragment;
@@ -14,6 +17,7 @@ import com.michael.afrivac.ui.popular_destination.PopularDestinationFragment;
 import com.michael.afrivac.ui.support.SupportFragment;
 import com.google.firebase.auth.FirebaseAuth;
 
+import android.os.Handler;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
@@ -47,6 +51,9 @@ import android.widget.Toast;
 import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+
+    //creating fragment object
+    Fragment fragment = null;
 
     private AppBarConfiguration mAppBarConfiguration;
     private ActionBarDrawerToggle toggle;
@@ -98,7 +105,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
-        NavigationUI.setupWithNavController(navigationView, navController);*/
+        NavigationUI.setupWithNavController(navigationView, navController);
       
 //        mAppBarConfiguration = new AppBarConfiguration.Builder(
 //                R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow,
@@ -122,7 +129,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 //                drawer.closeDrawer(GravityCompat.START);
 //                return true;
 //            }
-//        });
+          });*/
     }
 
 
@@ -139,6 +146,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         return true;
     }
 
+    boolean doubleBackToExitPressedOnce = false;
 
     @Override
     public void onBackPressed() {
@@ -146,9 +154,62 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
-            super.onBackPressed();
+            //get the home fragment
+            fragment = getSupportFragmentManager().findFragmentByTag("HomeFragment");
+            if(fragment != null && fragment.isVisible()){
+                if(doubleBackToExitPressedOnce){
+                    new AlertDialog.Builder(this)
+                            .setIcon(R.drawable.logo_black)
+                            .setTitle("Exit App?")
+                            .setMessage("Are you sure you want to exit AfriVac?")
+                            .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                    finish();
+                                }
+                            })
+                            .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                    //Toast.makeText(MainActivity.this, "Welcome back", Toast.LENGTH_SHORT).show();
+                                }
+                            })
+                            .show();
+                    /*super.onBackPressed();
+                    return;*/
+                }
+                this.doubleBackToExitPressedOnce = true;
+                helper.toastMessage(this, "Please click back again to exit");
+
+                //delay to clear the double back pressed to false
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        doubleBackToExitPressedOnce = false;
+                    }
+                }, 2000);
+            }else {
+                reLoadMainActivity();
+            }
+           //super.onBackPressed();
         }
     }
+
+    public void reLoadMainActivity(){
+        startActivity(new Intent(this, MainActivity.class));
+        finish();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        if(currentUser == null){
+            helper.gotoLoginAcitivity(this);
+        }
+
+    }
+
 
 //    @Override
 //    public boolean onSupportNavigateUp() {
@@ -167,25 +228,29 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     private void displaySelectedScreen(int itemId) {
 
-        //creating fragment object
-        Fragment fragment = null;
-
+        //string tag for fragment object
+        String fragment_tag = "null";
         //initializing the fragment object which is selected
         switch (itemId) {
             case R.id.nav_home:
                 fragment = new HomeFragment();
+                fragment_tag = "HomeFragment";
                 break;
             case R.id.nav_account:
                 fragment = new AccountFragment();
+                fragment_tag = "AccountFragment";
                 break;
             case R.id.nav_destination:
                 fragment = new PopularDestinationFragment();
+                fragment_tag = "PopularDestinationFragment";
                 break;
             case R.id.nav_hotel:
                 fragment = new FindHotelFragment();
+                fragment_tag = "FindHotelFragment";
                 break;
             case R.id.nav_support:
                 fragment = new SupportFragment();
+                fragment_tag = "SupportFragment";
                 break;
             case R.id.nav_logout:
                 logout();
@@ -195,7 +260,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         //replacing the fragment
         if (fragment != null) {
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-            ft.replace(R.id.nav_host_fragment, fragment);
+            ft.replace(R.id.nav_host_fragment, fragment, fragment_tag);
             ft.commit();
         }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -212,41 +277,3 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
 }
-
- /*   public void convertCurrency(View view){
-    EditText editText = (EditText) findViewById(R.id.edtText);
-    int currency = Integer.parseInt(editText.getText().toString());
-    double result;
-
-    private AppBarConfiguration mAppBarConfiguration;
-
-    switch (currency){
-    case 1: //Dollar to Naira
-    double dollar = 360;
-    result = currency * dollar;
-    break;
-    case 2: //Pounds to Naira
-    double pounds = 450;
-    result = currency * pounds;
-    break;
-
-    default:
-    throw new IllegalStateException("Unexpected value: " + currency);
-    }
-
-    Toast.makeText(MainActivity.this, Double.toString(result), Toast.LENGTH_LONG).show();
-    }*/
-
- /*
-
-
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
-        return true;
-    }
-
-
-  */

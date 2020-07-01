@@ -13,6 +13,7 @@ import android.util.Patterns;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -45,7 +46,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private FirebaseUser user;
     private AuthViewModel authViewModel;
     private Helper helper;
-    private CompoundIconTextView googleSignIn, facebookSignIn;
+    private Button googleSignIn, facebookSignIn;
     private Animation animation;
     private FirebaseAuth.AuthStateListener mAuthStateListener;
 
@@ -171,7 +172,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         forgotPassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(), ForgetPasswordActivity.class));
+
+                startActivity(new Intent(getApplicationContext(), ForgotAuthFirstActivity.class));
+
                 finish();
             }
         });
