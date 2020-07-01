@@ -82,7 +82,7 @@ public class OnboardscreenActivity extends AppCompatActivity {
 
                     @Override
                     public void onAnimationEnd(Animation animation) {
-                        helper.gotoLoginAcitivity(getApplicationContext());
+                        helper.gotoMainActivity(getApplicationContext());
                         finish();
                     }
 
