@@ -10,70 +10,88 @@
     android:paddingEnd="15dp"
     tools:context=".ui.findHotel.FindHotelFragment">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="wrap_content"
-        android:layout_height="60dp"
-        android:orientation="horizontal"
-        android:paddingStart="16dp"
-        android:paddingEnd="16dp"
-        android:layout_weight="0">
+        android:layout_height="80dp"
+        android:layout_marginStart="@dimen/dimension_25dp"
+        android:layout_marginEnd="@dimen/dimension_20dp">
 
-        <ImageButton
-            android:id="@+id/sidebar"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_gravity="center"
-            android:background="@null"
-            android:scaleType="centerCrop"
-            android:src="@drawable/ic_round_menu_24" />
+    <ImageButton
+        android:id="@+id/sideBar"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_gravity="center"
+        android:background="@null"
+        android:layout_marginTop="@dimen/dimension_40dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_round_menu_24"
+        android:contentDescription="menu_button" />
 
-        <View
-            android:layout_width="wrap_content"
-            android:layout_height="2dp"
-            android:layout_weight="1" />
 
-        <ImageButton
-            android:id="@+id/avatar"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_gravity="center"
-            android:background="@null"
-            android:scaleType="centerCrop"
-            tools:src="@drawable/profile_image" />
-    </LinearLayout>
+    <ImageButton
+        android:id="@+id/avatar"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/dimension_30dp"
+        android:background="@null"
+        android:scaleType="centerCrop"
+        android:layout_alignParentEnd="true"
+        tools:src="@drawable/profile_image2"
+        android:contentDescription="profile_image" />
+    </RelativeLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dimension_25dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="@dimen/dimension_20dp"
+        android:orientation="horizontal">
 
     <AutoCompleteTextView
-        android:id="@+id/searchbar"
+        android:id="@+id/searchTV"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="15dp"
         android:background="@drawable/grey_ring"
-        android:drawableEnd="@drawable/ic_search"
         android:fontFamily="@font/poppins_regular"
-        android:hint="@string/find_hotel_text"
+        android:hint="Cairo"
         android:dropDownHeight="230dp"
         android:paddingStart="21dp"
         android:paddingTop="3dp"
-        android:paddingEnd="21dp"
+        android:paddingEnd="50dp"
         android:singleLine="true"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+        <ImageButton
+            android:id="@+id/search_end_button"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_gravity="end"
+            android:paddingEnd="21dp"
+            android:paddingStart="8dp"
+            android:background="@null"
+            android:src="@drawable/contact"
+            android:contentDescription="search_button" />
+
+    </FrameLayout>
+
+
     <TextView
         android:id="@+id/textView2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
+        android:layout_marginStart="25dp"
         android:layout_marginTop="14dp"
-        android:layout_marginEnd="15dp"
+        android:layout_marginEnd="20dp"
         android:layout_marginBottom="8dp"
-        android:fontFamily="@font/poppins_semibold"
-        android:text="@string/near_me"
+        android:fontFamily="@font/poppins_bold"
+        android:text="Hotels Near Me"
         android:textColor="@color/black"
+        android:drawableEnd="@drawable/sliders"
         android:textSize="24sp" />
 
     <androidx.recyclerview.widget.RecyclerView
@@ -81,7 +99,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

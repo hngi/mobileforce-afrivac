@@ -1,118 +1,128 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    app:cardElevation="5dp"
-    app:cardUseCompatPadding="true"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="345dp"
+    android:layout_height="90dp"
+    android:layout_marginStart="25dp"
+    android:layout_marginTop="12dp"
+    android:layout_marginEnd="@dimen/dimension_20dp"
+    android:layout_marginBottom="@dimen/dimension_10dp"
+    android:clipChildren="false"
+    android:clipToPadding="false"
+    app:cardBackgroundColor="#ffffff"
     app:cardCornerRadius="10dp"
-    app:cardBackgroundColor="@color/colorWhite">
+    app:cardElevation="@dimen/cardview_compat_inset_shadow"
+    app:cardPreventCornerOverlap="true"
+    app:cardUseCompatPadding="false">
 
 
     <ImageView
         android:id="@+id/hotelImage"
-        android:layout_alignParentLeft="true"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
         android:layout_alignParentStart="true"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:src="@drawable/hotel4"/>
+        android:layout_alignParentTop="true"
+        android:scaleType="centerCrop"
+        tools:srcCompat="@drawable/tree" />
 
     <ImageButton
         android:id="@+id/favoriteIcon"
         android:layout_width="15dp"
         android:layout_height="15dp"
         android:layout_alignParentEnd="true"
+        android:layout_gravity="right"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="21dp"
         android:background="@null"
         android:scaleType="centerCrop"
-        android:src="@drawable/ic_favorite_border_black_24dp"
-        android:layout_gravity="right"/>
+        android:src="@drawable/ic_favorite_border_black_24dp" />
+
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginStart="100dp" >
+        android:layout_marginStart="100dp"
+        android:orientation="vertical">
 
         <TextView
             android:id="@+id/nameTxt"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="5dp"
-            android:text="@string/name1"
-            android:textColor="@color/colorBlack" />
+            android:layout_width="193dp"
+            android:layout_height="21dp"
+            android:fontFamily="@font/poppins_regular"
+            android:text="The Cocoon Luxury Suites"
+            android:textColor="@color/colorBlack"
+            android:textSize="14sp" />
 
         <TextView
             android:id="@+id/nameTxt2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="5dp"
-            android:text="@string/name2"
-            android:textColor="@color/colorBlue" />
+            android:layout_width="121dp"
+            android:layout_height="17dp"
+            android:layout_marginTop="-4dp"
+            android:fontFamily="@font/poppins"
+            android:text="Ilupeju, Lagos"
+            android:textColor="@color/colorBlue"
+            android:textSize="11sp" />
 
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:layout_gravity="center_vertical"
         android:layout_marginStart="100dp"
-        android:layout_marginTop="20dp"
-        android:layout_gravity="center_vertical">
+        android:layout_marginTop="15dp"
+        android:orientation="vertical">
 
 
         <ImageView
             android:id="@+id/icon1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_baseline_airline_seat_individual_suite_24"
+            android:layout_width="157dp"
+            android:layout_height="23dp"
+            android:paddingLeft="5dp"
             android:paddingRight="10dp"
-            android:paddingLeft="5dp"/>
+            android:src="@drawable/frame" />
 
-        <ImageView
-            android:id="@+id/icon2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_baseline_wifi_24"
-            android:paddingRight="10dp"/>
 
-        <ImageView
-            android:id="@+id/icon3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/wiegts"
-            android:paddingRight="10dp"/>
-
-        <ImageView
-            android:id="@+id/icon4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/p"
-            android:paddingRight="10dp"/>
-
-        <ImageView
-            android:id="@+id/icon5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/pool"
-            android:paddingRight="8dp"/>
     </LinearLayout>
-    <RatingBar
-        android:id="@+id/ratingBar"
-        style="?android:attr/ratingBarStyleSmall"
+
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:isIndicator="true"
-        android:numStars="5"
-        android:stepSize="0.1"
         android:layout_gravity="bottom"
-        android:layout_marginStart="100dp"/>
-    <TextView
-        android:id="@+id/numberRate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="[5,300]"
-        android:layout_gravity="bottom"
-        android:layout_marginStart="200dp"/>
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="5dp"
+        android:orientation="horizontal">
+
+        <RatingBar
+            android:id="@+id/ratingBar"
+            style="?android:attr/ratingBarStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:isIndicator="true"
+            android:numStars="5"
+            android:stepSize="0.1" />
+
+
+        <TextView
+            android:id="@+id/ratingNumber"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:layout_marginStart="3dp"
+            android:fontFamily="@font/poppins_semibold"
+            android:textColor="@color/textColor"
+            android:textSize="11sp"
+            tools:text="4.1" />
+
+        <TextView
+            android:id="@+id/numberRate"
+            android:layout_width="46dp"
+            android:layout_height="15dp"
+            android:layout_marginStart="4dp"
+            android:layout_weight="0"
+            android:fontFamily="@font/poppins_regular"
+            android:textColor="@color/textColor"
+            android:textSize="11sp"
+            tools:text="(2,731)" />
+    </LinearLayout>
 </androidx.cardview.widget.CardView>
