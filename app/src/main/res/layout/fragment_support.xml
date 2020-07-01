@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -8,8 +9,8 @@
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="397dp"
+        android:layout_height="129dp"
         android:elevation="10dp">
 
         <LinearLayout
@@ -49,15 +50,11 @@
                     tools:ignore="NestedWeights" />
 
                 <ImageView
-                    android:id="@+id/profile_picture_iv"
-                    android:layout_width="0dp"
-                    android:layout_height="60dp"
-                    android:layout_marginEnd="24dp"
-                    android:layout_weight="1.25"
-                    android:contentDescription="@string/profileIcon"
-                    android:ems="10"
-                    android:gravity="center"
-                    android:src="@drawable/support_round" />
+                    android:id="@+id/imageView3"
+                    android:layout_width="36dp"
+                    android:layout_height="37dp"
+                    android:layout_weight="1"
+                    app:srcCompat="@drawable/logo_black" />
 
 
             </LinearLayout>
@@ -70,8 +67,8 @@
 
                 <EditText
                     android:id="@+id/describe_edit_text"
-                    android:layout_width="300dp"
-                    android:layout_height="40dp"
+                    android:layout_width="341dp"
+                    android:layout_height="44dp"
                     android:layout_marginStart="16dp"
                     android:layout_marginEnd="@dimen/fab_margin"
                     android:layout_marginRight="16dp"
@@ -184,7 +181,7 @@
 
             <TextView
                 android:id="@+id/feedback_tv"
-                android:layout_width="130dp"
+                android:layout_width="154dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="45dp"
                 android:layout_marginTop="@dimen/fab_margin"
@@ -199,8 +196,8 @@
 
             <TextView
                 android:id="@+id/terms_and_condition_textView"
-                android:layout_width="185dp"
-                android:layout_height="24dp"
+                android:layout_width="227dp"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="45dp"
                 android:layout_marginTop="@dimen/fab_margin"
                 android:layout_marginBottom="16dp"
