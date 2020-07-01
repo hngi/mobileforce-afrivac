@@ -123,140 +123,26 @@
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
+            <LinearLayout
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/hotels_viewall"
+                android:orientation="horizontal"
                 android:id="@+id/hotels_img"
                 android:layout_marginStart="@dimen/dimension_20dp"
                 android:layout_marginEnd="@dimen/dimension_20dp">
 
-                <RelativeLayout
-                    android:layout_height="140dp"
+                <androidx.recyclerview.widget.RecyclerView
+                    android:scrollbars="horizontal"
                     android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/hotelsItem"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toStartOf="@id/relative_hotel2"
-                    android:id="@+id/relative_hotel1"
-                    android:layout_marginEnd="@dimen/dimension_20dp">
+                    android:orientation="horizontal"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    />
 
-                    <ImageView
-                        android:id="@+id/destination_detail_image"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/hotel1_img"
-                        android:scaleType="fitXY"/>
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:layout_alignParentBottom="true"
-                        android:layout_marginBottom="@dimen/dimension_10dp"
-                        android:layout_marginStart="@dimen/dimension_5dp">
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="Conrad Cairo"
-                            android:textColor="#fff"
-                            android:textSize="15sp"
-                            android:textStyle="bold"
-                            android:layout_marginStart="@dimen/dimension_10dp"/>
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:id="@+id/hotDetails"
-                            android:orientation="horizontal"
-                            android:layout_marginEnd="20dp"
-                            android:layout_marginBottom="10dp"
-                            >
-
-                            <ImageView
-                                android:layout_width="30dp"
-                                android:layout_height="30dp"
-                                android:src="@drawable/star"
-                                android:layout_gravity="center_vertical"
-                                android:layout_marginStart="10dp"
-                                />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="4.1 (2100)"
-                                android:textColor="#fff"
-                                android:textSize="10sp"
-                                android:textStyle="bold"
-                                android:layout_marginStart="5dp"
-                                android:layout_gravity="center_vertical"/>
-
-                        </LinearLayout>
-                    </LinearLayout>
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:layout_height="140dp"
-                    android:layout_width="wrap_content"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@id/relative_hotel1"
-                    android:id="@+id/relative_hotel2"
-                    >
-
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/hotel2_img"
-                        android:scaleType="fitXY"/>
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:layout_alignParentBottom="true"
-                        android:layout_marginBottom="@dimen/dimension_10dp"
-                        android:layout_marginStart="@dimen/dimension_5dp">
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="Cairo Mairioft Hotel \n OmmarKayam Casino"
-                            android:textColor="#fff"
-                            android:textSize="10dp"
-                            android:textStyle="bold" />
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:layout_marginEnd="20dp"
-                            android:layout_marginBottom="10dp"
-                            >
-
-                            <ImageView
-                                android:layout_width="30dp"
-                                android:layout_height="30dp"
-                                android:src="@drawable/star"
-                                android:layout_gravity="center_vertical"
-                                android:layout_marginStart="10dp"
-                                />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="4.1 (2100)"
-                                android:textColor="#fff"
-                                android:textSize="15sp"
-                                android:textStyle="bold"
-                                android:layout_marginStart="5dp"
-                                android:layout_gravity="center_vertical"/>
-
-                        </LinearLayout>
-                    </LinearLayout>
-                </RelativeLayout>
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
+            </LinearLayout>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -269,175 +155,30 @@
                 android:layout_marginStart="@dimen/dimension_20dp"
                 android:layout_marginEnd="@dimen/dimension_20dp"/>
 
-            <androidx.constraintlayout.widget.ConstraintLayout
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/whatToDo"
                 android:id="@+id/whatToDoDetails"
                 android:layout_marginTop="@dimen/dimension_10dp"
                 android:layout_marginStart="@dimen/dimension_20dp"
-                android:layout_marginEnd="@dimen/dimension_20dp">
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/img_what_to_do1"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    android:id="@+id/imgWhatToDo1" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Pyramid Of Giza"
-                    app:layout_constraintStart_toEndOf="@id/imgWhatToDo1"
-                    app:layout_constraintTop_toTopOf="parent"
-                    android:layout_marginStart="20dp"
-                    android:textSize="20sp"
-                    android:id="@+id/txtPyramidOfGiza"/>
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/find"
-                    app:layout_constraintTop_toBottomOf="@id/txtPyramidOfGiza"
-                    app:layout_constraintStart_toEndOf="@id/imgWhatToDo1"
-                    android:layout_marginStart="@dimen/dimension_20dp"
-                    android:id="@+id/imgfindPyramid"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintTop_toBottomOf="@id/txtPyramidOfGiza"
-                    app:layout_constraintStart_toEndOf="@id/imgfindPyramid"
-                    android:text="Nazziet El-Semman"/>
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="#000"
-                android:id="@+id/separator1"
-                android:layout_below="@+id/whatToDoDetails"
-                android:layout_marginTop="@dimen/dimension_10dp"
                 android:layout_marginEnd="@dimen/dimension_20dp"
-                android:layout_marginStart="@dimen/dimension_20dp"/>
+                android:orientation="vertical">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/separator1"
-                android:id="@+id/whatToDoDetails2"
-                android:layout_marginTop="@dimen/dimension_10dp"
-                android:layout_marginStart="@dimen/dimension_20dp"
-                android:layout_marginEnd="@dimen/dimension_20dp">
-
-                <ImageView
+                <androidx.recyclerview.widget.RecyclerView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/img_what_to_do2"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    android:id="@+id/imgWhatToDo2"/>
+                    android:id="@+id/whatToDoRV"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Synix Egyptian Museum"
-                    app:layout_constraintStart_toEndOf="@id/imgWhatToDo2"
-                    app:layout_constraintTop_toTopOf="parent"
-                    android:layout_marginStart="20dp"
-                    android:textSize="20sp"
-                    android:id="@+id/txtSynixEgyptian"/>
+            </LinearLayout>
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/find"
-                    app:layout_constraintTop_toBottomOf="@id/txtSynixEgyptian"
-                    app:layout_constraintStart_toEndOf="@id/imgWhatToDo2"
-                    android:layout_marginStart="@dimen/dimension_20dp"
-                    android:id="@+id/imgFindSynix"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintTop_toBottomOf="@id/txtSynixEgyptian"
-                    app:layout_constraintStart_toEndOf="@id/imgFindSynix"
-                    android:text="Tahir Square Rd, Tahir Square"/>
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="#000"
-                android:id="@+id/separator2"
-                android:layout_below="@+id/whatToDoDetails2"
-                android:layout_marginTop="@dimen/dimension_10dp"
-                android:layout_marginStart="@dimen/dimension_20dp"
-                android:layout_marginEnd="@dimen/dimension_20dp"/>
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/separator2"
-                android:id="@+id/whatToDoDetails3"
-                android:layout_marginTop="@dimen/dimension_10dp"
-                android:layout_marginStart="@dimen/dimension_20dp"
-                android:layout_marginEnd="@dimen/dimension_20dp">
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/img_what_to_do2"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    android:id="@+id/imgWhatToDo3"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Saqqara Boat Cruize"
-                    app:layout_constraintStart_toEndOf="@id/imgWhatToDo3"
-                    app:layout_constraintTop_toTopOf="parent"
-                    android:layout_marginStart="20dp"
-                    android:textSize="20sp"
-                    android:id="@+id/txtSaqqaraBoat"/>
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/find"
-                    app:layout_constraintTop_toBottomOf="@id/txtSaqqaraBoat"
-                    app:layout_constraintStart_toEndOf="@id/imgWhatToDo3"
-                    android:layout_marginStart="@dimen/dimension_20dp"
-                    android:id="@+id/imgFindSaqqara"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintTop_toBottomOf="@id/txtSaqqaraBoat"
-                    app:layout_constraintStart_toEndOf="@id/imgFindSaqqara"
-                    android:text="Maadi"/>
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="#000"
-                android:id="@+id/separator3"
-                android:layout_below="@+id/whatToDoDetails3"
-                android:layout_marginTop="@dimen/dimension_10dp"
-                android:layout_marginStart="@dimen/dimension_20dp"
-                android:layout_marginEnd="@dimen/dimension_20dp"/>
 
     <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-        android:layout_below="@id/separator3"
+        android:layout_below="@id/whatToDoDetails"
         android:id="@+id/con_txt_ffd"
         android:layout_marginBottom="@dimen/dimension_10dp"
         android:layout_marginStart="@dimen/dimension_20dp"

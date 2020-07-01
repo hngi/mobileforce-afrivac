@@ -16,6 +16,7 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.viewpager2.widget.ViewPager2;
 
 import com.michael.afrivac.LocationActivity;
+import com.michael.afrivac.PopularDestinationDetailsActivity;
 import com.michael.afrivac.R;
 import com.michael.afrivac.ui.account.AccountFragment;
 
@@ -333,7 +334,7 @@ public class HomeFragment extends Fragment {
         cairo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), LocationActivity.class);
+                Intent intent = new Intent(getContext(), PopularDestinationDetailsActivity.class);
                 startActivity(intent);
             }
         });
@@ -341,7 +342,7 @@ public class HomeFragment extends Fragment {
         nairobi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), LocationActivity.class);
+                Intent intent = new Intent(getContext(), PopularDestinationDetailsActivity.class);
                 startActivity(intent);
             }
         });
@@ -349,7 +350,7 @@ public class HomeFragment extends Fragment {
         popular.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), LocationActivity.class);
+                Intent intent = new Intent(getContext(), PopularDestinationDetailsActivity.class);
                 startActivity(intent);
             }
         });
@@ -357,7 +358,7 @@ public class HomeFragment extends Fragment {
         pop2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), LocationActivity.class);
+                Intent intent = new Intent(getContext(), PopularDestinationDetailsActivity.class);
                 startActivity(intent);
             }
         });
@@ -365,7 +366,7 @@ public class HomeFragment extends Fragment {
         pop3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), LocationActivity.class);
+                Intent intent = new Intent(getContext(), PopularDestinationDetailsActivity.class);
                 startActivity(intent);
             }
         });

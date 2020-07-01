@@ -133,7 +133,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#fff"
-            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"/>
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
+            app:tabIndicatorColor="@color/colorBlue"/>
 
         <com.michael.afrivac.CustomViewPager
             android:layout_width="match_parent"
