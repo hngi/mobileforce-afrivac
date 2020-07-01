@@ -1,23 +1,38 @@
 package com.michael.afrivac.ui.home;
 
 import android.content.Intent;
+import android.content.res.Resources;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Rect;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AccelerateDecelerateInterpolator;
+import android.view.animation.Interpolator;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.SearchView;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.ViewPager2;
 
 import com.michael.afrivac.LocationActivity;
+import com.michael.afrivac.Place;
 import com.michael.afrivac.R;
 import com.michael.afrivac.ui.account.AccountFragment;
+
+import java.util.ArrayList;
+
+import ru.tinkoff.scrollingpagerindicator.ScrollingPagerIndicator;
 
 public class HomeFragment extends Fragment {
 
@@ -29,6 +44,9 @@ public class HomeFragment extends Fragment {
             profile_image, favorite, fav2, fav3;
     SearchView searchView;
     private int radius;
+
+    private RecyclerView recyclerView;
+    private RecyclerView.LayoutManager layoutManager;
 
     public View onCreateView(@NonNull LayoutInflater inflater,  ViewGroup container, Bundle savedInstanceState) {
 //        homeViewModel =
@@ -74,6 +92,30 @@ public class HomeFragment extends Fragment {
         pop2.setRadius(radius);
         pop3.setRadius(radius);
         popular.setRadius(radius);
+
+        //For recycler view
+        recyclerView = root.findViewById(R.id.my_recycler_view);
+
+        ArrayList<Place> places = new ArrayList<>();
+        places.add(new Place("Cairo","Egypt", R.drawable.camel));
+        places.add(new Place("Nairobi","Kenya", R.drawable.right_image));
+        places.add(new Place("Cairo","Egypt", R.drawable.camel));
+        places.add(new Place("Cairo","Egypt", R.drawable.camel));
+
+        // use a linear layout manager
+        layoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
+        recyclerView.setLayoutManager(layoutManager);
+
+        //sets the adapter for the recycler view
+        DiscoverAdapter discoverAdapter = new DiscoverAdapter(places);
+        recyclerView.setAdapter(discoverAdapter);
+
+        //page indicator for the recyclerView
+        ScrollingPagerIndicator recycleIndicator = root.findViewById(R.id.indicator);
+        recycleIndicator.setSelectedDotColor(ContextCompat.getColor(root.getContext(),R.color.colorBlue));
+        recycleIndicator.setDotColor(ContextCompat.getColor(root.getContext(), R.color.indicator));
+        recycleIndicator.setFadingEdgeLength(10);
+        recycleIndicator.attachToRecyclerView(recyclerView);
 
 //        final Animation animation = AnimationUtils.loadAnimation(getContext(), R.anim.scale);
 //
