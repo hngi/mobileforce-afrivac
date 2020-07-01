@@ -13,9 +13,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".WalletPageActivity" android:theme="@style/AppTheme.NoActionBar"/>
+
+        <activity android:name=".WalletPageActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
+
         <activity android:name=".ForgotAuthFirstActivity" />
         <activity android:name=".ForgotAuthSecondActivity" />
+
         <activity android:name=".EditAccountInfoActivity" />
         <activity android:name=".PaymentActivity" />
         <activity android:name=".ContactUsActivity2" />
@@ -41,13 +45,15 @@
         </activity>
         <activity
             android:name=".MainActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.splashScreen">
-        </activity>
+            android:theme="@style/AppTheme.splashScreen" />
+<!--            android:screenOrientation="portrait"-->
+<!--            android:theme="@style/AppTheme.splashScreen">-->
+        </application>
+        
 
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
-    </application>
+
 
 </manifest>
