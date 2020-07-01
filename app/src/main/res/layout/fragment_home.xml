@@ -5,746 +5,90 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:background="@color/white"
-    android:layout_margin="5dp"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-<LinearLayout
-    android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
-
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/profile_image"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_gravity="end"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:src="@drawable/profile_pic"
-        app:civ_border_color="#FFFFFF"
-        app:civ_border_width="2dp" />
-
-    <TextView
-        android:padding="10dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:layout_margin="@dimen/dimension_5dp"
-        android:text="@string/home_page_top_message"
-        android:textColor="@color/black"
-        android:textSize="18sp"
-        android:fontFamily="@font/poppins"/>
-
-    <EditText
-        android:id="@+id/search"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_marginTop="20dp"
-        android:ems="10"
-        android:layout_margin="@dimen/dimension_5dp"
-        android:textColor="@color/black"
-        android:drawableEnd="@drawable/search_icon_24"
-        android:inputType="textPersonName"
-        android:hint="@string/find_destination"
-        android:background="@drawable/bg_white_rounded"/>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/discover_africa"
-        android:textSize="24sp"
-        android:layout_margin="@dimen/dimension_5dp"
-        android:fontFamily="@font/poppins"
-        android:layout_marginTop="27dp"
-        android:textColor="@color/black"
-        android:textStyle="bold"/>
-
-
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:layout_margin="@dimen/dimension_5dp"
-        android:orientation="horizontal">
-
-
-    <RelativeLayout
-        android:id="@+id/first"
-        android:layout_width="0dp"
-        android:layout_weight="1"
-        android:layout_height="195dp">
-
-
-
-        <ImageView
-
-            android:id="@+id/discover_egypt"
-            android:layout_width="195dp"
-            android:layout_height="195dp"
-            android:layout_marginEnd="2dp"
-            android:layout_marginStart="4dp"
-            app:srcCompat="@drawable/left_image" />
-
-        <ImageView
-            android:layout_below="@+id/textView5"
-            android:id="@+id/imageView6"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            app:srcCompat="@drawable/place" />
-
-        <TextView
-            android:id="@+id/textView5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="120dp"
-            android:text="@string/cairo"
-            android:textColor="#FFFFFF"
-            android:textSize="24sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/textView6"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
-            android:fontFamily="@font/poppins"
-            android:text="@string/egypt"
-            android:layout_below="@+id/textView5"
-            android:layout_toEndOf="@id/imageView6"
-            android:textColor="#FFFFFF"
-            android:textSize="14sp" />
-
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:layout_width="0dp"
-        android:layout_weight="1"
-        android:layout_height="195dp">
-
-
-        <ImageView
-            android:id="@+id/imageView7"
-            android:layout_width="195dp"
-            android:layout_height="195dp"
-            android:layout_marginStart="2dp"
-            android:layout_marginEnd="4dp"
-            app:srcCompat="@drawable/right_image" />
-
-        <TextView
-            android:id="@+id/textView8"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="120dp"
-            android:text="@string/nairobi"
-            android:textColor="#FFFFFF"
-            android:textSize="24sp"
-            android:textStyle="bold" />
-
-        <ImageView
-            android:layout_below="@+id/textView8"
-            android:id="@+id/imageView8"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            app:srcCompat="@drawable/place" />
-
-
-        <TextView
-            android:id="@+id/textView9"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/poppins"
-            android:text="@string/kenya"
-            android:layout_below="@+id/textView8"
-            android:layout_toEndOf="@id/imageView8"
-            android:textColor="#FFFFFF"
-            android:textSize="14sp" />
-
-
-
-    </RelativeLayout>
-
-    </LinearLayout>
-
-
-
-
-    <TextView
-        android:layout_marginTop="30dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/popular_destinations"
-        android:textStyle="bold"
-        android:textSize="24sp"
-        android:layout_margin="@dimen/dimension_5dp"
-        android:textColor="@color/black"
-        android:fontFamily="@font/poppins"/>
-
-
-
-    <RelativeLayout
-        android:id="@+id/cairo_card_layout"
+        android:layout_margin="10dp"
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/profile_image"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="end"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:src="@drawable/profile_pic"
+            app:civ_border_color="#FFFFFF"
+            app:civ_border_width="2dp" />
 
-    <androidx.cardview.widget.CardView
-    android:id="@+id/caira_card"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginStart="@dimen/dimension_10dp"
-    app:cardCornerRadius="@dimen/dimension_10dp"
-    app:cardElevation="@dimen/dimension_10dp"
-    android:padding="10dp"
-    android:clickable="true"
-    android:layout_marginTop="20dp"
-    android:layout_marginBottom="20dp"    
-    android:focusable="true"
-    app:cardBackgroundColor="@color/colorWhite">
+        <TextView
+            android:padding="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:layout_margin="@dimen/dimension_5dp"
+            android:text="@string/home_page_top_message"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:fontFamily="@font/poppins"/>
 
-
-
-        <RelativeLayout
+        <EditText
+            android:id="@+id/search"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="40dp"
+            android:layout_marginTop="20dp"
+            android:ems="10"
+            android:layout_margin="@dimen/dimension_5dp"
+            android:textColor="@color/black"
+            android:drawableEnd="@drawable/search_icon_24"
+            android:inputType="textPersonName"
+            android:hint="@string/find_destination"
+            android:background="@drawable/bg_white_rounded"/>
 
-
-            <ImageView
-                android:id="@+id/girl"
-                android:layout_width="109dp"
-                android:layout_height="110dp"
-                android:outlineProvider="background"
-                android:scaleType="centerCrop"
-                android:src="@drawable/one"/>
-
-            <TextView
-                android:id="@+id/cairo_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/cairo"
-                android:layout_toEndOf="@id/girl"
-                android:layout_marginStart="10dp"
-                android:textSize="18sp"
-                android:textColor="@color/colorBlack" />
-
-            <ImageView
-                android:id="@+id/fav"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="10dp"
-                android:layout_alignParentEnd="true"
-                app:srcCompat="@drawable/ic_favorite_border_black_24dp" />
-
-            <TextView
-                android:id="@+id/egypt_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/egypt"
-                android:layout_toEndOf="@id/girl"
-                android:layout_below="@+id/cairo_text"
-                android:layout_marginStart="10dp"
-                android:textSize="12sp"
-                android:textColor="@color/sub_text_blue"/>
-
-            <TextView
-                android:id="@+id/description_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/descriptive_text"
-                android:layout_toEndOf="@id/girl"
-                android:layout_below="@+id/egypt_text"
-                android:layout_marginStart="10dp"
-                android:textSize="9sp"
-                android:fontFamily="@font/poppins"
-                android:textColor="@color/description_color"/>
-
-            <LinearLayout
-                android:layout_toEndOf="@id/girl"
-                android:layout_below="@id/description_text"
-                android:layout_width="match_parent"
-                android:layout_height="24dp"
-                android:orientation="horizontal">
-
-
-                <ImageView
-                    android:layout_marginStart="10dp"
-                    android:id="@+id/star2"
-                    android:layout_width="15dp"
-                    android:layout_height="17dp"
-                    app:srcCompat="@drawable/ic_star_black_24dp" />
-
-                <ImageView
-                    android:id="@+id/star3"
-                    android:layout_width="15dp"
-                    android:layout_height="17dp"
-                    app:srcCompat="@drawable/ic_star_black_24dp"/>
-
-                <ImageView
-                    android:id="@+id/star4"
-                    android:layout_width="15dp"
-                    android:layout_height="17dp"
-                    app:srcCompat="@drawable/ic_star_black_24dp"/>
-
-                <ImageView
-                    android:id="@+id/star5"
-                    android:layout_width="15dp"
-                    android:layout_height="17dp"
-                    app:srcCompat="@drawable/ic_star_black_24dp"/>
-
-                <ImageView
-                    android:id="@+id/emptyStar"
-                    android:layout_width="15dp"
-                    android:layout_height="17dp"
-                    app:srcCompat="@drawable/ic_star_border_black_24dp" />
-
-                <TextView
-                    android:layout_marginStart="6dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/rate_4_1"
-                    android:fontFamily="@font/poppins"
-                    android:textSize="11sp"
-                    android:textStyle="bold"
-                    android:textColor="@color/description_color"/>
-
-                <TextView
-                    android:layout_marginStart="6dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/reviewa_2_731"
-                    android:fontFamily="@font/poppins"
-                    android:textSize="11sp"
-                    android:textColor="@color/description_color"/>
-
-
-
-            </LinearLayout>
-        </RelativeLayout>
-    </androidx.cardview.widget.CardView>
-
-
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/nairobi_card"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:cardCornerRadius="@dimen/dimension_10dp"
-                app:cardElevation="@dimen/dimension_10dp"
-                android:clickable="true"
-                android:layout_margin="@dimen/dimension_5dp"
-                android:layout_below="@+id/caira_card"
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="20dp"
-                android:padding="10dp"
-                app:cardBackgroundColor="@color/colorWhite"
-                android:focusable="true">
-
-        <RelativeLayout
-            android:id="@+id/mauritus_card_layout"
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            >
-
-            <ImageView
-                android:id="@+id/arobi"
-                android:layout_width="109dp"
-                android:layout_height="110dp"
-                android:outlineProvider="background"
-                android:scaleType="centerCrop"
-                android:src="@drawable/two"/>
-
-            <TextView
-                android:id="@+id/mauritus_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/mauritus_text"
-                android:layout_toEndOf="@id/arobi"
-                android:layout_marginStart="10dp"
-                android:textSize="18sp"
-                android:textColor="@color/colorBlack" />
-
-            <ImageView
-                android:id="@+id/fav2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="10dp"
-                android:layout_alignParentEnd="true"
-                app:srcCompat="@drawable/ic_favorite_border_black_24dp" />
-
-            <TextView
-                android:id="@+id/madagascar_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/madagascar_text"
-                android:layout_toEndOf="@id/arobi"
-                android:layout_below="@+id/mauritus_text"
-                android:layout_marginStart="10dp"
-                android:textSize="12sp"
-                android:textColor="@color/sub_text_blue"/>
-
-            <TextView
-                android:id="@+id/mauritus_description_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/mauritus_descriptive_text"
-                android:layout_toEndOf="@id/arobi"
-                android:layout_below="@+id/madagascar_text"
-                android:layout_marginStart="10dp"
-                android:textSize="9sp"
-                android:fontFamily="@font/poppins"
-                android:textColor="@color/description_color"/>
-
-
-            <LinearLayout
-                android:layout_toEndOf="@id/arobi"
-                android:layout_below="@id/mauritus_description_text"
-                android:layout_width="match_parent"
-                android:layout_height="24dp"
-                android:orientation="horizontal">
-
-
-                <ImageView
-                    android:layout_marginLeft="10dp"
-                    android:id="@+id/s_tar2"
-                    android:layout_width="15dp"
-                    android:layout_height="17dp"
-                    app:srcCompat="@drawable/ic_star_black_24dp" />
-
-                <ImageView
-                    android:id="@+id/s_tar3"
-                    android:layout_width="15dp"
-                    android:layout_height="17dp"
-                    app:srcCompat="@drawable/ic_star_black_24dp"/>
-
-                <ImageView
-                    android:id="@+id/s_tar4"
-                    android:layout_width="15dp"
-                    android:layout_height="17dp"
-                    app:srcCompat="@drawable/ic_star_black_24dp"/>
-
-                <ImageView
-                    android:id="@+id/s_tar5"
-                    android:layout_width="15dp"
-                    android:layout_height="17dp"
-                    app:srcCompat="@drawable/ic_star_black_24dp"/>
-
-                <ImageView
-                    android:id="@+id/empty_Star"
-                    android:layout_width="15dp"
-                    android:layout_height="17dp"
-                    app:srcCompat="@drawable/ic_star_border_black_24dp" />
-
-                <TextView
-                    android:layout_marginLeft="6dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/rate_4_1"
-                    android:fontFamily="@font/poppins"
-                    android:textSize="11sp"
-                    android:textStyle="bold"
-                    android:textColor="@color/description_color"/>
-
-                <TextView
-                    android:layout_marginLeft="6dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/reviewa_2_731"
-                    android:fontFamily="@font/poppins"
-                    android:textSize="11sp"
-                    android:textColor="@color/description_color"/>
-
-
-
-            </LinearLayout>
-
-        </RelativeLayout>
-            </androidx.cardview.widget.CardView>
-
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/madagascar_card"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:cardCornerRadius="@dimen/dimension_10dp"
-                    app:cardElevation="@dimen/dimension_10dp"
-                    android:clickable="true"
-                    android:layout_margin="@dimen/dimension_5dp"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginBottom="20dp"
-                    android:layout_below="@+id/nairobi_card"
-                    android:padding="10dp"
-                    app:cardBackgroundColor="@color/colorWhite"
-                    android:focusable="true">
-
-
-                <RelativeLayout
-                android:id="@+id/capetown_card_layout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                >
-
-                <ImageView
-                    android:id="@+id/capetown"
-                    android:layout_width="109dp"
-                    android:layout_height="110dp"
-                    android:outlineProvider="background"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/three"/>
-
-                <TextView
-                    android:id="@+id/capetown_text"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/capetown"
-                    android:layout_toEndOf="@id/capetown"
-                    android:layout_marginStart="10dp"
-                    android:textSize="18sp"
-                    android:textColor="@color/colorBlack" />
-
-                <ImageView
-                    android:id="@+id/_fav2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginEnd="10dp"
-                    android:layout_alignParentEnd="true"
-                    app:srcCompat="@drawable/ic_favorite_border_black_24dp" />
-
-                <TextView
-                    android:id="@+id/south_africa_text"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/south_africa"
-                    android:layout_toEndOf="@id/capetown"
-                    android:layout_below="@+id/capetown_text"
-                    android:layout_marginStart="10dp"
-                    android:textSize="12sp"
-                    android:textColor="@color/sub_text_blue"/>
-
-                <TextView
-                    android:id="@+id/capetown_description_text"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/cape_town_description"
-                    android:layout_toEndOf="@id/capetown"
-                    android:layout_below="@+id/south_africa_text"
-                    android:layout_marginStart="10dp"
-                    android:textSize="9sp"
-                    android:fontFamily="@font/poppins"
-                    android:textColor="@color/description_color"/>
-
-
-                <LinearLayout
-                    android:layout_toEndOf="@id/capetown"
-                    android:layout_below="@id/capetown_description_text"
-                    android:layout_width="match_parent"
-                    android:layout_height="24dp"
-                    android:orientation="horizontal">
-
-
-                    <ImageView
-                        android:layout_marginLeft="10dp"
-                        android:id="@+id/_star2"
-                        android:layout_width="15dp"
-                        android:layout_height="17dp"
-                        app:srcCompat="@drawable/ic_star_black_24dp" />
-
-                    <ImageView
-                        android:id="@+id/_star3"
-                        android:layout_width="15dp"
-                        android:layout_height="17dp"
-                        app:srcCompat="@drawable/ic_star_black_24dp"/>
-
-                    <ImageView
-                        android:id="@+id/_star4"
-                        android:layout_width="15dp"
-                        android:layout_height="17dp"
-                        app:srcCompat="@drawable/ic_star_black_24dp"/>
-
-                    <ImageView
-                        android:id="@+id/_star5"
-                        android:layout_width="15dp"
-                        android:layout_height="17dp"
-                        app:srcCompat="@drawable/ic_star_black_24dp"/>
-
-                    <ImageView
-                        android:id="@+id/_empty_Star"
-                        android:layout_width="15dp"
-                        android:layout_height="17dp"
-                        app:srcCompat="@drawable/ic_star_border_black_24dp" />
-
-                    <TextView
-                        android:layout_marginLeft="6dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/rate_4_1"
-                        android:fontFamily="@font/poppins"
-                        android:textSize="11sp"
-                        android:textStyle="bold"
-                        android:textColor="@color/description_color"/>
-
-                    <TextView
-                        android:layout_marginLeft="6dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/reviewa_2_731"
-                        android:fontFamily="@font/poppins"
-                        android:textSize="11sp"
-                        android:textColor="@color/description_color"/>
-
-
-
-                </LinearLayout>
-
-            </RelativeLayout>
-
-                </androidx.cardview.widget.CardView>
-
-
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/são_tomé_e_card"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:cardCornerRadius="@dimen/dimension_10dp"
-                    app:cardElevation="@dimen/dimension_10dp"
-                    android:clickable="true"
-                    android:layout_margin="@dimen/dimension_5dp"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginBottom="20dp"
-                    app:cardBackgroundColor="@color/colorWhite"
-                    android:focusable="true"
-                    android:padding="10dp"
-                    android:layout_below="@+id/madagascar_card">
-
-
-
-                <RelativeLayout
-                android:id="@+id/são_tomé_e_card_layout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-
-                <ImageView
-                    android:id="@+id/são_tomé_e"
-                    android:layout_width="109dp"
-                    android:layout_height="110dp"
-                    android:outlineProvider="background"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/four"/>
-
-                <TextView
-                    android:id="@+id/são_tomé_e_text"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="São Tomé e"
-                    android:layout_toEndOf="@id/são_tomé_e"
-                    android:layout_marginStart="10dp"
-                    android:textSize="18sp"
-                    android:textColor="@color/colorBlack" />
-
-                <ImageView
-                    android:id="@+id/_fav_2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginEnd="10dp"
-                    android:layout_alignParentEnd="true"
-                    app:srcCompat="@drawable/ic_favorite_border_black_24dp" />
-
-                <TextView
-                    android:id="@+id/guinea_text"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Guinea"
-                    android:layout_toEndOf="@id/são_tomé_e"
-                    android:layout_below="@+id/são_tomé_e_text"
-                    android:layout_marginStart="10dp"
-                    android:textSize="12sp"
-                    android:textColor="@color/sub_text_blue"/>
-
-                <TextView
-                    android:id="@+id/são_tomé_e_description_text"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/cape_town_description"
-                    android:layout_toEndOf="@id/são_tomé_e"
-                    android:layout_below="@+id/guinea_text"
-                    android:layout_marginStart="10dp"
-                    android:textSize="9sp"
-                    android:fontFamily="@font/poppins"
-                    android:textColor="@color/description_color"/>
-
-
-                <LinearLayout
-                    android:layout_toEndOf="@id/são_tomé_e"
-                    android:layout_below="@id/são_tomé_e_description_text"
-                    android:layout_width="match_parent"
-                    android:layout_height="24dp"
-                    android:orientation="horizontal">
-
-
-                    <ImageView
-                        android:layout_marginLeft="10dp"
-                        android:id="@+id/_star_2"
-                        android:layout_width="15dp"
-                        android:layout_height="17dp"
-                        app:srcCompat="@drawable/ic_star_black_24dp" />
-
-                    <ImageView
-                        android:id="@+id/_star_3"
-                        android:layout_width="15dp"
-                        android:layout_height="17dp"
-                        app:srcCompat="@drawable/ic_star_black_24dp"/>
-
-                    <ImageView
-                        android:id="@+id/_star_4"
-                        android:layout_width="15dp"
-                        android:layout_height="17dp"
-                        app:srcCompat="@drawable/ic_star_black_24dp"/>
-
-                    <ImageView
-                        android:id="@+id/_star_5"
-                        android:layout_width="15dp"
-                        android:layout_height="17dp"
-                        app:srcCompat="@drawable/ic_star_black_24dp"/>
-
-                    <ImageView
-                        android:id="@+id/_emptyStar"
-                        android:layout_width="15dp"
-                        android:layout_height="17dp"
-                        app:srcCompat="@drawable/ic_star_border_black_24dp" />
-
-                    <TextView
-                        android:layout_marginLeft="6dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/rate_4_1"
-                        android:fontFamily="@font/poppins"
-                        android:textSize="11sp"
-                        android:textStyle="bold"
-                        android:textColor="@color/description_color"/>
-
-                    <TextView
-                        android:layout_marginLeft="6dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/reviewa_2_731"
-                        android:fontFamily="@font/poppins"
-                        android:textSize="11sp"
-                        android:textColor="@color/description_color"/>
-
-
-
-                </LinearLayout>
-
-            </RelativeLayout>
-                </androidx.cardview.widget.CardView>
-        </RelativeLayout>
-
-</LinearLayout>
+            android:text="@string/discover_africa"
+            android:textSize="24sp"
+            android:layout_margin="@dimen/dimension_5dp"
+            android:fontFamily="@font/poppins"
+            android:layout_marginTop="27dp"
+            android:textColor="@color/black"
+            android:textStyle="bold"/>
+
+        <ru.tinkoff.scrollingpagerindicator.ScrollingPagerIndicator
+            android:id="@+id/indicator"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginEnd="20dp"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/my_recycler_view"
+            android:scrollbars="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:layout_marginTop="30dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/popular_destinations"
+            android:textStyle="bold"
+            android:textSize="24sp"
+            android:layout_margin="@dimen/dimension_5dp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/poppins"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:scrollbars="vertical"
+            android:id="@+id/popular_destination_recycler"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"/>
+
+    </LinearLayout>
 </ScrollView>

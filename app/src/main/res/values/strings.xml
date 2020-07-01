@@ -213,6 +213,8 @@
     </string-array>
     <string name="phoneNumb" translatable="false">+234 7061815056</string>
     <string name="saveProf" translatable="false">Save Changes</string>
+    <string name="placedesc">An image of a city</string>
+    <string name="star">A star</string>
     <string name="registration" translatable="false">REGISTRATION</string>
     <string name="terms" translatable="false">I have read and agreed to Terms and agreement.</string>
     <string name="recover_email_text" translatable="false">"Enter the email adress regsitered with your afrivac account "</string>
