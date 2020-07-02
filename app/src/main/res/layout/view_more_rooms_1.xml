@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ViewRoomsActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elevation="10dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center|end"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="381dp"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="center|end"
+                android:orientation="horizontal"
+                tools:ignore="UselessParent">
+
+                <ImageView
+                    android:id="@+id/back_button_sImageView"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_marginTop="4dp"
+                    android:contentDescription="@string/back_arrow_button"
+                    android:src="@drawable/arrow" />
+
+                <TextView
+                    android:layout_width="23dp"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="18dp"
+                    android:layout_weight="8"
+                    android:fontFamily="@font/poppins_bold"
+                    android:gravity="center"
+                    android:text="@string/cocoon_hotel"
+                    android:textColor="@android:color/black"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    tools:ignore="NestedWeights" />
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/profile_picture_iv"
+                    android:layout_width="0dp"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="32dp"
+                    android:layout_weight="1.25"
+                    android:contentDescription="@string/profileIcon"
+                    android:ems="10"
+                    android:gravity="center"
+                    tools:src="@drawable/profile_pic" />
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </androidx.appcompat.widget.Toolbar>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/cocoon_hotel_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/fab_margin"
+        android:baselineAligned="false"
+        android:clipToPadding="false"
+        tools:listitem="@layout/view_more_rooms_recycler_items" />
+
+</LinearLayout>

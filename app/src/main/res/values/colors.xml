@@ -26,4 +26,6 @@
     <color name="sub_text_blue">#3913B8</color>
     <color name="description_color">#464646</color>
     <color name="indicator">#DAD1FA</color>
+
+    <color name ="linkBlue"> #008cff </color>
 </resources>

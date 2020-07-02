@@ -18,6 +18,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.michael.afrivac.LocationActivity;
+import com.michael.afrivac.PopularDestinationDetailsActivity;
 import com.michael.afrivac.R;
 import com.michael.afrivac.ui.account.AccountFragment;
 
@@ -50,7 +51,7 @@ public class HomeFragment extends Fragment {
 
 
         // cards
-//        cairo = root.findViewById(R.id.caira_card);
+//          cairo = root.findViewById(R.id.caira_card);
 //        nairobi = root.findViewById(R.id.nairobi_card);
 //        popular = root.findViewById(R.id.caira_card);
 //        pop2 = root.findViewById(R.id.madagascar_card);
@@ -376,6 +377,46 @@ public class HomeFragment extends Fragment {
                 fragmentTransaction.commit();
             }
         });
+
+        /*cairo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(), PopularDestinationDetailsActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        nairobi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(), PopularDestinationDetailsActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        popular.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(), PopularDestinationDetailsActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        pop2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(), PopularDestinationDetailsActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        pop3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(), PopularDestinationDetailsActivity.class);
+                startActivity(intent);
+            }
+        });*/
 //
 //        cairo.setOnClickListener(new View.OnClickListener() {
 //            @Override

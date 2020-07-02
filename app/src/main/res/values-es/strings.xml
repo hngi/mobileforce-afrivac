@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+
     <string name="app_name">AfriVac</string>
+
+    <string name="flight_prompt">Flight Type</string>
+    <string name="no_travellers_prompt">Number Of Travellers</string>
     <string name="mywallet">mon portefeuille</string>
     <string name="hotelName">Cocoon Hotel</string>
     <string name="pay_pal">Pay Pal</string>
