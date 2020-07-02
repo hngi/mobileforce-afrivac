@@ -51,7 +51,7 @@ public class HomeFragment extends Fragment {
 
 
         // cards
-//        cairo = root.findViewById(R.id.caira_card);
+//          cairo = root.findViewById(R.id.caira_card);
 //        nairobi = root.findViewById(R.id.nairobi_card);
 //        popular = root.findViewById(R.id.caira_card);
 //        pop2 = root.findViewById(R.id.madagascar_card);
@@ -378,7 +378,7 @@ public class HomeFragment extends Fragment {
             }
         });
 
-        cairo.setOnClickListener(new View.OnClickListener() {
+        /*cairo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getContext(), PopularDestinationDetailsActivity.class);
@@ -416,7 +416,7 @@ public class HomeFragment extends Fragment {
                 Intent intent = new Intent(getContext(), PopularDestinationDetailsActivity.class);
                 startActivity(intent);
             }
-        });
+        });*/
 //
 //        cairo.setOnClickListener(new View.OnClickListener() {
 //            @Override
