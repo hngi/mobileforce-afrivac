@@ -94,8 +94,9 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="45dp"
-        android:layout_marginTop="12dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/dimension_15dp"
+        android:layout_marginBottom="@dimen/dimension_20dp"
         android:text="@string/frequently_asked_questions"
         android:textColor="@android:color/black"
         android:textSize="16sp"
@@ -113,7 +114,7 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/question_and_answer_recycler_view"
                 android:layout_width="match_parent"
-                android:layout_height="324dp"
+                android:layout_height="350dp"
                 android:layout_marginBottom="@dimen/fab_margin"
                 android:baselineAligned="false"
                 android:clipToPadding="false" />
