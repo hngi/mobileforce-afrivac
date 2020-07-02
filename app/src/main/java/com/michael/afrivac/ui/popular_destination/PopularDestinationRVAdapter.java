@@ -9,6 +9,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -107,6 +108,27 @@ class PopularDestinationRVAdapter extends RecyclerView.Adapter<PopularDestinatio
        // this.popularPlaces = FirebaseUtil.sPopularPlaces;
        // notifyDataSetChanged();
     }
+    public void filter(String text) {
+        ArrayList<PopularPlaces> temp = new ArrayList<>();
+        temp= (ArrayList<PopularPlaces>) popularPlaces;
+        if (text.length()==0||text.isEmpty()||text==null){
+           this. popularPlaces=temp;
+            notifyDataSetChanged();
+        }else{
+
+        ArrayList<PopularPlaces> filteredList = new ArrayList<>();
+        for (PopularPlaces item : popularPlaces) {
+            if (item.getCountry().toLowerCase().contains(text.toLowerCase())||
+                    item.getDestination().toLowerCase().contains(text.toLowerCase())) {
+                filteredList.add(item);
+            }
+        }
+        popularPlaces = filteredList;
+        notifyDataSetChanged();
+    }
+
+    }
+
 
     class PopularPlacesRVAdapterVH extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView country, destination, description, ratingNumber, engagement;

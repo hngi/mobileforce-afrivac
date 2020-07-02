@@ -81,7 +81,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         displaySelectedScreen(R.id.nav_home);
 
-        mAuth = FirebaseAuth.getInstance();
+      //  mAuth = FirebaseAuth.getInstance();
 
 //        FloatingActionButton fab = findViewById(R.id.fab);
 //        fab.setOnClickListener(new View.OnClickListener() {
@@ -206,10 +206,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     protected void onStart() {
         super.onStart();
-        FirebaseUser currentUser = mAuth.getCurrentUser();
+      /*  FirebaseUser currentUser = mAuth.getCurrentUser();
         if(currentUser == null){
             helper.gotoLoginAcitivity(this);
-        }
+        }*/
 
     }
 

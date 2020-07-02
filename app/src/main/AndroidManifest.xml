@@ -34,18 +34,23 @@
         <activity android:name=".ProfilePageActivity" />
         <activity android:name=".OnboardscreenActivity" />
         <activity android:name=".ForgetPasswordActivity" />
-        <activity
+        <!--<activity
             android:name=".SplashscreenActivity" android:theme="@style/AppTheme.splashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
+        </activity>-->
         <activity
             android:name=".MainActivity"
             android:theme="@style/AppTheme.splashScreen"
             android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity android:name=".ViewRoomsActivity"/>
         <meta-data

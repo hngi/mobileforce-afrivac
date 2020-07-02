@@ -43,6 +43,7 @@ import com.michael.afrivac.R;
 import com.michael.afrivac.Util.FirebaseUtil;
 import com.michael.afrivac.model.DestinationSuggestion;
 import com.michael.afrivac.model.PopularPlaces;
+import com.michael.afrivac.ui.home.Popular;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -173,7 +174,11 @@ public class PopularDestinationFragment extends Fragment {
         };
         searchTV.addTextChangedListener(new TextWatcher() {
             @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                popularPlacesRV.setAdapter(popularDestinationRVAdapter);
+
+
+            }
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
             @Override
@@ -181,11 +186,24 @@ public class PopularDestinationFragment extends Fragment {
                 if (editable == null || editable.toString() == null || editable.toString().equals("")) {
                     search_end_button.setImageResource(R.drawable.ic_search);
                     search_end_button.setOnClickListener(null);
+                    popularPlacesRV.setAdapter(new PopularDestinationRVAdapter(getContext(), new PopularDestinationRVAdapter.OnItemSelectedListener() {
+                        @Override
+                        public void onItemSelected(int selectedPosition) {
+                            Intent intent = new Intent(getContext(), PopularDestinationDetailsActivity.class);
+                            startActivity(intent);
+                        }
+                    }));
+
                 } else {
                     search_end_button.setImageResource(R.drawable.ic_round_highlight_off_24);
-                    search_end_button.setOnClickListener(searchClearer);
+                    popularDestinationRVAdapter.filter(editable.toString());
+
+                   // search_end_button.setOnClickListener(searchClearer);
                 }
+
+               // filter(editable.toString());
             }
+
         });
     }
 
