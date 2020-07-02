@@ -51,8 +51,6 @@ class PopularDestinationRVAdapter extends RecyclerView.Adapter<PopularDestinatio
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
 
-
-
                 String country=dataSnapshot.child("country").getValue().toString();
                 String destination=dataSnapshot.child("name").getValue().toString();
                 String description=dataSnapshot.child("description").getValue().toString();
