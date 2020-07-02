@@ -34,6 +34,7 @@
         <activity android:name=".ProfilePageActivity" />
         <activity android:name=".OnboardscreenActivity" />
         <activity android:name=".ForgetPasswordActivity" />
+        <activity android:name=".FindHotelDetailsReviewActivity"/>
         <activity
             android:name=".SplashscreenActivity" android:theme="@style/AppTheme.splashScreen">
             <intent-filter>
