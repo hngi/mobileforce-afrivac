@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="@dimen/dimension_10dp"
+        android:id="@+id/consWhat">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/img_what_to_do1"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:id="@+id/imgWhatToDo1" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Pyramid Of Giza"
+        app:layout_constraintStart_toEndOf="@id/imgWhatToDo1"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginStart="20dp"
+        android:textSize="20sp"
+        android:id="@+id/txtPyramidOfGiza"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/find"
+        app:layout_constraintTop_toBottomOf="@id/txtPyramidOfGiza"
+        app:layout_constraintStart_toEndOf="@id/imgWhatToDo1"
+        android:layout_marginStart="@dimen/dimension_20dp"
+        android:id="@+id/imgfindPyramid"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/txtPyramidOfGiza"
+        app:layout_constraintStart_toEndOf="@id/imgfindPyramid"
+        android:text="Nazziet El-Semman"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="#000"
+        android:id="@+id/separator"
+        app:layout_constraintTop_toBottomOf="@id/consWhat"
+        android:layout_marginTop="@dimen/dimension_5dp"
+        android:layout_marginEnd="@dimen/dimension_20dp"
+        android:layout_marginStart="@dimen/dimension_20dp"
+        android:layout_marginBottom="5dp"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
