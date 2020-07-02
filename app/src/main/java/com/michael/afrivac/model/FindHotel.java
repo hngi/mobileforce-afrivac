@@ -11,7 +11,7 @@ public class FindHotel {
     private int icon5;
     private boolean isFavorite;
     private double rating;
-     private int numberRate;
+    private int numberRate;
 
     public FindHotel(int hotelImage, String nameText1, String nameText2, int icon1, int icon2, int icon3, int icon4, int icon5, boolean isFavorite, double rating, int numberRate) {
         this.hotelImage = hotelImage;
