@@ -3,12 +3,19 @@ package com.michael.afrivac;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 public class PopularDestinationDetailsOverviewFragment extends Fragment {
+
+    private RecyclerView recyclerView, recreationRV;
+    private LinearLayoutManager layoutManager, mLinearLayoutManager;
+    private PopularDestinationDetailsHotelsAdapter hoteladapter;
+    private PopularDestinationDetailsRecreationCentersAdapter mPopularDestinationDetailsRecreationCentersAdapter;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -54,6 +61,22 @@ public class PopularDestinationDetailsOverviewFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_popular_destination_details_overview, container, false);
+        final View view = inflater.inflate(R.layout.fragment_popular_destination_details_overview, container, false);
+        recyclerView = view.findViewById(R.id.hotelsItem);
+        recreationRV = view.findViewById(R.id.whatToDoRV);
+
+        layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
+        mLinearLayoutManager = new LinearLayoutManager(getContext());
+
+        hoteladapter = new PopularDestinationDetailsHotelsAdapter();
+        mPopularDestinationDetailsRecreationCentersAdapter = new PopularDestinationDetailsRecreationCentersAdapter();
+
+        recyclerView.setLayoutManager(layoutManager);
+        recreationRV.setLayoutManager(mLinearLayoutManager);
+
+        recyclerView.setAdapter(hoteladapter);
+        recreationRV.setAdapter(mPopularDestinationDetailsRecreationCentersAdapter);
+
+        return view;
     }
 }

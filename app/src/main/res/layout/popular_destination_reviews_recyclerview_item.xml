@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:paddingStart="@dimen/dimension_20dp"
+    android:paddingEnd="@dimen/dimension_20dp">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -22,17 +25,18 @@
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/profile_image"
             android:layout_width="96dp"
-            android:layout_height="96dp"
+            android:layout_height="70dp"
             android:src="@drawable/user1"
             app:civ_border_width="2dp"
             app:civ_border_color="#FF000000"/>
 
         <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="100dp"
+            android:layout_height="wrap_content"
             android:orientation="vertical"
             android:layout_marginStart="10dp"
-            android:layout_weight="1">
+            android:layout_weight="1"
+            android:layout_marginTop="@dimen/dimension_5dp">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -44,12 +48,25 @@
                 android:id="@+id/username_review"
                 android:textColor="#000"/>
 
-            <ImageView
-                android:layout_width="100dp"
-                android:layout_height="30dp"
-                android:src="@drawable/star"
-                android:layout_weight="1"
-                />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            <RatingBar
+                android:id="@+id/ratingsStarReview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:numStars="5"
+                android:stepSize=".5"
+                style="?android:attr/ratingBarStyleSmall"
+                android:rating="4.4"
+                android:isIndicator="true"
+                android:scaleX="1.2"
+                android:scaleY="1.2"
+                android:transformPivotX="0dp"
+                android:transformPivotY="0dp"
+                android:max="5"
+                android:layout_marginEnd="@dimen/dimension_5dp"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -57,8 +74,9 @@
                 android:text="12/12/2010"
                 android:textStyle="italic"
                 android:textSize="15sp"
-                android:layout_weight="1"
-                android:id="@+id/reviewDate"/>
+                android:id="@+id/reviewDate"
+                android:layout_marginStart="@dimen/dimension_10dp"/>
+            </LinearLayout>
         </LinearLayout>
     </LinearLayout>
     <TextView
@@ -81,11 +99,4 @@
         android:layout_marginStart="5dp"
         android:layout_marginTop="5dp"/>
     </LinearLayout>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="#000"
-        android:layout_marginBottom="@dimen/dimension_10dp"
-        app:layout_constraintTop_toBottomOf="@id/linear1"/>
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>
