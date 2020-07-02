@@ -1,8 +1,11 @@
 package com.michael.afrivac.Adapter;
 
 import android.content.Context;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -31,11 +34,17 @@ public class AskedQuestionsAdapter extends RecyclerView.Adapter<AskedQuestionsAd
         public TextView messageTitle;
         public TextView messageDescription;
 
+        private ImageView closeDescription;
+        private LinearLayout linearLayout;
+
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
             messageTitle = itemView.findViewById(R.id.questions_tv);
             messageDescription = itemView.findViewById(R.id.answer_tv);
+            //visibility gone items
+            closeDescription = itemView.findViewById(R.id.arrow_down_iv);
+            linearLayout = itemView.findViewById(R.id.show_text);
         }
     }
 
@@ -62,7 +71,8 @@ public class AskedQuestionsAdapter extends RecyclerView.Adapter<AskedQuestionsAd
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return null;
+        View view = LayoutInflater.from(context).inflate(R.layout.support_page_recycler_list_item, parent, false);
+        return new AskedQuestionsAdapter.ViewHolder(view);
     }
 
     /**
@@ -86,8 +96,27 @@ public class AskedQuestionsAdapter extends RecyclerView.Adapter<AskedQuestionsAd
      * @param position The position of the item within the adapter's data set.
      */
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull final ViewHolder holder, int position) {
+        final  AskedQuestions question = myQuestions.get(position);
 
+        holder.messageTitle.setText(question.getTitle());
+        holder.messageDescription.setText(question.getDescription());
+        //view description
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                holder.closeDescription.setVisibility(View.VISIBLE);
+                holder.linearLayout.setVisibility(View.VISIBLE);
+            }
+        });
+
+        holder.closeDescription.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                holder.closeDescription.setVisibility(View.GONE);
+                holder.linearLayout.setVisibility(View.GONE);
+            }
+        });
     }
 
     /**
@@ -97,7 +126,7 @@ public class AskedQuestionsAdapter extends RecyclerView.Adapter<AskedQuestionsAd
      */
     @Override
     public int getItemCount() {
-        return 0;
+        return myQuestions.size();
     }
 
 }
