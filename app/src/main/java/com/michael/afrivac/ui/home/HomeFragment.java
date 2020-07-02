@@ -18,6 +18,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.michael.afrivac.LocationActivity;
+import com.michael.afrivac.PopularDestinationDetailsActivity;
 import com.michael.afrivac.R;
 import com.michael.afrivac.ui.account.AccountFragment;
 
@@ -374,6 +375,46 @@ public class HomeFragment extends Fragment {
                 FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
                 fragmentTransaction.replace(R.id.nav_host_fragment, fragment);
                 fragmentTransaction.commit();
+            }
+        });
+
+        cairo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(), PopularDestinationDetailsActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        nairobi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(), PopularDestinationDetailsActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        popular.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(), PopularDestinationDetailsActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        pop2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(), PopularDestinationDetailsActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        pop3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(), PopularDestinationDetailsActivity.class);
+                startActivity(intent);
             }
         });
 //

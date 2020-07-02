@@ -1,5 +1,20 @@
 <resources>
 
+    <string name="flight_prompt">Flight Type</string>
+    <string name="no_travellers_prompt">Number Of Travellers</string>
+
+    <string-array name="flightType">
+        <item>Economy</item>
+        <item>First Class</item>
+    </string-array>
+
+    <string-array name="numberOfTravelers">
+        <item>1 Traveller</item>
+        <item>2 Travellers</item>
+        <item>3 Travellers</item>
+    </string-array>
+
+
     <string name="app_name">AfriVac</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="mywallet">My Wallet</string>
@@ -222,4 +237,18 @@
     <string name="enter_verification_code" translatable="false">Enter Verification Code</string>
     <string name="noverificationcode" translatable="false">Didn’t Recieve a verification code?</string>
     <string name="resend" translatable="false">Resend</string>
+    <string name="rooms_can_b" translatable="false">Rooms can be cancelled up to 48 hours before\ncheck in</string>
+    <string name="free_breakfast" translatable="false">Free Breakfast</string>
+    <string name="room_service" translatable="false">Room Service</string>
+    <string name="hot_tub" translatable="false">Hot Tub</string>
+    <string name="free_wifi" translatable="false">Free Wifi</string>
+    <string name="bedroom_image" translatable="false">bedroom Image</string>
+    <string name="check_in" translatable="false">Check-in:</string>
+    <string name="check_out" translatable="false">Check-out:</string>
+    <string name="check_in_out_time" translatable="false">12pm - 11pm</string>
+    <string name="book_btn_txt" translatable="false">Book Now</string>
+    <string name="per_night" translatable="false">/per night</string>
+    <string name="cancellation_policy" translatable="false">Cancellation policy</string>
+    <string name="load_image" translatable="false">load image</string>
+    <string name="save_favourite" translatable="false">save favourite</string>
 </resources>

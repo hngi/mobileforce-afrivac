@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <androidx.cardview.widget.CardView
+        android:layout_width="349dp"
+        android:layout_height="464dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="40dp"
+        android:elevation="20dp"
+        app:cardCornerRadius="10dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/bedroom_iv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/cardview_dark_background"
+                android:contentDescription="@string/bedroom_image"
+                tools:src="@drawable/rectangle"
+                tools:ignore="PrivateResource" />
+
+            <ImageView
+                android:id="@+id/loading_image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@id/bedroom_iv"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="147.88dp"
+                android:layout_marginStart="12.37dp"
+                android:layout_marginEnd="300dp"
+                android:visibility="visible"
+                android:src="@drawable/loading_profile_image"
+                android:contentDescription="@string/load_image" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@id/bedroom_iv"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="147.88dp"
+                android:layout_marginEnd="12.37dp"
+                android:src="@drawable/ic_favorite_border_white_24dp"
+                android:contentDescription="@string/save_favourite" />
+            <!-- Deluxe Rooms -->
+            <!--TODO: important data to get the firebase data-->
+            <TextView
+                android:id="@+id/deluxe_room"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="14dp"
+                android:layout_marginTop="180dp"
+                android:fontFamily="@font/poppins_semibold"
+                android:gravity="top"
+                tools:text="@string/deluxe_rooms"
+                android:textColor="#000000"
+                android:textSize="14sp"
+                tools:ignore="RelativeOverlap" />
+
+            <LinearLayout
+                android:id="@+id/room_service_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/deluxe_room"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/wifi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="14dp"
+                    android:layout_marginTop="12dp"
+                    android:drawableTop="@drawable/ic_baseline_wifi_12"
+                    android:text="@string/free_wifi"
+                    android:textSize="8sp"
+                    android:textColor="#464646"
+                    tools:ignore="SmallSp" />
+
+                <TextView
+                    android:id="@+id/hot_tub"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="37dp"
+                    android:drawableTop="@drawable/ic_baseline_hot_tub_24"
+                    android:text="@string/hot_tub"
+                    android:layout_marginTop="12dp"
+                    android:textSize="8sp"
+                    android:fontFamily="@font/poppins_light"
+                    android:textColor="#464646"
+                    tools:ignore="SmallSp" />
+                <TextView
+                    android:id="@+id/room_service"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginTop="12dp"
+                    android:drawableTop="@drawable/ic_baseline_room_service_24"
+                    android:text="@string/room_service"
+                    android:fontFamily="@font/poppins_light"
+                    android:textSize="8sp"
+                    android:textColor="#464646"
+                    tools:ignore="SmallSp" />
+                <TextView
+                    android:id="@+id/free_breakfast"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="23dp"
+                    android:layout_marginTop="12dp"
+                    android:drawableTop="@drawable/ic_baseline_free_breakfast_24"
+                    android:text="@string/free_breakfast"
+                    android:fontFamily="@font/poppins_light"
+                    android:textSize="8sp"
+                    android:textColor="#464646"
+                    tools:ignore="SmallSp" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/check_in"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/check_in"
+                android:layout_marginTop="17dp"
+                android:textColor="#464646"
+                android:textSize="@dimen/dimension_14sp"
+                android:fontFamily="@font/poppins_semibold"
+                android:layout_below="@id/room_service_layout"
+                android:layout_marginStart="14dp"/>
+            <TextView
+                android:id="@+id/check_out"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/check_out"
+                android:textSize="@dimen/dimension_14sp"
+                android:layout_marginTop="17dp"
+                android:textColor="#464646"
+                android:fontFamily="@font/poppins_semibold"
+                android:layout_below="@id/room_service_layout"
+                android:layout_marginStart="125dp"/>
+            <TextView
+                android:id="@+id/check_in_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/check_in_out_time"
+                android:layout_marginTop="1dp"
+                android:textColor="#464646"
+                android:textSize="12sp"
+                android:fontFamily="@font/poppins_light"
+                android:layout_below="@id/check_in"
+                android:layout_marginStart="14dp"/>
+            <TextView
+                android:id="@+id/check_out_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/check_in_out_time"
+                android:layout_marginTop="1dp"
+                android:textColor="#464646"
+                android:textSize="12sp"
+                android:fontFamily="@font/poppins_light"
+                android:layout_below="@id/check_in"
+                android:layout_marginStart="125dp"/>
+            <TextView
+                android:id="@+id/cancel_policy_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/cancellation_policy"
+                android:layout_marginTop="28dp"
+                android:textColor="#464646"
+                android:textSize="12sp"
+                android:fontFamily="@font/poppins_semibold"
+                android:layout_below="@id/check_in_date"
+                android:layout_marginStart="14dp"/>
+            <TextView
+                android:id="@+id/cancel_policy_note"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/rooms_can_b"
+                android:layout_marginTop="1dp"
+                android:textColor="#464646"
+                android:textSize="12sp"
+                android:fontFamily="@font/poppins_light"
+                android:layout_below="@id/cancel_policy_tv"
+                android:layout_marginStart="14dp"/>
+            <!--TODO: important data to get the firebase data-->
+            <TextView
+                android:id="@+id/booking_price_iv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="N12,000"
+                android:layout_marginTop="58dp"
+                android:textColor="#333333"
+                android:textSize="24sp"
+                android:fontFamily="@font/poppins_semibold"
+                android:layout_below="@id/cancel_policy_tv"
+                android:layout_marginStart="14dp"/>
+
+            <TextView
+                android:id="@+id/per_night"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/per_night"
+                android:layout_marginTop="71dp"
+                android:textColor="#464646"
+                android:textSize="11sp"
+                android:fontFamily="@font/poppins_light"
+                android:layout_alignEnd="@id/booking_price_iv"
+                android:layout_below="@id/cancel_policy_tv"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="190dp"
+                tools:ignore="SmallSp" />
+
+            <!--TODO: important for intent to payment page-->
+            <Button
+                android:id="@+id/booking_btn"
+                android:layout_width="111dp"
+                android:layout_height="35dp"
+                android:text="@string/book_btn_txt"
+                android:textAllCaps="false"
+                android:layout_marginTop="58dp"
+                android:textColor="#ffffff"
+                android:paddingStart="@dimen/dimension_30dp"
+                android:paddingEnd="@dimen/dimension_30dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:textSize="10sp"
+                android:background="@drawable/button_round"
+                android:fontFamily="@font/poppins_bold"
+                android:layout_below="@id/cancel_policy_tv"
+                android:layout_marginStart="192dp"
+                tools:ignore="SmallSp" />
+
+
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+</FrameLayout>
