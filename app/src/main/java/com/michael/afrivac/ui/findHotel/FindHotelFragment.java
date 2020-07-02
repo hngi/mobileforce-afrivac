@@ -52,9 +52,9 @@ public class FindHotelFragment extends Fragment {
         View root = inflater.inflate(R.layout.fragment_find_hotel, container, false);
 
         findHotelRecycler = root.findViewById(R.id.hotelRecycler);
-        searchBar = root.findViewById(R.id.searchbar);
+        searchBar = root.findViewById(R.id.searchTV);
         Avatar = root.findViewById(R.id.avatar);
-        sideMenu = root.findViewById(R.id.sidebar);
+        sideMenu = root.findViewById(R.id.sideBar);
 
         findHotelRecyclerAdapter = new FindHotelRecyclerAdapter(getContext(), new FindHotelRecyclerAdapter.OnItemSelectedListener() {
             @Override
