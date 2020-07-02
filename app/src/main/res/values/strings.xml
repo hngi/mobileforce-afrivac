@@ -114,7 +114,7 @@
     <string name="submit" translatable="false">Submit</string>
     <string name="newpassword" translatable="false">New Password</string>
     <string name="confirmpassword" translatable="false">Confirm Password</string>
-    <string name="forgotPassword">Forgot Password?  -</string>
+    <string name="forgotPassword">Forgot Password?</string>
     <string name="overview">Overview</string>
     <string name="viewAll">View All</string>
     <string name="hotels">Hotels</string>
@@ -228,15 +228,22 @@
     </string-array>
     <string name="phoneNumb" translatable="false">+234 7061815056</string>
     <string name="saveProf" translatable="false">Save Changes</string>
-    <string name="placedesc">An image of a city</string>
-    <string name="star">A star</string>
+    <string name="placedesc" translatable="false">An image of a city</string>
+    <string name="star" translatable="false">A star</string>
     <string name="registration" translatable="false">REGISTRATION</string>
     <string name="terms" translatable="false">I have read and agreed to Terms and agreement.</string>
-    <string name="recover_email_text" translatable="false">"Enter the email adress regsitered with your afrivac account "</string>
+    <string name="recover_email_text" translatable="false">"Enter the email address registered with your afrivac account "</string>
     <string name="verification_code_text" translatable="false">we just sent a verification code to dele******1@gmail.com</string>
     <string name="enter_verification_code" translatable="false">Enter Verification Code</string>
-    <string name="noverificationcode" translatable="false">Didn’t Recieve a verification code?</string>
+    <string name="noverificationcode" translatable="false">Didn’t Receive a verification code?</string>
+    <string name="resend_" translatable="false">Resend</string>
+    <string name="didn_t_receive_a_verification_code" translatable="false">Didn\'t Receive a verification code?</string>
     <string name="resend" translatable="false">Resend</string>
+
+    <string name="resend_verification_email" translatable="false">Resend Verification Email</string>
+    <string name="cancel" translatable="false">Cancel</string>
+    <string name="confirm" translatable="false">Confirm</string>
+
     <string name="rooms_can_b" translatable="false">Rooms can be cancelled up to 48 hours before\ncheck in</string>
     <string name="free_breakfast" translatable="false">Free Breakfast</string>
     <string name="room_service" translatable="false">Room Service</string>
@@ -251,4 +258,5 @@
     <string name="cancellation_policy" translatable="false">Cancellation policy</string>
     <string name="load_image" translatable="false">load image</string>
     <string name="save_favourite" translatable="false">save favourite</string>
+
 </resources>

@@ -41,7 +41,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     private EditText email, password;
     private String Email, Password;
-    private TextView sign_in, signUp, forgotPassword;
+    private TextView sign_in, signUp, forgotPassword, resend_email_ver;
     private FirebaseAuth mAuth;
     private FirebaseUser user;
     private AuthViewModel authViewModel;
@@ -57,6 +57,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         //initializing Google Signup features
 //        signInButton = findViewById(R.id.signin_with_google);
+        resend_email_ver = findViewById(R.id.resend_email_verification);
         email = findViewById(R.id.signin_email);
         password = findViewById(R.id.signin_password);
         sign_in = findViewById(R.id.singin_into_account);
@@ -81,6 +82,13 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         signUp = findViewById(R.id.singin_goto_signup);
         forgotPassword = findViewById(R.id.signin_forgot_password);
 
+        resend_email_ver.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ResendVerificationDialog verificationDialog = new ResendVerificationDialog();
+                verificationDialog.show(getSupportFragmentManager(), "resend_verification_dialog");
+            }
+        });
 
         sign_in.setOnClickListener(new View.OnClickListener() {
             @Override
