@@ -124,7 +124,7 @@ class PopularDestinationRVAdapter extends RecyclerView.Adapter<PopularDestinatio
         ArrayList<PopularPlaces> filteredList = new ArrayList<>();
         for (PopularPlaces item : popularPlaces) {
             if (item.getCountry().toLowerCase().contains(text.toLowerCase())||
-                    item.getDestination().toLowerCase().contains(text.toLowerCase())) {
+                    item.getName().toLowerCase().contains(text.toLowerCase())) {
                 filteredList.add(item);
             }
         }
