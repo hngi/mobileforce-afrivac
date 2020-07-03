@@ -1,5 +1,7 @@
 package com.michael.afrivac;
 
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import com.michael.afrivac.sharePref.SharePref;
 
 
@@ -13,6 +15,8 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
+
+import java.util.prefs.PreferenceChangeEvent;
 
 
 public class SplashscreenActivity extends AppCompatActivity {
@@ -48,7 +52,6 @@ public class SplashscreenActivity extends AppCompatActivity {
         fadeLayoutImage.startAnimation(fadeIn);
         fromBottomText.startAnimation(fromBottom);
         logo.startAnimation(fromTop);
-
 
         new Handler().postDelayed(new Runnable() {
             @Override
