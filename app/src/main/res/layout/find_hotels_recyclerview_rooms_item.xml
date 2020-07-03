@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <RelativeLayout
+        android:layout_height="140dp"
+        android:layout_width="match_parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:id="@+id/relative_hotel1"
+        android:layout_marginEnd="@dimen/dimension_20dp">
+
+        <ImageView
+            android:id="@+id/destination_detail_image"
+            android:layout_width="wrap_content"
+            android:layout_height="300dp"
+            android:src="@drawable/room1"
+            android:scaleType="fitXY"
+            android:background="@drawable/circular_drawable02"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="@dimen/dimension_10dp"
+            android:layout_marginStart="@dimen/dimension_5dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Classic Room"
+                android:textColor="#fff"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:layout_marginStart="@dimen/dimension_10dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/hotDetails"
+                android:orientation="horizontal"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="$1200/Per Night"
+                    android:textColor="#fff"
+                    android:textSize="10sp"
+                    android:textStyle="bold"
+                    android:layout_marginStart="5dp"
+                    android:layout_gravity="center_vertical"/>
+
+            </LinearLayout>
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/round_blue_background"
+                android:text="Book Now"
+                android:textColor="#ffff"
+                android:textSize="10dp" />
+
+        </LinearLayout>
+    </RelativeLayout>
+
+    <View
+        android:layout_width="2dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/relative_hotel1"
+        android:background="#fff"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginStart="@dimen/dimension_5dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
