@@ -106,7 +106,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                                     .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                                         @Override
                                         public void onComplete(@NonNull Task<AuthResult> task) {
-
+                                            helper.progressDialogEnd();
                                         }
                                     }).addOnFailureListener(new OnFailureListener() {
                                 @Override
@@ -296,14 +296,12 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 FirebaseUser user = firebaseAuth.getCurrentUser();
                 if(user!=null){
                     if (user.isEmailVerified()){
-                        helper.progressDialogEnd();
                         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                         startActivity(intent);
                         finish();
                         Toast.makeText(LoginActivity.this, "Authenticated with " + user.getEmail(),
                                 Toast.LENGTH_SHORT).show();
                     }else{
-                        helper.progressDialogEnd();
                         Toast.makeText(LoginActivity.this, "Please check your email inbox for your verification link",
                                 Toast.LENGTH_SHORT).show();
                         FirebaseAuth.getInstance().signOut();
