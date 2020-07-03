@@ -13,16 +13,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.michael.afrivac.R;
 
 
-import com.michael.afrivac.model.PopularPlaces;
-import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
 public class PopularAdapter extends RecyclerView.Adapter<PopularAdapter.MyViewHolder> {
     Context context;
-    ArrayList<PopularPlaces> popularPlaces;
+    ArrayList<PopularPlace> popularPlaces;
 
-    public PopularAdapter(Context c, ArrayList<PopularPlaces> p) {
+    public PopularAdapter(Context c, ArrayList<PopularPlace> p) {
         context = c;
         popularPlaces = p;
     }
