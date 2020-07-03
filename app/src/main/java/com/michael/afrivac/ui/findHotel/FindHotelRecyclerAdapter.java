@@ -1,6 +1,7 @@
 package com.michael.afrivac.ui.findHotel;
 
 import android.content.Context;
+import android.content.Intent;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,6 +17,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.michael.afrivac.FindHotelDetailsReviewActivity;
 import com.michael.afrivac.R;
 import com.michael.afrivac.Util.FirebaseUtil;
 import com.michael.afrivac.model.FindHotel;
@@ -32,6 +34,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import org.w3c.dom.Text;
+
+import static androidx.core.content.ContextCompat.startActivity;
 
 public class FindHotelRecyclerAdapter extends RecyclerView.Adapter<FindHotelRecyclerAdapter.FindHotelHolder> {
     private OnItemSelectedListener onItemSelectedListener;
@@ -138,6 +142,14 @@ public class FindHotelRecyclerAdapter extends RecyclerView.Adapter<FindHotelRecy
                     current.setFavorite(true);
                 }
                 notifyItemChanged(position);
+            }
+        });
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context,  FindHotelDetailsReviewActivity.class);
+                context.startActivity(intent);
             }
         });
     }
