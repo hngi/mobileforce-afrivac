@@ -232,7 +232,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private void displaySelectedScreen(int itemId) {
 
         //string tag for fragment object
-        String fragment_tag = "null";
+        String fragment_tag = null;
         //initializing the fragment object which is selected
         switch (itemId) {
             case R.id.nav_home:
