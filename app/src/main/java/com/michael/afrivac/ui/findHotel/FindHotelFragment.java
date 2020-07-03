@@ -19,6 +19,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -26,6 +27,7 @@ import com.michael.afrivac.MainActivity;
 import com.michael.afrivac.R;
 import com.michael.afrivac.model.FindHotel;
 import com.michael.afrivac.model.HotelSuggestions;
+
 
 
 import java.util.ArrayList;
@@ -38,6 +40,7 @@ public class FindHotelFragment extends Fragment {
 
     private FindHotelViewModel findHotelViewModel;
     private FindHotelRecyclerAdapter findHotelRecyclerAdapter;
+    final  ArrayList<FindHotel>   findHotels = new ArrayList<>();
 
     public static FindHotelFragment newInstance() {
         return new FindHotelFragment();
@@ -55,6 +58,8 @@ public class FindHotelFragment extends Fragment {
         searchBar = root.findViewById(R.id.searchTV);
         Avatar = root.findViewById(R.id.avatar);
         sideMenu = root.findViewById(R.id.sideBar);
+        findHotelRecycler.setLayoutManager(new LinearLayoutManager(getContext()));
+
 
         findHotelRecyclerAdapter = new FindHotelRecyclerAdapter(getContext(), new FindHotelRecyclerAdapter.OnItemSelectedListener() {
             @Override
@@ -89,11 +94,12 @@ public class FindHotelFragment extends Fragment {
             public void onChanged(FindHotelViewModel.State state) {
                 switch (state) {
                     case NORMAL:
-                        findHotelRecyclerAdapter.setHotel(findHotelViewModel.mainFindHotels);
+                        findHotelRecyclerAdapter.setHotel(findHotels);
+                        findHotelRecyclerAdapter.setHotel(findHotelViewModel.initialfindHotels);
                         extractSuggestions();
                         break;
                     case INTERNAL_SEARCH:
-                        findHotelRecyclerAdapter.setHotel(findHotelViewModel.queryFindHotels);
+                        findHotelRecyclerAdapter.setHotel(findHotelViewModel.queryfindHotels);
                         break;
                 }
             }
@@ -120,7 +126,7 @@ public class FindHotelFragment extends Fragment {
     }
     private void extractSuggestions() {
 
-        if (findHotelViewModel.mainFindHotels.size() > 0) {
+        if (findHotelViewModel.initialfindHotels.size() > 0) {
 
             AutoCompleteHotelAdapter autoCompleteHotelAdapter = new AutoCompleteHotelAdapter(getContext(),
                     R.layout.item_autocomplete, getSuggestions());
@@ -132,12 +138,12 @@ public class FindHotelFragment extends Fragment {
     }
     private List<HotelSuggestions> getSuggestions() {
         List<HotelSuggestions> hotelSuggestions = new ArrayList<>();
-        for (FindHotel findHotel: findHotelViewModel.mainFindHotels) {
+        for (FindHotel findHotel: findHotelViewModel.initialfindHotels) {
             hotelSuggestions.add(new HotelSuggestions(
-                    R.drawable.ic_location, findHotel.getNameText1()
+                    R.drawable.ic_location, findHotel.getHotelName()
             ));
             hotelSuggestions.add(new HotelSuggestions(
-                    R.drawable.ic_hotel, findHotel.getNameText1()
+                    R.drawable.ic_hotel, findHotel.getHotelName()
             ));
         }
         return hotelSuggestions;
