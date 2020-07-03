@@ -81,15 +81,16 @@
             android:id="@+id/btn_save"
             android:layout_width="0dp"
             android:layout_height="@dimen/dimension_30dp"
-            android:textAllCaps="false"
+            android:layout_marginTop="@dimen/dimension_10dp"
             android:background="@drawable/curved_edge"
-            android:textColor="@android:color/white"
+            android:onClick="SaveDetails"
             android:text="@string/saveProf"
+            android:textAllCaps="false"
+            android:textColor="@android:color/white"
             android:textSize="10sp"
-            app:layout_constraintStart_toStartOf="@id/profile_image1"
             app:layout_constraintEnd_toEndOf="@id/profile_image1"
-            app:layout_constraintTop_toBottomOf="@id/profile_image1"
-            android:layout_marginTop="@dimen/dimension_10dp"/>
+            app:layout_constraintStart_toStartOf="@id/profile_image1"
+            app:layout_constraintTop_toBottomOf="@id/profile_image1" />
 
         <TextView
             android:id="@+id/username"
