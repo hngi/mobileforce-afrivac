@@ -41,7 +41,6 @@ public class WalletPageActivity extends AppCompatActivity {
         mDatabase = FirebaseDatabase.getInstance().getReference();
 
         saveDetails = findViewById(R.id.saveDetails);
-
         saveDetails.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
