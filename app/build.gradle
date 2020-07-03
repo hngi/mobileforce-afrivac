@@ -45,6 +45,7 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
     implementation 'com.google.firebase:firebase-analytics:17.4.3'
     implementation 'com.google.firebase:firebase-database:19.3.1'
+    implementation  'com.firebase:firebase-client-android:2.3.1'
     //  implementation 'com.google.firebase:firebase-auth:16.0.5'
     implementation 'com.google.firebase:firebase-auth:19.3.1'
     implementation 'com.google.firebase:firebase-storage:19.1.1'
@@ -76,11 +77,12 @@ dependencies {
 
     //recyclerView page indicator
     implementation 'ru.tinkoff.scrollingpagerindicator:scrollingpagerindicator:1.0.6'
-
     //below both library reguired for mailing
     implementation 'com.sun.mail:android-mail:1.6.3'
     implementation 'com.sun.mail:android-activation:1.6.3'
     implementation fileTree(dir: 'libs', include: ['*.aar', '*.jar'], exclude: [])
     implementation fileTree(dir: 'libs', include: ['*.aar', '*.jar'], exclude: [])
+    implementation 'com.squareup.picasso:picasso:2.71828'
+    implementation 'com.facebook.shimmer:shimmer:0.5.0'
 }
 

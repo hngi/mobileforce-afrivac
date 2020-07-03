@@ -1,9 +1,12 @@
 package com.michael.afrivac.ui.support;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
@@ -34,6 +37,7 @@ public class SupportFragment extends Fragment {
     private AskedQuestionsAdapter questionsAdapter;
     private List<AskedQuestions> questions;
     private SupportViewModel supportViewModel;
+    ImageView backArrow;
 
     private RecyclerView recyclerView;
     private RelativeLayout contactUs;
@@ -52,12 +56,29 @@ public class SupportFragment extends Fragment {
             }
         });
 
+        backArrow = root.findViewById(R.id.back_button_sImageView);
         recyclerView = root.findViewById(R.id.question_and_answer_recycler_view);
         recyclerView.setHasFixedSize(true);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         layoutManager.setStackFromEnd(true);
         recyclerView.setLayoutManager(layoutManager);
 
+        backArrow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                helper.gotoMainActivity(getContext());
+            }
+        });
+        TextView textView = root.findViewById(R.id.feedback_tv);
+        textView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_VIEW);
+                intent.setData(Uri.parse("https://play.google.com/store/apps/details?id=com.hng.howtodo"));
+                intent.setPackage("com.android.vending");
+                startActivity(intent);
+            }
+        });
         displayFrequentlyAskedQuestions();
         return root;
     }

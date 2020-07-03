@@ -25,7 +25,7 @@
     <string name="save_details">Save Details</string>
     <string name="secure_payment">This a secure ssl encrypted payment </string>
     <string name="paymentmethod">Payment Method</string>
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="do_you_want_to_delete" translatable="false">Please confirm that you want to delete your account.</string>
     <string name="reset">Reset</string>
     <string name="azeez_adeleke" translatable="false">Azeez Adeleke</string>
     <string name="my_account">My Account</string>
