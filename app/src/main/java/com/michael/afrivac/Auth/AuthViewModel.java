@@ -184,7 +184,7 @@ public class AuthViewModel {
                         public void onComplete(@NonNull Task<Void> task) {
                             if (task.isSuccessful()){
                                 Toast.makeText(view.getContext(), "Email verification sent " +
-                                                "\nPlease check your inbox for +-",
+                                                "\nPlease check your inbox for your verification link",
                                         Toast.LENGTH_LONG).show();
                             } else {
                                 Toast.makeText(view.getContext(), "Could not send Email verification sent ",
