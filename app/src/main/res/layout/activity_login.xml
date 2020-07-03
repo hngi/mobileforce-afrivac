@@ -124,49 +124,50 @@
                 android:textStyle="bold" />
 
         </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dimension_32dp"
+                android:layout_marginEnd="@dimen/dimension_4dp"
+                android:fontFamily="@font/poppins_light"
+                android:gravity="center_vertical"
+                android:text="@string/didn_t_receive_a_verification_code"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/resend_email_verification"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/dimension_32dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:fontFamily="@font/poppins_light"
+                android:gravity="center_vertical"
+                android:text="@string/resend"
+                android:textColor="@color/colorPrimary"
+                android:textStyle="bold" />
+
+        </LinearLayout>
 
         <Button
-            android:id="@+id/signin_with_google"
+            android:id="@+id/singin_into_account"
             android:layout_width="match_parent"
             android:layout_height="@dimen/dimension_62dp"
             android:layout_marginTop="80dp"
             android:layout_marginStart="@dimen/dimension_37dp"
             android:layout_marginEnd="@dimen/dimension_37dp"
-            android:text="@string/signInGoogle"
-            android:textColor="@color/black"
-            android:fontFamily="@font/poppins"
+            android:fontFamily="@font/poppins_light"
+            android:text="@string/signIn"
             android:textAllCaps="false"
-            tools:textSize="@dimen/dimension_18sp"
-            android:textStyle="bold"
-            app:icon="@drawable/sign_in_google"
-            app:iconTint="@null"
-            app:iconGravity="textStart"
-            app:strokeColor="@color/colorLightGrey"
-            app:iconPadding="@dimen/dimension_32dp"
-            style="@style/Widget.MaterialComponents.Button.OutlinedButton.Icon"
-            />
-
-        <Button
-            android:id="@+id/signin_with_facebook"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/dimension_62dp"
-            android:layout_marginTop="@dimen/dimension_5dp"
-            android:layout_marginBottom="@dimen/dimension_5dp"
-            android:layout_marginStart="@dimen/dimension_37dp"
-            android:layout_marginEnd="@dimen/dimension_37dp"
-            android:text="@string/signInFacebook"
-            android:textColor="@color/black"
-            android:textStyle="bold"
-            android:fontFamily="@font/poppins"
-            app:icon="@drawable/sign_in_facebook"
-            android:textAllCaps="false"
-            app:iconTint="@null"
-            app:iconGravity="textStart"
-            tools:textSize="@dimen/dimension_18sp"
-            app:iconPadding="@dimen/dimension_32dp"
-            app:strokeColor="@color/colorLightGrey"
-            style="@style/Widget.MaterialComponents.Button.OutlinedButton.Icon"
-            />
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/dimension_12sp"
+            android:textStyle="bold"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -201,19 +202,50 @@
                 android:background="@color/colorLightGrey" />
         </LinearLayout>
 
+
         <Button
-            android:id="@+id/singin_into_account"
+            android:id="@+id/signin_with_google"
             android:layout_width="match_parent"
             android:layout_height="@dimen/dimension_62dp"
             android:layout_marginStart="@dimen/dimension_37dp"
             android:layout_marginEnd="@dimen/dimension_37dp"
-            android:layout_marginBottom="@dimen/dimension_37dp"
-            android:fontFamily="@font/poppins_light"
-            android:text="@string/signIn"
+            android:text="@string/signInGoogle"
+            android:textColor="@color/black"
+            android:fontFamily="@font/poppins"
             android:textAllCaps="false"
-            android:textColor="@android:color/white"
-            android:textSize="@dimen/dimension_12sp"
-            android:textStyle="bold"/>
+            tools:textSize="@dimen/dimension_18sp"
+            android:textStyle="bold"
+            app:icon="@drawable/sign_in_google"
+            app:iconTint="@null"
+            app:iconGravity="textStart"
+            app:strokeColor="@color/colorLightGrey"
+            app:iconPadding="@dimen/dimension_32dp"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton.Icon"
+            />
+
+        <Button
+            android:id="@+id/signin_with_facebook"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimension_62dp"
+            android:layout_marginTop="@dimen/dimension_5dp"
+            android:layout_marginBottom="@dimen/dimension_37dp"
+            android:layout_marginStart="@dimen/dimension_37dp"
+            android:layout_marginEnd="@dimen/dimension_37dp"
+            android:text="@string/signInFacebook"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:fontFamily="@font/poppins"
+            app:icon="@drawable/sign_in_facebook"
+            android:textAllCaps="false"
+            app:iconTint="@null"
+            app:iconGravity="textStart"
+            tools:textSize="@dimen/dimension_18sp"
+            app:iconPadding="@dimen/dimension_32dp"
+            app:strokeColor="@color/colorLightGrey"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton.Icon"
+            />
+
+
 
         <LinearLayout
             android:layout_width="match_parent"

@@ -10,12 +10,14 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.michael.afrivac.LoginActivity;
 import com.michael.afrivac.R;
 import com.michael.afrivac.Util.Helper;
 
@@ -83,8 +85,8 @@ public class AuthViewModel {
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if(task.isSuccessful()){
                         // Sign in success, update UI with the signed-in user's information
-                        Log.d(TAG, "createUserWithEmail: success");
-                        helper.toastMessage(view.getContext(), "You are logged in successfully");
+//                        Log.d(TAG, "createUserWithEmail: success");
+//                        helper.toastMessage(view.getContext(), "You are logged in successfully");
 
                         FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
                         assert firebaseUser != null;
@@ -170,6 +172,12 @@ public class AuthViewModel {
                         helper.toastMessage(view.getContext(), "Failed to login \n" + task.getException().getMessage());
                     }
                 }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    String message = e.getMessage();
+                    helper.toastMessage(view.getContext(), "Error Occurred " + message);
+                }
             });
         }
     }
@@ -184,7 +192,7 @@ public class AuthViewModel {
                         public void onComplete(@NonNull Task<Void> task) {
                             if (task.isSuccessful()){
                                 Toast.makeText(view.getContext(), "Email verification sent " +
-                                                "\nPlease check your inbox for +-",
+                                                "\nPlease check your inbox for your verification link",
                                         Toast.LENGTH_LONG).show();
                             } else {
                                 Toast.makeText(view.getContext(), "Could not send Email verification sent ",
