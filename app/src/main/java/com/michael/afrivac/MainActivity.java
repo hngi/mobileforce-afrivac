@@ -106,7 +106,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
-      
+
 //        mAppBarConfiguration = new AppBarConfiguration.Builder(
 //                R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow,
 //                R.id.nav_tools, R.id.nav_share, R.id.nav_send)
@@ -178,8 +178,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     /*super.onBackPressed();
                     return;*/
                 }
-                this.doubleBackToExitPressedOnce = true;
-                helper.toastMessage(this, "Please click back again to exit");
+                //if user back pressed once
+                if(doubleBackToExitPressedOnce == false){
+                    this.doubleBackToExitPressedOnce = true;
+                    helper.toastMessage(this, "Please click back again to exit");
+                }
 
                 //delay to clear the double back pressed to false
                 new Handler().postDelayed(new Runnable() {

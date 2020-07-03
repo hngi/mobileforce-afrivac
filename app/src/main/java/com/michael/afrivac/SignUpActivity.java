@@ -80,4 +80,9 @@ public class SignUpActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        helper.gotoLoginAcitivity(getApplicationContext());
+    }
 }
