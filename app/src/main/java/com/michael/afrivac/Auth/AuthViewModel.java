@@ -10,12 +10,14 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.michael.afrivac.LoginActivity;
 import com.michael.afrivac.R;
 import com.michael.afrivac.Util.Helper;
 
@@ -169,6 +171,12 @@ public class AuthViewModel {
                         Log.d(TAG, "signInWithEmail: Failure", task.getException());
                         helper.toastMessage(view.getContext(), "Failed to login \n" + task.getException().getMessage());
                     }
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    String message = e.getMessage();
+                    helper.toastMessage(view.getContext(), "Error Occurred " + message);
                 }
             });
         }
