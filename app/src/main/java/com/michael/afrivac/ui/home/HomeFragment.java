@@ -17,6 +17,11 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.michael.afrivac.LocationActivity;
 import com.michael.afrivac.PopularDestinationDetailsActivity;
 import com.michael.afrivac.R;
@@ -39,6 +44,9 @@ public class HomeFragment extends Fragment {
 //for the discover Africa recycler view
     private RecyclerView recyclerView;
     private RecyclerView.LayoutManager layoutManager;
+    DatabaseReference reference,discoverReference;
+    ArrayList<Place> places = new ArrayList<>();
+    ArrayList<Popular> populars = new ArrayList<>();
 
     //for the popular destinations recycler view
     private RecyclerView recyclerView2;
@@ -48,6 +56,13 @@ public class HomeFragment extends Fragment {
 //        homeViewModel =
 //                ViewModelProviders.of(this).get(HomeViewModel.class);
         View root = inflater.inflate(R.layout.fragment_home, container, false);
+
+        //page indicator for the discover Africa recyclerView
+//        ScrollingPagerIndicator recycleIndicator = root.findViewById(R.id.indicator);
+//        recycleIndicator.setSelectedDotColor(ContextCompat.getColor(root.getContext(),R.color.colorBlue));
+//        recycleIndicator.setDotColor(ContextCompat.getColor(root.getContext(), R.color.indicator));
+//        recycleIndicator.setFadingEdgeLength(10);
+//        recycleIndicator.attachToRecyclerView(recyclerView);
 
 
         // cards
@@ -92,7 +107,27 @@ public class HomeFragment extends Fragment {
         //For discover Africa recycler view
         recyclerView = root.findViewById(R.id.my_recycler_view);
 
-        ArrayList<Place> places = new ArrayList<>();
+        discoverReference = FirebaseDatabase.getInstance().getReference().child("discover_africa");
+        discoverReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for(DataSnapshot datasnapshot : snapshot.getChildren())
+                {
+                    Place p = datasnapshot.getValue(Place.class);
+                    places.add(p);
+                }
+                //sets the adapter for the discover Africa recycler view HomePage.this,list
+                DiscoverAdapter discoverAdapter = new DiscoverAdapter(places);
+                recyclerView.setAdapter(discoverAdapter);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+
 
         // use a linear layout manager
         layoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
@@ -102,17 +137,34 @@ public class HomeFragment extends Fragment {
         DiscoverAdapter discoverAdapter = new DiscoverAdapter(places);
         recyclerView.setAdapter(discoverAdapter);
 
-        //page indicator for the discover Africa recyclerView
-        ScrollingPagerIndicator recycleIndicator = root.findViewById(R.id.indicator);
-        recycleIndicator.setSelectedDotColor(ContextCompat.getColor(root.getContext(),R.color.colorBlue));
-        recycleIndicator.setDotColor(ContextCompat.getColor(root.getContext(), R.color.indicator));
-        recycleIndicator.setFadingEdgeLength(10);
-        recycleIndicator.attachToRecyclerView(recyclerView);
+
 
         //For popular destinations recycler view
         recyclerView2 = root.findViewById(R.id.popular_destination_recycler);
 
-        ArrayList<Popular> populars = new ArrayList<>();
+
+
+        reference = FirebaseDatabase.getInstance().getReference().child("popular_destinatio");
+        reference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for(DataSnapshot datasnapshot : snapshot.getChildren())
+                {
+                    Popular popularPlace = datasnapshot.getValue(Popular.class);
+                    populars.add(popularPlace);
+                }
+                //sets the adapter for the popular destinations recycler view
+                PopularAdapter popularAdapter = new PopularAdapter(populars);
+                recyclerView2.setAdapter(popularAdapter);
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
 
 
         // use a Vertical linear layout manager

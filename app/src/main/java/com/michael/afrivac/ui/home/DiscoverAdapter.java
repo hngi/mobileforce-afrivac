@@ -9,6 +9,7 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.michael.afrivac.R;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,13 +48,14 @@ public class DiscoverAdapter extends RecyclerView.Adapter<DiscoverAdapter.MyView
     public void onBindViewHolder(MyViewHolder holder, int position) {
         Place place = mPlaces.get(position);
         TextView textView = holder.townNameTextView;
-        textView.setText(place.getmTownName());
+        textView.setText(place.getDestination());
 
         TextView txtView = holder.countryNameTextView;
-        txtView.setText(place.getmCountryName());
+        txtView.setText(place.getName());
 
-        ImageView imageView = holder.image;
-        imageView.setImageResource(place.getmImage());
+//        ImageView imageView = holder.image;
+//        imageView.setImageResource(place.getImage());
+        Picasso.get().load(place.getImage()).placeholder(R.mipmap.ic_launcher).resize(500,500).centerCrop().into(holder.image);
     }
 
 

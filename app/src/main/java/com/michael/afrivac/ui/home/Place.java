@@ -1,23 +1,41 @@
 package com.michael.afrivac.ui.home;
 
 public class Place {
-    private String mCountryName;
-    private String mTownName;
-    private int mImage;
+    private String name;
+    private String destination;
+    private String image;
 
-    public Place(String townName, String countryName, int image){
-        mTownName = townName;
-        mCountryName = countryName;
-        mImage = image;
+   public Place(){
+
+   }
+
+    public Place(String name, String destination, String image) {
+        this.name = name;
+        this.destination = destination;
+        this.image = image;
     }
 
-    public String getmCountryName() {
-        return mCountryName;
+    public String getName() {
+        return name;
     }
-    public String getmTownName() {
-        return mTownName;
+
+    public void setName(String name) {
+        this.name = name;
     }
-    public int getmImage() {
-        return mImage;
+
+    public String getDestination() {
+        return destination;
+    }
+
+    public void setDestination(String destination) {
+        this.destination = destination;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 }
