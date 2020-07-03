@@ -76,11 +76,12 @@ dependencies {
 
     //recyclerView page indicator
     implementation 'ru.tinkoff.scrollingpagerindicator:scrollingpagerindicator:1.0.6'
-
     //below both library reguired for mailing
     implementation 'com.sun.mail:android-mail:1.6.3'
     implementation 'com.sun.mail:android-activation:1.6.3'
     implementation fileTree(dir: 'libs', include: ['*.aar', '*.jar'], exclude: [])
     implementation fileTree(dir: 'libs', include: ['*.aar', '*.jar'], exclude: [])
+    implementation 'com.squareup.picasso:picasso:2.71828'
+    implementation 'com.facebook.shimmer:shimmer:0.5.0'
 }
 

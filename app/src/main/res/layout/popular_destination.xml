@@ -86,21 +86,25 @@
                     android:layout_height="wrap_content"
                     android:contentDescription="@string/star"
                     android:src="@drawable/stardull"/>
+
                 <TextView
+                    android:id="@+id/popular_rating"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:textColor="#000"
                     android:textSize="12sp"
-                    android:layout_marginStart="5dp"
                     android:textStyle="bold"
-                    tools:text="@string/_4_1"
-                    android:textColor="#000" />
+                    tools:text="@string/_4_1" />
+
                 <TextView
+                    android:id="@+id/popular_review"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="5dp"
+                    android:textColor="#000"
                     android:textSize="10sp"
-                    tools:text="@string/_2_731"
-                    android:textColor="#000" />
+                    tools:text="@string/_2_731" />
 
             </LinearLayout>
 
