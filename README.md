@@ -21,7 +21,6 @@ Afrivac a new way to enjoy your vacation experience
 Onboarding Screen 2:
   - Best Destination comes with top-notch service
 Afrivac gives the best
-
 App Features
 -	SplashScreen/Onboarding screen
 -	Home Page
