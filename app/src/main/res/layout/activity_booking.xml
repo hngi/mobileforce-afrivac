@@ -122,6 +122,7 @@
                     android:autofillHints="@string/checkIn"
                     android:background="@android:color/transparent"
                     android:hint="@string/checkIn"
+                    android:focusableInTouchMode="false"
                     android:inputType="date"
                     tools:ignore="RelativeOverlap" />
 
@@ -151,6 +152,7 @@
                     android:autofillHints="@string/checkOut"
                     android:background="@android:color/transparent"
                     android:hint="@string/checkOut"
+                    android:focusableInTouchMode="false"
                     android:inputType="date"
                     tools:ignore="RelativeOverlap" />
 
@@ -182,6 +184,7 @@
                     android:background="@android:color/transparent"
                     android:hint="@string/rooms"
                     android:inputType="number"
+                    android:focusableInTouchMode="false"
                     tools:ignore="RelativeOverlap" />
 
                 <ImageView
@@ -214,6 +217,7 @@
                     android:background="@android:color/transparent"
                     android:hint="@string/guests"
                     android:inputType="number"
+                    android:focusableInTouchMode="false"
                     tools:ignore="RelativeOverlap" />
 
                 <ImageView
@@ -245,6 +249,7 @@
             android:background="@drawable/input_border"
             android:hint="@string/fullName"
             android:inputType="text"
+            android:focusableInTouchMode="false"
             android:padding="@dimen/dimension_10dp" />
 
         <EditText
