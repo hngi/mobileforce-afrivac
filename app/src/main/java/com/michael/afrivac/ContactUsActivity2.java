@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.view.animation.Animation;
@@ -44,6 +45,8 @@ public class ContactUsActivity2 extends AppCompatActivity {
     private List<AskedQuestions> askedQuestions;
     private AskedQuestionsAdapter questionsAdapter;
     Animation animation;
+    private String titleStr;
+    private String descriptionStr;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,6 +74,9 @@ public class ContactUsActivity2 extends AppCompatActivity {
         buttonContactUs.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                titleStr = title.getText().toString();
+                descriptionStr = description.getText().toString();
+                userID = user.getUid();
                 animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.button_anim);
                 buttonContactUs.startAnimation(animation);
                 animation.setAnimationListener(new Animation.AnimationListener() {
@@ -107,9 +113,6 @@ public class ContactUsActivity2 extends AppCompatActivity {
     }
 
     public void contactUs(){
-        String titleStr = title.getText().toString();
-        String descriptionStr = description.getText().toString();
-        userID = user.getUid();
         if(titleStr.trim().isEmpty()){
             title.findFocus();
             helper.toastMessage(this, "enter what you want to tell us pls");
@@ -118,6 +121,12 @@ public class ContactUsActivity2 extends AppCompatActivity {
             if(descriptionStr.trim().isEmpty()){
                 descriptionStr = "no detail needed";
             }
+
+            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("mailto:"+"allenkamadje@mgail.com"));
+            intent.putExtra(Intent.EXTRA_SUBJECT, titleStr);
+            intent.putExtra(Intent.EXTRA_TEXT, descriptionStr + "\n" + userID);
+            startActivity(intent);
+
             HashMap<String, String> hashMap = new HashMap<>();
             hashMap.put("title", titleStr);
             hashMap.put("description", descriptionStr);
@@ -126,11 +135,13 @@ public class ContactUsActivity2 extends AppCompatActivity {
                 public void onComplete(@NonNull Task<Void> task) {
                     if(task.isSuccessful()){
                         helper.progressDialogEnd();
+                        title.clearComposingText();
+                        description.clearComposingText();
                         buttonContactUs.setVisibility(View.GONE);
                         addMessage.setVisibility(View.VISIBLE);
                         recyclerView.setVisibility(View.VISIBLE);
                         linearLayout.setVisibility(View.GONE);
-                        startActivity(new Intent(getApplicationContext(), ContactUsActivity2.class));
+                        //startActivity(new Intent(getApplicationContext(), ContactUsActivity2.class));
                     }else{
                         helper.progressDialogEnd();
                         helper.toastMessage(getApplicationContext(), "Failed to save account info \n" + task.getException().getMessage());
