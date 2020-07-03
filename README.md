@@ -61,6 +61,7 @@ App Features
 -	Payment Page
 
 
+
 # App Details
 1.	Download from Google play store (Provide link)
 2.	Sign in 
