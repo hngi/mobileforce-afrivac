@@ -4,110 +4,128 @@
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="100dp"
+    android:layout_height="wrap_content"
     app:cardCornerRadius="15dp"
     android:layout_margin="10dp"
     android:background="@color/white">
-    <GridLayout
-        android:background="@color/white"
+
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:background="@color/white">
+
 
         <ImageView
             android:id="@+id/popular_image"
-            android:layout_width="1dp"
+            android:layout_width="109dp"
+            android:layout_height="110dp"
+            android:outlineProvider="background"
+            android:scaleType="centerCrop"
+            android:src="@drawable/one" />
+
+        <TextView
+            android:id="@+id/popular_town"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:contentDescription="@string/placedesc"
-            android:layout_columnWeight="1"
-            tools:src="@drawable/pop_cairo" />
+            android:layout_marginStart="10dp"
+            android:layout_toEndOf="@id/popular_image"
+            android:text="@string/cairo"
+            android:textColor="@color/colorBlack"
+            android:textSize="18sp" />
+
+        <ImageView
+            android:id="@+id/fav"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            app:srcCompat="@drawable/ic_favorite_border_black_24dp" />
+
+        <TextView
+            android:id="@+id/popular_country"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/popular_town"
+            android:layout_marginStart="10dp"
+            android:layout_toEndOf="@id/popular_image"
+            android:text="@string/egypt"
+            android:textColor="@color/sub_text_blue"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/popular_place_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/popular_country"
+            android:layout_marginStart="10dp"
+            android:layout_toEndOf="@id/popular_image"
+            android:fontFamily="@font/poppins"
+            android:text="@string/descriptive_text"
+            android:textColor="@color/description_color"
+            android:textSize="9sp" />
 
         <LinearLayout
-            android:layout_height="match_parent"
-            android:layout_width="1dp"
-            android:orientation="vertical"
-            android:layout_columnWeight="3"
-            android:padding="5dp"
-            android:paddingBottom="0dp">
+            android:layout_width="match_parent"
+            android:layout_height="24dp"
+            android:layout_below="@id/popular_place_description"
+            android:layout_toEndOf="@id/popular_image"
+            android:orientation="horizontal">
+
+
+            <ImageView
+                android:id="@+id/star2"
+                android:layout_width="15dp"
+                android:layout_height="17dp"
+                android:layout_marginStart="10dp"
+                app:srcCompat="@drawable/ic_star_black_24dp" />
+
+            <ImageView
+                android:id="@+id/star3"
+                android:layout_width="15dp"
+                android:layout_height="17dp"
+                app:srcCompat="@drawable/ic_star_black_24dp" />
+
+            <ImageView
+                android:id="@+id/star4"
+                android:layout_width="15dp"
+                android:layout_height="17dp"
+                app:srcCompat="@drawable/ic_star_black_24dp" />
+
+            <ImageView
+                android:id="@+id/star5"
+                android:layout_width="15dp"
+                android:layout_height="17dp"
+                app:srcCompat="@drawable/ic_star_black_24dp" />
+
+            <ImageView
+                android:id="@+id/emptyStar"
+                android:layout_width="15dp"
+                android:layout_height="17dp"
+                app:srcCompat="@drawable/ic_star_border_black_24dp" />
 
             <TextView
-                android:id="@+id/popular_town"
-                android:layout_width="match_parent"
+                android:id="@+id/popular_rating"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="#000"
-                tools:text="@string/cairo"
-                android:drawableEnd="@drawable/loveimage"
-                android:textSize="18sp"/>
+                android:layout_marginStart="6dp"
+                android:fontFamily="@font/poppins"
+                android:text="@string/rate_4_1"
+                android:textColor="@color/description_color"
+                android:textSize="11sp"
+                android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/popular_country"
+                android:id="@+id/popular_review"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                tools:text="@string/egypt"
-                android:textColor="@color/colorBlue"/>
+                android:layout_marginStart="6dp"
+                android:fontFamily="@font/poppins"
+                android:text="@string/reviewa_2_731"
+                android:textColor="@color/description_color"
+                android:textSize="11sp" />
 
-            <TextView
-                android:id="@+id/popular_place_description"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                tools:text="@string/cairoDescription"
-                android:textSize="10sp"
-                android:textColor="#000" />
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-                <ImageView
-                    android:id="@+id/star1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:contentDescription="@string/star"
-                    android:src="@drawable/starbright"/>
-                <ImageView
-                    android:id="@+id/star2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:contentDescription="@string/star"
-                    android:src="@drawable/starbright"/>
-                <ImageView
-                    android:id="@+id/star3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:contentDescription="@string/star"
-                    android:src="@drawable/starbright"/>
-                <ImageView
-                    android:id="@+id/star4"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:contentDescription="@string/star"
-                    android:src="@drawable/starbright"/>
-                <ImageView
-                    android:id="@+id/star5"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:contentDescription="@string/star"
-                    android:src="@drawable/stardull"/>
-
-                <TextView
-                    android:id="@+id/popular_rating"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="5dp"
-                    android:textColor="#000"
-                    android:textSize="12sp"
-                    android:textStyle="bold"
-                    tools:text="@string/_4_1" />
-
-                <TextView
-                    android:id="@+id/popular_review"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="5dp"
-                    android:textColor="#000"
-                    android:textSize="10sp"
-                    tools:text="@string/_2_731" />
-
-            </LinearLayout>
 
         </LinearLayout>
-    </GridLayout>
+    </RelativeLayout>
 </androidx.cardview.widget.CardView>

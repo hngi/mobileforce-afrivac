@@ -1,5 +1,6 @@
 package com.michael.afrivac.ui.home;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,11 +11,23 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.michael.afrivac.R;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class DiscoverAdapter extends RecyclerView.Adapter<DiscoverAdapter.MyViewHolder> {
     private List<Place> mPlaces;
+    Context context;
+
+
+
+    public DiscoverAdapter(Context c, ArrayList<Place> d){
+        context = c;
+
+
+    }
+
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
        public TextView townNameTextView;
@@ -24,8 +37,8 @@ public class DiscoverAdapter extends RecyclerView.Adapter<DiscoverAdapter.MyView
        public MyViewHolder(View itemView) {
            super(itemView);
 
-           townNameTextView = itemView.findViewById(R.id.town_name);
-           countryNameTextView = itemView.findViewById(R.id.country_name);
+           townNameTextView = itemView.findViewById(R.id.txt_dest);
+           countryNameTextView = itemView.findViewById(R.id.txt_name);
            image = itemView.findViewById(R.id.discover_image);
        }
     }
@@ -47,13 +60,13 @@ public class DiscoverAdapter extends RecyclerView.Adapter<DiscoverAdapter.MyView
     public void onBindViewHolder(MyViewHolder holder, int position) {
         Place place = mPlaces.get(position);
         TextView textView = holder.townNameTextView;
-        textView.setText(place.getmTownName());
+        textView.setText(place.getDestination());
 
         TextView txtView = holder.countryNameTextView;
-        txtView.setText(place.getmCountryName());
-
-        ImageView imageView = holder.image;
-        imageView.setImageResource(place.getmImage());
+        txtView.setText(place.getName());
+        Picasso.get().load(place.getImage()).placeholder(R.mipmap.ic_launcher).resize(500,500).centerCrop().into(holder.image);
+//        ImageView imageView = holder.image;
+//        imageView.setImageResource(place.getImage());
     }
 
 

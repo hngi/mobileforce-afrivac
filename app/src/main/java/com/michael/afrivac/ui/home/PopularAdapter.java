@@ -1,5 +1,6 @@
 package com.michael.afrivac.ui.home;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,14 +9,23 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 import com.michael.afrivac.R;
+
+import com.squareup.picasso.Picasso;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class PopularAdapter extends RecyclerView.Adapter<PopularAdapter.MyViewHolder> {
         private List<Popular> mPopular;
+        Context context;
+
+    public PopularAdapter(Context c, ArrayList<Popular> p) {
+        context = c;
+        mPopular = p;
+    }
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
-        public TextView townNameTextView;
+        public TextView townNameTextView,review, rate;
         public TextView countryNameTextView;
         public ImageView image;
         public TextView description;
@@ -27,6 +37,8 @@ public class PopularAdapter extends RecyclerView.Adapter<PopularAdapter.MyViewHo
             countryNameTextView = itemView.findViewById(R.id.popular_country);
             image = itemView.findViewById(R.id.popular_image);
             description = itemView.findViewById(R.id.popular_place_description);
+            review = itemView.findViewById(R.id.popular_review);
+            rate = itemView.findViewById(R.id.popular_rating);
         }
     }
 
@@ -45,16 +57,19 @@ public class PopularAdapter extends RecyclerView.Adapter<PopularAdapter.MyViewHo
     public void onBindViewHolder(com.michael.afrivac.ui.home.PopularAdapter.MyViewHolder holder, int position) {
         Popular popular = mPopular.get(position);
         TextView textView = holder.townNameTextView;
-        textView.setText(popular.getmTownName());
+        textView.setText(popular.getName());
 
         TextView txtView = holder.countryNameTextView;
-        txtView.setText(popular.getmCountryName());
+        txtView.setText(popular.getCountry());
 
-        ImageView imageView = holder.image;
-        imageView.setImageResource(popular.getmImage());
+//        ImageView imageView = holder.image;
+//        imageView.setImageResource(popular.getImage());
 
         TextView desc = holder.description;
-        desc.setText(popular.getmDescription());
+        desc.setText(popular.getDescription());
+        holder.review.setText(String.valueOf(mPopular.get(position).getReview_number()));
+        holder.rate.setText(String.valueOf(mPopular.get(position).getRating_number()));
+        Picasso.get().load(mPopular.get(position).getImage()).placeholder(R.mipmap.ic_launcher).resize(500,500).centerCrop().into(holder.image);
     }
 
 

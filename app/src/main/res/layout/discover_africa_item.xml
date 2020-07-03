@@ -17,7 +17,7 @@
         android:scaleType="centerCrop"/>
 
     <TextView
-        android:id="@+id/town_name"
+        android:id="@+id/txt_dest"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         tools:text="@string/cairo"
@@ -32,8 +32,8 @@
         android:layout_height="wrap_content"
         tools:text="@string/egypt"
         android:textColor="#fff"
-        android:layout_below="@id/town_name"
-        android:id="@+id/country_name"
+        android:layout_below="@id/txt_dest"
+        android:id="@+id/txt_name"
         android:layout_gravity="bottom"
         android:drawableStart="@drawable/place"
         android:layout_marginStart="16dp"
