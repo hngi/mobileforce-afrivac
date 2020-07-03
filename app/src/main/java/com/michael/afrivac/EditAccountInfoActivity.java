@@ -41,7 +41,7 @@ import com.michael.afrivac.ui.account.AccountFragment;
 public class EditAccountInfoActivity extends AppCompatActivity {
 
     EditText User_name_edit2, Edit_phone2, User_location2, User_gender, User_language2;
-    TextView  Edit_email2;
+    TextView  Edit_email2, fullName;
     Button Btn_save;
 
     FirebaseAuth mAuth;
@@ -72,6 +72,7 @@ public class EditAccountInfoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.edit_account_fragment);
 
+        fullName = findViewById(R.id.full_name);
         User_name_edit2 = findViewById(R.id.user_name_edit2);
         Edit_phone2 = findViewById(R.id.edit_phone2);
         User_location2 = findViewById(R.id.user_location2);
@@ -94,6 +95,8 @@ public class EditAccountInfoActivity extends AppCompatActivity {
                 String user_language = snapshot.child("language").getValue().toString();
                 String user_number = snapshot.child("number").getValue().toString();
                 String user_country = snapshot.child("country").getValue().toString();
+
+                fullName.setText(user_name);
 
                 if(user_name != null) {
                     User_name_edit2.setText(user_name);
@@ -126,5 +129,12 @@ public class EditAccountInfoActivity extends AppCompatActivity {
 
 
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent intent = new Intent(getApplicationContext(), ProfilePageActivity.class);
+        startActivity(intent);
     }
 }
