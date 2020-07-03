@@ -106,7 +106,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
-      
+
 //        mAppBarConfiguration = new AppBarConfiguration.Builder(
 //                R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow,
 //                R.id.nav_tools, R.id.nav_share, R.id.nav_send)
@@ -232,7 +232,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private void displaySelectedScreen(int itemId) {
 
         //string tag for fragment object
-        String fragment_tag = "null";
+        String fragment_tag = null;
         //initializing the fragment object which is selected
         switch (itemId) {
             case R.id.nav_home:

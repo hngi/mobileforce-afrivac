@@ -68,8 +68,6 @@ public class PopularDestinationReviewsRecyclerviewAdapter extends RecyclerView.A
             this.setDate(userReviewDetails.getDate());
         }
 
-
-
         public ReviewAdapterHolder(@NonNull View itemView) {
             super(itemView);
 

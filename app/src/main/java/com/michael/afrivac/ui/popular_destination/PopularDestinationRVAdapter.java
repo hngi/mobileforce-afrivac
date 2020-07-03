@@ -1,7 +1,6 @@
 package com.michael.afrivac.ui.popular_destination;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +8,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -31,6 +31,8 @@ import java.util.List;
 class PopularDestinationRVAdapter extends RecyclerView.Adapter<PopularDestinationRVAdapter.PopularPlacesRVAdapterVH> {
     private PopularDestinationRVAdapter.OnItemSelectedListener onItemSelectedListener;
     private List<PopularPlaces> popularPlaces=new ArrayList<>();
+    ArrayList<PopularPlaces> temp = new ArrayList<>();
+
     private Context context;
     private FirebaseDatabase mFirebaseDatabase;
     private DatabaseReference mDatabaseReference;
@@ -40,6 +42,7 @@ class PopularDestinationRVAdapter extends RecyclerView.Adapter<PopularDestinatio
 ;
 
     public PopularDestinationRVAdapter(Context context, OnItemSelectedListener onItemSelectedListener) {
+        temp= (ArrayList<PopularPlaces>) popularPlaces;
         this.context = context;
         this.onItemSelectedListener = onItemSelectedListener;
         mFirebaseDatabase = FirebaseUtil.mFirebaseDatabase;
@@ -107,6 +110,30 @@ class PopularDestinationRVAdapter extends RecyclerView.Adapter<PopularDestinatio
        // this.popularPlaces = FirebaseUtil.sPopularPlaces;
        // notifyDataSetChanged();
     }
+    public void defaultData(){
+
+
+             popularPlaces=temp;
+            notifyDataSetChanged();
+
+
+    }
+    public void filter(String text) {
+
+
+        ArrayList<PopularPlaces> filteredList = new ArrayList<>();
+        for (PopularPlaces item : popularPlaces) {
+            if (item.getCountry().toLowerCase().contains(text.toLowerCase())||
+                    item.getName().toLowerCase().contains(text.toLowerCase())) {
+                filteredList.add(item);
+            }
+        }
+        popularPlaces = filteredList;
+        notifyDataSetChanged();
+
+
+    }
+
 
     class PopularPlacesRVAdapterVH extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView country, destination, description, ratingNumber, engagement;
@@ -147,17 +174,17 @@ class PopularDestinationRVAdapter extends RecyclerView.Adapter<PopularDestinatio
                 .load(current.getImage())
                 .placeholder(R.drawable.ic_account_circle_black_24dp)
                 .into(holder.image);
-        holder.destination.setText(current.getDestination());
+        holder.destination.setText(current.getName());
         holder.country.setText(current.getCountry());
         holder.description.setText(current.getDescription());
 
-        if (current.getRating() < 5.1) {
-            holder.ratingBar.setRating((float) current.getRating());
+        if (current.getRating_number() < 5.1) {
+            holder.ratingBar.setRating((float) current.getRating_number());
             holder.ratingNumber.setText(String.valueOf(
-                    new BigDecimal(current.getRating()).setScale(2, RoundingMode.HALF_EVEN).doubleValue()));
+                    new BigDecimal(current.getRating_number()).setScale(2, RoundingMode.HALF_EVEN).doubleValue()));
         }
 
-        holder.engagement.setText(String.format("(%s)", current.getEngagement()));
+        holder.engagement.setText(String.format("(%s)", current.getReview_number()));
 
         int resId = current.isFavorite() ?
                 R.drawable.ic_baseline_favorite_24 :
