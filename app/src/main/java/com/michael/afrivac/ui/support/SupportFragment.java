@@ -26,6 +26,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.michael.afrivac.Adapter.AskedQuestionsAdapter;
 import com.michael.afrivac.Model.AskedQuestions;
 import com.michael.afrivac.R;
+import com.michael.afrivac.TermsAndConditions;
 import com.michael.afrivac.Util.Helper;
 
 import java.util.ArrayList;
@@ -70,6 +71,7 @@ public class SupportFragment extends Fragment {
                 helper.gotoMainActivity(getContext());
             }
         });
+
         TextView textView = root.findViewById(R.id.feedback_tv);
         textView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -80,6 +82,15 @@ public class SupportFragment extends Fragment {
                 startActivity(intent);
             }
         });
+
+        TextView termAndConditions = root.findViewById(R.id.terms_and_condition_textView);
+        termAndConditions.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getContext(), TermsAndConditions.class));
+            }
+        });
+
         displayFrequentlyAskedQuestions();
         return root;
     }

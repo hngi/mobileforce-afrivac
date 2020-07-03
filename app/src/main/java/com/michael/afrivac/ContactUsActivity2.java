@@ -6,12 +6,14 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -36,6 +38,7 @@ public class ContactUsActivity2 extends AppCompatActivity {
     private EditText title, description;
     private LinearLayout linearLayout;
     private Button buttonContactUs, addMessage;
+    private ImageView imageCalcel;
     private String userID;
 
     private Helper helper;
@@ -44,6 +47,8 @@ public class ContactUsActivity2 extends AppCompatActivity {
     private List<AskedQuestions> askedQuestions;
     private AskedQuestionsAdapter questionsAdapter;
     Animation animation;
+    private String titleStr;
+    private String descriptionStr;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,6 +71,15 @@ public class ContactUsActivity2 extends AppCompatActivity {
 
         ///diplay meesages
         displayMessages();
+
+        imageCalcel = findViewById(R.id.image_contact);
+        imageCalcel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(intent);
+            }
+        });
 
         buttonContactUs = findViewById(R.id.button_contactus);
         buttonContactUs.setOnClickListener(new View.OnClickListener() {
@@ -107,8 +121,8 @@ public class ContactUsActivity2 extends AppCompatActivity {
     }
 
     public void contactUs(){
-        String titleStr = title.getText().toString();
-        String descriptionStr = description.getText().toString();
+        titleStr = title.getText().toString();
+        descriptionStr = description.getText().toString();
         userID = user.getUid();
         if(titleStr.trim().isEmpty()){
             title.findFocus();
@@ -118,6 +132,11 @@ public class ContactUsActivity2 extends AppCompatActivity {
             if(descriptionStr.trim().isEmpty()){
                 descriptionStr = "no detail needed";
             }
+            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("mailto:"+"allenkamadje@mgail.com"));
+            intent.putExtra(Intent.EXTRA_SUBJECT, titleStr);
+            intent.putExtra(Intent.EXTRA_TEXT, descriptionStr + "\n" + userID);
+            startActivity(intent);
+
             HashMap<String, String> hashMap = new HashMap<>();
             hashMap.put("title", titleStr);
             hashMap.put("description", descriptionStr);
@@ -125,12 +144,14 @@ public class ContactUsActivity2 extends AppCompatActivity {
                 @Override
                 public void onComplete(@NonNull Task<Void> task) {
                     if(task.isSuccessful()){
+                        title.clearComposingText();
+                        description.clearComposingText();
                         helper.progressDialogEnd();
                         buttonContactUs.setVisibility(View.GONE);
                         addMessage.setVisibility(View.VISIBLE);
                         recyclerView.setVisibility(View.VISIBLE);
                         linearLayout.setVisibility(View.GONE);
-                        startActivity(new Intent(getApplicationContext(), ContactUsActivity2.class));
+                        //startActivity(new Intent(getApplicationContext(), ContactUsActivity2.class));
                     }else{
                         helper.progressDialogEnd();
                         helper.toastMessage(getApplicationContext(), "Failed to save account info \n" + task.getException().getMessage());
