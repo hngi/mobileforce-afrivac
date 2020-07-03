@@ -1,31 +1,30 @@
 package com.michael.afrivac.model;
 
 public class PopularPlaces {
-    private String country, name, description, image;
+    private String country, destination, description, image;
     private boolean isFavorite;
-    private double rating_number;
-    private int review_number;
-
+    private double rating;
+    private int engagement;
 
     public PopularPlaces() {
     }
 
-    public PopularPlaces(String country, String name, String description, String image, boolean isFavorite, double rating_number, int review_number) {
+    public PopularPlaces(String country, String destination, String description, String image, boolean isFavorite, double rating, int engagement) {
         this.country = country;
-        this.name = name;
+        this.destination = destination;
         this.description = description;
         this.image = image;
         this.isFavorite = isFavorite;
-        this.rating_number = rating_number;
-        this.review_number = review_number;
+        this.rating = rating;
+        this.engagement = engagement;
     }
 
     public void setCountry(String country) {
         this.country = country;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setDestination(String destination) {
+        this.destination = destination;
     }
 
     public void setDescription(String description) {
@@ -36,12 +35,12 @@ public class PopularPlaces {
         this.image = image;
     }
 
-    public void setRating_number(double rating_number) {
-        this.rating_number = rating_number;
+    public void setRating(double rating) {
+        this.rating = rating;
     }
 
-    public void setReview_number(int review_number) {
-        this.review_number = review_number;
+    public void setEngagement(int engagement) {
+        this.engagement = engagement;
     }
 
     public void setFavorite(boolean favorite) {
@@ -52,8 +51,8 @@ public class PopularPlaces {
         return country;
     }
 
-    public String getName() {
-        return name;
+    public String getDestination() {
+        return destination;
     }
 
     public String getDescription() {
@@ -68,12 +67,12 @@ public class PopularPlaces {
         return isFavorite;
     }
 
-    public double getRating_number() {
-        return rating_number;
+    public double getRating() {
+        return rating;
     }
 
-    public int getReview_number() {
-        return review_number;
+    public int getEngagement() {
+        return engagement;
     }
 
     public String toString() {
