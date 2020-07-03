@@ -9,6 +9,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -31,6 +32,8 @@ import java.util.List;
 class PopularDestinationRVAdapter extends RecyclerView.Adapter<PopularDestinationRVAdapter.PopularPlacesRVAdapterVH> {
     private PopularDestinationRVAdapter.OnItemSelectedListener onItemSelectedListener;
     private List<PopularPlaces> popularPlaces=new ArrayList<>();
+    ArrayList<PopularPlaces> temp = new ArrayList<>();
+
     private Context context;
     private FirebaseDatabase mFirebaseDatabase;
     private DatabaseReference mDatabaseReference;
@@ -40,6 +43,7 @@ class PopularDestinationRVAdapter extends RecyclerView.Adapter<PopularDestinatio
 ;
 
     public PopularDestinationRVAdapter(Context context, OnItemSelectedListener onItemSelectedListener) {
+        temp= (ArrayList<PopularPlaces>) popularPlaces;
         this.context = context;
         this.onItemSelectedListener = onItemSelectedListener;
         mFirebaseDatabase = FirebaseUtil.mFirebaseDatabase;
@@ -107,6 +111,30 @@ class PopularDestinationRVAdapter extends RecyclerView.Adapter<PopularDestinatio
        // this.popularPlaces = FirebaseUtil.sPopularPlaces;
        // notifyDataSetChanged();
     }
+    public void defaultData(){
+
+
+             popularPlaces=temp;
+            notifyDataSetChanged();
+
+
+    }
+    public void filter(String text) {
+
+
+        ArrayList<PopularPlaces> filteredList = new ArrayList<>();
+        for (PopularPlaces item : popularPlaces) {
+            if (item.getCountry().toLowerCase().contains(text.toLowerCase())||
+                    item.getDestination().toLowerCase().contains(text.toLowerCase())) {
+                filteredList.add(item);
+            }
+        }
+        popularPlaces = filteredList;
+        notifyDataSetChanged();
+
+
+    }
+
 
     class PopularPlacesRVAdapterVH extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView country, destination, description, ratingNumber, engagement;
