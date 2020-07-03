@@ -77,5 +77,7 @@ dependencies {
 
     //recyclerView page indicator
     implementation 'ru.tinkoff.scrollingpagerindicator:scrollingpagerindicator:1.0.6'
+    implementation 'com.squareup.picasso:picasso:2.71828'
+    implementation 'com.facebook.shimmer:shimmer:0.5.0'
 }
 
