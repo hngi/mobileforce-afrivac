@@ -1,12 +1,17 @@
 package com.michael.afrivac.ui.support;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.content.ActivityNotFoundException;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -28,7 +33,9 @@ import com.michael.afrivac.Util.Helper;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SupportFragment extends Fragment {
+public class SupportFragment extends Fragment implements View.OnClickListener {
+
+    TextView sendFeedBack;
 
     private Helper helper;
     private DatabaseReference data;
@@ -44,6 +51,11 @@ public class SupportFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
         supportViewModel =new ViewModelProvider(this).get(SupportViewModel.class);
         View root = inflater.inflate(R.layout.fragment_support, container, false);
+
+
+        sendFeedBack = (TextView) root.findViewById(R.id.feedback_tv);
+        sendFeedBack.setOnClickListener(this);
+
         helper = new Helper(getContext());
 
         contactUs = root.findViewById(R.id.support_contact_us);
@@ -71,6 +83,18 @@ public class SupportFragment extends Fragment {
         return root;
     }
 
+    @Override
+    public void onClick(View v) {
+
+        try {
+            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + "com.android.chrome")));
+        } catch (android.content.ActivityNotFoundException e) {
+            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=" + "com.android.chrome")));
+        }
+    }
+
+
+
     public void displayFrequentlyAskedQuestions(){
         helper.progressDialogStart("Pls Wait", "Most asked questions are loading");
         data = FirebaseDatabase.getInstance().getReference().child("questions").child("frequently_asked");
@@ -96,5 +120,10 @@ public class SupportFragment extends Fragment {
 
             }
         });
+
+
     }
+
+
+
 }
