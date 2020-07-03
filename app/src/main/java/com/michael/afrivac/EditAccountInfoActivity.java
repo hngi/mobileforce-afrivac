@@ -31,175 +31,100 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
-import com.google.firebase.storage.UploadTask;
-import com.michael.afrivac.model.UserInformation;
+import com.google.firebase.database.ValueEventListener;
 import com.michael.afrivac.ui.account.AccountFragment;
 
-import java.io.IOException;
-import java.util.Objects;
+public class EditAccountInfoActivity extends AppCompatActivity {
 
-public class EditAccountInfoActivity extends AppCompatActivity implements View.OnClickListener {
+    EditText User_name_edit2, Edit_phone2, User_location2, User_gender, User_language2;
+    TextView  Edit_email2;
+    Button Btn_save;
 
-    private static final String TAG = EditAccountInfoActivity.class.getSimpleName();
-    Button btnsave;
-    private FirebaseAuth firebaseAuth;
-    private TextView gender, textViewemailname;
-    private DatabaseReference databaseReference;
+    FirebaseAuth mAuth;
+    DatabaseReference mDatabase;
+    String userID;
 
-    private EditText   userName, email,  phoneNumber;
-    private ImageView profileImageView;
-    private FirebaseStorage firebaseStorage;
-    private static int PICK_IMAGE = 123;
-    Uri imagePath;
-    private StorageReference storageReference;
+    public void SaveDetails(View view) {
 
-    public EditAccountInfoActivity() {
+        String newName = User_name_edit2.getText().toString();
+        String newPhone = Edit_phone2.getText().toString();
+        String newCountry = User_location2.getText().toString();
+        String newGender = User_gender.getText().toString();
+        String newLanguage = User_language2.getText().toString();
+
+        mDatabase.child("username").setValue(newName);
+        mDatabase.child("number").setValue(newPhone);
+        mDatabase.child("country").setValue(newCountry);
+        mDatabase.child("gender").setValue(newGender);
+        mDatabase.child("language").setValue(newLanguage);
+        Intent i = new Intent(this, MainActivity.class);
+        startActivity(i);
+        Toast.makeText(this, "Your details have been updated successfully!", Toast.LENGTH_SHORT).show();
+
     }
 
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == PICK_IMAGE && resultCode == RESULT_OK && data.getData() != null) {
-            imagePath = data.getData();
-            try {
-                Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), imagePath);
-                profileImageView.setImageBitmap(bitmap);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-        super.onActivityResult(requestCode, resultCode, data);
-    }
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.edit_account_fragment);
-        firebaseAuth= FirebaseAuth.getInstance();
-        if (firebaseAuth.getCurrentUser() == null){
-            finish();
-            startActivity(new Intent(getApplicationContext(), ProfilePageActivity.class));
-        }
-        databaseReference = FirebaseDatabase.getInstance().getReference();
 
-        userName = (EditText)findViewById(R.id.user_name_edit2);
-        phoneNumber = (EditText)findViewById(R.id.edit_phone2);
+        User_name_edit2 = findViewById(R.id.user_name_edit2);
+        Edit_phone2 = findViewById(R.id.edit_phone2);
+        User_location2 = findViewById(R.id.user_location2);
+        User_language2 = findViewById(R.id.user_language2);
+        User_gender = findViewById(R.id.user_gender);
+        Edit_email2 = findViewById(R.id.edit_email2);
+        Btn_save = findViewById(R.id.btn_save);
 
-        btnsave= findViewById(R.id.btn_save);
+        mAuth = FirebaseAuth.getInstance();
+        userID = mAuth.getCurrentUser().getUid();
+        mDatabase = FirebaseDatabase.getInstance().getReference().child("Users").child(userID);
 
-        FirebaseUser user = firebaseAuth.getCurrentUser();
-        btnsave.setOnClickListener(this);
-
-        textViewemailname= findViewById(R.id.edit_email2);
-
-
-        // TODO: to change gender
-        gender = findViewById(R.id.gender);
-
-        profileImageView = findViewById(R.id.profile_image1);
-
-        firebaseStorage = FirebaseStorage.getInstance();
-        storageReference = firebaseStorage.getReference();
-
-        profileImageView.setOnClickListener(new View.OnClickListener() {
+        mDatabase.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onClick(View v) {
-                Intent profileIntent = new Intent();
-                profileIntent.setType("image/*");
-                profileIntent.setAction(Intent.ACTION_GET_CONTENT);
-                startActivityForResult(Intent.createChooser(profileIntent, "Select Image."), PICK_IMAGE);
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                String user_name = snapshot.child("username").getValue().toString();
+                String user_gender = snapshot.child("gender").getValue().toString();
+                String user_email = snapshot.child("email").getValue().toString();
+                String user_language = snapshot.child("language").getValue().toString();
+                String user_number = snapshot.child("number").getValue().toString();
+                String user_country = snapshot.child("country").getValue().toString();
+
+                if(user_name != null) {
+                    User_name_edit2.setText(user_name);
+                }
+
+                if(user_email != null) {
+                    Edit_email2.setText(user_email);
+                }
+
+                if(user_gender != null) {
+                    User_gender.setText(user_gender);
+                }
+                if(user_language != null) {
+                    User_language2.setText(user_language);
+                }
+                if(user_number != null) {
+                    Edit_phone2.setText(user_number);
+                }
+                if(user_country != null) {
+                    User_location2.setText(user_country);
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
             }
         });
-    }
-    private void userInformation(){
-        String name = userName.getText().toString().trim();
-        String phoneno = phoneNumber.getText().toString().trim();
-        FirebaseUser user = firebaseAuth.getCurrentUser();
-        UserInformation userinformation = new UserInformation(name, phoneno);
-        databaseReference.child(user.getUid()).setValue(userinformation);
-        Toast.makeText(getApplicationContext(),"User information updated",Toast.LENGTH_LONG).show();
-    }
-    @Override
-    public void onClick(View view) {
-        if (view==btnsave){
-            Fragment fragment = new AccountFragment();
-            if (imagePath == null) {
 
-                Drawable drawable = this.getResources().getDrawable(R.drawable.profile_image);
-                Bitmap bitmap = BitmapFactory.decodeResource(getResources(),R.drawable.profile_image);
-                // openSelectProfilePictureDialog();
-                userInformation();
-                // sendUserData();;
-                FragmentManager manager = getSupportFragmentManager();
-                FragmentTransaction transaction = manager.beginTransaction();
-                startActivity(new Intent(this, MainActivity.class));
-                finish();
-            }
-            else {
-                userInformation();
-                sendUserData();
-                FragmentManager manager = getSupportFragmentManager();
-                FragmentTransaction transaction = manager.beginTransaction();
-                startActivity(new Intent(this, MainActivity.class));
-                finish();
-            }
-        }
-    }
 
-    private void sendUserData() {
-        FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
-        // Get "User UID" from Firebase > Authentification > Users.
-        DatabaseReference databaseReference = firebaseDatabase.getReference(Objects.requireNonNull(firebaseAuth.getUid()));
-        StorageReference imageReference = storageReference.child(firebaseAuth.getUid()).child("Images").child("Profile Pic"); //User id/Images/Profile Pic.jpg
-        UploadTask uploadTask = imageReference.putFile(imagePath);
-        uploadTask.addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                Toast.makeText(EditAccountInfoActivity.this, "Error: Uploading profile picture", Toast.LENGTH_SHORT).show();
-            }
-        }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-            @Override
-            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                Toast.makeText(EditAccountInfoActivity.this, "Profile picture uploaded", Toast.LENGTH_SHORT).show();
-            }
-        });
-    }
-
-    @SuppressLint("SetTextI18n")
-    public void openSelectProfilePictureDialog() {
-        AlertDialog alertDialog = new AlertDialog.Builder(this).create();
-        TextView title = new TextView(this);
-        title.setText("Profile Picture");
-        title.setPadding(10, 10, 10, 10);   // Set Position
-        title.setGravity(Gravity.CENTER);
-        title.setTextColor(Color.BLACK);
-        title.setTextSize(20);
-        alertDialog.setCustomTitle(title);
-        TextView msg = new TextView(this);
-        msg.setText("Please select a profile picture");
-        msg.setGravity(Gravity.CENTER_HORIZONTAL);
-        msg.setTextColor(Color.BLACK);
-        alertDialog.setView(msg);
-        alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL,"OK", new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int which) {
-                // Perform Action on Button
-            }
-        });
-        new Dialog(getApplicationContext());
-        alertDialog.show();
-        final Button saveBT = alertDialog.getButton(AlertDialog.BUTTON_NEUTRAL);
-        LinearLayout.LayoutParams neutralBtnLP = (LinearLayout.LayoutParams) saveBT.getLayoutParams();
-        neutralBtnLP.gravity = Gravity.FILL_HORIZONTAL;
-        saveBT.setPadding(50, 10, 10, 10);   // Set Position
-        saveBT.setTextColor(Color.BLUE);
-        saveBT.setLayoutParams(neutralBtnLP);
-    }
-
-    //  TODO for image
-
-    @Override
-    public void onPointerCaptureChanged(boolean hasCapture) {
 
     }
 }

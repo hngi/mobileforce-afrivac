@@ -24,7 +24,7 @@ public class AccountFragment extends Fragment {
     private Helper helper;
 
     Button editButton;
-    TextView gotoLocality;
+    TextView gotoLocality, deleteAccount;
 
     // firebase
     FirebaseAuth mAuth;
@@ -52,6 +52,16 @@ public class AccountFragment extends Fragment {
         userLanguage = root.findViewById(R.id.user_language);
         userNumber = root.findViewById(R.id.edit_phone);
         username = root.findViewById(R.id.user_name);
+
+        deleteAccount = root.findViewById(R.id.delete_account);
+
+        deleteAccount.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DeleteAccountDialog deleteAccountDialog = new DeleteAccountDialog();
+                deleteAccountDialog.show(getParentFragmentManager(),"fragment_delete_account");
+            }
+        });
 
         mDatabase.addValueEventListener(new ValueEventListener() {
             @Override
