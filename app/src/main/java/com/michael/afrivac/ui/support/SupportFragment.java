@@ -33,9 +33,8 @@ import com.michael.afrivac.Util.Helper;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SupportFragment extends Fragment implements View.OnClickListener {
+public class SupportFragment extends Fragment {
 
-    TextView sendFeedBack;
 
     private Helper helper;
     private DatabaseReference data;
@@ -52,9 +51,6 @@ public class SupportFragment extends Fragment implements View.OnClickListener {
         supportViewModel =new ViewModelProvider(this).get(SupportViewModel.class);
         View root = inflater.inflate(R.layout.fragment_support, container, false);
 
-
-        sendFeedBack = (TextView) root.findViewById(R.id.feedback_tv);
-        sendFeedBack.setOnClickListener(this);
 
         helper = new Helper(getContext());
 
@@ -82,17 +78,6 @@ public class SupportFragment extends Fragment implements View.OnClickListener {
         displayFrequentlyAskedQuestions();
         return root;
     }
-
-    @Override
-    public void onClick(View v) {
-
-        try {
-            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + "com.android.chrome")));
-        } catch (android.content.ActivityNotFoundException e) {
-            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=" + "com.android.chrome")));
-        }
-    }
-
 
 
     public void displayFrequentlyAskedQuestions(){
