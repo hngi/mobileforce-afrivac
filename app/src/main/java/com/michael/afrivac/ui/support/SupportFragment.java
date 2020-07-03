@@ -1,5 +1,7 @@
 package com.michael.afrivac.ui.support;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -65,6 +67,16 @@ public class SupportFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 helper.gotoMainActivity(getContext());
+            }
+        });
+        TextView textView = root.findViewById(R.id.feedback_tv);
+        textView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_VIEW);
+                intent.setData(Uri.parse("https://play.google.com/store/apps/details?id=com.hng.howtodo"));
+                intent.setPackage("com.android.vending");
+                startActivity(intent);
             }
         });
         displayFrequentlyAskedQuestions();
