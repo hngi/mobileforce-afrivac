@@ -19,6 +19,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -31,14 +32,23 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.michael.afrivac.MainActivity;
 import com.michael.afrivac.PopularDestinationDetailsActivity;
 import com.michael.afrivac.R;
+import com.michael.afrivac.Util.FirebaseUtil;
 import com.michael.afrivac.model.DestinationSuggestion;
 import com.michael.afrivac.model.PopularPlaces;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
+
+import static android.content.ContentValues.TAG;
 
 public class PopularDestinationFragment extends Fragment {
     RecyclerView popularPlacesRV;
@@ -203,7 +213,7 @@ public class PopularDestinationFragment extends Fragment {
                     R.drawable.ic_location, popularPlaces.getCountry()
             ));
             destinationSuggestions.add(new DestinationSuggestion(
-                    R.drawable.ic_hotel, popularPlaces.getName()
+                    R.drawable.ic_hotel, popularPlaces.getDestination()
             ));
         }
         return destinationSuggestions;

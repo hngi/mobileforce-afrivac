@@ -1,6 +1,7 @@
 package com.michael.afrivac.ui.popular_destination;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -146,17 +147,17 @@ class PopularDestinationRVAdapter extends RecyclerView.Adapter<PopularDestinatio
                 .load(current.getImage())
                 .placeholder(R.drawable.ic_account_circle_black_24dp)
                 .into(holder.image);
-        holder.destination.setText(current.getName());
+        holder.destination.setText(current.getDestination());
         holder.country.setText(current.getCountry());
         holder.description.setText(current.getDescription());
 
-        if (current.getRating_number() < 5.1) {
-            holder.ratingBar.setRating((float) current.getRating_number());
+        if (current.getRating() < 5.1) {
+            holder.ratingBar.setRating((float) current.getRating());
             holder.ratingNumber.setText(String.valueOf(
-                    new BigDecimal(current.getRating_number()).setScale(2, RoundingMode.HALF_EVEN).doubleValue()));
+                    new BigDecimal(current.getRating()).setScale(2, RoundingMode.HALF_EVEN).doubleValue()));
         }
 
-        holder.engagement.setText(String.format("(%s)", current.getReview_number()));
+        holder.engagement.setText(String.format("(%s)", current.getEngagement()));
 
         int resId = current.isFavorite() ?
                 R.drawable.ic_baseline_favorite_24 :
