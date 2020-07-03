@@ -13,6 +13,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -37,6 +38,7 @@ public class ContactUsActivity2 extends AppCompatActivity {
     private EditText title, description;
     private LinearLayout linearLayout;
     private Button buttonContactUs, addMessage;
+    private ImageView imageCalcel;
     private String userID;
 
     private Helper helper;
@@ -69,6 +71,15 @@ public class ContactUsActivity2 extends AppCompatActivity {
 
         ///diplay meesages
         displayMessages();
+
+        imageCalcel = findViewById(R.id.image_contact);
+        imageCalcel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(intent);
+            }
+        });
 
         buttonContactUs = findViewById(R.id.button_contactus);
         buttonContactUs.setOnClickListener(new View.OnClickListener() {
@@ -113,6 +124,9 @@ public class ContactUsActivity2 extends AppCompatActivity {
     }
 
     public void contactUs(){
+        titleStr = title.getText().toString();
+        descriptionStr = description.getText().toString();
+        userID = user.getUid();
         if(titleStr.trim().isEmpty()){
             title.findFocus();
             helper.toastMessage(this, "enter what you want to tell us pls");
@@ -134,6 +148,8 @@ public class ContactUsActivity2 extends AppCompatActivity {
                 @Override
                 public void onComplete(@NonNull Task<Void> task) {
                     if(task.isSuccessful()){
+                        title.clearComposingText();
+                        description.clearComposingText();
                         helper.progressDialogEnd();
                         title.clearComposingText();
                         description.clearComposingText();

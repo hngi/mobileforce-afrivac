@@ -1,6 +1,7 @@
 package com.michael.afrivac.ui.findHotel;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -23,6 +24,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.michael.afrivac.FindHotelDetailsReviewActivity;
 import com.michael.afrivac.MainActivity;
 import com.michael.afrivac.R;
 import com.michael.afrivac.model.FindHotel;

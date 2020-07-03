@@ -13,7 +13,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".HomePage"></activity>
+        <activity android:name=".TermsAndConditions"></activity>
+        <activity android:name=".HomePage" />
         <activity
             android:name=".PopularDestinationDetailsActivity"
             android:theme="@style/AppTheme.NoActionBar" />
@@ -37,7 +38,7 @@
         <activity android:name=".ProfilePageActivity" />
         <activity android:name=".OnboardscreenActivity" />
         <activity android:name=".ForgetPasswordActivity" />
-        <activity android:name=".FindHotelDetailsReviewActivity"/>
+        <activity android:name=".FindHotelDetailsReviewActivity" />
         <activity
             android:name=".SplashscreenActivity"
             android:theme="@style/AppTheme.splashScreen">
@@ -50,7 +51,7 @@
         <activity
             android:name=".MainActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.splashScreen"></activity>
+            android:theme="@style/AppTheme.splashScreen" />
         <activity android:name=".ViewRoomsActivity" />
 
         <meta-data
