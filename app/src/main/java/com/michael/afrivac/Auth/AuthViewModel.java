@@ -83,8 +83,8 @@ public class AuthViewModel {
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if(task.isSuccessful()){
                         // Sign in success, update UI with the signed-in user's information
-                        Log.d(TAG, "createUserWithEmail: success");
-                        helper.toastMessage(view.getContext(), "You are logged in successfully");
+//                        Log.d(TAG, "createUserWithEmail: success");
+//                        helper.toastMessage(view.getContext(), "You are logged in successfully");
 
                         FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
                         assert firebaseUser != null;
