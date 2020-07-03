@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:orientation="vertical">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top"
+        android:layout_marginTop="@dimen/dimension_10dp"
+        android:layout_marginRight="@dimen/dimension_15dp"
+        android:layout_marginLeft="@dimen/dimension_15dp"
+        android:padding="8dp"
+        android:elevation="10dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center|end"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:background="@android:color/white"
+                android:gravity="center|end"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/back_button_sImageView"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:background="#ffffff"
+                    android:contentDescription="@string/back_arrow_button"
+                    android:src="@drawable/back_button" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="60dp"
+                    android:layout_margin="5dp"
+                    android:layout_weight="8"
+                    android:fontFamily="@font/poppins_light"
+                    android:gravity="center"
+                    android:text="@string/support"
+                    android:textColor="@android:color/black"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    tools:ignore="NestedWeights" />
+
+                <ImageView
+                    android:id="@+id/imageView3"
+                    android:layout_width="36dp"
+                    android:layout_height="37dp"
+                    android:layout_weight="1"
+                    app:srcCompat="@drawable/logo_black" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+
+                <EditText
+                    android:id="@+id/describe_edit_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:autofillHints="@string/describe_issues"
+                    android:background="@drawable/edit_text_corners"
+                    android:drawableEnd="@drawable/ic_baseline_search_24"
+                    android:fontFamily="@font/poppins_light"
+                    android:hint="@string/describe_issues"
+                    android:inputType="textAutoComplete"
+                    android:padding="12dp"
+                    android:paddingStart="24dp"
+                    android:textAlignment="gravity"
+                    android:textSize="18sp"
+                    tools:ignore="RtlSymmetry" />
+            </LinearLayout>
+        </LinearLayout>
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/dimension_15dp"
+        android:layout_marginBottom="@dimen/dimension_20dp"
+        android:text="@string/frequently_asked_questions"
+        android:textColor="@android:color/black"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/question_and_answer_recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/fab_margin"
+                android:baselineAligned="false"
+                android:clipToPadding="false" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="45dp"
+                android:layout_marginBottom="@dimen/fab_margin"
+                android:text="@string/need_more_help"
+                android:textColor="#3913B8"
+                android:textSize="16sp" />
+
+            <RelativeLayout
+                android:id="@+id/support_contact_us"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="30dp"
+                android:background="@drawable/contact_us_background"
+                android:padding="@dimen/fab_margin">
+
+                <ImageView
+                    android:id="@+id/contact_us_iv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="0dp"
+                    android:contentDescription="@string/email"
+                    android:src="@drawable/ic_baseline_mail_outline_24" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginTop="3dp"
+                    android:layout_toEndOf="@id/contact_us_iv"
+                    android:fontFamily="@font/poppins_bold"
+                    android:text="@string/contact_us"
+                    android:textColor="#000000"
+                    android:textSize="14sp"
+                    tools:ignore="RelativeOverlap" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginTop="29dp"
+                    android:layout_toEndOf="@id/contact_us_iv"
+                    android:fontFamily="@font/poppins_light"
+                    android:text="@string/contact_us_msg"
+                    android:textColor="#000000"
+                    android:textSize="12sp"
+                    tools:ignore="RelativeOverlap" />
+
+                <ImageView
+                    android:id="@+id/contact_us_open_iv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="0dp"
+                    android:contentDescription="@string/contact_us"
+                    android:src="@drawable/ic_baseline_open_in_new_24" />
+            </RelativeLayout>
+
+
+            <TextView
+                android:id="@+id/feedback_tv"
+                android:layout_width="154dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="45dp"
+                android:layout_marginTop="@dimen/fab_margin"
+                android:drawableStart="@drawable/ic_baseline_feedback_24"
+                android:elegantTextHeight="true"
+                android:fontFamily="@font/poppins_light"
+                android:text="@string/feedback"
+                android:textAlignment="viewEnd"
+                android:textColor="#000000"
+                android:textSize="14sp" />
+
+
+            <TextView
+                android:id="@+id/terms_and_condition_textView"
+                android:layout_width="227dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="45dp"
+                android:layout_marginTop="@dimen/fab_margin"
+                android:layout_marginBottom="16dp"
+                android:drawableStart="@drawable/ic_baseline_open_in_new_24"
+                android:elegantTextHeight="true"
+                android:fontFamily="@font/poppins_light"
+                android:text="@string/terms_and_conditions"
+                android:textAlignment="center"
+                android:textColor="#000000"
+                android:textSize="14sp" />
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

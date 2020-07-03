@@ -6,82 +6,145 @@
     android:layout_height="match_parent"
     tools:context=".ContactUsActivity2">
 
-    <TextView
-        android:id="@+id/textView_contact_us"
+    <LinearLayout
+        android:id="@+id/contact"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="39dp"
-        android:layout_marginTop="45dp"
-        android:layout_marginEnd="39dp"
-        android:fontFamily="@font/poppins"
+        android:layout_marginTop="40dp"
         android:gravity="center"
+        android:orientation="horizontal"
         android:text="@string/contact_us"
-        android:textAppearance="bold"
         android:textColor="@color/black"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <ImageView
-        android:id="@+id/imageView_contactbar"
-        android:layout_width="0dp"
-        android:layout_height="80dp"
-        android:background="#eeeeee"
-        android:contentDescription="Contact bar"
-        android:src="@drawable/dash_2"
-        app:layout_constraintBottom_toBottomOf="parent"
+        <ImageView
+            android:id="@+id/image_contact"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/dimension_10dp"
+            android:contentDescription="Contact"
+            app:srcCompat="@drawable/contact"
+            tools:layout_editor_absoluteY="48dp" />
+
+        <TextView
+            android:id="@+id/textView_contact_us"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dimension_10dp"
+            android:fontFamily="@font/poppins"
+            android:gravity="center"
+            android:text="@string/contact_us"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            tools:layout_editor_absoluteX="313dp"
+            tools:layout_editor_absoluteY="45dp" />
+
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/asked_questions_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dimension_20dp"
+        android:layout_marginLeft="@dimen/dimension_20dp"
+        android:layout_marginRight="@dimen/dimension_20dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/contact" />
 
-    <ImageView
-        android:id="@+id/imageView_addcontact"
-        android:layout_width="39dp"
-        android:layout_height="53dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginBottom="16dp"
-        android:contentDescription="Add Contactimage"
-        android:src="@drawable/ic_baseline_add"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/imageView_contactbar"
-        app:layout_constraintTop_toTopOf="@+id/imageView_contactbar"
-        app:layout_constraintVertical_bias="1.0" />
+    <LinearLayout
+        android:id="@+id/linear_layout"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:visibility="gone"
+        android:layout_marginTop="@dimen/dimension_20dp"
+        android:layout_marginLeft="@dimen/dimension_20dp"
+        android:layout_marginRight="@dimen/dimension_20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/contact" >
 
-    <EditText
-        android:id="@+id/editText_contactus"
-        android:layout_width="0dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:background="@drawable/circular_drawable01"
-        android:ems="10"
-        android:hint="@string/enter_your_message"
-        android:inputType="textPersonName"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/button_contactus"
-        app:layout_constraintStart_toEndOf="@+id/imageView_addcontact"
-        app:layout_constraintTop_toTopOf="@+id/imageView_contactbar" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/dimension_15dp"
+            android:textColor="@color/black"
+            android:text="TETLE"
+            android:layout_gravity="left"
+            android:padding="@dimen/dimension_5dp"
+            android:layout_margin="@dimen/dimension_5dp" />
+
+        <EditText
+            android:id="@+id/contact_us_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/dimension_5dp"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:textSize="@dimen/dimension_20sp"
+            android:background="@drawable/circular_drawable01"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/dimension_15dp"
+            android:textColor="@color/black"
+            android:text="Tell us more (optional)"
+            android:layout_gravity="left"
+            android:padding="@dimen/dimension_5dp"
+            android:layout_marginTop="@dimen/dimension_20dp"
+            android:layout_marginLeft="@dimen/dimension_5dp"
+            android:layout_marginRight="@dimen/dimension_5dp"
+            android:layout_marginBottom="@dimen/dimension_5dp" />
+
+        <EditText
+            android:id="@+id/contact_us_description"
+            android:layout_width="match_parent"
+            android:layout_height="160dp"
+            android:padding="@dimen/dimension_5dp"
+            android:textSize="@dimen/dimension_20sp"
+            android:textColor="@color/black"
+            android:inputType="textMultiLine"
+            android:background="@drawable/circular_drawable01"/>
+
+    </LinearLayout>
 
     <Button
         android:id="@+id/button_contactus"
-        android:layout_width="80dp"
-        android:layout_height="38dp"
-        android:layout_marginEnd="8dp"
-        android:background="@drawable/login_cta"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/imageView_contactbar"
-        app:layout_constraintTop_toTopOf="@+id/imageView_contactbar" />
-
-    <ImageView
-        android:id="@+id/image_contact"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:contentDescription="Contact"
-        app:layout_constraintBottom_toBottomOf="@+id/textView_contact_us"
-        app:layout_constraintStart_toStartOf="@+id/textView_contact_us"
-        app:layout_constraintTop_toTopOf="@+id/textView_contact_us"
-        app:srcCompat="@drawable/contact" />
+        android:background="@drawable/circular_drawable03"
+        android:textColor="@color/white"
+        android:text="Send"
+        android:padding="8dp"
+        android:visibility="gone"
+        android:textSize="@dimen/dimension_18sp"
+        android:layout_marginStart="@dimen/dimension_25dp"
+        android:layout_marginEnd="@dimen/dimension_25dp"
+        android:layout_marginBottom="@dimen/dimension_15dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
+    <Button
+        android:id="@+id/add_message"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/circular_drawable03"
+        android:textColor="@color/white"
+        android:text="+"
+        android:padding="8dp"
+        android:textSize="@dimen/dimension_25sp"
+        android:layout_marginStart="@dimen/dimension_25dp"
+        android:layout_marginEnd="@dimen/dimension_25dp"
+        android:layout_marginBottom="@dimen/dimension_15dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
