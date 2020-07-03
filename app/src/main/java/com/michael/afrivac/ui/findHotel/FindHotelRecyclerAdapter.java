@@ -56,10 +56,10 @@ public class FindHotelRecyclerAdapter extends RecyclerView.Adapter<FindHotelRecy
             nameText1 = itemViews.findViewById(R.id.nameTxt);
             nameText2 = itemViews.findViewById(R.id.nameTxt2);
             icon1 = itemViews.findViewById(R.id.icon1);
-            icon2 = itemViews.findViewById(R.id.icon2);
-            icon3 = itemViews.findViewById(R.id.icon3);
-            icon4 = itemViews.findViewById(R.id.icon4);
-            icon5 = itemViews.findViewById(R.id.icon5);
+//            icon2 = itemViews.findViewById(R.id.icon2);
+//            icon3 = itemViews.findViewById(R.id.icon3);
+//            icon4 = itemViews.findViewById(R.id.icon4);
+//            icon5 = itemViews.findViewById(R.id.icon5);
             ratingBar = itemViews.findViewById(R.id.ratingBar);
             numberRate = itemViews.findViewById(R.id.numberRate);
             itemViews.setOnClickListener(this);
