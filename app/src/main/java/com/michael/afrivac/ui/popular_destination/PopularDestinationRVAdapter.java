@@ -32,6 +32,8 @@ import java.util.List;
 class PopularDestinationRVAdapter extends RecyclerView.Adapter<PopularDestinationRVAdapter.PopularPlacesRVAdapterVH> {
     private PopularDestinationRVAdapter.OnItemSelectedListener onItemSelectedListener;
     private List<PopularPlaces> popularPlaces=new ArrayList<>();
+    ArrayList<PopularPlaces> temp = new ArrayList<>();
+
     private Context context;
     private FirebaseDatabase mFirebaseDatabase;
     private DatabaseReference mDatabaseReference;
@@ -41,6 +43,7 @@ class PopularDestinationRVAdapter extends RecyclerView.Adapter<PopularDestinatio
 ;
 
     public PopularDestinationRVAdapter(Context context, OnItemSelectedListener onItemSelectedListener) {
+        temp= (ArrayList<PopularPlaces>) popularPlaces;
         this.context = context;
         this.onItemSelectedListener = onItemSelectedListener;
         mFirebaseDatabase = FirebaseUtil.mFirebaseDatabase;
@@ -108,13 +111,16 @@ class PopularDestinationRVAdapter extends RecyclerView.Adapter<PopularDestinatio
        // this.popularPlaces = FirebaseUtil.sPopularPlaces;
        // notifyDataSetChanged();
     }
-    public void filter(String text) {
-        ArrayList<PopularPlaces> temp = new ArrayList<>();
-        temp= (ArrayList<PopularPlaces>) popularPlaces;
-        if (text.length()==0||text.isEmpty()||text==null){
-           this. popularPlaces=temp;
+    public void defaultData(){
+
+
+             popularPlaces=temp;
             notifyDataSetChanged();
-        }else{
+
+
+    }
+    public void filter(String text) {
+
 
         ArrayList<PopularPlaces> filteredList = new ArrayList<>();
         for (PopularPlaces item : popularPlaces) {
@@ -125,7 +131,7 @@ class PopularDestinationRVAdapter extends RecyclerView.Adapter<PopularDestinatio
         }
         popularPlaces = filteredList;
         notifyDataSetChanged();
-    }
+
 
     }
 

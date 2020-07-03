@@ -170,6 +170,7 @@ public class PopularDestinationFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 searchTV.setText(null);
+                popularDestinationRVAdapter.defaultData();
             }
         };
         searchTV.addTextChangedListener(new TextWatcher() {
@@ -186,6 +187,7 @@ public class PopularDestinationFragment extends Fragment {
                 if (editable == null || editable.toString() == null || editable.toString().equals("")) {
                     search_end_button.setImageResource(R.drawable.ic_search);
                     search_end_button.setOnClickListener(null);
+                    popularDestinationRVAdapter.defaultData();
                     popularPlacesRV.setAdapter(new PopularDestinationRVAdapter(getContext(), new PopularDestinationRVAdapter.OnItemSelectedListener() {
                         @Override
                         public void onItemSelected(int selectedPosition) {
@@ -195,10 +197,11 @@ public class PopularDestinationFragment extends Fragment {
                     }));
 
                 } else {
+                    popularDestinationRVAdapter.defaultData();
                     search_end_button.setImageResource(R.drawable.ic_round_highlight_off_24);
                     popularDestinationRVAdapter.filter(editable.toString());
 
-                   // search_end_button.setOnClickListener(searchClearer);
+                   search_end_button.setOnClickListener(searchClearer);
                 }
 
                // filter(editable.toString());
