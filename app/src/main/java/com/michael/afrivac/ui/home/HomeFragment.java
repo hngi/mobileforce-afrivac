@@ -1,5 +1,6 @@
 package com.michael.afrivac.ui.home;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -9,6 +10,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.SearchView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
@@ -20,6 +22,7 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -35,17 +38,21 @@ import com.michael.afrivac.model.PopularPlaces;
 import com.michael.afrivac.ui.account.AccountFragment;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 import ru.tinkoff.scrollingpagerindicator.ScrollingPagerIndicator;
 
 public class HomeFragment extends Fragment {
 
-    DatabaseReference reference,discoverReference;
+    DatabaseReference reference,discoverReference,mDatabase;
     RecyclerView recyclerView,rv_discoverAfrica;
     ArrayList<PopularPlaces> list;
     ArrayList<DiscoverAfrica> discoverList;
     com.michael.afrivac.Adapter.PopularAdapter popularAdapter;
     com.michael.afrivac.Adapter.DiscoverAdapter discoverAdapter;
+
+    FirebaseAuth mAuth;
+    String userID;
 
     //    private HomeViewModel homeViewModel;
     CardView cairo, nairobi, popular, pop2, pop3;
@@ -53,6 +60,7 @@ public class HomeFragment extends Fragment {
     ImageView profile_image;
     SearchView searchView;
     ImageButton menuButton;
+    TextView welcome_text;
 
     private int radius;
 //for the discover Africa recycler view
@@ -80,6 +88,27 @@ public class HomeFragment extends Fragment {
         discoverList = new ArrayList<DiscoverAfrica>();
         profile_image = root.findViewById(R.id.profile_image);
         menuButton = root.findViewById(R.id.menuButton);
+        welcome_text = root.findViewById(R.id.welcome_text);
+
+        mAuth = FirebaseAuth.getInstance();
+        userID = Objects.requireNonNull(mAuth.getCurrentUser()).getUid();
+        mDatabase = FirebaseDatabase.getInstance().getReference().child("Users").child(userID);
+
+        mDatabase.addValueEventListener(new ValueEventListener() {
+                @SuppressLint("SetTextI18n")
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                    String user_name = snapshot.child("username").getValue().toString();
+
+                    welcome_text.setText("Hi " + user_name + ", \nwhere would you like to visit?");
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+
+                }
+            });
 
         menuButton.setOnClickListener(new View.OnClickListener() {
             @Override
