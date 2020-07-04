@@ -8,7 +8,6 @@
         
         <item>First Class</item>
     </string-array>
-    <string name="app_name">AfriVac</string>
 
     <string-array name="numberOfTravelers">
         <item>1 Traveller</item>
@@ -20,7 +19,6 @@
 
     <string name="app_name">AfriVac</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="mywallet">My Wallet</string>
     <string name="hotelName">Cocoon Hotel</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="pay_pal">Pay Pal</string>
@@ -226,23 +224,15 @@
     <string name="rate_4_1" translatable="false">4.1</string>
     <string name="reviewa_2_731" translatable="false">(2,731)</string>
     <string name="cape_town_description" translatable="false">Santoroni is the world best blue shining city. every year lot of travler visited here</string>
-    <string-array name="languages">
-        <item>English</item>
-        <item>France</item>
-        <item>Spanish</item>
-    </string-array>
     <string name="phoneNumb" translatable="false">+234 7061815056</string>
     <string name="saveProf" translatable="false">Save Changes</string>
-    <string name="placedesc">An image of a city</string>
-    <string name="star">A star</string>
+    <string name="placedesc" translatable="false">An image of a city</string>
+    <string name="star" translatable="false">A star</string>
     <string name="registration" translatable="false">REGISTRATION</string>
     <string name="terms" translatable="false">I have read and agreed to Terms and agreement.</string>
     <string name="recover_email_text" translatable="false">"Enter the email address regsitered with your afrivac account "</string>
     <string name="verification_code_text" translatable="false">we just sent a verification code to dele******1@gmail.com</string>
     <string name="enter_verification_code" translatable="false">Enter Verification Code</string>
-    <string name="noverificationcode" translatable="false">Didn’t Receive a verification code?</string>
-    <string name="resend_" translatable="false">Resend</string>
-    <string name="didn_t_receive_a_verification_code" translatable="false">Didn\'t Receive a verification code?</string>
     <string name="resend" translatable="false">Resend</string>
     
     <string name="noverificationcode" translatable="false">Didn’t Receive a verification code?</string>
@@ -263,15 +253,10 @@
     <string name="cancellation_policy" translatable="false">Cancellation policy</string>
     <string name="load_image" translatable="false">load image</string>
     <string name="save_favourite" translatable="false">save favourite</string>
-    <string-array name="flightType">
-        <item>Economy</item>
-        <item>First Class</item>
-    </string-array>
-    <string-array name="numberOfTravelers">
-        <item>1 Traveller</item>
-        <item>2 Travellers</item>
-        <item>3 Travellers</item>
-    </string-array>
+    <string name="cancel">cancel</string>
+    <string name="confirm">confirm</string>
+    <string name="resend_verification_email">resend_ver</string>
+
     <string-array name="languages">
         <item>English</item>
         <item>France</item>
