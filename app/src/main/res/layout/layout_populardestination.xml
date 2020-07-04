@@ -1,132 +1,126 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    app:cardCornerRadius="15dp"
-    android:layout_margin="10dp">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="90dp"
+    android:layout_marginStart="25dp"
+    android:layout_marginTop="12dp"
+    android:layout_marginEnd="@dimen/dimension_20dp"
+    android:layout_marginBottom="@dimen/dimension_10dp"
+    app:cardCornerRadius="@dimen/dimension_10dp"
+    app:cardElevation="8dp"
+    app:cardPreventCornerOverlap="true"
+    app:cardUseCompatPadding="false">
+
 
     <RelativeLayout
+
+        android:background="@android:color/white"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
 
+        android:layout_height="wrap_content">
 
         <ImageView
-            android:id="@+id/img_country"
-            android:layout_width="110dp"
-            android:layout_height="110dp"
-            android:outlineProvider="background"
+            android:id="@+id/image"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
             android:scaleType="centerCrop"
-            android:src="@drawable/one" />
+            tools:srcCompat="@drawable/cairro"
+            android:contentDescription="image" />
 
-        <TextView
-            android:id="@+id/txt_destName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_toEndOf="@id/img_country"
-            android:text="@string/cairo"
-            android:textColor="@color/colorBlack"
-            android:textSize="18sp" />
-
-        <ImageView
-            android:id="@+id/fav"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+        <ImageButton
+            android:id="@+id/favoriteIcon"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
             android:layout_alignParentEnd="true"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="10dp"
-            app:srcCompat="@drawable/ic_favorite_border_black_24dp" />
-
-        <TextView
-            android:id="@+id/txt_countryName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/txt_destName"
-            android:layout_marginStart="10dp"
-            android:layout_toEndOf="@id/img_country"
-            android:text="@string/egypt"
-            android:textColor="@color/sub_text_blue"
-            android:textSize="12sp" />
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="21dp"
+            android:background="@null"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_favorite_border_black_24dp"
+            />
 
 
         <TextView
-            android:id="@+id/txt_description"
+            android:id="@+id/destination"
+            android:layout_width="wrap_content"
+            android:layout_height="27dp"
+            android:layout_marginStart="@dimen/dimension_10dp"
+            android:layout_toEndOf="@+id/image"
+            android:fontFamily="@font/poppins_medium"
+            android:textColor="@color/black"
+            android:textSize="@dimen/dimension_18sp"
+            tools:text="Cairo" />
+
+        <TextView
+            android:id="@+id/country"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/txt_countryName"
-            android:layout_marginStart="10dp"
-            android:layout_toEndOf="@id/img_country"
-            android:fontFamily="@font/poppins"
-            android:text="@string/descriptive_text"
-            android:textColor="@color/description_color"
-            android:textSize="9sp" />
+            android:layout_below="@id/destination"
+            android:layout_alignStart="@id/destination"
+            android:layout_marginTop="-4dp"
+            android:fontFamily="@font/poppins_medium"
+            android:textColor="@color/colorPrimary"
+            android:textSize="12sp"
+            tools:text="Egypt" />
+
+        <TextView
+            android:id="@+id/description"
+            android:layout_width="172dp"
+            android:layout_height="25dp"
+            android:layout_below="@+id/country"
+            android:layout_alignStart="@+id/destination"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="2dp"
+            android:layout_marginEnd="15dp"
+            android:lines="2"
+            android:text="The desert heat, the noisy streets and the sheer size of Cairo will leave even the most adaptable traveler with a serious case of culture shock"
+            android:textColor="@color/textColor"
+            android:textSize="8sp" />
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="24dp"
-            android:layout_below="@id/txt_description"
-            android:layout_toEndOf="@id/img_country"
+            android:layout_height="20dp"
+            android:layout_below="@id/description"
+            android:layout_alignStart="@id/destination"
             android:orientation="horizontal">
 
-
-            <ImageView
-                android:id="@+id/star2"
-                android:layout_width="15dp"
-                android:layout_height="17dp"
-                android:layout_marginStart="10dp"
-                app:srcCompat="@drawable/ic_star_black_24dp" />
-
-            <ImageView
-                android:id="@+id/star3"
-                android:layout_width="15dp"
-                android:layout_height="17dp"
-                app:srcCompat="@drawable/ic_star_black_24dp" />
-
-            <ImageView
-                android:id="@+id/star4"
-                android:layout_width="15dp"
-                android:layout_height="17dp"
-                app:srcCompat="@drawable/ic_star_black_24dp" />
-
-            <ImageView
-                android:id="@+id/star5"
-                android:layout_width="15dp"
-                android:layout_height="17dp"
-                app:srcCompat="@drawable/ic_star_black_24dp" />
-
-            <ImageView
-                android:id="@+id/emptyStar"
-                android:layout_width="15dp"
-                android:layout_height="17dp"
-                app:srcCompat="@drawable/ic_star_border_black_24dp" />
-
-            <TextView
-                android:id="@+id/txt_rating"
+            <RatingBar
+                android:id="@+id/ratingBar"
+                style="?android:attr/ratingBarStyleSmall"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="6dp"
-                android:fontFamily="@font/poppins"
-                android:text="@string/rate_4_1"
-                android:textColor="@color/description_color"
-                android:textSize="11sp"
-                android:textStyle="bold" />
+                android:layout_gravity="center"
+
+                android:isIndicator="true"
+                android:numStars="5"
+                android:stepSize="0.1" />
 
             <TextView
-                android:id="@+id/txt_review"
+                android:id="@+id/ratingNumber"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="6dp"
-                android:fontFamily="@font/poppins"
-                android:text="@string/reviewa_2_731"
-                android:textColor="@color/description_color"
-                android:textSize="11sp" />
+                android:layout_marginStart="3dp"
+                android:fontFamily="@font/poppins_semibold"
+                android:textColor="@color/textColor"
+                android:textSize="10sp"
+                tools:text="4.1" />
 
-
+            <TextView
+                android:id="@+id/engagement"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_weight="0"
+                android:fontFamily="@font/poppins_regular"
+                android:textColor="@color/textColor"
+                android:textSize="10sp"
+                tools:text="(2,731)" />
         </LinearLayout>
+
     </RelativeLayout>
 
 </androidx.cardview.widget.CardView>

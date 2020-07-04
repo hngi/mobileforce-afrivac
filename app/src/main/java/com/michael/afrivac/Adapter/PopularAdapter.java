@@ -56,12 +56,12 @@ public class PopularAdapter extends RecyclerView.Adapter<PopularAdapter.MyViewHo
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
-            countryName = itemView.findViewById(R.id.txt_destName);
-            name = itemView.findViewById(R.id.txt_countryName);
-            description = itemView.findViewById(R.id.txt_description);
-            image = itemView.findViewById(R.id.img_country);
-            review = itemView.findViewById(R.id.txt_review);
-            rate = itemView.findViewById(R.id.txt_rating);
+            countryName = itemView.findViewById(R.id.destination);
+            name = itemView.findViewById(R.id.country);
+            description = itemView.findViewById(R.id.description);
+            image = itemView.findViewById(R.id.image);
+            review = itemView.findViewById(R.id.engagement);
+            rate = itemView.findViewById(R.id.ratingNumber);
 
         }
     }
