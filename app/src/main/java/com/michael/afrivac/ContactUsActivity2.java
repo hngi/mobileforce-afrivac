@@ -85,6 +85,9 @@ public class ContactUsActivity2 extends AppCompatActivity {
         buttonContactUs.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                titleStr = title.getText().toString();
+                descriptionStr = description.getText().toString();
+                userID = user.getUid();
                 animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.button_anim);
                 buttonContactUs.startAnimation(animation);
                 animation.setAnimationListener(new Animation.AnimationListener() {
@@ -132,6 +135,7 @@ public class ContactUsActivity2 extends AppCompatActivity {
             if(descriptionStr.trim().isEmpty()){
                 descriptionStr = "no detail needed";
             }
+
             Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("mailto:"+"allenkamadje@mgail.com"));
             intent.putExtra(Intent.EXTRA_SUBJECT, titleStr);
             intent.putExtra(Intent.EXTRA_TEXT, descriptionStr + "\n" + userID);
@@ -147,6 +151,8 @@ public class ContactUsActivity2 extends AppCompatActivity {
                         title.clearComposingText();
                         description.clearComposingText();
                         helper.progressDialogEnd();
+                        title.clearComposingText();
+                        description.clearComposingText();
                         buttonContactUs.setVisibility(View.GONE);
                         addMessage.setVisibility(View.VISIBLE);
                         recyclerView.setVisibility(View.VISIBLE);
