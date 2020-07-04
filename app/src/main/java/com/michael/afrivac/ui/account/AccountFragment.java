@@ -32,7 +32,7 @@ public class AccountFragment extends Fragment {
     String userID;
 
     // profile widgets
-    TextView userCountry, userEmail, userGender, userLanguage, userNumber, username;
+    TextView userCountry, userEmail, userGender, userLanguage, userNumber, username, fullName;
 
 
 
@@ -52,7 +52,7 @@ public class AccountFragment extends Fragment {
         userLanguage = root.findViewById(R.id.user_language);
         userNumber = root.findViewById(R.id.edit_phone);
         username = root.findViewById(R.id.user_name);
-
+        fullName = root.findViewById(R.id.full_name);
         deleteAccount = root.findViewById(R.id.delete_account);
 
         deleteAccount.setOnClickListener(new View.OnClickListener() {
@@ -74,6 +74,7 @@ public class AccountFragment extends Fragment {
                 String user_number = snapshot.child("number").getValue().toString();
                 String user_country = snapshot.child("country").getValue().toString();
 
+                fullName.setText(user_name);
                 if(user_name != null) {
                     username.setText(user_name);
                 }

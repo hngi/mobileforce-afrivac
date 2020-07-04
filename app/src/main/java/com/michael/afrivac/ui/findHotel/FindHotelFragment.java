@@ -19,6 +19,7 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -38,7 +39,8 @@ import java.util.List;
 public class FindHotelFragment extends Fragment {
     RecyclerView findHotelRecycler;
     private AutoCompleteTextView searchBar;
-    ImageButton sideMenu, Avatar;
+    ImageButton sideMenu, Avatar, searchEnd;
+    private AutoCompleteTextView search;
 
     private FindHotelViewModel findHotelViewModel;
     private FindHotelRecyclerAdapter findHotelRecyclerAdapter;
@@ -53,15 +55,23 @@ public class FindHotelFragment extends Fragment {
 
         ((MainActivity) requireActivity()).getSupportActionBar().hide();
 
-        findHotelViewModel = ViewModelProviders.of(this).get(FindHotelViewModel.class);
+        findHotelViewModel = new ViewModelProvider(this).get(FindHotelViewModel.class);
         View root = inflater.inflate(R.layout.fragment_find_hotel, container, false);
 
+        search = root.findViewById(R.id.searchTV);
         findHotelRecycler = root.findViewById(R.id.hotelRecycler);
         searchBar = root.findViewById(R.id.searchTV);
         Avatar = root.findViewById(R.id.avatar);
         sideMenu = root.findViewById(R.id.sideBar);
         findHotelRecycler.setLayoutManager(new LinearLayoutManager(getContext()));
 
+        searchEnd = root.findViewById(R.id.search_end_button);
+        searchEnd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                search.clearComposingText();
+            }
+        });
 
         findHotelRecyclerAdapter = new FindHotelRecyclerAdapter(getContext(), new FindHotelRecyclerAdapter.OnItemSelectedListener() {
             @Override

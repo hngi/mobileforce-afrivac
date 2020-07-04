@@ -197,7 +197,6 @@ public class AuthViewModel {
                             } else {
                                 Toast.makeText(view.getContext(), "Could not send Email verification sent ",
                                         Toast.LENGTH_SHORT).show();
-
                             }
                         }
                     });
