@@ -9,10 +9,13 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/dimension_10dp"
+        android:layout_marginStart="@dimen/dimension_10dp"
+        >
 
         <LinearLayout
-            android:layout_width="362dp"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_margin="10dp"
             android:orientation="vertical"
@@ -59,7 +62,8 @@
                 android:layout_marginTop="24dp"
                 android:fontFamily="@font/poppins"
                 android:padding="10dp"
-                android:text="@string/home_page_top_message"
+                android:id="@+id/welcome_text"
+                tools:text="@string/home_page_top_message"
                 android:textColor="@color/black"
                 android:textSize="18sp" />
 
