@@ -6,12 +6,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.SearchView;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.core.content.ContextCompat;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -24,6 +27,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.michael.afrivac.HomePage;
 import com.michael.afrivac.LocationActivity;
+import com.michael.afrivac.MainActivity;
 import com.michael.afrivac.PopularDestinationDetailsActivity;
 import com.michael.afrivac.R;
 import com.michael.afrivac.model.DiscoverAfrica;
@@ -46,10 +50,10 @@ public class HomeFragment extends Fragment {
     //    private HomeViewModel homeViewModel;
     CardView cairo, nairobi, popular, pop2, pop3;
     EditText search_view;
-    ImageView star1,star2, star3, star4, star5, pop2_star1, pop2star2, pop2_star3, pop2_star4, pop2_star5,
-            pop3_star1, pop3star2, pop3_star3, pop3_star4, pop3_star5,
-            profile_image, favorite, fav2, fav3;
+    ImageView profile_image;
     SearchView searchView;
+    ImageButton menuButton;
+
     private int radius;
 //for the discover Africa recycler view
 //    private RecyclerView recyclerView;
@@ -61,7 +65,12 @@ public class HomeFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,  ViewGroup container, Bundle savedInstanceState) {
 //        homeViewModel =
-//                ViewModelProviders.of(this).get(HomeViewModel.class);
+//                ViewModelProviders.of(this).get(HomeViewModel.class);z
+
+        //code to remove the action bar
+        ((MainActivity) requireActivity()).getSupportActionBar().hide();
+
+
         View root = inflater.inflate(R.layout.fragment_home, container, false);
         recyclerView = root.findViewById(R.id.popular_destination_recycler);
         rv_discoverAfrica = root.findViewById(R.id.my_recycler_view);
@@ -70,6 +79,17 @@ public class HomeFragment extends Fragment {
         list = new ArrayList<PopularPlaces>();
         discoverList = new ArrayList<DiscoverAfrica>();
         profile_image = root.findViewById(R.id.profile_image);
+        menuButton = root.findViewById(R.id.menuButton);
+
+        menuButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                try {
+                    ((DrawerLayout) requireActivity().findViewById(R.id.drawer_layout)).openDrawer(GravityCompat.START);
+                } catch (Exception ignored) { }
+            }
+        });
+
 //        recyclerView = root.findViewById(R.id.my_recycler_view);
 
 //        ArrayList<Place> places = new ArrayList<>();
