@@ -1,323 +1,195 @@
 package com.michael.afrivac.ui.home;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.SearchView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
+import androidx.core.content.ContextCompat;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.viewpager2.widget.ViewPager2;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.michael.afrivac.HomePage;
 import com.michael.afrivac.LocationActivity;
+import com.michael.afrivac.MainActivity;
 import com.michael.afrivac.PopularDestinationDetailsActivity;
 import com.michael.afrivac.R;
+import com.michael.afrivac.model.DiscoverAfrica;
+import com.michael.afrivac.model.PopularPlaces;
 import com.michael.afrivac.ui.account.AccountFragment;
 
+import java.util.ArrayList;
+import java.util.Objects;
+
+import ru.tinkoff.scrollingpagerindicator.ScrollingPagerIndicator;
+
 public class HomeFragment extends Fragment {
+
+    DatabaseReference reference,discoverReference,mDatabase;
+    RecyclerView recyclerView,rv_discoverAfrica;
+    ArrayList<PopularPlaces> list;
+    ArrayList<DiscoverAfrica> discoverList;
+    com.michael.afrivac.Adapter.PopularAdapter popularAdapter;
+    com.michael.afrivac.Adapter.DiscoverAdapter discoverAdapter;
+
+    FirebaseAuth mAuth;
+    String userID;
 
     //    private HomeViewModel homeViewModel;
     CardView cairo, nairobi, popular, pop2, pop3;
     EditText search_view;
-    ImageView star1,star2, star3, star4, star5, pop2_star1, pop2star2, pop2_star3, pop2_star4, pop2_star5,
-            pop3_star1, pop3star2, pop3_star3, pop3_star4, pop3_star5,
-            profile_image, favorite, fav2, fav3;
+    ImageView profile_image;
     SearchView searchView;
+    ImageButton menuButton;
+    TextView welcome_text;
+
     private int radius;
+//for the discover Africa recycler view
+//    private RecyclerView recyclerView;
+    private RecyclerView.LayoutManager layoutManager;
+
+    //for the popular destinations recycler view
+    private RecyclerView recyclerView2;
+    private RecyclerView.LayoutManager layoutManager2;
 
     public View onCreateView(@NonNull LayoutInflater inflater,  ViewGroup container, Bundle savedInstanceState) {
 //        homeViewModel =
-//                ViewModelProviders.of(this).get(HomeViewModel.class);
+//                ViewModelProviders.of(this).get(HomeViewModel.class);z
+
+        //code to remove the action bar
+        ((MainActivity) requireActivity()).getSupportActionBar().hide();
+
+
         View root = inflater.inflate(R.layout.fragment_home, container, false);
-
-
-        // cards
-        cairo = root.findViewById(R.id.caira_card);
-        nairobi = root.findViewById(R.id.nairobi_card);
-        popular = root.findViewById(R.id.caira_card);
-        pop2 = root.findViewById(R.id.madagascar_card);
-        pop3 = root.findViewById(R.id.são_tomé_e_card);
-        //profile image
+        recyclerView = root.findViewById(R.id.popular_destination_recycler);
+        rv_discoverAfrica = root.findViewById(R.id.my_recycler_view);
+        rv_discoverAfrica.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,true));
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        list = new ArrayList<PopularPlaces>();
+        discoverList = new ArrayList<DiscoverAfrica>();
         profile_image = root.findViewById(R.id.profile_image);
+        menuButton = root.findViewById(R.id.menuButton);
+        welcome_text = root.findViewById(R.id.welcome_text);
 
-        // fav icons
-        favorite = root.findViewById(R.id.fav);
-        fav2 = root.findViewById(R.id.fav2);
-        fav3 = root.findViewById(R.id._fav2);
+        mAuth = FirebaseAuth.getInstance();
+        userID = Objects.requireNonNull(mAuth.getCurrentUser()).getUid();
+        mDatabase = FirebaseDatabase.getInstance().getReference().child("Users").child(userID);
 
-        //rating stars
-        star1 = root.findViewById(R.id.star2);
-        star2 = root.findViewById(R.id.star3);
-        star3 = root.findViewById(R.id.star4);
-        star4 = root.findViewById(R.id.star5);
-        star5 = root.findViewById(R.id.empty_Star);
-        pop2_star1 = root.findViewById(R.id.s_tar3);
-        pop2star2 = root.findViewById(R.id.s_tar2);
-        pop2_star3 = root.findViewById(R.id.s_tar4);
-        pop2_star4 = root.findViewById(R.id.s_tar5);
-        pop2_star5 = root.findViewById(R.id.empty_Star);
-        pop3_star1 = root.findViewById(R.id._star_2);
-        pop3star2 = root.findViewById(R.id._star_3);
-        pop3_star3 = root.findViewById(R.id._star_4);
-        pop3_star4 = root.findViewById(R.id._star_5);
-        pop3_star5 = root.findViewById(R.id._emptyStar);
+        mDatabase.addValueEventListener(new ValueEventListener() {
+                @SuppressLint("SetTextI18n")
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
 
-        radius =64;
+                    String user_name = snapshot.child("username").getValue().toString();
 
-        nairobi.setRadius(radius);
-        cairo.setRadius(radius);
-        pop2.setRadius(radius);
-        pop3.setRadius(radius);
-        popular.setRadius(radius);
-
-//        final Animation animation = AnimationUtils.loadAnimation(getContext(), R.anim.scale);
-//
-//        popular.setOnTouchListener(new View.OnTouchListener() {
-//            @Override
-//            public boolean onTouch(View v, MotionEvent event) {
-//                if(event.getAction() == MotionEvent.ACTION_DOWN || event.getAction() == MotionEvent.ACTION_UP){
-//                    popular.startAnimation(animation);
-//                }
-//                return true;
-//            }
-//        });
-//
-//        pop2.setOnTouchListener(new View.OnTouchListener() {
-//            @Override
-//            public boolean onTouch(View v, MotionEvent event) {
-//                if(event.getAction() == MotionEvent.ACTION_DOWN || event.getAction() == MotionEvent.ACTION_UP){
-//                    pop2.startAnimation(animation);
-//                }
-//                return true;
-//            }
-//        });
-//
-//        pop3.setOnTouchListener(new View.OnTouchListener() {
-//            @Override
-//            public boolean onTouch(View v, MotionEvent event) {
-//                if(event.getAction() == MotionEvent.ACTION_DOWN || event.getAction() == MotionEvent.ACTION_UP){
-//                    pop3.startAnimation(animation);
-//                    v.performClick();
-//                    try {
-//                        finalize();
-//                    } catch (Throwable throwable) {
-//                        throwable.printStackTrace();
-//                    }
-//                }
-//                return true;
-//            }
-//        });
-
-
-        favorite.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (favorite.getDrawable().getConstantState() ==
-                        getResources().getDrawable(R.drawable.ic_favorite_border_black_24dp).getConstantState()){
-                    favorite.setImageResource(R.drawable.fav);
-                } else {
-                    favorite.setImageResource(R.drawable.ic_favorite_border_black_24dp);
+                    welcome_text.setText("Hi " + user_name + ", \nwhere would you like to visit?");
                 }
 
-            }
-        });
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
 
-        fav2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (fav2.getDrawable().getConstantState() ==
-                        getResources().getDrawable(R.drawable.ic_favorite_border_black_24dp).getConstantState()){
-                    fav2.setImageResource(R.drawable.fav);
-                } else {
-                    fav2.setImageResource(R.drawable.ic_favorite_border_black_24dp);
                 }
+            });
 
+        menuButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                try {
+                    ((DrawerLayout) requireActivity().findViewById(R.id.drawer_layout)).openDrawer(GravityCompat.START);
+                } catch (Exception ignored) { }
             }
         });
 
-        fav3.setOnClickListener(new View.OnClickListener() {
+//        recyclerView = root.findViewById(R.id.my_recycler_view);
+
+//        ArrayList<Place> places = new ArrayList<>();
+//
+//        // use a linear layout manager
+////        layoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
+////        recyclerView.setLayoutManager(layoutManager);
+//
+//        //sets the adapter for the discover Africa recycler view
+////        DiscoverAdapter discoverAdapter = new DiscoverAdapter(places);
+////        recyclerView.setAdapter(discoverAdapter);
+//
+//        //page indicator for the discover Africa recyclerView
+//        ScrollingPagerIndicator recycleIndicator = root.findViewById(R.id.indicator);
+//        recycleIndicator.setSelectedDotColor(ContextCompat.getColor(root.getContext(),R.color.colorBlue));
+//        recycleIndicator.setDotColor(ContextCompat.getColor(root.getContext(), R.color.indicator));
+//        recycleIndicator.setFadingEdgeLength(10);
+//        recycleIndicator.attachToRecyclerView(rv_discoverAfrica);
+////
+//        ArrayList<Popular> populars = new ArrayList<>();
+//
+//
+//        // use a Vertical linear layout manager
+//        layoutManager2 = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
+//        recyclerView2.setLayoutManager(layoutManager2);
+
+        //sets the adapter for the popular destinations recycler view
+//        PopularAdapter popularAdapter = new PopularAdapter(populars);
+//        recyclerView2.setAdapter(popularAdapter);
+
+        reference= FirebaseDatabase.getInstance().getReference().child("popular_destinatio");
+        reference.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onClick(View view) {
-                if (fav3.getDrawable().getConstantState() ==
-                        getResources().getDrawable(R.drawable.ic_favorite_border_black_24dp).getConstantState()){
-                    fav3.setImageResource(R.drawable.fav);
-                } else {
-                    fav3.setImageResource(R.drawable.ic_favorite_border_black_24dp);
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                for(DataSnapshot datasnapshot : snapshot.getChildren())
+                {
+                    PopularPlaces p = datasnapshot.getValue(PopularPlaces.class);
+                    list.add(p);
                 }
-
+                popularAdapter = new com.michael.afrivac.Adapter.PopularAdapter(getActivity(),list);
+                recyclerView.setAdapter(popularAdapter);
             }
-        });
 
-        star1.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                star1.setImageResource(R.drawable.ic_star_black_24dp);
-                star2.setImageResource(R.drawable.ic_star_border_black_24dp);
-                star3.setImageResource(R.drawable.ic_star_border_black_24dp);
-                star4.setImageResource(R.drawable.ic_star_border_black_24dp);
-                star5.setImageResource(R.drawable.ic_star_border_black_24dp);
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+        discoverReference =  FirebaseDatabase.getInstance().getReference().child("discover_africa");
+        discoverReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                for(DataSnapshot datasnapshot : snapshot.getChildren())
+                {
+                    DiscoverAfrica d = datasnapshot.getValue(DiscoverAfrica.class);
+                    discoverList.add(d);
+                }
+                discoverAdapter = new com.michael.afrivac.Adapter.DiscoverAdapter(getActivity(),discoverList);
+                rv_discoverAfrica.setAdapter(discoverAdapter);
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
             }
         });
 
-        star2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                star1.setImageResource(R.drawable.ic_star_black_24dp);
-                star2.setImageResource(R.drawable.ic_star_black_24dp);
-                star3.setImageResource(R.drawable.ic_star_border_black_24dp);
-                star4.setImageResource(R.drawable.ic_star_border_black_24dp);
-                star5.setImageResource(R.drawable.ic_star_border_black_24dp);
-            }
-        });
 
-        star3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                star1.setImageResource(R.drawable.ic_star_black_24dp);
-                star2.setImageResource(R.drawable.ic_star_black_24dp);
-                star3.setImageResource(R.drawable.ic_star_black_24dp);
-                star4.setImageResource(R.drawable.ic_star_border_black_24dp);
-                star5.setImageResource(R.drawable.ic_star_border_black_24dp);
-            }
-        });
-
-        star4.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                star1.setImageResource(R.drawable.ic_star_black_24dp);
-                star2.setImageResource(R.drawable.ic_star_black_24dp);
-                star3.setImageResource(R.drawable.ic_star_black_24dp);
-                star4.setImageResource(R.drawable.ic_star_black_24dp);
-                star5.setImageResource(R.drawable.ic_star_border_black_24dp);
-            }
-        });
-
-        star5.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                star1.setImageResource(R.drawable.ic_star_black_24dp);
-                star2.setImageResource(R.drawable.ic_star_black_24dp);
-                star3.setImageResource(R.drawable.ic_star_black_24dp);
-                star4.setImageResource(R.drawable.ic_star_black_24dp);
-                star5.setImageResource(R.drawable.ic_star_black_24dp);
-            }
-        });
-
-        pop2_star1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                pop2_star1.setImageResource(R.drawable.ic_star_black_24dp);
-                pop2star2.setImageResource(R.drawable.ic_star_border_black_24dp);
-                pop2_star3.setImageResource(R.drawable.ic_star_border_black_24dp);
-                pop2_star4.setImageResource(R.drawable.ic_star_border_black_24dp);
-                pop2_star5.setImageResource(R.drawable.ic_star_border_black_24dp);
-            }
-        });
-
-        pop2star2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                pop2_star1.setImageResource(R.drawable.ic_star_black_24dp);
-                pop2star2.setImageResource(R.drawable.ic_star_black_24dp);
-                pop2_star3.setImageResource(R.drawable.ic_star_border_black_24dp);
-                pop2_star4.setImageResource(R.drawable.ic_star_border_black_24dp);
-                pop2_star5.setImageResource(R.drawable.ic_star_border_black_24dp);
-            }
-        });
-
-        pop2_star3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                pop2_star1.setImageResource(R.drawable.ic_star_black_24dp);
-                pop2star2.setImageResource(R.drawable.ic_star_black_24dp);
-                pop2_star3.setImageResource(R.drawable.ic_star_black_24dp);
-                pop2_star4.setImageResource(R.drawable.ic_star_border_black_24dp);
-                pop2_star5.setImageResource(R.drawable.ic_star_border_black_24dp);
-            }
-        });
-
-        pop2_star4.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                pop2_star1.setImageResource(R.drawable.ic_star_black_24dp);
-                pop2star2.setImageResource(R.drawable.ic_star_black_24dp);
-                pop2_star3.setImageResource(R.drawable.ic_star_black_24dp);
-                pop2_star4.setImageResource(R.drawable.ic_star_black_24dp);
-                pop2_star5.setImageResource(R.drawable.ic_star_border_black_24dp);
-            }
-        });
-
-        pop2_star5.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                pop2_star1.setImageResource(R.drawable.ic_star_black_24dp);
-                pop2star2.setImageResource(R.drawable.ic_star_black_24dp);
-                pop2_star3.setImageResource(R.drawable.ic_star_black_24dp);
-                pop2_star4.setImageResource(R.drawable.ic_star_black_24dp);
-                pop2_star5.setImageResource(R.drawable.ic_star_black_24dp);
-            }
-        });
-
-        pop3_star1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                pop3_star1.setImageResource(R.drawable.ic_star_black_24dp);
-                pop3star2.setImageResource(R.drawable.ic_star_border_black_24dp);
-                pop3_star3.setImageResource(R.drawable.ic_star_border_black_24dp);
-                pop3_star4.setImageResource(R.drawable.ic_star_border_black_24dp);
-                pop3_star5.setImageResource(R.drawable.ic_star_border_black_24dp);
-            }
-        });
-
-        pop3star2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                pop3_star1.setImageResource(R.drawable.ic_star_black_24dp);
-                pop3star2.setImageResource(R.drawable.ic_star_black_24dp);
-                pop3_star3.setImageResource(R.drawable.ic_star_border_black_24dp);
-                pop3_star4.setImageResource(R.drawable.ic_star_border_black_24dp);
-                pop3_star5.setImageResource(R.drawable.ic_star_border_black_24dp);
-            }
-        });
-
-        pop3_star3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                pop3_star1.setImageResource(R.drawable.ic_star_black_24dp);
-                pop3star2.setImageResource(R.drawable.ic_star_black_24dp);
-                pop3_star3.setImageResource(R.drawable.ic_star_black_24dp);
-                pop3_star4.setImageResource(R.drawable.ic_star_border_black_24dp);
-                pop3_star5.setImageResource(R.drawable.ic_star_border_black_24dp);
-            }
-        });
-
-        pop3_star4.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                pop3_star1.setImageResource(R.drawable.ic_star_black_24dp);
-                pop3star2.setImageResource(R.drawable.ic_star_black_24dp);
-                pop3_star3.setImageResource(R.drawable.ic_star_black_24dp);
-                pop3_star4.setImageResource(R.drawable.ic_star_black_24dp);
-                pop3_star5.setImageResource(R.drawable.ic_star_border_black_24dp);
-            }
-        });
-
-        pop3_star5.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                pop3_star1.setImageResource(R.drawable.ic_star_black_24dp);
-                pop3star2.setImageResource(R.drawable.ic_star_black_24dp);
-                pop3_star3.setImageResource(R.drawable.ic_star_black_24dp);
-                pop3_star4.setImageResource(R.drawable.ic_star_black_24dp);
-                pop3_star5.setImageResource(R.drawable.ic_star_black_24dp);
-            }
-        });
 
         profile_image.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -330,54 +202,6 @@ public class HomeFragment extends Fragment {
                 fragmentTransaction.commit();
             }
         });
-
-        cairo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getContext(), PopularDestinationDetailsActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        nairobi.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getContext(), PopularDestinationDetailsActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        popular.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getContext(), PopularDestinationDetailsActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        pop2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getContext(), PopularDestinationDetailsActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        pop3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getContext(), PopularDestinationDetailsActivity.class);
-                startActivity(intent);
-            }
-        });
-
-//        final TextView textView = root.findViewById(R.id.text_home);
-//        homeViewModel.getText().observe(this, new Observer<String>() {
-//            @Override
-//            public void onChanged(@Nullable String s) {
-//                textView.setText(s);
-//            }
-//        });
         return root;
     }
 }

@@ -1,118 +1,96 @@
 package com.michael.afrivac.model;
 
 public class FindHotel {
-    private int hotelImage;
-    private String nameText1;
-    private String nameText2;
-    private int icon1;
-    private int icon2;
-    private int icon3;
-    private int icon4;
-    private int icon5;
-    private boolean isFavorite;
-    private double rating;
-     private int numberRate;
 
-    public FindHotel(int hotelImage, String nameText1, String nameText2, int icon1, int icon2, int icon3, int icon4, int icon5, boolean isFavorite, double rating, int numberRate) {
-        this.hotelImage = hotelImage;
-        this.nameText1 = nameText1;
-        this.nameText2 = nameText2;
+    private String district, image, name, town, icon1;
+    private int viewNumber;
+    private boolean mFavorite;
+    private double mRating;
+
+    public FindHotel() {
+    }
+
+    public FindHotel(String district, String image, String name, String town, String icon1, int viewNumber, boolean mFavorite, double mRating) {
+        this.district = district;
+        this.image = image;
+        this.name = name;
+        this.town = town;
         this.icon1 = icon1;
-        this.icon2 = icon2;
-        this.icon3 = icon3;
-        this.icon4 = icon4;
-        this.icon5 = icon5;
-        this.isFavorite = isFavorite;
-        this.rating = rating;
-        this.numberRate = numberRate;
+        this.viewNumber = viewNumber;
+        this.mFavorite = mFavorite;
+        this.mRating = mRating;
     }
 
-
-    public int getHotelImage() {
-        return hotelImage;
+    public String getDistrict() {
+        return district;
     }
 
-    public String getNameText1() {
-        return nameText1;
+    public void setDistrict(String district) {
+        this.district = district;
     }
 
-    public String getNameText2() {
-        return nameText2;
-    }
-    public void setHotelImage(int hotelImage) {
-        this.hotelImage = hotelImage;
+    public String getImage() {
+        return image;
     }
 
-    public void setNameText1(String nameText1) {
-        this.nameText1 = nameText1;
+    public void setImage(String image) {
+        this.image = image;
     }
 
-    public void setNameText2(String nameText2) {
-        this.nameText2 = nameText2;
+    public String getHotelName() {
+        return name;
     }
 
-    public int getIcon1() {
+    public void setHotelName(String name) {
+        this.name = name;
+    }
+
+    public String getTown() {
+        return town;
+    }
+
+    public void setTown(String town) {
+        this.town = town;
+    }
+
+    // icons getter
+    public String getIcon1() {
         return icon1;
     }
 
-    public int getIcon2() {
-        return icon2;
-    }
-
-    public int getIcon3() {
-        return icon3;
-    }
-
-    public int getIcon4() {
-        return icon4;
-    }
-
-    public int getIcon5() {
-        return icon5;
-    }
-
-    public void setIcon1(int icon1) {
+    // icon setters
+    public void setIcon1(String icon1) {
         this.icon1 = icon1;
     }
 
-    public void setIcon2(int icon2) {
-        this.icon2 = icon2;
+
+    //view_number
+
+    public int getViewNumber() {
+        return viewNumber;
     }
 
-    public void setIcon3(int icon3) {
-        this.icon3 = icon3;
-    }
-
-    public void setIcon4(int icon4) {
-        this.icon4 = icon4;
-    }
-
-    public void setIcon5(int icon5) {
-        this.icon5 = icon5;
+    public void setViewNumber(int viewNumber) {
+        this.viewNumber = viewNumber;
     }
 
     public boolean isFavorite() {
-        return isFavorite;
+        return mFavorite;
     }
 
-    public void setFavorite(boolean favorite) {
-        isFavorite = favorite;
+    public void setFavorite(boolean mFavorite) {
+        this.mFavorite = mFavorite;
+    }
+
+    public String toString() {
+        return "Is Favourite " + mFavorite;
     }
 
     public double getRating() {
-        return rating;
+        return mRating;
     }
 
-    public void setRating(double rating) {
-        this.rating = rating;
+    public void setRating(double mRating) {
+        this.mRating = mRating;
     }
-
-    public int getNumberRate() {
-        return numberRate;
-    }
-
-    public void setNumberRate(int numberRate) {
-        this.numberRate = numberRate;
-    }
-
 }

@@ -11,6 +11,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.RatingBar;
+import android.widget.Toast;
+
+import com.firebase.client.Firebase;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import org.w3c.dom.Text;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -23,6 +32,18 @@ public class PopularDestinationDetailsReviewFragment extends Fragment {
     private LinearLayoutManager layoutManager;
     private PopularDestinationReviewsRecyclerviewAdapter adapter;
     private Button btnSubmitReview, btnAddReview;
+
+    EditText describe, tell;
+    RatingBar rating;
+
+    String DescribeHolder, TellHolder;
+    float RatingHolder;
+    Firebase firebase;
+    DatabaseReference databaseReference;
+    // Declaring String variable ( In which we are storing firebase server URL ).
+    public static final String Firebase_Server_URL = "https://afrivac-a061e.firebaseio.com/";
+    public static final String Database_Path = "Review_Details_Database";
+
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -94,15 +115,48 @@ public class PopularDestinationDetailsReviewFragment extends Fragment {
             }
         });
 
+        Firebase.setAndroidContext(PopularDestinationDetailsReviewFragment.this.getContext());
+        firebase = new Firebase(Firebase_Server_URL);
+        databaseReference = FirebaseDatabase.getInstance().getReference(Database_Path);
+
+        describe = (EditText)view.findViewById(R.id.edtDesc);
+         tell = (EditText)view.findViewById(R.id.edtTell);
+         rating = (RatingBar)view.findViewById(R.id.ratingsStar);
+
         btnSubmitReview.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+            ReviewDetails reviewDetails = new ReviewDetails();
+
+                GetDataFromEditText();
+
+                reviewDetails.setDescribe(DescribeHolder);
+                reviewDetails.setTell(TellHolder);
+                reviewDetails.setRating(RatingHolder);
+
+                // Getting the ID from firebase database.
+                String ReviewRecordIDFromServer = databaseReference.push().getKey();
+
+                // Adding the both name and number values using student details class object using ID.
+                databaseReference.child(ReviewRecordIDFromServer).setValue(reviewDetails);
+
+                // Showing Toast message after successfully data submit.
+                Toast.makeText(PopularDestinationDetailsReviewFragment.this.getActivity(),"Review successfully submited", Toast.LENGTH_LONG).show();
+
                 ConstraintLayout submitReviewCons = view.findViewById(R.id.submit_review_cons);
                 submitReviewCons.setVisibility(View.GONE);
                 btnAddReview.setVisibility(View.VISIBLE);
             }
         });
-
     return view;
+    }
+    public void GetDataFromEditText() {
+
+        DescribeHolder = describe.getText().toString().trim();
+
+        TellHolder = tell.getText().toString().trim();
+
+        RatingHolder = rating.getRating();
     }
 }

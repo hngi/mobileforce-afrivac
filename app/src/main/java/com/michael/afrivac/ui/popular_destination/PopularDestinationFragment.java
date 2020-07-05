@@ -19,7 +19,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -32,23 +31,15 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
-import com.google.firebase.database.ChildEventListener;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 import com.michael.afrivac.MainActivity;
 import com.michael.afrivac.PopularDestinationDetailsActivity;
 import com.michael.afrivac.R;
-import com.michael.afrivac.Util.FirebaseUtil;
 import com.michael.afrivac.model.DestinationSuggestion;
 import com.michael.afrivac.model.PopularPlaces;
+import com.michael.afrivac.ui.home.Popular;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
-
-import static android.content.ContentValues.TAG;
 
 public class PopularDestinationFragment extends Fragment {
     RecyclerView popularPlacesRV;
@@ -169,11 +160,16 @@ public class PopularDestinationFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 searchTV.setText(null);
+                popularDestinationRVAdapter.defaultData();
             }
         };
         searchTV.addTextChangedListener(new TextWatcher() {
             @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                popularPlacesRV.setAdapter(popularDestinationRVAdapter);
+
+
+            }
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
             @Override
@@ -181,11 +177,26 @@ public class PopularDestinationFragment extends Fragment {
                 if (editable == null || editable.toString() == null || editable.toString().equals("")) {
                     search_end_button.setImageResource(R.drawable.ic_search);
                     search_end_button.setOnClickListener(null);
+                    popularDestinationRVAdapter.defaultData();
+                    popularPlacesRV.setAdapter(new PopularDestinationRVAdapter(getContext(), new PopularDestinationRVAdapter.OnItemSelectedListener() {
+                        @Override
+                        public void onItemSelected(int selectedPosition) {
+                            Intent intent = new Intent(getContext(), PopularDestinationDetailsActivity.class);
+                            startActivity(intent);
+                        }
+                    }));
+
                 } else {
+                    popularDestinationRVAdapter.defaultData();
                     search_end_button.setImageResource(R.drawable.ic_round_highlight_off_24);
-                    search_end_button.setOnClickListener(searchClearer);
+                    popularDestinationRVAdapter.filter(editable.toString());
+
+                   search_end_button.setOnClickListener(searchClearer);
                 }
+
+               // filter(editable.toString());
             }
+
         });
     }
 
@@ -213,7 +224,7 @@ public class PopularDestinationFragment extends Fragment {
                     R.drawable.ic_location, popularPlaces.getCountry()
             ));
             destinationSuggestions.add(new DestinationSuggestion(
-                    R.drawable.ic_hotel, popularPlaces.getDestination()
+                    R.drawable.ic_hotel, popularPlaces.getName()
             ));
         }
         return destinationSuggestions;
