@@ -36,14 +36,13 @@
         android:scaleType="centerCrop"
         android:src="@drawable/ic_favorite_border_black_24dp" />
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="100dp"
-        android:orientation="vertical">
+        android:layout_marginStart="100dp">
 
         <TextView
-            android:id="@+id/nameTxt"
+            android:id="@+id/hotel_name_tv"
             android:layout_width="193dp"
             android:layout_height="21dp"
             android:fontFamily="@font/poppins_regular"
@@ -53,15 +52,28 @@
 
         <TextView
             android:id="@+id/nameTxt2"
-            android:layout_width="121dp"
+            android:layout_width="40dp"
             android:layout_height="17dp"
-            android:layout_marginTop="-4dp"
             android:fontFamily="@font/poppins"
-            android:text="Ilupeju, Lagos"
+            android:layout_below="@id/hotel_name_tv"
+            tools:text="Ilupeju,"
             android:textColor="@color/colorBlue"
-            android:textSize="11sp" />
+            android:textSize="11sp"
+            tools:ignore="SmallSp" />
 
-    </LinearLayout>
+        <TextView
+            android:id="@+id/town_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins"
+            android:textColor="@color/colorBlue"
+            android:layout_toEndOf="@id/nameTxt2"
+            android:layout_below="@id/hotel_name_tv"
+            tools:text="Lagos"
+            android:textSize="11sp"
+            tools:ignore="SmallSp" />
+
+    </RelativeLayout>
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -76,9 +88,10 @@
             android:id="@+id/icon1"
             android:layout_width="157dp"
             android:layout_height="23dp"
-            android:paddingLeft="5dp"
-            android:paddingRight="10dp"
-            android:src="@drawable/frame" />
+            android:paddingStart="5dp"
+            android:paddingEnd="10dp"
+            android:src="@drawable/frame"
+            android:contentDescription="@string/bedIcon" />
 
 
     </LinearLayout>

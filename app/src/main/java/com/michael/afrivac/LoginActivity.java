@@ -66,7 +66,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         setupFirebaseAuth();
 
-        helper = new Helper();
+        helper = new Helper(this);
 
         final String Email = email.getText().toString().trim();
         final String Password = password.getText().toString().trim();
@@ -74,7 +74,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         mAuth = FirebaseAuth.getInstance();
         authViewModel = new AuthViewModel();
-        helper = new Helper();
 
         sign_in = findViewById(R.id.singin_into_account);
         googleSignIn = findViewById(R.id.signin_with_google);
@@ -102,14 +101,17 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     @Override
                     public void onAnimationEnd(Animation animation) {
                         if(!isEmpty(email.getText().toString()) && !isEmpty(password.getText().toString())){
+                            helper.progressDialogStart("Login to User Account", "Please wait while we log-in into your account");
                             FirebaseAuth.getInstance().signInWithEmailAndPassword(email.getText().toString(), password.getText().toString())
                                     .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                                         @Override
                                         public void onComplete(@NonNull Task<AuthResult> task) {
+                                            helper.progressDialogEnd();
                                         }
                                     }).addOnFailureListener(new OnFailureListener() {
                                 @Override
                                 public void onFailure(@NonNull Exception e) {
+                                    helper.progressDialogEnd();
                                     String message = e.getMessage();
                                     Toast.makeText(LoginActivity.this, "Error Occurred " + message,
                                             Toast.LENGTH_SHORT).show();
@@ -241,16 +243,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             Toast.makeText(LoginActivity.this, "FAILED", Toast.LENGTH_SHORT).show();
         }
     }
-//    @Override
-//    protected void onStart(){
-//        // Check for existing Google Sign In account, if the user is already signed in
-//        // the GoogleSignInAccount will be non-null.
-//        GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
-//            if (account != null){
-//                startActivity(new Intent (LoginActivity.this, MainActivity.class));
-//            }
-//            super.onStart();
-
 
     private void checkNetwork(){
         if (isNetWorkAvailable()){
@@ -332,6 +324,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         }
         super.onStart();
     }
+
     @Override
     public void onStop() {
         super.onStop();
