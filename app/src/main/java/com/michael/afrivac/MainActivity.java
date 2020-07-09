@@ -85,14 +85,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         displaySelectedScreen(R.id.nav_home);
 
         //Dark mode
-        SharedPreferences sharedPreferences = getPreferences(Context.MODE_PRIVATE);
-
-        boolean isNightMode = sharedPreferences.getBoolean("SwitchState", false);
-        if (isNightMode) {
-            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-        } else {
-            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-        }
+//        SharedPreferences sharedPreferences = getPreferences(Context.MODE_PRIVATE);
+//
+//        boolean isNightMode = sharedPreferences.getBoolean("SwitchState", false);
+//        if (isNightMode) {
+//            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+//        } else {
+//            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+//        }
 
         mAuth = FirebaseAuth.getInstance();
 

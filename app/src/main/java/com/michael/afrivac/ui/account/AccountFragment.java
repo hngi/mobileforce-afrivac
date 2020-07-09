@@ -82,19 +82,19 @@ public class AccountFragment extends Fragment {
         darkTheme.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                SharedPreferences sharedPreferences = getActivity().getPreferences(Context.MODE_PRIVATE);
-                SharedPreferences.Editor editor = sharedPreferences.edit();
+//                SharedPreferences sharedPreferences = getActivity().getPreferences(Context.MODE_PRIVATE);
+//                SharedPreferences.Editor editor = sharedPreferences.edit();
                 if(isChecked) {
                     Log.d("AccountFragment", "Here we go");
-                    editor.putBoolean("SwitchState", true);
+//                    editor.putBoolean("SwitchState", true);
                     AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
                     restartActivity();
                 } else {
-                    editor.putBoolean("SwitchState", true);
+//                    editor.putBoolean("SwitchState", true);
                     AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
                     restartActivity();
                 }
-                editor.apply();
+//                editor.apply();
             }
         });
 
