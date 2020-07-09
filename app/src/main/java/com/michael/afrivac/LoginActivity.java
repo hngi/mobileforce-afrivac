@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.util.Patterns;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -60,6 +61,16 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         resend_email_ver = findViewById(R.id.resend_email_verification);
         email = findViewById(R.id.signin_email);
         password = findViewById(R.id.signin_password);
+        password.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+
+                if(keyCode == KeyEvent.KEYCODE_ENTER && event.getAction() == KeyEvent.ACTION_DOWN){
+                    sign_in.callOnClick();
+                }
+                return false;
+            }
+        });
         sign_in = findViewById(R.id.singin_into_account);
         signUp = findViewById(R.id.singin_goto_signup);
         forgotPassword = findViewById(R.id.signin_forgot_password);
