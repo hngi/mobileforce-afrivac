@@ -9,9 +9,11 @@ import java.util.Locale;
 import static android.content.Context.MODE_PRIVATE;
 
 public class LanguageHelper {
+    // this class was created to help change the language
     private static final String GENERAL_STORAGE = "GENERAL_STORAGE";
     private static final String KEY_USER_LANGUAGE = "KEY_USER_LANGUAGE";
 
+    //this method is called when the user clicks on one of the change language menu item
     public static void changeLocale(Resources res, String locale) {
         Configuration configuration;
         configuration = new Configuration(res.getConfiguration());
@@ -29,6 +31,8 @@ public class LanguageHelper {
         res.updateConfiguration(configuration, res.getDisplayMetrics());
     }
 
+    //this method is called after the user changes the language. It saves the language
+    //so the language doesn't return to default when the app is re-opened
     public static void storeUserLanguage(Context context, String locale) {
         context.getSharedPreferences(GENERAL_STORAGE, MODE_PRIVATE)
                 .edit()

@@ -279,6 +279,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         return true;
     }
 
+    //one of these methods is called when the user select of the change language menu item
+    //it in turn calls the LanguageHelper.changeLocale class
+    //and the LanguageHelper.storeUserLanguage method to save the language so it doesn't go back to default when the app is reopened
     public void setSpanish(MenuItem item) {
         LanguageHelper.changeLocale(this.getResources(), "es");
         LanguageHelper.storeUserLanguage(this, "es");
