@@ -14,6 +14,8 @@ import android.view.animation.AnimationUtils;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -40,6 +42,7 @@ public class SignUpActivity extends AppCompatActivity {
     private AuthViewModel authViewModel;
 
     EditText Username;
+    CheckBox mCheckBox;
     EditText Email;
     EditText Phone;
     Spinner country;
@@ -57,6 +60,7 @@ public class SignUpActivity extends AppCompatActivity {
         helper = new Helper();
 
         country = findViewById(R.id.country);
+        mCheckBox = findViewById(R.id.checkBox);
         ToSignIn = findViewById(R.id.toSignIn);
         signUp = findViewById(R.id.signUp);
         ConfirmPassword = findViewById(R.id.confirmpassword);
@@ -84,23 +88,32 @@ public class SignUpActivity extends AppCompatActivity {
             }
         });
 
+
         signUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View v) {
-                animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.button_anim);
-                signUp.startAnimation(animation);
-                animation.setAnimationListener(new Animation.AnimationListener() {
-                    @Override
-                    public void onAnimationStart(Animation animation) {}
+                //--if the Terms & Conditions checkedBox
+                if (mCheckBox.isChecked()) {
 
-                    @Override
-                    public void onAnimationEnd(Animation animation) {
-                        authViewModel.SignUp(v);
-                    }
+                    animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.button_anim);
+                    signUp.startAnimation(animation);
+                    animation.setAnimationListener(new Animation.AnimationListener() {
+                        @Override
+                        public void onAnimationStart(Animation animation) {
+                        }
 
-                    @Override
-                    public void onAnimationRepeat(Animation animation) {}
-                });
+                        @Override
+                        public void onAnimationEnd(Animation animation) {
+                            authViewModel.SignUp(v);
+                        }
+
+                        @Override
+                        public void onAnimationRepeat(Animation animation) {
+                        }
+                    });
+                }else{
+                    Toast.makeText(SignUpActivity.this, "Check Terms and Agreements Box", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
