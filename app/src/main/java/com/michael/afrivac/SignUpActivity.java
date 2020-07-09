@@ -11,6 +11,8 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -31,6 +33,7 @@ public class SignUpActivity extends AppCompatActivity {
     private AuthViewModel authViewModel;
 
     EditText Username;
+    CheckBox mCheckBox;
     EditText Email;
     EditText Phone;
     EditText Country;
@@ -46,9 +49,26 @@ public class SignUpActivity extends AppCompatActivity {
         setContentView(R.layout.signup);
         authViewModel = new AuthViewModel();
         helper = new Helper();
-
+        mCheckBox = findViewById(R.id.checkBox);
         ToSignIn = findViewById(R.id.toSignIn);
         signUp = findViewById(R.id.signUp);
+
+
+        mCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener(){
+
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+
+                if  (buttonView.isChecked()){
+                    signUp.setEnabled(true);
+                }
+                else{
+                    //signUp.setBackgroundColor(808080);
+                    signUp.setEnabled(false);
+                }
+
+            }
+        });
 
         signUp.setOnClickListener(new View.OnClickListener() {
             @Override
