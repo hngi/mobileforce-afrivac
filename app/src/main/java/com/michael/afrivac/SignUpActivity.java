@@ -7,6 +7,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -52,6 +53,17 @@ public class SignUpActivity extends AppCompatActivity {
         mCheckBox = findViewById(R.id.checkBox);
         ToSignIn = findViewById(R.id.toSignIn);
         signUp = findViewById(R.id.signUp);
+        ConfirmPassword = findViewById(R.id.confirmpassword);
+
+        ConfirmPassword.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                if (keyCode == KeyEvent.KEYCODE_ENTER && event.getAction() == KeyEvent.ACTION_DOWN){
+                    signUp.callOnClick();
+                }
+                return false;
+            }
+        });
 
 
         signUp.setOnClickListener(new View.OnClickListener() {
