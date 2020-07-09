@@ -313,6 +313,7 @@
                 android:layout_marginTop="48dp"/>
 
             <TextView
+                android:clickable="true"
                 android:id="@+id/user_language"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -324,7 +325,8 @@
                 app:layout_constraintBaseline_toBaselineOf="@id/language"
                 android:textColor="@color/newColor"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@id/language" />
+                app:layout_constraintTop_toTopOf="@id/language"
+                android:focusable="true" />
 
             <View
                 android:layout_width="match_parent"
