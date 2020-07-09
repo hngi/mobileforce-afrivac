@@ -258,7 +258,6 @@
     <string name="resend_verification_email">resend_ver</string>
     <string name="french">French</string>
     <string name="spanish">Spanish</string>
-    <string name="english">English</string>
 
     <string-array name="languages">
         <item>English</item>

@@ -99,7 +99,8 @@ public class HomeFragment extends Fragment {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
 
-                    String user_name = snapshot.child("username").getValue().toString();
+                    String user_name;
+                    user_name = (String) snapshot.child("username").getValue();
 
                     welcome_text.setText("Hi " + user_name + ", \nwhere would you like to visit?");
                 }

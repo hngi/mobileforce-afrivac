@@ -279,4 +279,17 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         return true;
     }
 
+    public void setSpanish(MenuItem item) {
+        LanguageHelper.changeLocale(this.getResources(), "es");
+        reLoadMainActivity();
+    }
+    public void setFrench(MenuItem item) {
+        LanguageHelper.changeLocale(this.getResources(), "fr");
+        reLoadMainActivity();
+    }
+    public void setEnglish(MenuItem item) {
+        LanguageHelper.changeLocale(this.getResources(), "default");
+        reLoadMainActivity();
+    }
+
 }

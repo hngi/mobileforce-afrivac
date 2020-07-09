@@ -2,13 +2,16 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/english"
-        android:title="@string/english"/>
+        android:title="@string/english"
+        android:onClick="setEnglish"/>
 
     <item
         android:id="@+id/french"
-        android:title="@string/french"/>
+        android:title="@string/french"
+        android:onClick="setFrench"/>
 
     <item
         android:id="@+id/spanish"
-        android:title="@string/spanish"/>
+        android:title="@string/spanish"
+        android:onClick="setSpanish"/>
 </menu>
