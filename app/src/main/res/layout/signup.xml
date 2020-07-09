@@ -124,16 +124,17 @@
         android:text="@string/country"
         android:textColor="@color/black" />
 
-    <EditText
+    <Spinner
         android:id="@+id/country"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dimension_40dp"
         android:layout_marginStart="@dimen/dimension_37dp"
         android:layout_marginEnd="@dimen/dimension_37dp"
         android:background="@drawable/circular_drawable01"
-        android:inputType="text"
         android:paddingStart="@dimen/dimension_10dp"
-        android:paddingEnd="@dimen/dimension_10dp" />
+        android:paddingEnd="@dimen/dimension_10dp"
+        android:entries="@array/countries"
+        android:spinnerMode="dialog" />
 
     <TextView
         android:layout_width="wrap_content"

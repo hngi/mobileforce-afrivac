@@ -11,8 +11,11 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,6 +27,11 @@ import com.google.firebase.auth.FirebaseUser;
 import com.michael.afrivac.Auth.AuthViewModel;
 import com.michael.afrivac.Util.Helper;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
+import java.util.Locale;
 import java.util.Scanner;
 
 public class SignUpActivity extends AppCompatActivity {
@@ -34,7 +42,7 @@ public class SignUpActivity extends AppCompatActivity {
     EditText Username;
     EditText Email;
     EditText Phone;
-    EditText Country;
+    Spinner country;
     EditText Password;
     EditText ConfirmPassword;
     TextView ToSignIn;
@@ -48,6 +56,7 @@ public class SignUpActivity extends AppCompatActivity {
         authViewModel = new AuthViewModel();
         helper = new Helper();
 
+        country = findViewById(R.id.country);
         ToSignIn = findViewById(R.id.toSignIn);
         signUp = findViewById(R.id.signUp);
         ConfirmPassword = findViewById(R.id.confirmpassword);
@@ -59,6 +68,19 @@ public class SignUpActivity extends AppCompatActivity {
                     signUp.callOnClick();
                 }
                 return false;
+            }
+        });
+
+
+        country.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                country.setSelection(position);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
             }
         });
 
