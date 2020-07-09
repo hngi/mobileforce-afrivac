@@ -1,10 +1,13 @@
 package com.michael.afrivac;
 
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
+import androidx.appcompat.app.AppCompatDelegate;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
@@ -80,6 +83,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         helper = new Helper();
 
         displaySelectedScreen(R.id.nav_home);
+
+        //Dark mode
+        SharedPreferences sharedPreferences = getPreferences(Context.MODE_PRIVATE);
+
+        boolean isNightMode = sharedPreferences.getBoolean("SwitchState", false);
+        if (isNightMode) {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+        } else {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+        }
 
         mAuth = FirebaseAuth.getInstance();
 

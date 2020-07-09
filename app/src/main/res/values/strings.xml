@@ -256,6 +256,7 @@
     <string name="cancel">cancel</string>
     <string name="confirm">confirm</string>
     <string name="resend_verification_email">resend_ver</string>
+    <string name="dark_theme">Dark theme</string>
 
     <string-array name="languages">
         <item>English</item>
