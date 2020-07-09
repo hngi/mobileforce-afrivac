@@ -263,6 +263,8 @@
     <string name="no">No</string>
     <string name="yes">Yes</string>
     <string name="exit">Exit App?</string>
+    <string name="hi">"Hi "</string>
+    <string name="visit">,\nwhere would you like to visit?</string>
 
     <string-array name="languages">
         <item>English</item>

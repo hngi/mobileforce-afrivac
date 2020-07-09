@@ -102,7 +102,7 @@ public class HomeFragment extends Fragment {
                     String user_name;
                     user_name = (String) snapshot.child("username").getValue();
 
-                    welcome_text.setText("Hi " + user_name + ", \nwhere would you like to visit?");
+                    welcome_text.setText(getString(R.string.hi) + user_name + getString(R.string.visit));
                 }
 
                 @Override

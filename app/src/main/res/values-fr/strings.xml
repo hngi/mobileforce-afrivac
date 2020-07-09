@@ -203,4 +203,6 @@
     <string name="no">Non</string>
     <string name="yes">Oui</string>
     <string name="exit">Quitter l\'application?</string>
+    <string name="hi">"Salut "</string>
+    <string name="visit">,\noù aimeriez-vous visiter?</string>
 </resources>

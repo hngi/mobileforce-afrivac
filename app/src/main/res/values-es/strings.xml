@@ -205,4 +205,6 @@
     <string name="no">No</string>
     <string name="yes">Si</string>
     <string name="exit">¿Salir de la aplicación?</string>
+    <string name="hi">"Hola "</string>
+    <string name="visit">,\n¿dónde te gustaría visitar?</string>
 </resources>
