@@ -37,8 +37,11 @@ import com.michael.afrivac.model.DiscoverAfrica;
 import com.michael.afrivac.model.PopularPlaces;
 import com.michael.afrivac.ui.account.AccountFragment;
 
+import java.sql.Time;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Objects;
+import java.util.Calendar;
 
 import ru.tinkoff.scrollingpagerindicator.ScrollingPagerIndicator;
 
@@ -70,6 +73,7 @@ public class HomeFragment extends Fragment {
     //for the popular destinations recycler view
     private RecyclerView recyclerView2;
     private RecyclerView.LayoutManager layoutManager2;
+    private int currentTime;
 
     public View onCreateView(@NonNull LayoutInflater inflater,  ViewGroup container, Bundle savedInstanceState) {
 //        homeViewModel =
@@ -90,6 +94,10 @@ public class HomeFragment extends Fragment {
         menuButton = root.findViewById(R.id.menuButton);
         welcome_text = root.findViewById(R.id.welcome_text);
 
+        Calendar calender = Calendar.getInstance();
+        currentTime = calender.get(Calendar.HOUR_OF_DAY);
+
+
         mAuth = FirebaseAuth.getInstance();
         userID = Objects.requireNonNull(mAuth.getCurrentUser()).getUid();
         mDatabase = FirebaseDatabase.getInstance().getReference().child("Users").child(userID);
@@ -101,7 +109,16 @@ public class HomeFragment extends Fragment {
 
                     String user_name = snapshot.child("username").getValue().toString();
 
-                    welcome_text.setText("Hi " + user_name + ", \nwhere would you like to visit?");
+                    if (currentTime>= 0 && currentTime<12){
+                        welcome_text.setText("Good morning " + user_name + ", \nwhere would you like to visit?");
+                    } else if (currentTime>12 && currentTime <17){
+                        welcome_text.setText("Good afternoon " + user_name + ", \nwhere would you like to visit?");
+                    } else if (currentTime>=17 && currentTime<22){
+                        welcome_text.setText("Good evening " + user_name + ", \nwhere would you like to visit?");
+                    } else if (currentTime>=22){
+                        welcome_text.setText("Good night " + user_name + ", \nsee you again in the morning");
+                    }
+
                 }
 
                 @Override
