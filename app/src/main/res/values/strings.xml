@@ -5,7 +5,7 @@
 
     <string-array name="flightType">
         <item>Economy</item>
-        
+
         <item>First Class</item>
     </string-array>
 
@@ -247,6 +247,7 @@
     <string name="bedroom_image">bedroom Image</string>
     <string name="check_in">Check-in:</string>
     <string name="check_out">Check-out:</string>
+
     <string name="check_in_out_time" translatable="false">12pm - 11pm</string>
     <string name="book_btn_txt">Book Now</string>
     <string name="per_night">/per night</string>
@@ -270,6 +271,8 @@
     <string name="good_evening">"Good evening "</string>
     <string name="good_night">"Good night "</string>
     <string name="see_you">,\nsee you again in the morning</string>
+    <string name="upload_from_camera">Upload from Camera</string>
+    <string name="select_a_photo_from_your_device">Select a photo from your device</string>
 
     <string-array name="languages">
         <item>English</item>
