@@ -111,13 +111,13 @@ public class HomeFragment extends Fragment {
                     user_name = (String) snapshot.child("username").getValue();
 
                     if (currentTime>= 0 && currentTime<12){
-                        welcome_text.setText("Good morning " + user_name + ", \nwhere would you like to visit?");
+                        welcome_text.setText(getString(R.string.good_morning) + user_name + getString(R.string.visit));
                     } else if (currentTime>12 && currentTime <17){
-                        welcome_text.setText("Good afternoon " + user_name + ", \nwhere would you like to visit?");
+                        welcome_text.setText(getString(R.string.good_afternoon) + user_name + getString(R.string.visit));
                     } else if (currentTime>=17 && currentTime<22){
-                        welcome_text.setText("Good evening " + user_name + ", \nwhere would you like to visit?");
+                        welcome_text.setText(getString(R.string.good_evening) + user_name + getString(R.string.visit));
                     } else if (currentTime>=22){
-                        welcome_text.setText("Good night " + user_name + ", \nsee you again in the morning");
+                        welcome_text.setText(getString(R.string.good_night) + user_name + getString(R.string.see_you));
                     }
 
                 }

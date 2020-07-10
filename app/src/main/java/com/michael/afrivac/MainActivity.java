@@ -1,10 +1,13 @@
 package com.michael.afrivac;
 
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
+import androidx.appcompat.app.AppCompatDelegate;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
@@ -80,6 +83,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         helper = new Helper();
 
         displaySelectedScreen(R.id.nav_home);
+
+        //Dark mode
+//        SharedPreferences sharedPreferences = getPreferences(Context.MODE_PRIVATE);
+//
+//        boolean isNightMode = sharedPreferences.getBoolean("SwitchState", false);
+//        if (isNightMode) {
+//            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+//        } else {
+//            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+//        }
 
         mAuth = FirebaseAuth.getInstance();
 
@@ -160,15 +173,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 if(doubleBackToExitPressedOnce){
                     new AlertDialog.Builder(this)
                             .setIcon(R.drawable.logo_black)
-                            .setTitle("Exit App?")
-                            .setMessage("Are you sure you want to exit AfriVac?")
-                            .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                            .setTitle(getString(R.string.exit))
+                            .setMessage(getString(R.string.exit_sure))
+                            .setPositiveButton(getString(R.string.yes), new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialogInterface, int i) {
                                     finish();
                                 }
                             })
-                            .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                            .setNegativeButton(getString(R.string.no), new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialogInterface, int i) {
                                     //Toast.makeText(MainActivity.this, "Welcome back", Toast.LENGTH_SHORT).show();
@@ -181,7 +194,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 //if user back pressed once
                 if(doubleBackToExitPressedOnce == false){
                     this.doubleBackToExitPressedOnce = true;
-                    helper.toastMessage(this, "Please click back again to exit");
+                    helper.toastMessage(this, getString(R.string.reclick));
                 }
 
                 //delay to clear the double back pressed to false
