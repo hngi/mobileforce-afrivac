@@ -3,9 +3,12 @@ package com.michael.afrivac.ui.account;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.PopupMenu;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
@@ -19,6 +22,7 @@ import androidx.lifecycle.ViewModelProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.*;
 import com.michael.afrivac.EditAccountInfoActivity;
+import com.michael.afrivac.LanguageHelper;
 import com.michael.afrivac.R;
 import com.michael.afrivac.Util.Helper;
 import com.michael.afrivac.Util.UniversalImageLoader;
@@ -51,7 +55,7 @@ public class AccountFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         accountViewModel = new ViewModelProvider(this).get(AccountViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_account, container, false);
+        final View root = inflater.inflate(R.layout.fragment_account, container, false);
         helper = new Helper();
 
         mAuth = FirebaseAuth.getInstance();
@@ -169,6 +173,16 @@ public class AccountFragment extends Fragment {
         });
 
         gotoLocality = root.findViewById(R.id.place);
+
+        userLanguage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                PopupMenu popup = new PopupMenu(v.getContext(), v);
+                MenuInflater inflater = popup.getMenuInflater();
+                inflater.inflate(R.menu.language_menu, popup.getMenu());
+                popup.show();
+            }
+        });
 
 
         return root;

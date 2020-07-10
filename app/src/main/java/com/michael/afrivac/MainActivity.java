@@ -160,15 +160,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 if(doubleBackToExitPressedOnce){
                     new AlertDialog.Builder(this)
                             .setIcon(R.drawable.logo_black)
-                            .setTitle("Exit App?")
-                            .setMessage("Are you sure you want to exit AfriVac?")
-                            .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                            .setTitle(getString(R.string.exit))
+                            .setMessage(getString(R.string.exit_sure))
+                            .setPositiveButton(getString(R.string.yes), new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialogInterface, int i) {
                                     finish();
                                 }
                             })
-                            .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                            .setNegativeButton(getString(R.string.no), new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialogInterface, int i) {
                                     //Toast.makeText(MainActivity.this, "Welcome back", Toast.LENGTH_SHORT).show();
@@ -181,7 +181,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 //if user back pressed once
                 if(doubleBackToExitPressedOnce == false){
                     this.doubleBackToExitPressedOnce = true;
-                    helper.toastMessage(this, "Please click back again to exit");
+                    helper.toastMessage(this, getString(R.string.reclick));
                 }
 
                 //delay to clear the double back pressed to false
@@ -277,6 +277,25 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         displaySelectedScreen(item.getItemId());
         //make this method blank
         return true;
+    }
+
+    //one of these methods is called when the user select of the change language menu item
+    //it in turn calls the LanguageHelper.changeLocale class
+    //and the LanguageHelper.storeUserLanguage method to save the language so it doesn't go back to default when the app is reopened
+    public void setSpanish(MenuItem item) {
+        LanguageHelper.changeLocale(this.getResources(), "es");
+        LanguageHelper.storeUserLanguage(this, "es");
+        reLoadMainActivity();
+    }
+    public void setFrench(MenuItem item) {
+        LanguageHelper.changeLocale(this.getResources(), "fr");
+        LanguageHelper.storeUserLanguage(this, "fr");
+        reLoadMainActivity();
+    }
+    public void setEnglish(MenuItem item) {
+        LanguageHelper.changeLocale(this.getResources(), "default");
+        LanguageHelper.storeUserLanguage(this, "default");
+        reLoadMainActivity();
     }
 
 }
