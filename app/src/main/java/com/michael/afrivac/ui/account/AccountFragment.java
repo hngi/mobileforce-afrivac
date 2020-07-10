@@ -18,11 +18,16 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.*;
+import com.michael.afrivac.EditAccountInfoActivity;
 import com.michael.afrivac.R;
 import com.michael.afrivac.Util.Helper;
+import com.michael.afrivac.Util.UniversalImageLoader;
 import com.michael.afrivac.WalletPageActivity;
 import com.michael.afrivac.ui.findHotel.FindHotelFragment;
 import com.michael.afrivac.ui.popular_destination.PopularDestinationFragment;
+import com.nostra13.universalimageloader.core.ImageLoader;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class AccountFragment extends Fragment {
 
@@ -36,6 +41,8 @@ public class AccountFragment extends Fragment {
     FirebaseAuth mAuth;
     DatabaseReference mDatabase;
     String userID;
+//    de.hdodenhof.circleimageview.CircleImageView  profileImage;
+    CircleImageView profileImage;
 
     // profile widgets
     TextView userCountry, userEmail, userGender, userLanguage, userNumber, username, fullName;
@@ -59,6 +66,9 @@ public class AccountFragment extends Fragment {
         username = root.findViewById(R.id.user_name);
         fullName = root.findViewById(R.id.full_name);
         deleteAccount = root.findViewById(R.id.delete_account);
+        profileImage =  root.findViewById(R.id.profile_image);
+
+        initImageLoader();
 
 
         myWallet =root.findViewById(R.id.my_wallet_text);
@@ -119,7 +129,9 @@ public class AccountFragment extends Fragment {
                 String user_language = snapshot.child("language").getValue().toString();
                 String user_number = snapshot.child("number").getValue().toString();
                 String user_country = snapshot.child("country").getValue().toString();
+                String profile_picture = snapshot.child("profileImageUrl").getValue().toString();
 
+                ImageLoader.getInstance().displayImage(profile_picture, profileImage);
                 fullName.setText(user_name);
                 if(user_name != null) {
                     username.setText(user_name);
@@ -161,4 +173,12 @@ public class AccountFragment extends Fragment {
 
         return root;
     }
+    /**
+     * init universal image loader
+     */
+    private void initImageLoader(){
+        UniversalImageLoader imageLoader = new UniversalImageLoader(getContext());
+        ImageLoader.getInstance().init(imageLoader.getConfig());
+    }
+
 }
