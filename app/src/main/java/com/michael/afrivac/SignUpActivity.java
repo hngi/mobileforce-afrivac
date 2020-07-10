@@ -84,6 +84,7 @@ public class SignUpActivity extends AppCompatActivity {
         });
 
 
+
         country.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -96,7 +97,7 @@ public class SignUpActivity extends AppCompatActivity {
             }
         });
 
-
+      
         signUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View v) {

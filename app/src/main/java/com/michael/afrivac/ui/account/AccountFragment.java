@@ -1,15 +1,25 @@
 package com.michael.afrivac.ui.account;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CompoundButton;
+import android.widget.Switch;
+import android.widget.PopupMenu;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatDelegate;
+import androidx.core.app.AppOpsManagerCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -18,6 +28,8 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.*;
+import com.michael.afrivac.EditAccountInfoActivity;
+import com.michael.afrivac.LanguageHelper;
 import com.michael.afrivac.R;
 import com.michael.afrivac.Util.Helper;
 import com.michael.afrivac.WalletPageActivity;
@@ -31,6 +43,7 @@ public class AccountFragment extends Fragment {
 
     Button editButton;
     TextView gotoLocality, deleteAccount;
+    Switch darkTheme;
 
     // firebase
     FirebaseAuth mAuth;
@@ -44,7 +57,7 @@ public class AccountFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         accountViewModel = new ViewModelProvider(this).get(AccountViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_account, container, false);
+        final View root = inflater.inflate(R.layout.fragment_account, container, false);
         helper = new Helper();
 
         mAuth = FirebaseAuth.getInstance();
@@ -59,6 +72,36 @@ public class AccountFragment extends Fragment {
         username = root.findViewById(R.id.user_name);
         fullName = root.findViewById(R.id.full_name);
         deleteAccount = root.findViewById(R.id.delete_account);
+
+        darkTheme = root.findViewById(R.id.dark_theme_switch);
+
+        int currentMode = AppCompatDelegate.getDefaultNightMode();
+
+        if(currentMode == AppCompatDelegate.MODE_NIGHT_YES) {
+            darkTheme.setChecked(true);
+        } else {
+            darkTheme.setChecked(false);
+        }
+
+
+        darkTheme.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+//                SharedPreferences sharedPreferences = getActivity().getPreferences(Context.MODE_PRIVATE);
+//                SharedPreferences.Editor editor = sharedPreferences.edit();
+                if(isChecked) {
+                    Log.d("AccountFragment", "Here we go");
+//                    editor.putBoolean("SwitchState", true);
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+                    restartActivity();
+                } else {
+//                    editor.putBoolean("SwitchState", true);
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+                    restartActivity();
+                }
+//                editor.apply();
+            }
+        });
 
 
         myWallet =root.findViewById(R.id.my_wallet_text);
@@ -113,12 +156,12 @@ public class AccountFragment extends Fragment {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
 
-                String user_name = snapshot.child("username").getValue().toString();
-                String user_email = snapshot.child("email").getValue().toString();
-                String user_gender = snapshot.child("gender").getValue().toString();
-                String user_language = snapshot.child("language").getValue().toString();
-                String user_number = snapshot.child("number").getValue().toString();
-                String user_country = snapshot.child("country").getValue().toString();
+                String user_name = (String) snapshot.child("username").getValue();
+                String user_email = (String) snapshot.child("email").getValue();
+                String user_gender = (String) snapshot.child("gender").getValue();
+                String user_language = (String) snapshot.child("language").getValue();
+                String user_number = (String) snapshot.child("number").getValue();
+                String user_country = (String) snapshot.child("country").getValue();
 
                 fullName.setText(user_name);
                 if(user_name != null) {
@@ -158,7 +201,23 @@ public class AccountFragment extends Fragment {
 
         gotoLocality = root.findViewById(R.id.place);
 
+        userLanguage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                PopupMenu popup = new PopupMenu(v.getContext(), v);
+                MenuInflater inflater = popup.getMenuInflater();
+                inflater.inflate(R.menu.language_menu, popup.getMenu());
+                popup.show();
+            }
+        });
+
 
         return root;
+    }
+
+    private void restartActivity() {
+        Intent intent = getActivity().getIntent();
+        getActivity().finish();
+        startActivity(intent);
     }
 }
