@@ -205,4 +205,9 @@
     <string name="exit">Quitter l\'application?</string>
     <string name="hi">"Salut "</string>
     <string name="visit">,\noù aimeriez-vous visiter?</string>
+    <string name="good_morning">"Bonjour "</string>
+    <string name="good_afternoon">Bonne après-midi</string>
+    <string name="good_evening">"Bonsoir "</string>
+    <string name="good_night">"Bonne nuit "</string>
+    <string name="see_you">,\\non se revoit le matin</string>
 </resources>

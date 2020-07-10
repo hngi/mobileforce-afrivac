@@ -265,6 +265,11 @@
     <string name="exit">Exit App?</string>
     <string name="hi">"Hi "</string>
     <string name="visit">,\nwhere would you like to visit?</string>
+    <string name="good_morning">"Good morning "</string>
+    <string name="good_afternoon">"Good afternoon "</string>
+    <string name="good_evening">"Good evening "</string>
+    <string name="good_night">"Good night "</string>
+    <string name="see_you">,\nsee you again in the morning</string>
 
     <string-array name="languages">
         <item>English</item>
