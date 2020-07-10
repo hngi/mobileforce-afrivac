@@ -6,7 +6,6 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
-import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -32,37 +31,20 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
-import com.michael.afrivac.EditAccountInfoActivity;
 import com.michael.afrivac.MainActivity;
 import com.michael.afrivac.PopularDestinationDetailsActivity;
 import com.michael.afrivac.R;
-import com.michael.afrivac.Util.UniversalImageLoader;
 import com.michael.afrivac.model.DestinationSuggestion;
 import com.michael.afrivac.model.PopularPlaces;
 import com.michael.afrivac.ui.home.Popular;
-import com.nostra13.universalimageloader.core.ImageLoader;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
-
-import de.hdodenhof.circleimageview.CircleImageView;
 
 public class PopularDestinationFragment extends Fragment {
-    DatabaseReference mDatabase;
-    FirebaseAuth mAuth;
-    String userID;
-
     RecyclerView popularPlacesRV;
     private AutoCompleteTextView searchTV;
-    ImageButton menuButton, search_end_button;
-    CircleImageView avatarButton;
+    ImageButton menuButton, avatarButton, search_end_button;
 
     private PopularDestinationViewModel popularDestinationViewModel;
     private PopularDestinationRVAdapter popularDestinationRVAdapter;
@@ -80,7 +62,8 @@ public class PopularDestinationFragment extends Fragment {
 
         ((MainActivity) requireActivity()).getSupportActionBar().hide();
 
-        initImageLoader();
+
+
 
         popularDestinationViewModel = ViewModelProviders.of(this).get(PopularDestinationViewModel.class);
         View view = inflater.inflate(R.layout.fragment_popular_destination, container, false);
@@ -112,35 +95,14 @@ public class PopularDestinationFragment extends Fragment {
             }
         });
 
-//        Glide.with(requireActivity())
-//                .load(R.drawable.girl2)
-//                .placeholder(R.drawable.ic_account_circle_black_24dp)
-//                .circleCrop()
-//                .into(avatarButton);
+        Glide.with(requireActivity())
+                .load(R.drawable.girl2)
+                .placeholder(R.drawable.ic_account_circle_black_24dp)
+                .circleCrop()
+                .into(avatarButton);
         avatarButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-            }
-        });
-
-        mAuth = FirebaseAuth.getInstance();
-        userID = Objects.requireNonNull(mAuth.getCurrentUser()).getUid();
-        mDatabase = FirebaseDatabase.getInstance().getReference().child("Users").child(userID);
-
-        mDatabase.addValueEventListener(new ValueEventListener() {
-            @SuppressLint("SetTextI18n")
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-
-                String profile_picture = snapshot.child("profileImageUrl").getValue().toString();
-//
-                ImageLoader.getInstance().displayImage(profile_picture, avatarButton);
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
             }
         });
 
@@ -271,11 +233,5 @@ public class PopularDestinationFragment extends Fragment {
     private void hideKeyboardFrom(View view) {
         InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Activity.INPUT_METHOD_SERVICE);
         imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
-    }
-
-    //initialize image loader
-    private void initImageLoader(){
-        UniversalImageLoader imageLoader = new UniversalImageLoader(getContext());
-        ImageLoader.getInstance().init(imageLoader.getConfig());
     }
 }
