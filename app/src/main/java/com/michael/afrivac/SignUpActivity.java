@@ -7,13 +7,17 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,6 +29,11 @@ import com.google.firebase.auth.FirebaseUser;
 import com.michael.afrivac.Auth.AuthViewModel;
 import com.michael.afrivac.Util.Helper;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
+import java.util.Locale;
 import java.util.Scanner;
 
 public class SignUpActivity extends AppCompatActivity {
@@ -36,7 +45,7 @@ public class SignUpActivity extends AppCompatActivity {
     CheckBox mCheckBox;
     EditText Email;
     EditText Phone;
-    EditText Country;
+    Spinner country;
     EditText Password;
     EditText ConfirmPassword;
     TextView ToSignIn;
@@ -49,11 +58,38 @@ public class SignUpActivity extends AppCompatActivity {
         setContentView(R.layout.signup);
         authViewModel = new AuthViewModel();
         helper = new Helper();
+
+        country = findViewById(R.id.country);
         mCheckBox = findViewById(R.id.checkBox);
         ToSignIn = findViewById(R.id.toSignIn);
         signUp = findViewById(R.id.signUp);
+        ConfirmPassword = findViewById(R.id.confirmpassword);
+
+        ConfirmPassword.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                if (keyCode == KeyEvent.KEYCODE_ENTER && event.getAction() == KeyEvent.ACTION_DOWN){
+                    signUp.callOnClick();
+                }
+                return false;
+            }
+        });
 
 
+
+        country.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                country.setSelection(position);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+      
         signUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View v) {

@@ -160,15 +160,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 if(doubleBackToExitPressedOnce){
                     new AlertDialog.Builder(this)
                             .setIcon(R.drawable.logo_black)
-                            .setTitle("Exit App?")
-                            .setMessage("Are you sure you want to exit AfriVac?")
-                            .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                            .setTitle(getString(R.string.exit))
+                            .setMessage(getString(R.string.exit_sure))
+                            .setPositiveButton(getString(R.string.yes), new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialogInterface, int i) {
                                     finish();
                                 }
                             })
-                            .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                            .setNegativeButton(getString(R.string.no), new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialogInterface, int i) {
                                     //Toast.makeText(MainActivity.this, "Welcome back", Toast.LENGTH_SHORT).show();
@@ -181,7 +181,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 //if user back pressed once
                 if(doubleBackToExitPressedOnce == false){
                     this.doubleBackToExitPressedOnce = true;
-                    helper.toastMessage(this, "Please click back again to exit");
+                    helper.toastMessage(this, getString(R.string.reclick));
                 }
 
                 //delay to clear the double back pressed to false
