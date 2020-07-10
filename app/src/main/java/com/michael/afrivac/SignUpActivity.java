@@ -26,6 +26,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.hbb20.CountryCodePicker;
 import com.michael.afrivac.Auth.AuthViewModel;
 import com.michael.afrivac.Util.Helper;
 
@@ -44,13 +45,14 @@ public class SignUpActivity extends AppCompatActivity {
     EditText Username;
     CheckBox mCheckBox;
     EditText Email;
-    EditText Phone;
+    EditText phone;
     Spinner country;
     EditText Password;
-    EditText ConfirmPassword;
+    EditText confirmPassword;
     TextView ToSignIn;
     Button  signUp;
     Animation animation;
+    private CountryCodePicker mCodePicker;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,9 +65,15 @@ public class SignUpActivity extends AppCompatActivity {
         mCheckBox = findViewById(R.id.checkBox);
         ToSignIn = findViewById(R.id.toSignIn);
         signUp = findViewById(R.id.signUp);
-        ConfirmPassword = findViewById(R.id.confirmpassword);
+        confirmPassword = findViewById(R.id.confirmpassword);
+       phone = findViewById(R.id.phone);
 
-        ConfirmPassword.setOnKeyListener(new View.OnKeyListener() {
+        mCodePicker = findViewById(R.id.ccp);
+
+        mCodePicker.registerCarrierNumberEditText(phone);
+
+
+        confirmPassword.setOnKeyListener(new View.OnKeyListener() {
             @Override
             public boolean onKey(View v, int keyCode, KeyEvent event) {
                 if (keyCode == KeyEvent.KEYCODE_ENTER && event.getAction() == KeyEvent.ACTION_DOWN){
