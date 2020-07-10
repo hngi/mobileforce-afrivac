@@ -3,15 +3,21 @@ package com.michael.afrivac;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.PopupMenu;
+import android.widget.TextView;
+import com.michael.afrivac.LanguageHelper;
 
 public class ProfilePageActivity extends AppCompatActivity {
 
     Button btnEdit;
     Animation animation;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
