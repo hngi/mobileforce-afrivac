@@ -27,8 +27,6 @@
             android:src="@drawable/ic_round_menu_24"
             android:contentDescription="menu_button" />
 
-
-        <ImageButton
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/avatar"
             android:layout_width="40dp"
