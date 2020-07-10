@@ -17,6 +17,15 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.facebook.AccessToken;
+import com.facebook.CallbackManager;
+import com.facebook.FacebookCallback;
+import com.facebook.FacebookException;
+import com.facebook.FacebookSdk;
+import com.facebook.appevents.AppEventsLogger;
+import com.facebook.login.LoginResult;
+import com.facebook.login.widget.LoginButton;
 import com.github.aakira.compoundicontextview.CompoundIconTextView;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -27,12 +36,16 @@ import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FacebookAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.FirebaseDatabase;
 import com.michael.afrivac.Auth.AuthViewModel;
 import com.michael.afrivac.Util.Helper;
+
+import java.util.Arrays;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -46,9 +59,12 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private FirebaseUser user;
     private AuthViewModel authViewModel;
     private Helper helper;
-    private Button googleSignIn, facebookSignIn;
+    private Button googleSignIn;
     private Animation animation;
     private FirebaseAuth.AuthStateListener mAuthStateListener;
+    private CallbackManager callbackManager;
+    private LoginButton loginButton;
+    private static final String EMAIL = "email";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,12 +80,36 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         signUp = findViewById(R.id.singin_goto_signup);
         forgotPassword = findViewById(R.id.signin_forgot_password);
 
+        final String Email = email.getText().toString().trim();
+        final String Password = password.getText().toString().trim();
+
+        FacebookSdk.sdkInitialize(getApplicationContext());
+        loginButton = findViewById(R.id.signin_with_facebook);
+        callbackManager = CallbackManager.Factory.create();
+        loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
+            @Override
+            public void onSuccess(LoginResult loginResult) {
+                handleFacebookToken(loginResult.getAccessToken());
+                Toast.makeText(LoginActivity.this, "Facebook login success", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onCancel() {
+
+            }
+
+            @Override
+            public void onError(FacebookException error) {
+                Toast.makeText(LoginActivity.this, "Facebook login failed", Toast.LENGTH_SHORT).show();
+
+            }
+        });
+
+        loginButton.setReadPermissions(Arrays.asList(EMAIL));
+
         setupFirebaseAuth();
 
         helper = new Helper(this);
-
-        final String Email = email.getText().toString().trim();
-        final String Password = password.getText().toString().trim();
 
 
         mAuth = FirebaseAuth.getInstance();
@@ -77,7 +117,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         sign_in = findViewById(R.id.singin_into_account);
         googleSignIn = findViewById(R.id.signin_with_google);
-        facebookSignIn = findViewById(R.id.signin_with_facebook);
+        //facebookSignIn = findViewById(R.id.signin_with_facebook);
         signUp = findViewById(R.id.singin_goto_signup);
         forgotPassword = findViewById(R.id.signin_forgot_password);
 
@@ -152,26 +192,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             }
         });
 
-        facebookSignIn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.button_anim);
-                facebookSignIn.startAnimation(animation);
-                animation.setAnimationListener(new Animation.AnimationListener() {
-                    @Override
-                    public void onAnimationStart(Animation animation) {}
-
-                    @Override
-                    public void onAnimationEnd(Animation animation) {
-                        // TODO: continue the OnClickListener implementation
-                    }
-
-                    @Override
-                    public void onAnimationRepeat(Animation animation) {}
-                });
-            }
-        });
-
         signUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -199,6 +219,21 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
 
         findViewById(R.id.signin_with_google).setOnClickListener(this);
+    }
+
+    public void handleFacebookToken(AccessToken token) {
+
+        AuthCredential credential = FacebookAuthProvider.getCredential(token.getToken());
+        mAuth.signInWithCredential(credential).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                if (task.isSuccessful()) {
+                    FirebaseUser user = mAuth.getCurrentUser();
+                    Intent i = new Intent(getApplicationContext(), MainActivity.class);
+                }
+            }
+        });
+
     }
 
 
