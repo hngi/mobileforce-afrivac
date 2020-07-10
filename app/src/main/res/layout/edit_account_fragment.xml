@@ -30,6 +30,7 @@
             android:layout_marginEnd="@dimen/dimension_20dp" />
 
         <ImageView
+            android:id="@+id/upload_image"
             android:layout_width="@dimen/dimension_36dp"
             android:layout_height="@dimen/dimension_36dp"
             android:src="@drawable/ic_baseline_add_a_photo_24"
