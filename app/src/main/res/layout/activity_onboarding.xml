@@ -63,18 +63,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/ic_baseline_arrow_back_ios_24" />
 
+
     <Button
         android:id="@+id/button"
-        android:layout_width="334dp"
+        android:layout_width="0dp"
         android:layout_height="55dp"
-        android:layout_marginStart="40dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="40dp"
         android:layout_marginBottom="36dp"
         android:background="@drawable/round_button"
         android:text="@string/getStarted"
         android:textAllCaps="false"
         android:textColor="#ffffff"
+        android:layout_marginHorizontal="@dimen/dimension_40dp"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
