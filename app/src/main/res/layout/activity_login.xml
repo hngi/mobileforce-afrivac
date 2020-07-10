@@ -223,27 +223,14 @@
             style="@style/Widget.MaterialComponents.Button.OutlinedButton.Icon"
             />
 
-        <Button
+
+        <com.facebook.login.widget.LoginButton
             android:id="@+id/signin_with_facebook"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/dimension_62dp"
-            android:layout_marginTop="@dimen/dimension_5dp"
-            android:layout_marginBottom="@dimen/dimension_37dp"
-            android:layout_marginStart="@dimen/dimension_37dp"
-            android:layout_marginEnd="@dimen/dimension_37dp"
-            android:text="@string/signInFacebook"
-            android:textColor="@color/black"
-            android:textStyle="bold"
-            android:fontFamily="@font/poppins"
-            app:icon="@drawable/sign_in_facebook"
-            android:textAllCaps="false"
-            app:iconTint="@null"
-            app:iconGravity="textStart"
-            tools:textSize="@dimen/dimension_18sp"
-            app:iconPadding="@dimen/dimension_32dp"
-            app:strokeColor="@color/colorLightGrey"
-            style="@style/Widget.MaterialComponents.Button.OutlinedButton.Icon"
-            />
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="30dp" />
 
 
 

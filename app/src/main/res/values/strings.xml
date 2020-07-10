@@ -256,6 +256,11 @@
     <string name="cancel">cancel</string>
     <string name="confirm">confirm</string>
     <string name="resend_verification_email">resend_ver</string>
+    <string name="french">French</string>
+    <string name="spanish">Spanish</string>
+    <string name="facebook_app_id">679665662612042</string>
+    <string name="fb_login_protocol_scheme">fb679665662612042</string>
+
 
     <string-array name="languages">
         <item>English</item>
