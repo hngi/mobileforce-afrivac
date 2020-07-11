@@ -6,7 +6,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CompoundButton;
+import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.annotation.NonNull;
@@ -28,6 +31,7 @@ public class AccountFragment extends Fragment {
 
     private AccountViewModel accountViewModel;
     private Helper helper;
+    Switch mSwitchNotification = null;
 
     Button editButton;
     TextView gotoLocality, deleteAccount;
@@ -62,6 +66,19 @@ public class AccountFragment extends Fragment {
 
 
         myWallet =root.findViewById(R.id.my_wallet_text);
+        mSwitchNotification = root.findViewById(R.id.switchNotification);
+        mSwitchNotification.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked){
+                    Toast.makeText(getActivity(), "Push notification Enabled", Toast.LENGTH_SHORT).show();
+                }else{
+                    Toast.makeText(getActivity(), "Push notification Disabled", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+
         myWallet.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
