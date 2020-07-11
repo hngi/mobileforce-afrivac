@@ -238,29 +238,7 @@
     <string name="noverificationcode">Didn’t Receive a verification code?</string>
     <string name="resend_">Resend</string>
     <string name="didn_t_receive_a_verification_code">Didn\'t Receive a verification code?</string>
-    
-    <string name="rooms_can_b">Rooms can be cancelled up to 48 hours before check in</string>
-    <string name="free_breakfast">Free Breakfast</string>
-    <string name="room_service">Room Service</string>
-    <string name="hot_tub">Hot Tub</string>
-    <string name="free_wifi">Free Wifi</string>
-    <string name="bedroom_image">bedroom Image</string>
-    <string name="check_in">Check-in:</string>
-    <string name="check_out">Check-out:</string>
-    <string name="saveProf" translatable="false">Save Changes</string>
-    <string name="placedesc" translatable="false">An image of a city</string>
-    <string name="star" translatable="false">A star</string>
-    <string name="registration" translatable="false">REGISTRATION</string>
-    <string name="terms" translatable="false">I have read and agreed to </string>
-    <string name="recover_email_text" translatable="false">"Enter the email address regsitered with your afrivac account "</string>
-    <string name="verification_code_text" translatable="false">we just sent a verification code to dele******1@gmail.com</string>
-    <string name="enter_verification_code" translatable="false">Enter Verification Code</string>
-    <string name="resend" translatable="false">Resend</string>
-    
-    <string name="noverificationcode" translatable="false">Didn’t Receive a verification code?</string>
-    <string name="resend_" translatable="false">Resend</string>
-    <string name="didn_t_receive_a_verification_code" translatable="false">Didn\'t Receive a verification code?</string>
-    
+
     <string name="rooms_can_b" translatable="false">Rooms can be cancelled up to 48 hours before\ncheck in</string>
     <string name="free_breakfast" translatable="false">Free Breakfast</string>
     <string name="room_service" translatable="false">Room Service</string>
@@ -294,10 +272,6 @@
     <string name="good_evening">"Good evening "</string>
     <string name="good_night">"Good night "</string>
     <string name="see_you">,\nsee you again in the morning</string>
-    <string name="upload_from_camera" tools:ignore="MissingTranslation">Upload from Camera</string>
-    <string name="select_a_photo_from_your_device" tools:ignore="MissingTranslation">Select a photo from your device</string>
-    <string name="upload_from_camera" translatable="false">Upload from Camera</string>
-    <string name="select_a_photo_from_your_device" translatable="false">Select a photo from your device</string>
     <string-array name="languages">
         <item>English</item>
         <item>France</item>
