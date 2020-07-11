@@ -118,7 +118,7 @@ public class HomeFragment extends Fragment {
                     ImageLoader.getInstance().displayImage(profile_picture, profile_image);
 
 
-                    if (currentTime>= 0 && currentTime<12){
+                    if (currentTime>= 5 && currentTime<12){
                         welcome_text.setText("Good morning " + user_name + ", \nwhere would you like to visit?");
                     } else if (currentTime>12 && currentTime <17){
                         welcome_text.setText("Good after " + user_name + ", \nwhere would you like to visit?");
