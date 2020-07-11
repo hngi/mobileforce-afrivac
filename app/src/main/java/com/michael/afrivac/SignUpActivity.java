@@ -133,4 +133,9 @@ public class SignUpActivity extends AppCompatActivity {
         super.onBackPressed();
         helper.gotoLoginAcitivity(getApplicationContext());
     }
+
+    public void termsAndCoditions(View view) {
+        Intent mTandC = new Intent(this, TermsAndConditions.class);
+        startActivity(mTandC);
+    }
 }

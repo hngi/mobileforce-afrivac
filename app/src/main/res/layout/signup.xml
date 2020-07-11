@@ -199,6 +199,7 @@
             android:fontFamily="@font/poppins_light"
             android:text="@string/terms"
             android:textSize="@dimen/dimension_12sp"
+            android:onClick="termsAndCoditions"
             android:layout_gravity="center_vertical"
             />
 

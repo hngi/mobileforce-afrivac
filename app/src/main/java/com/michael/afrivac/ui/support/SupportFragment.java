@@ -87,7 +87,9 @@ public class SupportFragment extends Fragment {
         termAndConditions.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getContext(), TermsAndConditions.class));
+                Intent intent = new Intent(getActivity(), TermsAndConditions.class);
+                startActivity(intent);
+
             }
         });
 
