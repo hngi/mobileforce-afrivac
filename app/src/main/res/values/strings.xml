@@ -225,7 +225,6 @@
     <string name="reviewa_2_731" translatable="false">(2,731)</string>
     <string name="cape_town_description">Santoroni is the world best blue shining city. every year lot of travler visited here</string>
     <string name="phoneNumb" translatable="false">+234 7061815056</string>
-
     <string name="saveProf">Save Changes</string>
     <string name="placedesc">An image of a city</string>
     <string name="star">A star</string>
@@ -248,6 +247,29 @@
     <string name="bedroom_image">bedroom Image</string>
     <string name="check_in">Check-in:</string>
     <string name="check_out">Check-out:</string>
+    <string name="saveProf" translatable="false">Save Changes</string>
+    <string name="placedesc" translatable="false">An image of a city</string>
+    <string name="star" translatable="false">A star</string>
+    <string name="registration" translatable="false">REGISTRATION</string>
+    <string name="terms" translatable="false">I have read and agreed to </string>
+    <string name="recover_email_text" translatable="false">"Enter the email address regsitered with your afrivac account "</string>
+    <string name="verification_code_text" translatable="false">we just sent a verification code to dele******1@gmail.com</string>
+    <string name="enter_verification_code" translatable="false">Enter Verification Code</string>
+    <string name="resend" translatable="false">Resend</string>
+    
+    <string name="noverificationcode" translatable="false">Didn’t Receive a verification code?</string>
+    <string name="resend_" translatable="false">Resend</string>
+    <string name="didn_t_receive_a_verification_code" translatable="false">Didn\'t Receive a verification code?</string>
+    
+    <string name="rooms_can_b" translatable="false">Rooms can be cancelled up to 48 hours before\ncheck in</string>
+    <string name="free_breakfast" translatable="false">Free Breakfast</string>
+    <string name="room_service" translatable="false">Room Service</string>
+    <string name="hot_tub" translatable="false">Hot Tub</string>
+    <string name="free_wifi" translatable="false">Free Wifi</string>
+    <string name="bedroom_image" translatable="false">bedroom Image</string>
+    <string name="check_in" translatable="false">Check-in:</string>
+    <string name="check_out" translatable="false">Check-out:</string>
+
     <string name="check_in_out_time" translatable="false">12pm - 11pm</string>
     <string name="book_btn_txt">Book Now</string>
     <string name="per_night">/per night</string>
@@ -260,9 +282,6 @@
     <string name="facebook_app_id" tools:ignore="MissingTranslation">679665662612042</string>
     <string name="fb_login_protocol_scheme" tools:ignore="MissingTranslation">fb679665662612042</string>
 
-    <string name="resend_verification_email">resend_verification email</string>
-    <string name="french">French</string>
-    <string name="spanish">Spanish</string>
     <string name="reclick">Please click back again to exit</string>
     <string name="exit_sure">Are you sure you want to exit AfriVac?</string>
     <string name="no">No</string>
@@ -277,6 +296,8 @@
     <string name="see_you">,\nsee you again in the morning</string>
     <string name="upload_from_camera" tools:ignore="MissingTranslation">Upload from Camera</string>
     <string name="select_a_photo_from_your_device" tools:ignore="MissingTranslation">Select a photo from your device</string>
+    <string name="upload_from_camera" translatable="false">Upload from Camera</string>
+    <string name="select_a_photo_from_your_device" translatable="false">Select a photo from your device</string>
     <string-array name="languages">
         <item>English</item>
         <item>France</item>
