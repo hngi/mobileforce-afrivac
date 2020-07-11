@@ -39,11 +39,6 @@
                 android:textSize="18sp" />
 
             <TextView
-                android:id="@+id/textView28"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-            <TextView
                 android:id="@+id/textView29"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
@@ -173,27 +168,12 @@
                 android:textSize="18sp" />
 
             <TextView
-                android:id="@+id/textView22"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/dimension_20dp"
-                android:fontFamily="@font/poppins_light"
-                android:text="Condition 6"
-                android:textColor="#000000"
-                android:textSize="18sp" />
-
-            <TextView
                 android:id="@+id/textView23"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/textView24"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-            <TextView
-                android:id="@+id/textView25"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 

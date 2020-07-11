@@ -56,7 +56,7 @@ public class SignUpActivity extends AppCompatActivity {
         signUp = findViewById(R.id.signUp);
         confirmPassword = findViewById(R.id.confirmpassword);
        phone = findViewById(R.id.phone);
-        ConfirmPassword = findViewById(R.id.confirmpassword);
+        //ConfirmPassword = findViewById(R.id.confirmpassword);
         termsAndConditons = findViewById(R.id.termsAndConditions);
 
         mCodePicker = findViewById(R.id.ccp);
