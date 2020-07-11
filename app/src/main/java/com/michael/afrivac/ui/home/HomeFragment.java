@@ -37,8 +37,11 @@ import com.michael.afrivac.model.DiscoverAfrica;
 import com.michael.afrivac.model.PopularPlaces;
 import com.michael.afrivac.ui.account.AccountFragment;
 
+import java.sql.Time;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Objects;
+import java.util.Calendar;
 
 import ru.tinkoff.scrollingpagerindicator.ScrollingPagerIndicator;
 
@@ -70,6 +73,7 @@ public class HomeFragment extends Fragment {
     //for the popular destinations recycler view
     private RecyclerView recyclerView2;
     private RecyclerView.LayoutManager layoutManager2;
+    private int currentTime;
 
     public View onCreateView(@NonNull LayoutInflater inflater,  ViewGroup container, Bundle savedInstanceState) {
 //        homeViewModel =
@@ -90,6 +94,10 @@ public class HomeFragment extends Fragment {
         menuButton = root.findViewById(R.id.menuButton);
         welcome_text = root.findViewById(R.id.welcome_text);
 
+        Calendar calender = Calendar.getInstance();
+        currentTime = calender.get(Calendar.HOUR_OF_DAY);
+
+
         mAuth = FirebaseAuth.getInstance();
         userID = Objects.requireNonNull(mAuth.getCurrentUser()).getUid();
         mDatabase = FirebaseDatabase.getInstance().getReference().child("Users").child(userID);
@@ -99,9 +107,19 @@ public class HomeFragment extends Fragment {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
 
-                    String user_name = snapshot.child("username").getValue().toString();
+                    String user_name;
+                    user_name = (String) snapshot.child("username").getValue();
 
-                    welcome_text.setText("Hi " + user_name + ", \nwhere would you like to visit?");
+                    if (currentTime>= 0 && currentTime<12){
+                        welcome_text.setText(getString(R.string.good_morning) + user_name + getString(R.string.visit));
+                    } else if (currentTime>12 && currentTime <17){
+                        welcome_text.setText(getString(R.string.good_afternoon) + user_name + getString(R.string.visit));
+                    } else if (currentTime>=17 && currentTime<22){
+                        welcome_text.setText(getString(R.string.good_evening) + user_name + getString(R.string.visit));
+                    } else if (currentTime>=22){
+                        welcome_text.setText(getString(R.string.good_night) + user_name + getString(R.string.see_you));
+                    }
+
                 }
 
                 @Override

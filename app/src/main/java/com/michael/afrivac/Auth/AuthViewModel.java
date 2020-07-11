@@ -5,6 +5,7 @@ import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -31,7 +32,8 @@ public class AuthViewModel {
     private FirebaseDatabase database = FirebaseDatabase.getInstance();
     private DatabaseReference databaseReference = database.getReference().child("Users");
 
-    private EditText email, password, confirmPassword, userName, phoneNumber, country;
+    private EditText email, password, confirmPassword, userName, phoneNumber;
+    Spinner country;
     private String emailStr, passwordStr, confirmPasswordStr, userNameStr, phoneNumberStr, countryStr;
     private static final String TAG = "com.michael.afrivac.Auth.AuthViewModel.allen";
 
@@ -48,7 +50,7 @@ public class AuthViewModel {
         confirmPasswordStr = confirmPassword.getText().toString();
         userNameStr = userName.getText().toString();
         phoneNumberStr = phoneNumber.getText().toString();
-        countryStr = country.getText().toString();
+        countryStr = country.toString();
 
         final Helper helper1 = new Helper(view.getContext());
 

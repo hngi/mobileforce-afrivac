@@ -247,6 +247,7 @@
                 android:textStyle="bold"
                 android:layout_below="@+id/gender_view"/>
             <TextView
+                android:clickable="true"
                 android:id="@+id/user_language"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -256,7 +257,8 @@
                 android:layout_toEndOf="@+id/language"
                 android:drawableEnd="@drawable/ic_baseline_keyboard_arrow_down_24"
                 android:text="@string/english"
-                android:textSize="14sp" />
+                android:textSize="14sp"
+                android:focusable="true" />
 
             <View
                 android:id="@+id/language_view"
