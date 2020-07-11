@@ -239,7 +239,7 @@
     <string name="resend_" translatable="false">Resend</string>
     <string name="didn_t_receive_a_verification_code" translatable="false">Didn\'t Receive a verification code?</string>
     
-    <string name="rooms_can_b" translatable="false">Rooms can be cancelled up to 48 hours before\ncheck in</string>
+    <string name="rooms_canh_b" translatable="false">Rooms can be cancelled up to 48 hours before\ncheck in</string>
     <string name="free_breakfast" translatable="false">Free Breakfast</string>
     <string name="room_service" translatable="false">Room Service</string>
     <string name="hot_tub" translatable="false">Hot Tub</string>
@@ -247,28 +247,26 @@
     <string name="bedroom_image" translatable="false">bedroom Image</string>
     <string name="check_in" translatable="false">Check-in:</string>
     <string name="check_out" translatable="false">Check-out:</string>
-    <string name="saveProf">Save Changes</string>
-    <string name="placedesc">An image of a city</string>
-    <string name="star">A star</string>
-    <string name="registration">REGISTRATION</string>
-    <string name="terms">I have read and agreed to Terms and agreement.</string>
-    <string name="recover_email_text">"Enter the email address regsitered with your afrivac account "</string>
-    <string name="verification_code_text">we just sent a verification code to dele******1@gmail.com</string>
-    <string name="enter_verification_code">Enter Verification Code</string>
-    <string name="resend">Resend</string>
+
+    <string name="registtrationn">REGISTRATION</string>
+    <string name="terrmss">I have read and agreed to Terms and agreement.</string>
+    <string name="recover_email_textt">"Enter the email address regsitered with your afrivac account "</string>
+    <string name="verification_code_texxt">we just sent a verification code to dele******1@gmail.com</string>
+    <string name="enter_verification_coode">Enter Verification Code</string>
+    <string name="reseend">Resend</string>
     
-    <string name="noverificationcode">Didn’t Receive a verification code?</string>
-    <string name="resend_">Resend</string>
-    <string name="didn_t_receive_a_verification_code">Didn\'t Receive a verification code?</string>
+    <string name="noverificationbcode">Didn’t Receive a verification code?</string>
+    <string name="resendn_">Resend</string>
+    <string name="didn_nt_receive_a_verification_code">Didn\'t Receive a verification code?</string>
     
     <string name="rooms_can_b">Rooms can be cancelled up to 48 hours before check in</string>
-    <string name="free_breakfast">Free Breakfast</string>
-    <string name="room_service">Room Service</string>
-    <string name="hot_tub">Hot Tub</string>
-    <string name="free_wifi">Free Wifi</string>
-    <string name="bedroom_image">bedroom Image</string>
-    <string name="check_in">Check-in:</string>
-    <string name="check_out">Check-out:</string>
+    <string name="free_bnreakfast">Free Breakfast</string>
+    <string name="room_sjervice">Room Service</string>
+    <string name="hot_ntub">Hot Tub</string>
+    <string name="frfee_wifi">Free Wifi</string>
+    <string name="bedhroom_image">bedroom Image</string>
+    <string name="chekck_in">Check-in:</string>
+    <string name="chejck_out">Check-out:</string>
     <string name="check_in_out_time" translatable="false">12pm - 11pm</string>
     <string name="book_btn_txt">Book Now</string>
     <string name="per_night">/per night</string>
@@ -277,9 +275,9 @@
     <string name="save_favourite">save favourite</string>
     <string name="cancel">Cancel</string>
     <string name="confirm">confirm</string>
-    <string name="resend_verification_email">resend_ver</string>
-    <string name="french">French</string>
-    <string name="spanish">Spanish</string>
+    <string name="resend_verification_emfail">resend_ver</string>
+    <string name="fresnch">French</string>
+    <string name="spasnish">Spanish</string>
     <string name="facebook_app_id">679665662612042</string>
     <string name="fb_login_protocol_scheme">fb679665662612042</string>
 

@@ -8,15 +8,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-<<<<<<< HEAD
 import android.widget.CompoundButton;
 import android.widget.Switch;
-=======
 import android.widget.PopupMenu;
->>>>>>> 1fe517b099d51a9a140ba67aff1495e374ff9b8b
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.annotation.Nullable;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -24,7 +20,6 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
-
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.*;
 import com.michael.afrivac.EditAccountInfoActivity;
