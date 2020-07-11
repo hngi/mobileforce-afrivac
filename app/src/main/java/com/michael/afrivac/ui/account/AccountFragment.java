@@ -66,11 +66,15 @@ public class AccountFragment extends Fragment {
 
 
         myWallet =root.findViewById(R.id.my_wallet_text);
+
+        //--The Switch button declaration initialization
         mSwitchNotification = root.findViewById(R.id.switchNotification);
         mSwitchNotification.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                //--Implement code here
                 if (isChecked){
+
                     Toast.makeText(getActivity(), "Push notification Enabled", Toast.LENGTH_SHORT).show();
                 }else{
                     Toast.makeText(getActivity(), "Push notification Disabled", Toast.LENGTH_SHORT).show();
