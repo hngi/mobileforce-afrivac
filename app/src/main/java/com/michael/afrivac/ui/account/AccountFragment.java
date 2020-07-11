@@ -32,9 +32,13 @@ import com.michael.afrivac.EditAccountInfoActivity;
 import com.michael.afrivac.LanguageHelper;
 import com.michael.afrivac.R;
 import com.michael.afrivac.Util.Helper;
+import com.michael.afrivac.Util.UniversalImageLoader;
 import com.michael.afrivac.WalletPageActivity;
 import com.michael.afrivac.ui.findHotel.FindHotelFragment;
 import com.michael.afrivac.ui.popular_destination.PopularDestinationFragment;
+import com.nostra13.universalimageloader.core.ImageLoader;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class AccountFragment extends Fragment {
 
@@ -49,6 +53,8 @@ public class AccountFragment extends Fragment {
     FirebaseAuth mAuth;
     DatabaseReference mDatabase;
     String userID;
+
+    CircleImageView profileImage;
 
     // profile widgets
     TextView userCountry, userEmail, userGender, userLanguage, userNumber, username, fullName;
@@ -72,6 +78,9 @@ public class AccountFragment extends Fragment {
         username = root.findViewById(R.id.user_name);
         fullName = root.findViewById(R.id.full_name);
         deleteAccount = root.findViewById(R.id.delete_account);
+        profileImage =  root.findViewById(R.id.profile_image);
+
+        initImageLoader();
 
         darkTheme = root.findViewById(R.id.dark_theme_switch);
 
@@ -162,6 +171,9 @@ public class AccountFragment extends Fragment {
                 String user_language = (String) snapshot.child("language").getValue();
                 String user_number = (String) snapshot.child("number").getValue();
                 String user_country = (String) snapshot.child("country").getValue();
+                String profile_picture = snapshot.child("profileImageUrl").getValue().toString();
+
+                ImageLoader.getInstance().displayImage(profile_picture, profileImage);
 
                 fullName.setText(user_name);
                 if(user_name != null) {
@@ -219,5 +231,12 @@ public class AccountFragment extends Fragment {
         Intent intent = getActivity().getIntent();
         getActivity().finish();
         startActivity(intent);
+    }
+    /**
+     * init universal image loader
+     */
+    private void initImageLoader(){
+        UniversalImageLoader imageLoader = new UniversalImageLoader(getContext());
+        ImageLoader.getInstance().init(imageLoader.getConfig());
     }
 }
