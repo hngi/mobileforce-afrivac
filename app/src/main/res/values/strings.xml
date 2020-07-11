@@ -256,6 +256,9 @@
     <string name="save_favourite">save favourite</string>
     <string name="cancel">Cancel</string>
     <string name="confirm">confirm</string>
+    <string name="dark_theme">Dark theme</string>
+    <string name="facebook_app_id">679665662612042</string>
+    <string name="fb_login_protocol_scheme">fb679665662612042</string>
     <string name="dark_theme" tools:ignore="MissingTranslation">Dark theme</string>
     <string name="facebook_app_id" tools:ignore="MissingTranslation">679665662612042</string>
     <string name="fb_login_protocol_scheme" tools:ignore="MissingTranslation">fb679665662612042</string>
