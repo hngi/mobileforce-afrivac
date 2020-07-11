@@ -7,11 +7,11 @@
 
     <item
         android:id="@+id/french"
-        android:title="@string/french"
-        android:onClick="setFrench"/>
+        android:onClick="setFrench"
+        android:title="@string/french" />
 
     <item
         android:id="@+id/spanish"
-        android:title="@string/spanish"
-        android:onClick="setSpanish"/>
+        android:onClick="setSpanish"
+        android:title="@string/spanish" />
 </menu>

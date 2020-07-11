@@ -1,21 +1,16 @@
 package com.michael.afrivac;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -29,13 +24,6 @@ import com.google.firebase.auth.FirebaseUser;
 import com.hbb20.CountryCodePicker;
 import com.michael.afrivac.Auth.AuthViewModel;
 import com.michael.afrivac.Util.Helper;
-
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
-import java.util.Locale;
-import java.util.Scanner;
 
 public class SignUpActivity extends AppCompatActivity {
 
@@ -53,6 +41,7 @@ public class SignUpActivity extends AppCompatActivity {
     Button  signUp;
     Animation animation;
     private CountryCodePicker mCodePicker;
+    TextView termsAndConditons;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,6 +56,8 @@ public class SignUpActivity extends AppCompatActivity {
         signUp = findViewById(R.id.signUp);
         confirmPassword = findViewById(R.id.confirmpassword);
        phone = findViewById(R.id.phone);
+        ConfirmPassword = findViewById(R.id.confirmpassword);
+        termsAndConditons = findViewById(R.id.termsAndConditions);
 
         mCodePicker = findViewById(R.id.ccp);
 
@@ -130,6 +121,15 @@ public class SignUpActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+                finish();
+            }
+        });
+
+        termsAndConditons.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getApplicationContext(), TermsAndConditions.class);
+                startActivity(i);
                 finish();
             }
         });

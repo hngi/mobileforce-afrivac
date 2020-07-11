@@ -94,5 +94,7 @@ dependencies {
 
     implementation 'com.hbb20:ccp:2.4.0'
 
+    //image loader
+    implementation 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
 }
 
