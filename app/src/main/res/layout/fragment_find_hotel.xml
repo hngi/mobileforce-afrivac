@@ -28,7 +28,7 @@
             android:contentDescription="menu_button" />
 
 
-        <ImageButton
+<!--        <ImageButton-->
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/avatar"
             android:layout_width="40dp"
