@@ -118,12 +118,16 @@ public class HomeFragment extends Fragment {
                     ImageLoader.getInstance().displayImage(profile_picture, profile_image);
 
 
-                    if (currentTime>= 5 && currentTime<12){
+                    if (currentTime>4 && currentTime<12){
                         welcome_text.setText("Good morning " + user_name + ", \nwhere would you like to visit?");
                     } else if (currentTime>12 && currentTime <17){
                         welcome_text.setText("Good after " + user_name + ", \nwhere would you like to visit?");
-                    } else if (currentTime>=17){
+                    } else if (currentTime>17 && currentTime <22){
                         welcome_text.setText("Good evening " + user_name + ", \nwhere would you like to visit?");
+                    }  else if (currentTime>22){
+                        welcome_text.setText("Good night " + user_name + ", \nsee you in the morning.");
+                    }  else if (currentTime>=0 && currentTime<=4){
+                        welcome_text.setText("Hey " + user_name + ", \nyou should still be in bed.");
                     }
 
                 }
