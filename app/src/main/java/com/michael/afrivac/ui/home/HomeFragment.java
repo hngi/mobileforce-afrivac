@@ -28,14 +28,17 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.michael.afrivac.EditAccountInfoActivity;
 import com.michael.afrivac.HomePage;
 import com.michael.afrivac.LocationActivity;
 import com.michael.afrivac.MainActivity;
 import com.michael.afrivac.PopularDestinationDetailsActivity;
 import com.michael.afrivac.R;
+import com.michael.afrivac.Util.UniversalImageLoader;
 import com.michael.afrivac.model.DiscoverAfrica;
 import com.michael.afrivac.model.PopularPlaces;
 import com.michael.afrivac.ui.account.AccountFragment;
+import com.nostra13.universalimageloader.core.ImageLoader;
 
 import java.sql.Time;
 import java.util.ArrayList;
@@ -43,6 +46,7 @@ import java.util.Date;
 import java.util.Objects;
 import java.util.Calendar;
 
+import de.hdodenhof.circleimageview.CircleImageView;
 import ru.tinkoff.scrollingpagerindicator.ScrollingPagerIndicator;
 
 public class HomeFragment extends Fragment {
@@ -60,7 +64,7 @@ public class HomeFragment extends Fragment {
     //    private HomeViewModel homeViewModel;
     CardView cairo, nairobi, popular, pop2, pop3;
     EditText search_view;
-    ImageView profile_image;
+    CircleImageView profile_image;
     SearchView searchView;
     ImageButton menuButton;
     TextView welcome_text;
@@ -82,6 +86,7 @@ public class HomeFragment extends Fragment {
         //code to remove the action bar
         ((MainActivity) requireActivity()).getSupportActionBar().hide();
 
+        initImageLoader();
 
         View root = inflater.inflate(R.layout.fragment_home, container, false);
         recyclerView = root.findViewById(R.id.popular_destination_recycler);
@@ -107,17 +112,22 @@ public class HomeFragment extends Fragment {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
 
-                    String user_name;
-                    user_name = (String) snapshot.child("username").getValue();
+                    String user_name = snapshot.child("username").getValue().toString();
+                    String profile_picture = snapshot.child("profileImageUrl").getValue().toString();
+//
+                    ImageLoader.getInstance().displayImage(profile_picture, profile_image);
 
-                    if (currentTime>= 0 && currentTime<12){
-                        welcome_text.setText(getString(R.string.good_morning) + user_name + getString(R.string.visit));
+
+                    if (currentTime>4 && currentTime<12){
+                        welcome_text.setText("Good morning " + user_name + ", \nwhere would you like to visit?");
                     } else if (currentTime>12 && currentTime <17){
-                        welcome_text.setText(getString(R.string.good_afternoon) + user_name + getString(R.string.visit));
-                    } else if (currentTime>=17 && currentTime<22){
-                        welcome_text.setText(getString(R.string.good_evening) + user_name + getString(R.string.visit));
-                    } else if (currentTime>=22){
-                        welcome_text.setText(getString(R.string.good_night) + user_name + getString(R.string.see_you));
+                        welcome_text.setText("Good after " + user_name + ", \nwhere would you like to visit?");
+                    } else if (currentTime>17 && currentTime <22){
+                        welcome_text.setText("Good evening " + user_name + ", \nwhere would you like to visit?");
+                    }  else if (currentTime>22){
+                        welcome_text.setText("Good night " + user_name + ", \nsee you in the morning.");
+                    }  else if (currentTime>=0 && currentTime<=4){
+                        welcome_text.setText("Hey " + user_name + ", \nyou should still be in bed.");
                     }
 
                 }
@@ -221,5 +231,12 @@ public class HomeFragment extends Fragment {
             }
         });
         return root;
+    }
+    /**
+     * init universal image loader
+     */
+    private void initImageLoader(){
+        UniversalImageLoader imageLoader = new UniversalImageLoader(getContext());
+        ImageLoader.getInstance().init(imageLoader.getConfig());
     }
 }
