@@ -182,6 +182,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/curve"
+                android:onClick="backToSignUp"
                 android:text="Back To SignUp"
                 android:textColor="#FFFFFF" />
 
