@@ -60,4 +60,10 @@
         <item name="cornerSize">@dimen/dimension_25dp</item>
     </style>
 
+    <style name="SwitchTheme" parent="Theme.AppCompat">
+        <item name="android:textColorPrimaryDisableOnly">#00838f</item>
+        <item name="colorAccent">#565656</item>
+    </style>
+
+
 </resources>

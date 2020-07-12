@@ -18,6 +18,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.hbb20.CountryCodePicker;
 import com.michael.afrivac.LoginActivity;
 import com.michael.afrivac.R;
 import com.michael.afrivac.Util.Helper;
@@ -34,7 +35,8 @@ public class AuthViewModel {
 
     private EditText email, password, confirmPassword, userName, phoneNumber;
     Spinner country;
-    private String emailStr, passwordStr, confirmPasswordStr, userNameStr, phoneNumberStr, countryStr;
+    private CountryCodePicker mCodePicker, cc;
+    private String emailStr, passwordStr, confirmPasswordStr, userNameStr, phoneNumberStr, countryStr, countryCode, phoneNumberWithCountryCode;
     private static final String TAG = "com.michael.afrivac.Auth.AuthViewModel.allen";
 
     public void SignUp(@NonNull final View view){
@@ -42,15 +44,18 @@ public class AuthViewModel {
         password = view.getRootView().findViewById(R.id.password);
         confirmPassword = view.getRootView().findViewById(R.id.confirmpassword);
         userName = view.getRootView().findViewById(R.id.username);
-        phoneNumber = view.getRootView().findViewById(R.id.phone);
         country = view.getRootView().findViewById(R.id.country);
+
+        phoneNumber = view.getRootView().findViewById(R.id.phone);
+        mCodePicker = view.getRootView().findViewById(R.id.ccp);
+        phoneNumberWithCountryCode = mCodePicker.getFullNumberWithPlus() + phoneNumber.getText().toString().replaceAll(" ", "");
 
         emailStr = email.getText().toString();
         passwordStr = password.getText().toString();
         confirmPasswordStr = confirmPassword.getText().toString();
         userNameStr = userName.getText().toString();
-        phoneNumberStr = phoneNumber.getText().toString();
         countryStr = country.toString();
+        phoneNumberStr = phoneNumber.getText().toString();
 
         final Helper helper1 = new Helper(view.getContext());
 
@@ -72,7 +77,7 @@ public class AuthViewModel {
         }else if(phoneNumberStr.trim().isEmpty()){
             helper.toastMessage(view.getContext(), "Enter a Phone Number");
             phoneNumber.requestFocus();
-        }else if(!Patterns.PHONE.matcher(phoneNumberStr).matches()){
+        }else if(!Patterns.PHONE.matcher(phoneNumberWithCountryCode).matches()){
             helper.toastMessage(view.getContext(), "Enter a valid phone number");
         }else if(countryStr.trim().isEmpty()){
             helper.toastMessage(view.getContext(), "Enter your country of origin");
@@ -101,7 +106,7 @@ public class AuthViewModel {
                         hashMap.put("Full Name", fullName);
                         hashMap.put("username", userNameStr);
                         hashMap.put("email", emailStr);
-                        hashMap.put("number", phoneNumberStr);
+                        hashMap.put("number", phoneNumberWithCountryCode);
                         hashMap.put("country", countryStr);
                         hashMap.put("profileImageUrl", "default");
                         hashMap.put("language", "default");
