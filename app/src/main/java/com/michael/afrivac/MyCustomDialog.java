@@ -22,7 +22,7 @@ public class MyCustomDialog extends DialogFragment {
     public OnInputSelected mOnInputSelected;
 
     //widgets
-    private EditText mInput;
+    private EditText mInput1, mInput2;
     private TextView mActionOk, mActionCancel;
 
     @Nullable
@@ -31,7 +31,8 @@ public class MyCustomDialog extends DialogFragment {
         View view = inflater.inflate(R.layout.dialog_my_custom, container, false);
         mActionOk = view.findViewById(R.id.action_ok);
         mActionCancel = view.findViewById(R.id.action_cancel);
-        mInput = view.findViewById(R.id.input);
+        mInput1 = view.findViewById(R.id.input1);
+        mInput2 = view.findViewById(R.id.input2);
 
         mActionCancel.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -46,14 +47,16 @@ public class MyCustomDialog extends DialogFragment {
             public void onClick(View v) {
                 Log.d(TAG, "onClick: capturing input.");
 
-                String input = mInput.getText().toString();
-                if(!input.equals("")){
+                String input1 = mInput1.getText().toString();
+                String input2 = mInput2.getText().toString();
+                if(!input1.equals("") || !input2.equals("")){
 //
 //                    //Easiest way: just set the value.
 //                    MainFragment fragment = (MainFragment) getActivity().getFragmentManager().findFragmentByTag("MainFragment");
 //                    fragment.mInputDisplay.setText(input);
 
-                    mOnInputSelected.sendInput(input);
+                    mOnInputSelected.sendInput(input1);
+                    mOnInputSelected.sendInput(input2);
                 }
 
 

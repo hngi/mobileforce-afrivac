@@ -8,6 +8,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.snackbar.Snackbar;
 import com.michael.afrivac.MainActivity;
 import com.michael.afrivac.MyCustomDialog;
 import com.michael.afrivac.R;
@@ -29,7 +31,6 @@ public class MemoriesFragment extends Fragment implements MyCustomDialog.OnInput
         mInputDisplay.setText(input);
     }
 
-    private Button mOpenDialog;
     public TextView mInputDisplay;
 
     @Override
@@ -39,12 +40,12 @@ public class MemoriesFragment extends Fragment implements MyCustomDialog.OnInput
         ((MainActivity) requireActivity()).getSupportActionBar().hide();
         View view = inflater.inflate(R.layout.fragment_memories, container, false);
 
-        mOpenDialog = view.findViewById(R.id.open_dialog);
         mInputDisplay = view.findViewById(R.id.input_display);
 
-        mOpenDialog.setOnClickListener(new View.OnClickListener() {
+        FloatingActionButton fab = view.findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View view) {
                 Log.d(TAG, "onClick: opening dialog");
 
                 MyCustomDialog dialog = new MyCustomDialog();
@@ -52,6 +53,17 @@ public class MemoriesFragment extends Fragment implements MyCustomDialog.OnInput
                 dialog.show(getFragmentManager(), "MyCustomDialog");
             }
         });
+//
+//        mOpenDialog.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Log.d(TAG, "onClick: opening dialog");
+//
+//                MyCustomDialog dialog = new MyCustomDialog();
+//                dialog.setTargetFragment(MemoriesFragment.this, 1);
+//                dialog.show(getFragmentManager(), "MyCustomDialog");
+//            }
+//        });
 
 
         return view;
