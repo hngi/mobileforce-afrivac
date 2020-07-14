@@ -140,9 +140,9 @@ public class ContactUsActivity2 extends AppCompatActivity {
             }
 
             String email = ("teamafrivac@gmail.com");
-            String sub = title.getText().toString().trim();
-            String subject = (sub + "\n" + userID );
-            String message = description.getText().toString().trim();
+            String subject = title.getText().toString().trim();
+            String text = description.getText().toString().trim();
+            String message = text + "\n" + userID;
             SendMail sm = new SendMail(this, email, subject, message);
             sm.execute();
 
