@@ -4,6 +4,9 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import java.util.Properties;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -136,10 +139,17 @@ public class ContactUsActivity2 extends AppCompatActivity {
                 descriptionStr = "no detail needed";
             }
 
-            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("mailto:"+"allenkamadje@mgail.com"));
-            intent.putExtra(Intent.EXTRA_SUBJECT, titleStr);
-            intent.putExtra(Intent.EXTRA_TEXT, descriptionStr + "\n" + userID);
-            startActivity(intent);
+            String email = ("teamafrivac@gmail.com");
+            String sub = title.getText().toString().trim();
+            String subject = (sub + "\n" + userID );
+            String message = description.getText().toString().trim();
+            SendMail sm = new SendMail(this, email, subject, message);
+            sm.execute();
+
+//            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("mailto:"+"allenkamadje@mgail.com"));
+//            intent.putExtra(Intent.EXTRA_SUBJECT, titleStr);
+//            intent.putExtra(Intent.EXTRA_TEXT, descriptionStr + "\n" + userID);
+//            startActivity(intent);
 
             HashMap<String, String> hashMap = new HashMap<>();
             hashMap.put("title", titleStr);

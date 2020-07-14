@@ -112,8 +112,8 @@ public class HomeFragment extends Fragment {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
 
-                    String user_name = snapshot.child("username").getValue().toString();
-                    String profile_picture = snapshot.child("profileImageUrl").getValue().toString();
+                    String user_name = (String) snapshot.child("username").getValue();
+                    String profile_picture = (String) snapshot.child("profileImageUrl").getValue();
 //
                     ImageLoader.getInstance().displayImage(profile_picture, profile_image);
 

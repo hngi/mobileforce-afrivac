@@ -74,7 +74,7 @@
             android:layout_height="wrap_content"
             android:textSize="@dimen/dimension_15dp"
             android:textColor="@color/black"
-            android:text="TETLE"
+            android:text="TITLE"
             android:layout_gravity="left"
             android:padding="@dimen/dimension_5dp"
             android:layout_margin="@dimen/dimension_5dp" />
