@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#1C121212</color>
+    <color name="colorPrimaryDark">#f2f6e4</color>
+    <color name="colorAccent">#b0e5f5</color>
+
+    <color name="colorWhite">#FFFFFF</color>
+    <color name="colorGrey">#DEFFFFFF</color>
+    <color name="colorLightGrey">#181818</color>
+    <color name="colorBlack">#FFFFFF</color>
+    <color name="colorBlue">#121212</color>
+    <color name="drawerColor">#121212</color>
+    <color name="aColor">#e0fe9d</color>
+
+    <color name="newColor">#DEFFFFFF</color>
+
+    <color name="stroke">#C4C4C4</color>
+    <color name="textColor">#f6f6f6</color>
+    <color name="roundBtn">#b498e6</color>.
+    <color name="roundBtn2">#121212</color>.
+    <color name="black">#DEFFFFFF</color>
+    <color name="white">#121212</color>
+    <color name="lineColor">#DEFFFFFF</color>
+
+    <color name="ScreenBackground">#2a2821</color>
+    <color name="sub_text_blue">#cadb93</color>
+    <color name="description_color">#f1f1f1</color>
+    <color name="indicator">#e8f8b0</color>
+
+    <color name="linkBlue">#fee284</color>
+
+</resources>
+

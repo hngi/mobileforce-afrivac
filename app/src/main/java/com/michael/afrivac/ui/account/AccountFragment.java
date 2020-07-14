@@ -1,18 +1,25 @@
 package com.michael.afrivac.ui.account;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CompoundButton;
+import android.widget.Switch;
 import android.widget.PopupMenu;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatDelegate;
+import androidx.core.app.AppOpsManagerCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -25,9 +32,13 @@ import com.michael.afrivac.EditAccountInfoActivity;
 import com.michael.afrivac.LanguageHelper;
 import com.michael.afrivac.R;
 import com.michael.afrivac.Util.Helper;
+import com.michael.afrivac.Util.UniversalImageLoader;
 import com.michael.afrivac.WalletPageActivity;
 import com.michael.afrivac.ui.findHotel.FindHotelFragment;
 import com.michael.afrivac.ui.popular_destination.PopularDestinationFragment;
+import com.nostra13.universalimageloader.core.ImageLoader;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class AccountFragment extends Fragment {
 
@@ -36,11 +47,14 @@ public class AccountFragment extends Fragment {
 
     Button editButton;
     TextView gotoLocality, deleteAccount;
+    Switch darkTheme;
 
     // firebase
     FirebaseAuth mAuth;
     DatabaseReference mDatabase;
     String userID;
+
+    CircleImageView profileImage;
 
     // profile widgets
     TextView userCountry, userEmail, userGender, userLanguage, userNumber, username, fullName;
@@ -64,6 +78,39 @@ public class AccountFragment extends Fragment {
         username = root.findViewById(R.id.user_name);
         fullName = root.findViewById(R.id.full_name);
         deleteAccount = root.findViewById(R.id.delete_account);
+        profileImage =  root.findViewById(R.id.profile_image);
+
+        initImageLoader();
+
+        darkTheme = root.findViewById(R.id.dark_theme_switch);
+
+        int currentMode = AppCompatDelegate.getDefaultNightMode();
+
+        if(currentMode == AppCompatDelegate.MODE_NIGHT_YES) {
+            darkTheme.setChecked(true);
+        } else {
+            darkTheme.setChecked(false);
+        }
+
+
+        darkTheme.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+//                SharedPreferences sharedPreferences = getActivity().getPreferences(Context.MODE_PRIVATE);
+//                SharedPreferences.Editor editor = sharedPreferences.edit();
+                if(isChecked) {
+                    Log.d("AccountFragment", "Here we go");
+//                    editor.putBoolean("SwitchState", true);
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+                    restartActivity();
+                } else {
+//                    editor.putBoolean("SwitchState", true);
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+                    restartActivity();
+                }
+//                editor.apply();
+            }
+        });
 
 
         myWallet =root.findViewById(R.id.my_wallet_text);
@@ -124,6 +171,9 @@ public class AccountFragment extends Fragment {
                 String user_language = (String) snapshot.child("language").getValue();
                 String user_number = (String) snapshot.child("number").getValue();
                 String user_country = (String) snapshot.child("country").getValue();
+                String profile_picture = snapshot.child("profileImageUrl").getValue().toString();
+
+                ImageLoader.getInstance().displayImage(profile_picture, profileImage);
 
                 fullName.setText(user_name);
                 if(user_name != null) {
@@ -175,5 +225,18 @@ public class AccountFragment extends Fragment {
 
 
         return root;
+    }
+
+    private void restartActivity() {
+        Intent intent = getActivity().getIntent();
+        getActivity().finish();
+        startActivity(intent);
+    }
+    /**
+     * init universal image loader
+     */
+    private void initImageLoader(){
+        UniversalImageLoader imageLoader = new UniversalImageLoader(getContext());
+        ImageLoader.getInstance().init(imageLoader.getConfig());
     }
 }

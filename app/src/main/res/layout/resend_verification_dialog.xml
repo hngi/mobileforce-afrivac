@@ -9,13 +9,13 @@
 
 
     <TextView
+        android:id="@+id/dialogTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/resend_verification_email"
-        android:textSize="21sp"
         android:layout_gravity="center_horizontal"
+        android:text="@string/resend_verification_code"
         android:textColor="@color/black"
-        android:id="@+id/dialogTitle"/>
+        android:textSize="21sp" />
 
     <EditText
         android:layout_width="match_parent"

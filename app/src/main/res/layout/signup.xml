@@ -103,16 +103,37 @@
         android:text="@string/phone"
         android:textColor="@color/black" />
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="37dp"
+        android:layout_marginEnd="37dp"
+        android:orientation="horizontal">
+
+    <com.hbb20.CountryCodePicker
+        android:id="@+id/ccp"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:layout_gravity="center"/>
+
     <EditText
         android:id="@+id/phone"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="@dimen/dimension_40dp"
-        android:layout_marginStart="@dimen/dimension_37dp"
-        android:layout_marginEnd="@dimen/dimension_37dp"
         android:paddingStart="@dimen/dimension_10dp"
         android:paddingEnd="@dimen/dimension_10dp"
         android:background="@drawable/circular_drawable01"
-        android:inputType="phone" />
+        android:inputType="phone"
+        android:layout_weight="6"
+        android:layout_gravity="center"/>
+    </LinearLayout>
+        android:layout_marginStart="@dimen/dimension_37dp"
+        android:layout_marginEnd="@dimen/dimension_37dp"
+        android:background="@drawable/circular_drawable01"
+        android:inputType="phone"
+        android:paddingStart="@dimen/dimension_10dp"
+        android:paddingEnd="@dimen/dimension_10dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -194,13 +215,20 @@
             android:gravity="center" />
 
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
             android:fontFamily="@font/poppins_light"
             android:text="@string/terms"
-            android:textSize="@dimen/dimension_12sp"
-            android:layout_gravity="center_vertical"
-            />
+            android:textSize="@dimen/dimension_12sp" />
+
+        <TextView
+            android:id="@+id/termsAndConditions"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="Terms and Conditions"
+            android:textColor="#FC0E60C5" />
 
     </LinearLayout>
 
@@ -214,8 +242,8 @@
         android:background="@drawable/curve"
         android:fontFamily="@font/poppins_light"
         android:text="@string/signUp"
-        android:textColor="@android:color/white"
         android:textAllCaps="false"
+        android:textColor="@android:color/white"
         android:textSize="@dimen/dimension_18sp"
         android:textStyle="bold" />
 
