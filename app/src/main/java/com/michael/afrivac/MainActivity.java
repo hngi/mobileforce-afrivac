@@ -1,11 +1,18 @@
 package com.michael.afrivac;
 
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
+import androidx.appcompat.app.AppCompatDelegate;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
+import com.google.firebase.auth.FirebaseUser;
+import com.michael.afrivac.Util.Helper;
 import com.michael.afrivac.ui.account.AccountFragment;
 import com.michael.afrivac.ui.findHotel.FindHotelFragment;
 import com.michael.afrivac.ui.home.HomeFragment;
@@ -13,6 +20,7 @@ import com.michael.afrivac.ui.popular_destination.PopularDestinationFragment;
 import com.michael.afrivac.ui.support.SupportFragment;
 import com.google.firebase.auth.FirebaseAuth;
 
+import android.os.Handler;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
@@ -27,6 +35,7 @@ import com.google.android.material.navigation.NavigationView;
 import androidx.drawerlayout.widget.DrawerLayout;*/
 
 import androidx.annotation.NonNull;
+import androidx.cardview.*;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -46,8 +55,12 @@ import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
+    //creating fragment object
+    Fragment fragment = null;
+
     private AppBarConfiguration mAppBarConfiguration;
     private ActionBarDrawerToggle toggle;
+    private Helper helper;
     FirebaseAuth mAuth;
     Toolbar toolbar;
 
@@ -66,7 +79,20 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
+        //helper class
+        helper = new Helper();
+
         displaySelectedScreen(R.id.nav_home);
+
+        //Dark mode
+//        SharedPreferences sharedPreferences = getPreferences(Context.MODE_PRIVATE);
+//
+//        boolean isNightMode = sharedPreferences.getBoolean("SwitchState", false);
+//        if (isNightMode) {
+//            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+//        } else {
+//            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+//        }
 
         mAuth = FirebaseAuth.getInstance();
 
@@ -78,10 +104,22 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 //                        .setAction("Action", null).show();
 //            }
 //        });
+         drawer = findViewById(R.id.drawer_layout);
+         navigationView = findViewById(R.id.nav_view);
 //        drawer = findViewById(R.id.drawer_layout);
 //        navigationView = findViewById(R.id.nav_view);
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
+        /*mAppBarConfiguration = new AppBarConfiguration.Builder(
+                R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow,
+                R.id.nav_tools, R.id.nav_share, R.id.nav_send,
+                R.id.nav_popular_destination)
+                .setDrawerLayout(drawer)
+                .build();
+        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
+        NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
+        NavigationUI.setupWithNavController(navigationView, navController);
+
 //        mAppBarConfiguration = new AppBarConfiguration.Builder(
 //                R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow,
 //                R.id.nav_tools, R.id.nav_share, R.id.nav_send)
@@ -104,15 +142,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 //                drawer.closeDrawer(GravityCompat.START);
 //                return true;
 //            }
-//        });
+          });*/
     }
 
 
     private void logout() {
         FirebaseAuth.getInstance().signOut();
-        Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        startActivity(intent);
+        helper.gotoLoginAcitivity(this);
+        finish();
     }
 
     @Override
@@ -122,6 +159,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         return true;
     }
 
+    boolean doubleBackToExitPressedOnce = false;
 
     @Override
     public void onBackPressed() {
@@ -129,9 +167,65 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
-            super.onBackPressed();
+            //get the home fragment
+            fragment = getSupportFragmentManager().findFragmentByTag("HomeFragment");
+            if(fragment != null && fragment.isVisible()){
+                if(doubleBackToExitPressedOnce){
+                    new AlertDialog.Builder(this)
+                            .setIcon(R.drawable.logo_black)
+                            .setTitle(getString(R.string.exit))
+                            .setMessage(getString(R.string.exit_sure))
+                            .setPositiveButton(getString(R.string.yes), new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                    finish();
+                                }
+                            })
+                            .setNegativeButton(getString(R.string.no), new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                    //Toast.makeText(MainActivity.this, "Welcome back", Toast.LENGTH_SHORT).show();
+                                }
+                            })
+                            .show();
+                    /*super.onBackPressed();
+                    return;*/
+                }
+                //if user back pressed once
+                if(doubleBackToExitPressedOnce == false){
+                    this.doubleBackToExitPressedOnce = true;
+                    helper.toastMessage(this, getString(R.string.reclick));
+                }
+
+                //delay to clear the double back pressed to false
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        doubleBackToExitPressedOnce = false;
+                    }
+                }, 2000);
+            }else {
+                reLoadMainActivity();
+            }
+           //super.onBackPressed();
         }
     }
+
+    public void reLoadMainActivity(){
+        startActivity(new Intent(this, MainActivity.class));
+        finish();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        if(currentUser == null){
+            helper.gotoLoginAcitivity(this);
+        }
+
+    }
+
 
 //    @Override
 //    public boolean onSupportNavigateUp() {
@@ -150,25 +244,29 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     private void displaySelectedScreen(int itemId) {
 
-        //creating fragment object
-        Fragment fragment = null;
-
+        //string tag for fragment object
+        String fragment_tag = null;
         //initializing the fragment object which is selected
         switch (itemId) {
             case R.id.nav_home:
                 fragment = new HomeFragment();
+                fragment_tag = "HomeFragment";
                 break;
             case R.id.nav_account:
                 fragment = new AccountFragment();
+                fragment_tag = "AccountFragment";
                 break;
             case R.id.nav_destination:
                 fragment = new PopularDestinationFragment();
+                fragment_tag = "PopularDestinationFragment";
                 break;
             case R.id.nav_hotel:
                 fragment = new FindHotelFragment();
+                fragment_tag = "FindHotelFragment";
                 break;
             case R.id.nav_support:
                 fragment = new SupportFragment();
+                fragment_tag = "SupportFragment";
                 break;
             case R.id.nav_logout:
                 logout();
@@ -178,7 +276,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         //replacing the fragment
         if (fragment != null) {
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-            ft.replace(R.id.nav_host_fragment, fragment);
+            ft.replace(R.id.nav_host_fragment, fragment, fragment_tag);
             ft.commit();
         }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -194,42 +292,23 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         return true;
     }
 
+    //one of these methods is called when the user select of the change language menu item
+    //it in turn calls the LanguageHelper.changeLocale class
+    //and the LanguageHelper.storeUserLanguage method to save the language so it doesn't go back to default when the app is reopened
+    public void setSpanish(MenuItem item) {
+        LanguageHelper.changeLocale(this.getResources(), "es");
+        LanguageHelper.storeUserLanguage(this, "es");
+        reLoadMainActivity();
+    }
+    public void setFrench(MenuItem item) {
+        LanguageHelper.changeLocale(this.getResources(), "fr");
+        LanguageHelper.storeUserLanguage(this, "fr");
+        reLoadMainActivity();
+    }
+    public void setEnglish(MenuItem item) {
+        LanguageHelper.changeLocale(this.getResources(), "default");
+        LanguageHelper.storeUserLanguage(this, "default");
+        reLoadMainActivity();
+    }
+
 }
-
- /*   public void convertCurrency(View view){
-    EditText editText = (EditText) findViewById(R.id.edtText);
-    int currency = Integer.parseInt(editText.getText().toString());
-    double result;
-
-    private AppBarConfiguration mAppBarConfiguration;
-
-    switch (currency){
-    case 1: //Dollar to Naira
-    double dollar = 360;
-    result = currency * dollar;
-    break;
-    case 2: //Pounds to Naira
-    double pounds = 450;
-    result = currency * pounds;
-    break;
-
-    default:
-    throw new IllegalStateException("Unexpected value: " + currency);
-    }
-
-    Toast.makeText(MainActivity.this, Double.toString(result), Toast.LENGTH_LONG).show();
-    }*/
-
- /*
-
-
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
-        return true;
-    }
-
-
-  */

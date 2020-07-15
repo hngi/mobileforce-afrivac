@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="345dp"
+    android:layout_height="90dp"
+    android:layout_marginStart="25dp"
+    android:layout_marginTop="12dp"
+    android:layout_marginEnd="@dimen/dimension_20dp"
+    android:layout_marginBottom="@dimen/dimension_10dp"
+    app:cardBackgroundColor="@color/white"
+    app:cardCornerRadius="10dp"
+    android:elevation="10dp"
+    app:cardPreventCornerOverlap="true"
+    app:cardUseCompatPadding="false">
+
+
+    <ImageView
+        android:id="@+id/hotelImage"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:scaleType="centerCrop"
+        tools:srcCompat="@drawable/tree" />
+
+    <ImageButton
+        android:id="@+id/favoriteIcon"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:layout_alignParentEnd="true"
+        android:layout_gravity="right"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="21dp"
+        android:background="@null"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_favorite_border_black_24dp" />
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="100dp">
+
+        <TextView
+            android:id="@+id/hotel_name_tv"
+            android:layout_width="193dp"
+            android:layout_height="21dp"
+            android:fontFamily="@font/poppins_regular"
+            android:text="The Cocoon Luxury Suites"
+            android:textColor="@color/colorBlack"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/nameTxt2"
+            android:layout_width="40dp"
+            android:layout_height="17dp"
+            android:fontFamily="@font/poppins"
+            android:layout_below="@id/hotel_name_tv"
+            tools:text="Ilupeju,"
+            android:textColor="@color/colorBlue"
+            android:textSize="11sp"
+            tools:ignore="SmallSp" />
+
+        <TextView
+            android:id="@+id/town_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins"
+            android:textColor="@color/colorBlue"
+            android:layout_toEndOf="@id/nameTxt2"
+            android:layout_below="@id/hotel_name_tv"
+            tools:text="Lagos"
+            android:textSize="11sp"
+            tools:ignore="SmallSp" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="15dp"
+        android:orientation="vertical">
+
+
+        <ImageView
+            android:id="@+id/icon1"
+            android:layout_width="157dp"
+            android:layout_height="23dp"
+            android:paddingStart="5dp"
+            android:paddingEnd="10dp"
+            android:src="@drawable/frame"
+            android:contentDescription="@string/bedIcon" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="5dp"
+        android:orientation="horizontal">
+
+        <RatingBar
+            android:id="@+id/ratingBar"
+            style="?android:attr/ratingBarStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:isIndicator="true"
+            android:numStars="5"
+            android:stepSize="0.1" />
+
+
+        <TextView
+            android:id="@+id/ratingNumber"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:layout_marginStart="3dp"
+            android:fontFamily="@font/poppins_semibold"
+            android:textColor="@color/textColor"
+            android:textSize="11sp"
+            tools:text="4.1" />
+
+        <TextView
+            android:id="@+id/numberRate"
+            android:layout_width="46dp"
+            android:layout_height="15dp"
+            android:layout_marginStart="4dp"
+            android:layout_weight="0"
+            android:fontFamily="@font/poppins_regular"
+            android:textColor="@color/textColor"
+            android:textSize="11sp"
+            tools:text="(2,731)" />
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

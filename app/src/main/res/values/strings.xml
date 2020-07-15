@@ -1,12 +1,40 @@
-<resources >
-<string name="app_name">AfriVac</string>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <string name="flight_prompt">Flight Type</string>
+    <string name="no_travellers_prompt">Number Of Travellers</string>
+
+    <string-array name="flightType">
+        <item>Economy</item>
+        
+        <item>First Class</item>
+    </string-array>
+
+    <string-array name="numberOfTravelers">
+        <item>1 Traveller</item>
+        <item>2 Travellers</item>
+        <item>3 Travellers</item>
+    </string-array>
+    <string name="mywallet">My Wallet</string>
+
+
+    <string name="app_name">AfriVac</string>
     <!-- TODO: Remove or change this placeholder text -->
+    <string name="hotelName">Cocoon Hotel</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="pay_pal">Pay Pal</string>
+    <string name="credit_debit">Credit/Debit</string>
+    <string name="lastDigits">The last 3 digits at the back of your card</string>
+    <string name="save_details">Save Details</string>
+    <string name="secure_payment">This a secure ssl encrypted payment </string>
+    <string name="paymentmethod">Payment Method</string>
+    <string name="do_you_want_to_delete" translatable="false">Please confirm that you want to delete your account.</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="azeez_adeleke">Azeez Adeleke</string>
+    <string name="reset">Reset</string>
+    <string name="azeez_adeleke" translatable="false">Azeez Adeleke</string>
     <string name="my_account">My Account</string>
-    <string name="nigeria">Nigeria</string>
+    <string name="nigeria" translatable="false">Nigeria</string>
     <string name="username">Username</string>
-    <string name="email">Email</string>
+    <string name="email" translatable="false">Email</string>
     <string name="phone">Phone</string>
     <string name="country">Country</string>
     <string name="gender">Gender</string>
@@ -17,20 +45,20 @@
     <string name="password">Password</string>
     <string name="user_image">User image</string>
     <string name="edit_profile">Edit Profile</string>
-    <string name="_234_8012345678">+234 8012345678</string>
+    <string name="_234_8012345678" translatable="false">+234 8012345678</string>
     <string name="back_arrow">back arrow</string>
-    <string name="azeez_hng_com">Azeez@hng.com</string>
+    <string name="azeez_hng_com" translatable="false">Azeez@hng.com</string>
     <string name="male">Male</string>
     <string name="english">English</string>
-    <string name="hidden_password">********</string>
-    <string name="apps_logo">logo</string>
+    <string name="hidden_password" translatable="false">********</string>
+    <string name="apps_logo" translatable="false">logo</string>
     <string name="subtittle">subtittle</string>
     <string name="title">title</string>
-    <string name="title_activity_main3">Main3Activity</string>
-    <string name="navigation_drawer_open">Open</string>
-    <string name="navigation_drawer_close">Close</string>
-    <string name="nav_header_title">Android Studio</string>
-    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="title_activity_main3" translatable="false">Main3Activity</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title" translatable="false">Android Studio</string>
+    <string name="nav_header_subtitle" translatable="false">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="menu_home">Home</string>
     <string name="menu_gallery">Gallery</string>
@@ -45,7 +73,6 @@
     <string name="support">Support</string>
     <string name="find_hotel">Find Hotel</string>
     <string name="completeBooking">Complete your booking at cocoon luxury</string>
-    <string name="hotelName">Cocoon Hotel</string>
     <string name="checkInDetails">Check-in Details</string>
     <string name="checkIn">Check-in</string>
     <string name="checkOut">Check-out</string>
@@ -64,30 +91,93 @@
     <string name="additionalInfo">Enter any additional request/information</string>
     <string name="reserveFor">I\'m making the reservation on behalf of someone else</string>
     <string name="cab">Yes, I\'d like a cab service as well</string>
-    <string name="pay">Pay Now</string>
+    <string name="payNow">Pay Now</string>
     <string name="or">OR</string>
     <string name="payLater">Pay at Hotel</string>
     <string name="line">A line</string>
-    <string name="sign_in_with_google">Sign in with Google</string>
-    <string name="cocoon_hotel">Cocoon Hotel</string>
+    <string name="cocoon_hotel" translatable="false">Cocoon Hotel</string>
     <string name="confirmation">Confirmation</string>
     <string name="room_type">Room Type</string>
     <string name="deluxe_rooms">Deluxe Rooms</string>
     <string name="guest">Guest</string>
     <string name="_2_adults">2 Adults</string>
     <string name="night">Night</string>
-    <string name="check_in">Check-in</string>
-    <string name="check_out">Check-out</string>
     <string name="fri_19_june_2020">Fri 19 June 2020</string>
-    <string name="_96_78">(96** **** *** 78)</string>
-    <string name="n12_000">N12,000</string>
+    <string name="_96_78" translatable="false">(96** **** *** 78)</string>
+    <string name="n12_000" translatable="false">N12,000</string>
     <string name="edit_room_details">Edit Room Details</string>
     <string name="sat_19_june_2020">Sat 19 June 2020</string>
+    <string name="discover_africa">Discover Africa</string>
+    <string name="greeting" translatable="false">Hi Adeleke, <b>Where will you like to go</b></string>
+    <string name="cairoDescription">The desert heat, the noisy streets and the sheer size of Cairo will leave even the most adaptable traveler with a serious case of culture shock </string>
+    <string name="mauritius">Santoroni is the world best blue shining city. every year lot of traveler visited here</string>
+    <string name="s_o_tom_e" translatable="false">São Tomé e</string>
+    <string name="hi_adeleke">Hi Adeleke,</string>
+    <string name="where_will_you_like_to_go">where will you like to go</string>
+    <string name="submit">Submit</string>
+    <string name="newpassword">New Password</string>
+    <string name="confirmpassword">Confirm Password</string>
+    <string name="forgotPassword">Forgot Password?  -</string>
+    <string name="overview">Overview</string>
+    <string name="viewAll">View All</string>
+    <string name="hotels">Hotels</string>
+    <string name="WhatToDoInEgypt">What to do in Egypt</string>
+    <string name="pyramidOfGaza">Pyramid of Gaza</string>
+    <string name="egyptianMusuem">Synix Egyptian Museum</string>
+    <string name="flightDetails">Flight Details</string>
+    <string name="from">From</string>
+    <string name="destination" translatable="false">Cairo, International CAI</string>
+    <string name="oneWay">One Way</string>
+    <string name="roundTrip">Round Trip</string>
+    <string name="depart">Depart</string>
+    <string name="returning">Return</string>
+    <string name="economy">Economy</string>
+    <string name="traveller">Traveller</string>
+    <string name="findFlight">Find Flight</string>
+    <string name="welcomeBack">Welcome Back</string>
+    <string name="clickHere">Click here</string>
+    <string name="signInGoogle">Sign in with Google</string>
+    <string name="signInFacebook">Sign in with Facebook</string>
+    <string name="signIn">Sign In</string>
+    <string name="dontHaveAccount">Don\'t have an account?</string>
+    <string name="signUp">Sign Up</string>
+    <string name="getStarted">Get Started</string>
+    <string name="aNewWay">A new way  to Travel</string>
+    <string name="introText" translatable="false">lorem ispum dolor sit amet, \nconsectetur adipiscing eiit</string>
+    <string name="one" translatable="false">01</string>
+    <string name="payment">Payment</string>
+    <string name="paymentMethod">Pay Later</string>
+    <string name="paypal" translatable="false">PayPal</string>
+    <string name="creditDebit">Credit/Debit</string>
+    <string name="myWallet">My Wallet</string>
+    <string name="cardNumber">Card Number</string>
+    <string name="hiddenCardNumber" translatable="false">**** **** **** ****</string>
+    <string name="cvv" translatable="false">CVV*</string>
+    <string name="monthYear">Month / Year</string>
+    <string name="cvvHint" translatable="false">***</string>
+    <string name="proceedToConfirm">Proceed to Confirm</string>
+    <string name="validUntil">Valid until</string>
+    <string name="securePayment">This is a secure SSL encrypted payment</string>
+    <string name="room">Room</string>
+    <string name="figure1" translatable="false">1</string>
+    <string name="total">Total</string>
+    <string name="pay">Pay</string>
+    <string name="visitWhere">Hi Adeleke,  Where would you like to visit?</string>
+    <string name="discoverAfrica">Discover Africa</string>
+    <string name="cairo">Cairo</string>
+    <string name="egypt">Egypt</string>
+    <string name="kenya" translatable="false">Kenya</string>
+    <string name="destinationInfo" translatable="false">Lorem ipsum dolor fhdhjdkdkk fnfnnf\nwhhhffffkkfkfffsjssjnsjj\nywyoufhfhhffffywyey</string>
+    <string name="_4_1" translatable="false">4.1</string>
+    <string name="_2_731" translatable="false">(2,731)</string>
+    <string name="confirmPassword">Confirm Password</string>
+    <string name="readAndAgreed">I have read and agreed to</string>
+    <string name="terms_and_agreement">Terms and agreement</string>
+    <string name="existingAccount">Already have an account?</string>
     <string name="enter_your_message">Enter your message</string>
     <string name="contact_us">Contact us</string>
     <string name="arrow_down">arrow down</string>
     <string name="back_arrow_button">back arrow button</string>
-    <string name="support_text">Support</string>
     <string name="describe_issues">Describe your issue</string>
     <string name="frequently_asked_questions">Frequently asked questions</string>
     <string name="need_more_help">Need more help?</string>
@@ -95,4 +185,331 @@
     <string name="feedback">Send feedback</string>
     <string name="terms_and_conditions">Terms and conditions</string>
     <string name="find_hotel_text">Find Hotel</string>
+    <string name="card_name">Card Name</string>
+    <string name="enter_email">Please enter your valid email</string>
+    <string name="enter_email2">Please check your email for reset link</string>
+    <string name="error">Error Occurred</string>
+    <string name="authFailed">Authentication failed…</string>
+    <string name="netError">network error</string>
+    <string name="userId">user ID is: </string>
+    <string name="two" translatable="false">02</string>
+    <string name="delete_my_account">Delete My Account</string>
+    <string name="my_destination">My Destination</string>
+    <string name="my_wallet">My Wallet</string>
+    <string name="add_a_photo">Add a photo</string>
+    <string name="location">Location</string>
+    <string name="while_using">While Using</string>
+    <string name="push_notification">Push Notification</string>
+    <string name="two_step_verification">Two-Step Verification</string>
+    <string name="enabled">Enabled</string>
+    <string name="near_me">Find Hotels Near Me</string>
+    <string name="name1" translatable="false">BW StarFire </string>
+    <string name="name2">Victoria island, Lagos</string>
+    <string name="camel_photo">camel_photo</string>
+    <string name="nairobi" translatable="false">Nairobi</string>
+    <string name="rating" translatable="false">4.1</string>
+    <string name="rating_votes" translatable="false">(2,731)</string>
+    <string name="capetown" translatable="false">Capetown</string>
+    <string name="south_africa" translatable="false">South Africa</string>
+    <string name="country_saotome" translatable="false">São Tomé e</string>
+    <string name="guinea" translatable="false">Guinea</string>
+    <string name="salute_message">Hi Adeleke \nwhere would you like to visit</string>
+    <string name="home_page_top_message">Hi Adeleke,  where will you like to vist?</string>
+    <string name="find_destination">Find Destination</string>
+    <string name="popular_destinations">Popular Destinations</string>
+    <string name="descriptive_text">The desert heat, the noisy streets and the sheer size of Cairo will leave even the most adaptable traveler with a serious case of culture shock</string>
+    <string name="mauritus_text" translatable="false">Mauritus</string>
+    <string name="madagascar_text" translatable="false">Madagascar</string>
+    <string name="mauritus_descriptive_text">Santoroni is the world best blue shining city. every year lot of travelers visited here</string>
+    <string name="rate_4_1" translatable="false">4.1</string>
+    <string name="reviewa_2_731" translatable="false">(2,731)</string>
+    <string name="cape_town_description">Santoroni is the world best blue shining city. every year lot of travler visited here</string>
+    <string name="phoneNumb" translatable="false">+234 7061815056</string>
+    <string name="saveProf">Save Changes</string>
+    <string name="placedesc">An image of a city</string>
+    <string name="star">A star</string>
+    <string name="registration">REGISTRATION</string>
+    <string name="terms">I have read and agreed to </string>
+    <string name="recover_email_text">"Enter the email address regsitered with your afrivac account "</string>
+    <string name="verification_code_text">we just sent a verification code to dele******1@gmail.com</string>
+    <string name="enter_verification_code">Enter Verification Code</string>
+    <string name="resend">Resend</string>
+
+    <string name="noverificationcode" translatable="false">Didn’t Receive a verification code?</string>
+    <string name="resend_" translatable="false">Resend</string>
+    <string name="didn_t_receive_a_verification_code" translatable="false">Didn\'t Receive a verification code?</string>
+
+    <string name="rooms_can_b" translatable="false">Rooms can be cancelled up to 48 hours before\ncheck in</string>
+    <string name="free_breakfast" translatable="false">Free Breakfast</string>
+    <string name="room_service" translatable="false">Room Service</string>
+    <string name="hot_tub" translatable="false">Hot Tub</string>
+    <string name="free_wifi" translatable="false">Free Wifi</string>
+    <string name="bedroom_image" translatable="false">bedroom Image</string>
+    <string name="check_in" translatable="false">Check-in:</string>
+    <string name="check_out" translatable="false">Check-out:</string>
+
+    <string name="check_in_out_time" translatable="false">12pm - 11pm</string>
+    <string name="book_btn_txt">Book Now</string>
+    <string name="per_night">/per night</string>
+    <string name="cancellation_policy">Cancellation policy</string>
+    <string name="load_image">load image</string>
+    <string name="save_favourite">save favourite</string>
+    <string name="cancel">Cancel</string>
+    <string name="confirm">confirm</string>
+    <string name="dark_theme" tools:ignore="MissingTranslation">Dark theme</string>
+    <string name="facebook_app_id" tools:ignore="MissingTranslation">679665662612042</string>
+    <string name="fb_login_protocol_scheme" tools:ignore="MissingTranslation">fb679665662612042</string>
+
+    <string name="reclick">Please click back again to exit</string>
+    <string name="exit_sure">Are you sure you want to exit AfriVac?</string>
+    <string name="no">No</string>
+    <string name="yes">Yes</string>
+    <string name="exit">Exit App?</string>
+    <string name="hi">"Hi "</string>
+    <string name="visit">,\nwhere would you like to visit?</string>
+    <string name="good_morning">"Good morning "</string>
+    <string name="good_afternoon">"Good afternoon "</string>
+    <string name="good_evening">"Good evening "</string>
+    <string name="good_night">"Good night "</string>
+    <string name="see_you">,\nsee you again in the morning</string>
+    <string name="upload_from_camera" tools:ignore="MissingTranslation">Upload from Camera</string>
+    <string name="select_a_photo_from_your_device" tools:ignore="MissingTranslation">Select a photo from your device</string>
+    <string name="resend_verification_code">Resend Verification Code</string>
+    <string name="french">French</string>
+    <string name="spanish">Spanish</string>
+    <string-array name="languages">
+        <item>English</item>
+        <item>France</item>
+        <item>Spanish</item>
+    </string-array>
+
+    <string-array name="countries" formatted="false" translatable="false">
+        <item>Afghanistan</item>
+        <item>Albania</item>
+        <item>Algeria</item>
+        <item>American Samoa</item>
+        <item>Andorra</item>
+        <item>Angola</item>
+        <item>Antigua and Barbuda</item>
+        <item>Argentina</item>
+        <item>Armenia</item>
+        <item>Aruba</item>
+        <item>Australia</item>
+        <item>Austria</item>
+        <item>Azerbaijan</item>
+        <item>Bahamas</item>
+        <item>Bahrain</item>
+        <item>Bangladesh</item>
+        <item>Barbados</item>
+        <item>Belarus</item>
+        <item>Belgium</item>
+        <item>Belize</item>
+        <item>Benin</item>
+        <item>Bermuda</item>
+        <item>Bhutan</item>
+        <item>Bolivia</item>
+        <item>Bosnia and Herzegovina</item>
+        <item>Botswana</item>
+        <item>Brazil</item>
+        <item>British Virgin Islands</item>
+        <item>Brunei</item>
+        <item>Bulgaria</item>
+        <item>Burkina Faso</item>
+        <item>Burundi</item>
+        <item>Cambodia</item>
+        <item>Cameroon</item>
+        <item>Canada</item>
+        <item>Canary Islands</item>
+        <item>Cape Verde</item>
+        <item>Cayman Islands</item>
+        <item>Central African Republic</item>
+        <item>Ceuta and Melilla</item>
+        <item>Chad</item>
+        <item>Chile</item>
+        <item>China</item>
+        <item>Colombia</item>
+        <item>Comoros</item>
+        <item>Congo [DRC]</item>
+        <item>Congo [Republic]</item>
+        <item>Costa Rica</item>
+        <item>Croatia</item>
+        <item>Cuba</item>
+        <item>Curaçao</item>
+        <item>Cyprus</item>
+        <item>Czech Republic</item>
+        <item>Côte d’Ivoire</item>
+        <item>Denmark</item>
+        <item>Djibouti</item>
+        <item>Dominica</item>
+        <item>Dominican Republic</item>
+        <item>Ecuador</item>
+        <item>Egypt</item>
+        <item>El Salvador</item>
+        <item>Equatorial Guinea</item>
+        <item>Eritrea</item>
+        <item>Estonia</item>
+        <item>Ethiopia</item>
+        <item>Europe</item>
+        <item>Faroe Islands</item>
+        <item>Fiji</item>
+        <item>Finland</item>
+        <item>France</item>
+        <item>French Guiana</item>
+        <item>French Polynesia</item>
+        <item>Gabon</item>
+        <item>Gambia</item>
+        <item>Georgia</item>
+        <item>Germany</item>
+        <item>Ghana</item>
+        <item>Gibraltar</item>
+        <item>Greece</item>
+        <item>Greenland</item>
+        <item>Grenada</item>
+        <item>Guadeloupe</item>
+        <item>Guam</item>
+        <item>Guatemala</item>
+        <item>Guernsey</item>
+        <item>Guinea</item>
+        <item>Guinea-Bissau</item>
+        <item>Guyana</item>
+        <item>Haiti</item>
+        <item>Honduras</item>
+        <item>Hong Kong</item>
+        <item>Hungary</item>
+        <item>Iceland</item>
+        <item>India</item>
+        <item>Indonesia</item>
+        <item>Iran</item>
+        <item>Iraq</item>
+        <item>Ireland</item>
+        <item>Isle of Man</item>
+        <item>Israel</item>
+        <item>Italy</item>
+        <item>Jamaica</item>
+        <item>Japan</item>
+        <item>Jersey</item>
+        <item>Jordan</item>
+        <item>Kazakhstan</item>
+        <item>Kenya</item>
+        <item>Kiribati</item>
+        <item>Kuwait</item>
+        <item>Kyrgyzstan</item>
+        <item>Laos</item>
+        <item>Latin America</item>
+        <item>Latvia</item>
+        <item>Lebanon</item>
+        <item>Lesotho</item>
+        <item>Liberia</item>
+        <item>Libya</item>
+        <item>Liechtenstein</item>
+        <item>Lithuania</item>
+        <item>Luxembourg</item>
+        <item>Macau</item>
+        <item>Macedonia [FYROM]</item>
+        <item>Madagascar</item>
+        <item>Malawi</item>
+        <item>Malaysia</item>
+        <item>Mali</item>
+        <item>Malta</item>
+        <item>Marshall Islands</item>
+        <item>Martinique</item>
+        <item>Mauritania</item>
+        <item>Mauritius</item>
+        <item>Mayotte</item>
+        <item>Mexico</item>
+        <item>Micronesia</item>
+        <item>Moldova</item>
+        <item>Monaco</item>
+        <item>Mongolia</item>
+        <item>Montenegro</item>
+        <item>Morocco</item>
+        <item>Mozambique</item>
+        <item>Myanmar [Burma]</item>
+        <item>Namibia</item>
+        <item>Nepal</item>
+        <item>Netherlands</item>
+        <item>New Caledonia</item>
+        <item>New Zealand</item>
+        <item>Nicaragua</item>
+        <item>Niger</item>
+        <item>Nigeria</item>
+        <item>North Korea</item>
+        <item>Northern Mariana Islands</item>
+        <item>Norway</item>
+        <item>Oman</item>
+        <item>Pakistan</item>
+        <item>Palau</item>
+        <item>Palestine</item>
+        <item>Panama</item>
+        <item>Papua New Guinea</item>
+        <item>Paraguay</item>
+        <item>Peru</item>
+        <item>Philippines</item>
+        <item>Poland</item>
+        <item>Portugal</item>
+        <item>Puerto Rico</item>
+        <item>Qatar</item>
+        <item>Romania</item>
+        <item>Russia</item>
+        <item>Rwanda</item>
+        <item>Réunion</item>
+        <item>Saint Barthélemy</item>
+        <item>Saint Kitts and Nevis</item>
+        <item>Saint Lucia</item>
+        <item>Saint Martin</item>
+        <item>Saint Vincent and the Grenadines</item>
+        <item>Samoa</item>
+        <item>San Marino</item>
+        <item>Saudi Arabia</item>
+        <item>Senegal</item>
+        <item>Serbia</item>
+        <item>Seychelles</item>
+        <item>Sierra Leone</item>
+        <item>Singapore</item>
+        <item>Sint Maarten</item>
+        <item>Slovakia</item>
+        <item>Slovenia</item>
+        <item>Solomon Islands</item>
+        <item>Somalia</item>
+        <item>South Africa</item>
+        <item>South Korea</item>
+        <item>South Sudan</item>
+        <item>Spain</item>
+        <item>Sri Lanka</item>
+        <item>Sudan</item>
+        <item>Suriname</item>
+        <item>Swaziland</item>
+        <item>Sweden</item>
+        <item>Switzerland</item>
+        <item>Syria</item>
+        <item>São Tomé and Príncipe</item>
+        <item>Taiwan</item>
+        <item>Tanzania</item>
+        <item>Thailand</item>
+        <item>Timor-Leste</item>
+        <item>Togo</item>
+        <item>Tonga</item>
+        <item>Trinidad and Tobago</item>
+        <item>Tunisia</item>
+        <item>Turkey</item>
+        <item>Turks and Caicos Islands</item>
+        <item>U.S. Outlying Islands</item>
+        <item>U.S. Virgin Islands</item>
+        <item>Uganda</item>
+        <item>Ukraine</item>
+        <item>United Arab Emirates</item>
+        <item>United Kingdom</item>
+        <item>United States</item>
+        <item>Uruguay</item>
+        <item>Uzbekistan</item>
+        <item>Vanuatu</item>
+        <item>Venezuela</item>
+        <item>Vietnam</item>
+        <item>Western Sahara</item>
+        <item>Yemen</item>
+        <item>Zambia</item>
+        <item>Zimbabwe</item>
+        <item>Åland Islands</item>
+    </string-array>
+
 </resources>
