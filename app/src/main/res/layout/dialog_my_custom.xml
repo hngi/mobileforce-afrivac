@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ffffff">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/dialog">
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="300dp"
         android:padding="10dp"
         android:orientation="vertical">
 
@@ -16,37 +16,48 @@
             android:layout_height="wrap_content"
             android:text="Create a Memory"
             android:textSize="18sp"
-            android:textColor="#000"
-            android:id="@+id/heading"/>
+            android:textColor="@color/colorBlue"
+            android:id="@+id/heading"
+            android:gravity="center_horizontal"
+            android:layout_marginTop="15dp"/>
 
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/heading"
             android:layout_marginTop="20dp"
+            android:hint="Title"
+            android:paddingTop="15dp"
+            app:backgroundTint="@color/colorBlue"
             android:textColor="#000"
-            android:hint="enter heading..."
-            android:id="@+id/input1"  />
+            android:id="@+id/input1"
+            android:textColorHint="#D3D3D3"
+            />
 
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_below="@id/input1"
+            android:layout_marginTop="20dp"
+            android:hint="description"
+            android:paddingTop="5dp"
+            android:textColor="#000"
+            app:backgroundTint="@color/colorBlue"
             android:id="@+id/input2"
-            android:layout_below="@id/heading"
-            android:layout_marginTop="66dp"
-            android:hint="enter some description..."
-            android:textColor="#000" />
+            android:textColorHint="#D3D3D3" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="OK"
+            android:text="SAVE"
             android:layout_alignParentBottom="true"
             android:layout_alignParentRight="true"
             android:layout_marginRight="20dp"
-            android:textSize="18sp"
+            android:textSize="14sp"
+            android:layout_marginTop="5dp"
             android:textColor="@color/colorBlue"
-            android:id="@+id/action_ok"/>
+            android:id="@+id/action_ok"
+            android:layout_marginBottom="5dp"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -55,9 +66,11 @@
             android:layout_alignParentBottom="true"
             android:layout_alignParentLeft="true"
             android:layout_marginRight="20dp"
-            android:textSize="18sp"
+            android:textSize="14sp"
+            android:layout_marginTop="5dp"
             android:textColor="@color/colorBlue"
-            android:id="@+id/action_cancel"/>
+            android:id="@+id/action_cancel"
+            android:layout_marginBottom="5dp"/>
 
     </RelativeLayout>
 
