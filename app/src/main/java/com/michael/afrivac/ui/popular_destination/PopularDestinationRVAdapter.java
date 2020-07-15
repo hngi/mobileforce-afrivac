@@ -39,8 +39,6 @@ class PopularDestinationRVAdapter extends RecyclerView.Adapter<PopularDestinatio
     private ChildEventListener mChildListener;
 
 
-;
-
     public PopularDestinationRVAdapter(Context context, OnItemSelectedListener onItemSelectedListener) {
         temp= (ArrayList<PopularPlaces>) popularPlaces;
         this.context = context;
