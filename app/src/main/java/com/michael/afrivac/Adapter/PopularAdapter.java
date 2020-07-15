@@ -64,7 +64,6 @@ public class PopularAdapter extends RecyclerView.Adapter<PopularAdapter.MyViewHo
 
     @Override
     public void onClick(View v) {
-        Toast.makeText(context, "you clicked on", Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(context, PopularDestinationDetailsActivity.class);
         context.startActivity(intent);
     }
