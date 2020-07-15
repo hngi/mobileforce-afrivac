@@ -23,6 +23,10 @@
         android:icon="@drawable/ic_assignment_late_black_24dp"
         android:title="@string/support" />
     <item
+        android:id="@+id/nav_memories"
+        android:icon="@drawable/ic_baseline_emoji_emotions_24"
+        android:title="@string/memories" />
+    <item
         android:id="@+id/nav_logout"
         android:icon="@drawable/ic_exit_to_app_black_24dp"
         android:title="@string/logout" />
