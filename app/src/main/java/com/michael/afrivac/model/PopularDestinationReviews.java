@@ -1,4 +1,4 @@
-package com.michael.afrivac.Model;
+package com.michael.afrivac.model;
 
 public class PopularDestinationReviews {
     private String date;
