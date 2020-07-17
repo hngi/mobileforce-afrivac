@@ -19,6 +19,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -30,14 +31,23 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
 import com.bumptech.glide.Glide;
 import com.michael.afrivac.MainActivity;
 import com.michael.afrivac.PopularDestinationDetailsActivity;
 import com.michael.afrivac.R;
 import com.michael.afrivac.model.DestinationSuggestion;
 import com.michael.afrivac.model.PopularPlaces;
-import com.michael.afrivac.ui.home.Popular;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -49,8 +59,7 @@ public class PopularDestinationFragment extends Fragment {
     private PopularDestinationViewModel popularDestinationViewModel;
     private PopularDestinationRVAdapter popularDestinationRVAdapter;
     final  ArrayList<PopularPlaces>   popularPlaces= new ArrayList<>();
-
-
+    final ArrayList<PopularPlaces> places = new ArrayList<>();
 
     public static PopularDestinationFragment newInstance() {
         return new PopularDestinationFragment();
@@ -61,9 +70,6 @@ public class PopularDestinationFragment extends Fragment {
                              @Nullable Bundle savedInstanceState) {
 
         ((MainActivity) requireActivity()).getSupportActionBar().hide();
-
-
-
 
         popularDestinationViewModel = ViewModelProviders.of(this).get(PopularDestinationViewModel.class);
         View view = inflater.inflate(R.layout.fragment_popular_destination, container, false);
@@ -77,9 +83,100 @@ public class PopularDestinationFragment extends Fragment {
 
         popularDestinationRVAdapter = new PopularDestinationRVAdapter(getContext(), new PopularDestinationRVAdapter.OnItemSelectedListener() {
             @Override
-            public void onItemSelected(int selectedPosition) {
-                Intent intent = new Intent(getContext(), PopularDestinationDetailsActivity.class);
-                startActivity(intent);
+            public void onItemSelected(final int selectedPosition) {
+
+                String url = "https://lit-sea-83098.herokuapp.com/api/v1/destinations/";
+                final ArrayList<Object> arrayList = new ArrayList<>();
+                final String[] description = new String[1];
+                final String[] name = new String[1];
+                JsonObjectRequest jsonRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        try {
+                            JSONObject jsonResponse = response.getJSONObject("data");
+                            JSONArray popularDestinationJsonArray = jsonResponse.getJSONArray("destination");
+
+                            for (int popItem = 0; popItem < popularDestinationJsonArray.length(); popItem++) {
+
+                                JSONObject popularDestinationObject = popularDestinationJsonArray.getJSONObject(popItem);
+
+                                String destination = popularDestinationObject.getString("name");
+                                name[0] = destination;
+                                String country = popularDestinationObject.getString("country");
+                                String summary = popularDestinationObject.getString("summary");
+                                String image = popularDestinationObject.getString("imageCover");
+                                double ratingNumber = popularDestinationObject.getDouble("ratingsAverage");
+                                int reviewNumber = popularDestinationObject.getInt("ratingsQuantity");
+                                boolean isFav = false;
+                                description[0] = popularDestinationObject.getString("description");
+
+                                PopularPlaces placeDetailItems = new PopularPlaces(country, destination, summary, image, isFav, ratingNumber, reviewNumber);
+                                places.add(placeDetailItems);
+                            }
+                            //Bundle extraBundle = new Bundle();
+                            for (int item = 0; item < places.size()-1; item++){
+                                if (item == selectedPosition){
+                                    try {
+                                        Intent intent = new Intent(getContext(), PopularDestinationDetailsActivity.class);
+                                        Log.d("aaa", " " + places.get(selectedPosition).getImage());
+                                        intent.putExtra("name", name[0]);
+                                        intent.putExtra("country", places.get(selectedPosition).getCountry());
+                                        intent.putExtra("image", places.get(selectedPosition).getImage());
+                                        intent.putExtra("ratingNumber", places.get(selectedPosition).getRating_number());
+                                        intent.putExtra("reviewNumber", places.get(selectedPosition).getReview_number());
+                                        intent.putExtra("favorite", places.get(selectedPosition).isFavorite());
+                                        intent.putExtra("position", selectedPosition);
+                                        intent.putExtra("description", description[0]);
+                                      //  intent.putExtra("photos", arrayList);
+                                        startActivity(intent);
+                                        break;
+                                    } catch (Exception e){
+                                        Log.e("error", e.getMessage());
+                                    }
+                                }
+                            }
+
+                        } catch (JSONException e){
+                            e.printStackTrace();
+                        }
+                    }
+                }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(getContext(), error.getMessage(), Toast.LENGTH_LONG).show();
+                    }
+                });
+
+                Volley.newRequestQueue(getContext()).add(jsonRequest);
+
+//                SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
+//                Gson gson = new Gson();
+//                String json = sharedPreferences.getString("Destinations", null);
+//                ArrayList<PopularPlaces> popularPlacesArr = new ArrayList<>();
+//                Type type = new TypeToken<ArrayList<PopularPlaces>>() {}.getType();
+//                popularPlacesArr = gson.fromJson(json, type);
+//
+//                try{
+//                    Log.d("pass", "test " + popularPlacesArr.get();
+//                }catch (Exception e){
+//                    Log.e("fail", e.getMessage());
+//                }
+//
+////                for (PopularPlaces places : popularPlacesArr ){
+////                        if (selectedPosition == popularPlacesArr.indexOf(places)){
+////                            Log.d("Log1", popularPlacesArr.get(selectedPosition).getCountry());
+////                        }
+////                    }
+//
+//                try {
+//                    Log.d("LOGPDF", String.valueOf(popularPlacesArr));
+//                }catch (Exception e){
+//                    Log.e("LOGPDFE", e.getMessage());
+//                }
+//
+//                Intent intent = new Intent(getContext(), PopularDestinationDetailsActivity.class);
+//                intent.putExtra("RESPONSE", popularPlacesArr);
+//                startActivity(intent);
             }
         });
         popularPlacesRV.setAdapter(popularDestinationRVAdapter);
