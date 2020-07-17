@@ -394,6 +394,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private boolean isEmpty(String string) {
         return string.equals("");
     }
+
     public class LoginUser extends AsyncTask<String,Void ,String>{
 
         @Override
@@ -413,18 +414,18 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             try{
                 Response response = okHttpClient.newCall(request).execute();
                 if(response.isSuccessful()){
-                    String result = response.body().string();
-                    Log.i("loginResponsee", "successful");
-                    if(result.equalsIgnoreCase("Login")){
-                        Intent i = new Intent(getApplicationContext(), MainActivity.class);
-                        startActivity(i);
-                        finish();
+                    showToast("Successful Login");
+                    startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                    finish();
+                    //String result = response.body().string();
+                    Log.i("loginResponse", response.toString());
+                    //Log.i("resultResponsee", result);
+                    if(!response.isSuccessful()){
 
-                    }else{
                         Toast.makeText(LoginActivity.this,"Email or Password Mismatch",Toast.LENGTH_SHORT).show();
+                    }else{
+                        Log.i("loginResponse", "Unsuccessful");
                     }
-                }else {
-                    Log.i("loginResponsee", "Unsuccessful");
                 }
             }catch (Exception e){
                 e.printStackTrace();
@@ -432,6 +433,14 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             }
             return null;
         }
+    }
+    public void showToast(final String Text){
+        this.runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                Toast.makeText(LoginActivity.this,Text,Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
 }
