@@ -404,12 +404,12 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             OkHttpClient okHttpClient = new OkHttpClient();
             RequestBody formBody = new FormBody.Builder()
                     .add("email", email)
-                    .add("password",password)
-                    .build();
+                    .add("password",password).build();
             Request request = new Request.Builder()
                     .url(signIn_URL)
                     .post(formBody)
                     .build();
+            
 
             try{
                 Response response = okHttpClient.newCall(request).execute();
