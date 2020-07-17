@@ -199,7 +199,7 @@ public class SignUpActivity extends AppCompatActivity {
                 Response response = okHttpClient.newCall(request).execute();
                 if(response.isSuccessful()) {
                     String result = response.body().string();
-                    Log.i("response", "response successful");
+                    Log.i("SignupResponse", "response successful");
                     if (result.equalsIgnoreCase("1000")) {
                        showToast("Registration Successful");
                         Intent i = new Intent(getApplicationContext(), LoginActivity.class);
@@ -210,6 +210,8 @@ public class SignUpActivity extends AppCompatActivity {
                     }else{
                         showToast("Oops try again");
                     }
+                }else {
+                    Log.i("SignupResponse", "Unsuccessful");
                 }
 
                     }catch (Exception e){

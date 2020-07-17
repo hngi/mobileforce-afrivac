@@ -67,7 +67,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private CallbackManager callbackManager;
     private LoginButton loginButton;
     private static final String EMAIL = "email";
-    private  final String signIn_URL ="http://piscine-mandarine-32869.herokuapp.com/api/v1/auth/login";
+    private  final String signIn_URL ="https://piscine-mandarine-32869.herokuapp.com/api/v1/auth/login";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -144,7 +144,15 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
                     @Override
                     public void onAnimationEnd(Animation animation) {
-                        if(!isEmpty(email.getText().toString()) && !isEmpty(password.getText().toString())){
+
+                        String Email = email.getText().toString();
+                        String Password = password.getText().toString();
+
+                        LoginUser userLogin = new LoginUser();
+                        userLogin.execute(Email, Password);
+
+
+                        /*if(!isEmpty(email.getText().toString()) && !isEmpty(password.getText().toString())){
                             helper.progressDialogStart("Login to User Account", "Please wait while we log-in into your account");
                             FirebaseAuth.getInstance().signInWithEmailAndPassword(email.getText().toString(), password.getText().toString())
                                     .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
@@ -167,7 +175,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                             Toast.makeText(LoginActivity.this, "Please enter password", Toast.LENGTH_SHORT).show();
                         } else if(!Patterns.EMAIL_ADDRESS.matcher(email.getText().toString()).matches()){
                             Toast.makeText(LoginActivity.this, "Please enter valid email", Toast.LENGTH_SHORT).show();
-                        }
+                        }*/
                     }
 
                     @Override
@@ -406,6 +414,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 Response response = okHttpClient.newCall(request).execute();
                 if(response.isSuccessful()){
                     String result = response.body().string();
+                    Log.i("loginResponsee", "successful");
                     if(result.equalsIgnoreCase("Login")){
                         Intent i = new Intent(getApplicationContext(), MainActivity.class);
                         startActivity(i);
@@ -414,6 +423,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     }else{
                         Toast.makeText(LoginActivity.this,"Email or Password Mismatch",Toast.LENGTH_SHORT).show();
                     }
+                }else {
+                    Log.i("loginResponsee", "Unsuccessful");
                 }
             }catch (Exception e){
                 e.printStackTrace();
