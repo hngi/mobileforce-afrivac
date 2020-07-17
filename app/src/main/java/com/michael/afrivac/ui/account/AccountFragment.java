@@ -29,6 +29,7 @@ import androidx.lifecycle.ViewModelProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.*;
 import com.michael.afrivac.EditAccountInfoActivity;
+import com.michael.afrivac.GoogleMapsActivity;
 import com.michael.afrivac.LanguageHelper;
 import com.michael.afrivac.R;
 import com.michael.afrivac.Util.Helper;
@@ -57,8 +58,8 @@ public class AccountFragment extends Fragment {
     CircleImageView profileImage;
 
     // profile widgets
-    TextView userCountry, userEmail, userGender, userLanguage, userNumber, username, fullName;
-    private TextView myWallet, MyDestination, savedDestinations, inviteFirends;
+    private TextView userCountry, userEmail, userGender, userLanguage, userNumber, username, fullName;
+    private TextView myWallet, MyDestination, savedDestinations, inviteFirends, myLocation;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -70,6 +71,7 @@ public class AccountFragment extends Fragment {
         userID = mAuth.getCurrentUser().getUid();
         mDatabase = FirebaseDatabase.getInstance().getReference().child("Users").child(userID);
 
+        myLocation = root.findViewById(R.id.place);
         userCountry = root.findViewById(R.id.user_location);
         userEmail = root.findViewById(R.id.edit_email);
         userGender = root.findViewById(R.id.user_gender);
@@ -92,6 +94,13 @@ public class AccountFragment extends Fragment {
             darkTheme.setChecked(false);
         }
 
+        myLocation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Open present location
+                startActivity(new Intent(getContext(), GoogleMapsActivity.class));
+            }
+        });
 
         darkTheme.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -193,6 +202,7 @@ public class AccountFragment extends Fragment {
                 }
                 if(user_country != null) {
                     userCountry.setText(user_country);
+                    myLocation.setText(user_country);
                 }
 
             }
