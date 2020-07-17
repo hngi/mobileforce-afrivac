@@ -1,6 +1,8 @@
 package com.michael.afrivac;
 
 import android.content.Context;
+import android.content.SharedPreferences;
+import android.icu.text.CaseMap;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -18,12 +20,18 @@ public class MyCustomDialog extends DialogFragment {
 
     public interface OnInputSelected{
         void sendInput(String input);
+        void sendInput1(String input2);
     }
     public OnInputSelected mOnInputSelected;
 
     //widgets
     private EditText mInput1, mInput2;
     private TextView mActionOk, mActionCancel;
+    SharedPreferences sharedPreferences;
+    static final String myPreferences = "mypref";
+    static final String title = "titlekey";
+    static final String Description = "descriptionkey";
+
 
     @Nullable
     @Override
@@ -33,12 +41,22 @@ public class MyCustomDialog extends DialogFragment {
         mActionCancel = view.findViewById(R.id.action_cancel);
         mInput1 = view.findViewById(R.id.input1);
         mInput2 = view.findViewById(R.id.input2);
+        sharedPreferences  = requireContext().getSharedPreferences(myPreferences, Context.MODE_PRIVATE);
+        if (sharedPreferences.contains(title)){
+            mInput1.setText(sharedPreferences.getString(title,""));
+        }
+        if (sharedPreferences.contains(Description)){
+            mInput2.setText(sharedPreferences.getString(Description,""));
+        }
 
         mActionCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d(TAG, "onClick: closing dialog");
-                getDialog().dismiss();
+                //Log.d(TAG, "onClick: closing dialog");
+               // getDialog().dismiss();
+                mInput1.setText("");
+                mInput2.setText("");
+                //works
             }
         });
 
@@ -49,13 +67,17 @@ public class MyCustomDialog extends DialogFragment {
 
                 String input1 = mInput1.getText().toString();
                 String input2 = mInput2.getText().toString();
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.putString(title, input1);
+                editor.putString(Description,input2);
+                editor.apply();
                 if(!input1.equals("") || !input2.equals("")){
 //
 //                    //Easiest way: just set the value.
 //                    MainFragment fragment = (MainFragment) getActivity().getFragmentManager().findFragmentByTag("MainFragment");
 //                    fragment.mInputDisplay.setText(input);
 
-                    mOnInputSelected.sendInput(input1);
+                    mOnInputSelected.sendInput1(input1);
                     mOnInputSelected.sendInput(input2);
                 }
 
@@ -75,4 +97,11 @@ public class MyCustomDialog extends DialogFragment {
             Log.e(TAG, "onAttach: ClassCastException : " + e.getMessage() );
         }
     }
+    //public void SharedPreferenceSAVE(String Title, String Description){
+      //  SharedPreferences preferences = getActivity().getSharedPreferences("Memories",0);
+       // SharedPreferences.Editor prefEDIT = preferences.edit();
+       // prefEDIT.putString("Memories", Title);
+      //  prefEDIT.putString("Experience", Description);
+      //  prefEDIT.commit();
+    //}
 }
