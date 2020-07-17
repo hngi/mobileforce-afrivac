@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private AppBarConfiguration mAppBarConfiguration;
     private ActionBarDrawerToggle toggle;
     private Helper helper;
-    FirebaseAuth mAuth;
+    //FirebaseAuth mAuth;
     Toolbar toolbar;
 
     @Override
@@ -95,7 +95,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 //            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
 //        }
 
-        mAuth = FirebaseAuth.getInstance();
+        //mAuth = FirebaseAuth.getInstance();
 
 //        FloatingActionButton fab = findViewById(R.id.fab);
 //        fab.setOnClickListener(new View.OnClickListener() {
@@ -148,9 +148,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
 
     private void logout() {
-        FirebaseAuth.getInstance().signOut();
-        helper.gotoLoginAcitivity(this);
-        finish();
+       // FirebaseAuth.getInstance().signOut();
+       // helper.gotoLoginAcitivity(this);
+       // finish();
     }
 
     @Override
@@ -220,10 +220,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     protected void onStart() {
         super.onStart();
-        FirebaseUser currentUser = mAuth.getCurrentUser();
+       /* FirebaseUser currentUser = mAuth.getCurrentUser();
         if(currentUser == null){
             helper.gotoLoginAcitivity(this);
-        }
+        }    */
 
     }
 
