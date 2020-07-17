@@ -1,6 +1,7 @@
 package com.michael.afrivac.ui.popular_destination;
 
 import android.content.Context;
+import android.os.AsyncTask;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,10 +24,15 @@ import com.michael.afrivac.R;
 import com.michael.afrivac.Util.FirebaseUtil;
 import com.michael.afrivac.model.PopularPlaces;
 
+import java.io.IOException;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.List;
+
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 
 class PopularDestinationRVAdapter extends RecyclerView.Adapter<PopularDestinationRVAdapter.PopularPlacesRVAdapterVH> {
     private PopularDestinationRVAdapter.OnItemSelectedListener onItemSelectedListener;
@@ -34,9 +40,9 @@ class PopularDestinationRVAdapter extends RecyclerView.Adapter<PopularDestinatio
     ArrayList<PopularPlaces> temp = new ArrayList<>();
 
     private Context context;
-    private FirebaseDatabase mFirebaseDatabase;
-    private DatabaseReference mDatabaseReference;
-    private ChildEventListener mChildListener;
+    //private FirebaseDatabase mFirebaseDatabase;
+    //private DatabaseReference mDatabaseReference;
+    //private ChildEventListener mChildListener;
 
 
 ;
@@ -45,12 +51,13 @@ class PopularDestinationRVAdapter extends RecyclerView.Adapter<PopularDestinatio
         temp= (ArrayList<PopularPlaces>) popularPlaces;
         this.context = context;
         this.onItemSelectedListener = onItemSelectedListener;
-        mFirebaseDatabase = FirebaseUtil.mFirebaseDatabase;
-        mDatabaseReference = FirebaseDatabase.getInstance().getReference("popular_destinatio");
+        //mFirebaseDatabase = FirebaseUtil.mFirebaseDatabase;
+        //mDatabaseReference = FirebaseDatabase.getInstance().getReference("popular_destinatio");
         //this.popularPlaces = FirebaseUtil.sPopularPlaces;
                //FirebaseUtil.openFbReference("popular_destinatio");
 
-        mDatabaseReference.addChildEventListener(new ChildEventListener() {
+        //code to load the popular destination child from the firebase database
+      /*  mDatabaseReference.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
 
@@ -101,7 +108,7 @@ class PopularDestinationRVAdapter extends RecyclerView.Adapter<PopularDestinatio
             public void onCancelled(DatabaseError databaseError) {
 
             }
-        });
+        });    */
 
     }
 

@@ -41,6 +41,8 @@ import com.google.firebase.auth.FirebaseUser;
 import com.michael.afrivac.Auth.AuthViewModel;
 import com.michael.afrivac.Util.Helper;
 
+import org.json.JSONObject;
+
 import java.util.Arrays;
 
 import okhttp3.FormBody;
@@ -395,6 +397,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         return string.equals("");
     }
 
+    //code to login user with inputed email and password
     public class LoginUser extends AsyncTask<String,Void ,String>{
 
         @Override
@@ -409,17 +412,26 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             Request request = new Request.Builder()
                     .url(signIn_URL)
                     .post(formBody)
-                    .build();
+                    .build();     //sends the email and Password to the db
 
             try{
-                Response response = okHttpClient.newCall(request).execute();
+                Response response = okHttpClient.newCall(request).execute();    //gets a response from the server
                 if(response.isSuccessful()){
                     showToast("Successful Login");
                     startActivity(new Intent(getApplicationContext(), MainActivity.class));
                     finish();
-                    //String result = response.body().string();
+                    String result = response.body().string();
                     Log.i("loginResponse", "yes");
+                    Log.i("responseBody", result);
                     //Log.i("resultResponsee", result);
+
+                    JSONObject jsonObject = new JSONObject(result);
+                    String resultData = jsonObject.getString("data");    //gets the data array in string format from the response body
+
+                    JSONObject jsonObject1 = new JSONObject(resultData);
+                    String resultToken = jsonObject1.getString("token");  //gets the token string from the data array
+                    helper.token(resultToken);   //sends token to the helper class to be used through out the app
+
                     if(!response.isSuccessful()){
 
                         Toast.makeText(LoginActivity.this,"Email or Password Mismatch",Toast.LENGTH_SHORT).show();

@@ -1,10 +1,12 @@
 package com.michael.afrivac;
 
 import android.content.Context;
+import android.os.AsyncTask;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -20,11 +22,17 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.core.view.Event;
 import com.michael.afrivac.Util.FirebaseUtil;
+import com.michael.afrivac.Util.Helper;
 import com.michael.afrivac.model.PopularPlaces;
 
 import java.util.ArrayList;
 import java.util.EventListener;
 import java.util.List;
+
+import okhttp3.FormBody;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
 
 public class PopularDestinationReviewsRecyclerviewAdapter extends RecyclerView.Adapter<PopularDestinationReviewsRecyclerviewAdapter.ReviewAdapterHolder> {
 
@@ -32,16 +40,18 @@ public class PopularDestinationReviewsRecyclerviewAdapter extends RecyclerView.A
     ArrayList<UserReviewDetails> temp = new ArrayList<>();
 
     private Context context;
-    private FirebaseDatabase mFirebaseDatabase;
-    private DatabaseReference mDatabaseReference;
+    private LoginActivity loginActivity = new LoginActivity();
+    EditText reviewtxt;
+ //   private FirebaseDatabase mFirebaseDatabase;
+ //   private DatabaseReference mDatabaseReference;
 
     public PopularDestinationReviewsRecyclerviewAdapter (Context context) {
         temp= (ArrayList<UserReviewDetails>) usersReviewDetailsArray;
-        mFirebaseDatabase = FirebaseUtil.mFirebaseDatabase;
-        mDatabaseReference = FirebaseDatabase.getInstance().getReference("popular_destinatio").child("review");
+       // mFirebaseDatabase = FirebaseUtil.mFirebaseDatabase;
+       // mDatabaseReference = FirebaseDatabase.getInstance().getReference("popular_destinatio").child("review");
         Log.i("db_popdest", "test");
 
-        mDatabaseReference.addChildEventListener(new ChildEventListener() {
+    /*    mDatabaseReference.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot snapshot, String previousChildName) {
 
@@ -80,7 +90,7 @@ public class PopularDestinationReviewsRecyclerviewAdapter extends RecyclerView.A
             public void onCancelled(@NonNull DatabaseError error) {
 
             }
-        });
+        });    */
 
 
     }
@@ -150,6 +160,10 @@ public class PopularDestinationReviewsRecyclerviewAdapter extends RecyclerView.A
             remark = itemView.findViewById(R.id.review_remark);
             review = itemView.findViewById(R.id.users_review);
 
+
+
         }
     }
+
+
 }

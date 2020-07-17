@@ -1,5 +1,6 @@
 package com.michael.afrivac;
 
+import android.os.AsyncTask;
 import android.os.Bundle;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -18,8 +19,14 @@ import android.widget.Toast;
 import com.firebase.client.Firebase;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.michael.afrivac.Util.Helper;
 
 import org.w3c.dom.Text;
+
+import okhttp3.FormBody;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -32,6 +39,7 @@ public class PopularDestinationDetailsReviewFragment extends Fragment {
     private LinearLayoutManager layoutManager;
     private PopularDestinationReviewsRecyclerviewAdapter adapter;
     private Button btnSubmitReview, btnAddReview;
+    private Helper helper;
 
     EditText describe, tell;
     RatingBar rating;
@@ -95,6 +103,8 @@ public class PopularDestinationDetailsReviewFragment extends Fragment {
         btnAddReview = view.findViewById(R.id.addReview);
         btnSubmitReview =view.findViewById(R.id.submitReview);
 
+        helper = new Helper();
+
         layoutManager = new LinearLayoutManager(getContext());
         adapter = new PopularDestinationReviewsRecyclerviewAdapter(getContext());
 
@@ -127,7 +137,15 @@ public class PopularDestinationDetailsReviewFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-            ReviewDetails reviewDetails = new ReviewDetails();
+                String Review = describe.getText().toString();
+                Float R = rating.getRating();
+                String Rating = String.valueOf(R);
+
+
+                PostReviews postReviews = new PostReviews();
+                postReviews.execute(Review, Rating);
+
+         /*   ReviewDetails reviewDetails = new ReviewDetails();
 
                 GetDataFromEditText();
 
@@ -146,7 +164,9 @@ public class PopularDestinationDetailsReviewFragment extends Fragment {
 
                 ConstraintLayout submitReviewCons = view.findViewById(R.id.submit_review_cons);
                 submitReviewCons.setVisibility(View.GONE);
-                btnAddReview.setVisibility(View.VISIBLE);
+                btnAddReview.setVisibility(View.VISIBLE);    */
+
+
             }
         });
     return view;
@@ -159,4 +179,33 @@ public class PopularDestinationDetailsReviewFragment extends Fragment {
 
         RatingHolder = rating.getRating();
     }
+
+    //code to send review to the API db
+    public class PostReviews extends AsyncTask<String, Void, String> {
+
+
+        @Override
+        protected String doInBackground(String... strings) {
+
+            OkHttpClient okHttpClient = new OkHttpClient();
+            String token = helper.getToken();
+            String Review = strings[0];
+            String Rating = strings[1];
+
+            RequestBody requestDetails = new FormBody.Builder()
+                    .add("review", Review)
+                    .add("rating", Rating)
+                  //  .add("destination", PhoneNumber)  //update this once popular dest is complete
+                    .build();
+
+            Request request = new Request.Builder()
+                    .url("https://piscine-mandarine-32869.herokuapp.com/api/v1/reviews/")
+                    .header("Authorization", "Authirization: Bearer " + token)
+                    .post(requestDetails)
+                    .build();
+
+            return null;
+        }
+    }
+
 }
