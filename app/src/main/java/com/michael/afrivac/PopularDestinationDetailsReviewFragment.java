@@ -107,7 +107,7 @@ public class PopularDestinationDetailsReviewFragment extends Fragment {
         try {
 
             final SharedPreferences sharedPreferences = getActivity().getSharedPreferences("POSITION", Context.MODE_PRIVATE);
-            String url = "https://lit-sea-83098.herokuapp.com/api/v1/destinations/";
+            String url = "https://piscine-mandarine-32869.herokuapp.com/api/v1/destinations/";
             JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
                 @Override
                 public void onResponse(JSONObject response) {

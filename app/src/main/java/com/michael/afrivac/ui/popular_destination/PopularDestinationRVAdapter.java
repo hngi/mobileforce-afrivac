@@ -16,6 +16,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -34,7 +35,9 @@ import org.json.JSONObject;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 class PopularDestinationRVAdapter extends RecyclerView.Adapter<PopularDestinationRVAdapter.PopularPlacesRVAdapterVH> {
     private PopularDestinationRVAdapter.OnItemSelectedListener onItemSelectedListener;
@@ -49,9 +52,9 @@ class PopularDestinationRVAdapter extends RecyclerView.Adapter<PopularDestinatio
         this.context = context;
         this.onItemSelectedListener = onItemSelectedListener;
 
-        String url = "https://lit-sea-83098.herokuapp.com/api/v1/destinations/";
+        String url = "https://piscine-mandarine-32869.herokuapp.com/api/v1/destinations/";
         //RequestQueue requestQueue = Volley.newRequestQueue(context);
-        JsonObjectRequest jsonRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+        JsonObjectRequest jsonRequest = new JsonObjectRequest(Request.Method.POST, url, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 try {
@@ -97,8 +100,13 @@ class PopularDestinationRVAdapter extends RecyclerView.Adapter<PopularDestinatio
             public void onErrorResponse(VolleyError error) {
                 Toast.makeText(context, error.getMessage(), Toast.LENGTH_LONG).show();
             }
-        });
-
+        }){
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String, String> headers = new HashMap<>();
+                headers.put("Authorization", "Bearer " + "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmMGU4Yjc3ZmQ3NDc2MDAxN2IzNzRhNSIsImlhdCI6MTU5NDkwMzU4OCwiZXhwIjoxNTk1MTYyNzg4fQ.Ux3HFg9eeYNGE79sB2mC9xVggnAE9m9EHYwh5t4jlMU");
+                return headers;
+            }
+        };
         Volley.newRequestQueue(context).add(jsonRequest);
     }
 

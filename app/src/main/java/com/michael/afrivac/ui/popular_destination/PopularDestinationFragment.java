@@ -31,6 +31,7 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -49,7 +50,9 @@ import org.json.JSONObject;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class PopularDestinationFragment extends Fragment {
     RecyclerView popularPlacesRV;
@@ -85,11 +88,11 @@ public class PopularDestinationFragment extends Fragment {
             @Override
             public void onItemSelected(final int selectedPosition) {
 
-                String url = "https://lit-sea-83098.herokuapp.com/api/v1/destinations/";
+                String url = "https://piscine-mandarine-32869.herokuapp.com/api/v1/destinations/";
                 final ArrayList<Object> arrayList = new ArrayList<>();
                 final String[] description = new String[1];
                 final String[] name = new String[1];
-                JsonObjectRequest jsonRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+                JsonObjectRequest jsonRequest = new JsonObjectRequest(Request.Method.POST, url, null, new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
                         try {
@@ -145,7 +148,12 @@ public class PopularDestinationFragment extends Fragment {
                     public void onErrorResponse(VolleyError error) {
                         Toast.makeText(getContext(), error.getMessage(), Toast.LENGTH_LONG).show();
                     }
-                });
+                }){
+                    public Map<String, String> getHeaders() throws AuthFailureError {
+                        Map<String, String> headers = new HashMap<>();
+                        headers.put("Authorization", "Bearer " + "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmMGU4Yjc3ZmQ3NDc2MDAxN2IzNzRhNSIsImlhdCI6MTU5NDkwMzU4OCwiZXhwIjoxNTk1MTYyNzg4fQ.Ux3HFg9eeYNGE79sB2mC9xVggnAE9m9EHYwh5t4jlMU");
+                        return headers;
+                    }};
 
                 Volley.newRequestQueue(getContext()).add(jsonRequest);
 
