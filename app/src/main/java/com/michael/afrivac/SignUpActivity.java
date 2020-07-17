@@ -45,7 +45,7 @@ public class SignUpActivity extends AppCompatActivity {
     Animation animation;
     private CountryCodePicker mCodePicker;
     TextView termsAndConditons;
-    private  final String signUP_URL ="http://piscine-mandarine-32869.herokuapp.com/api/v1/auth/signup";
+    private  final String signUP_URL ="https://piscine-mandarine-32869.herokuapp.com/api/v1/auth/signup";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -199,27 +199,25 @@ public class SignUpActivity extends AppCompatActivity {
                 Response response = okHttpClient.newCall(request).execute();
                 if(response.isSuccessful()) {
                     String result = response.body().string();
-                    Log.i("SignupResponse", "response successful");
-                    if (result.equalsIgnoreCase("1000")) {
-                       showToast("Registration Successful");
-                        Intent i = new Intent(getApplicationContext(), LoginActivity.class);
-                        startActivity(i);
-                        finish();
-                    }else if(result.equalsIgnoreCase("1001")){
+                    showToast("Registration Successful");
+                    Intent i = new Intent(getApplicationContext(), LoginActivity.class);
+                    startActivity(i);
+                    finish();
+                    Log.i("SignupResponse", response.toString());
+
+                    if (result.equalsIgnoreCase("1001")) {
                         showToast("User Already Exist");
-                    }else{
+                    }else if(!response.isSuccessful()){
                         showToast("Oops try again");
+                    }else{
+                        Log.i("SignupResponse", response.toString());
                     }
-                }else {
-                    Log.i("SignupResponse", "Unsuccessful");
                 }
 
                     }catch (Exception e){
                 e.printStackTrace();
 
             }
-
-
             return null;
         }
 
