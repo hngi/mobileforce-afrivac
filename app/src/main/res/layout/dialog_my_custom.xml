@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@drawable/dialog">
+    android:background="#ffffff">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -49,7 +49,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="SAVE"
+            android:text="Ok"
             android:layout_alignParentBottom="true"
             android:layout_alignParentRight="true"
             android:layout_marginRight="20dp"
@@ -62,7 +62,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="CANCEL"
+            android:text="CLEAR"
             android:layout_alignParentBottom="true"
             android:layout_alignParentLeft="true"
             android:layout_marginRight="20dp"
