@@ -1,10 +1,9 @@
 package com.michael.afrivac;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.Activity;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -12,30 +11,22 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.hbb20.CountryCodePicker;
 import com.michael.afrivac.Auth.AuthViewModel;
 import com.michael.afrivac.Util.Helper;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
-import java.util.Locale;
-import java.util.Scanner;
+import okhttp3.FormBody;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
 
 public class SignUpActivity extends AppCompatActivity {
 
@@ -44,15 +35,17 @@ public class SignUpActivity extends AppCompatActivity {
 
     EditText Username;
     CheckBox mCheckBox;
-    EditText Email;
+    EditText email;
     EditText phone;
     Spinner country;
-    EditText Password;
+    EditText password;
     EditText confirmPassword;
     TextView ToSignIn;
     Button  signUp;
     Animation animation;
     private CountryCodePicker mCodePicker;
+    TextView termsAndConditons;
+    private  final String signUP_URL ="https://piscine-mandarine-32869.herokuapp.com/api/v1/auth/signup";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,12 +54,17 @@ public class SignUpActivity extends AppCompatActivity {
         authViewModel = new AuthViewModel();
         helper = new Helper();
 
+        Username = findViewById(R.id.username);
+        email = findViewById(R.id.email);
+        password = findViewById(R.id.password);
         country = findViewById(R.id.country);
         mCheckBox = findViewById(R.id.checkBox);
         ToSignIn = findViewById(R.id.toSignIn);
         signUp = findViewById(R.id.signUp);
         confirmPassword = findViewById(R.id.confirmpassword);
        phone = findViewById(R.id.phone);
+        //ConfirmPassword = findViewById(R.id.confirmpassword);
+        termsAndConditons = findViewById(R.id.termsAndConditions);
 
         mCodePicker = findViewById(R.id.ccp);
 
@@ -113,7 +111,15 @@ public class SignUpActivity extends AppCompatActivity {
 
                         @Override
                         public void onAnimationEnd(Animation animation) {
-                            authViewModel.SignUp(v);
+
+                            String Email = email.getText().toString();
+                            String Password = password.getText().toString();
+                            String Phone = phone.getText().toString();
+                            String Name = Username.getText().toString();
+                            String Country = country.toString();
+
+                            RegisterUser userReg = new RegisterUser();
+                            userReg.execute(Email, Password, Phone, Name, Country);
                         }
 
                         @Override
@@ -125,11 +131,32 @@ public class SignUpActivity extends AppCompatActivity {
                 }
             }
         });
+        //This Sign up button works for Api authentication
+
+//        signUp.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                final String Email = email.getText().toString().trim();
+//                final String Password = password.getText().toString().trim();
+//                final String Phone = phone.getText().toString().trim();
+//                new RegisterUser().execute(Email,Phone,Password);
+//
+//            }
+//        });
 
         ToSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+                finish();
+            }
+        });
+
+        termsAndConditons.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getApplicationContext(), TermsAndConditions.class);
+                startActivity(i);
                 finish();
             }
         });
@@ -140,5 +167,72 @@ public class SignUpActivity extends AppCompatActivity {
     public void onBackPressed() {
         super.onBackPressed();
         helper.gotoLoginAcitivity(getApplicationContext());
+    }
+    public  class RegisterUser extends AsyncTask<String, Void , String>{
+
+        @Override
+        protected String doInBackground(String... strings) {
+            String Email = strings[0];
+            String Password = strings[1];
+            String PhoneNumber = strings[2];
+            String Name = strings[3];
+            String Country = strings[4];
+            String finalURL = signUP_URL;
+
+            RequestBody requestDetails = new FormBody.Builder()
+                    .add("name", Name)
+                    .add("email", Email)
+                    .add("number", PhoneNumber)
+                    .add("password", Password)
+                    .add("country", Country)
+                    .build();
+
+            OkHttpClient okHttpClient = new OkHttpClient();
+
+            Request request = new Request.Builder()
+                    .url("https://piscine-mandarine-32869.herokuapp.com/api/v1/auth/signup")
+                    .post(requestDetails)
+                    .build();
+            //Response response = null;
+
+            try {
+                Response response = okHttpClient.newCall(request).execute();
+                if(response.isSuccessful()) {
+                    String result = response.body().string();
+                    showToast("Registration Successful");
+                    Intent i = new Intent(getApplicationContext(), LoginActivity.class);
+                    startActivity(i);
+                    finish();
+                    Log.i("SignupResponse", response.toString());
+
+                    if (result.equalsIgnoreCase("1001")) {
+                        showToast("User Already Exist");
+                    }else if(!response.isSuccessful()){
+                        showToast("Oops try again");
+                    }else{
+                        Log.i("SignupResponse", response.toString());
+                    }
+                }
+
+                    }catch (Exception e){
+                e.printStackTrace();
+
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+            Toast.makeText(SignUpActivity.this, "loading", Toast.LENGTH_SHORT).show();
+        }
+    }
+    public void showToast(final String Text){
+        this.runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                Toast.makeText(SignUpActivity.this,Text,Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }

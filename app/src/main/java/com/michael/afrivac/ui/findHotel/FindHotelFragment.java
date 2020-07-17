@@ -1,5 +1,6 @@
 package com.michael.afrivac.ui.findHotel;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -25,21 +26,37 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.michael.afrivac.FindHotelDetailsReviewActivity;
 import com.michael.afrivac.MainActivity;
 import com.michael.afrivac.R;
+import com.michael.afrivac.Util.UniversalImageLoader;
 import com.michael.afrivac.model.FindHotel;
 import com.michael.afrivac.model.HotelSuggestions;
-
+import com.nostra13.universalimageloader.core.ImageLoader;
 
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class FindHotelFragment extends Fragment {
+    DatabaseReference mDatabase;
+    FirebaseAuth mAuth;
+    String userID;
+
     RecyclerView findHotelRecycler;
     private AutoCompleteTextView searchBar;
-    ImageButton sideMenu, Avatar, searchEnd;
+    ImageButton sideMenu, searchEnd;
+    CircleImageView avatarButton;
+
     private AutoCompleteTextView search;
 
     private FindHotelViewModel findHotelViewModel;
@@ -55,13 +72,15 @@ public class FindHotelFragment extends Fragment {
 
         ((MainActivity) requireActivity()).getSupportActionBar().hide();
 
+        initImageLoader();
+
         findHotelViewModel = new ViewModelProvider(this).get(FindHotelViewModel.class);
         View root = inflater.inflate(R.layout.fragment_find_hotel, container, false);
 
         search = root.findViewById(R.id.searchTV);
         findHotelRecycler = root.findViewById(R.id.hotelRecycler);
         searchBar = root.findViewById(R.id.searchTV);
-        Avatar = root.findViewById(R.id.avatar);
+        avatarButton = root.findViewById(R.id.avatar);
         sideMenu = root.findViewById(R.id.sideBar);
         findHotelRecycler.setLayoutManager(new LinearLayoutManager(getContext()));
 
@@ -92,14 +111,35 @@ public class FindHotelFragment extends Fragment {
                 }
             }
         });
-        Glide.with(requireActivity())
-                .load(R.drawable.user3)
-                .placeholder(R.drawable.ic_account_circle_black_24dp)
-                .circleCrop()
-                .into(Avatar);
-        Avatar.setOnClickListener(new View.OnClickListener() {
+//        Glide.with(requireActivity())
+//                .load(R.drawable.user3)
+//                .placeholder(R.drawable.ic_account_circle_black_24dp)
+//                .circleCrop()
+//                .into(Avatar);
+        avatarButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+            }
+        });
+
+        mAuth = FirebaseAuth.getInstance();
+        userID = Objects.requireNonNull(mAuth.getCurrentUser()).getUid();
+        mDatabase = FirebaseDatabase.getInstance().getReference().child("Users").child(userID);
+
+        mDatabase.addValueEventListener(new ValueEventListener() {
+            @SuppressLint("SetTextI18n")
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                String profile_picture = snapshot.child("profileImageUrl").getValue().toString();
+//
+                ImageLoader.getInstance().displayImage(profile_picture, avatarButton);
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
             }
         });
         findHotelViewModel.getState().observe(getViewLifecycleOwner(), new Observer<FindHotelViewModel.State>() {
@@ -165,6 +205,13 @@ public class FindHotelFragment extends Fragment {
     private void hideKeyboardFrom(View view) {
         InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Activity.INPUT_METHOD_SERVICE);
         imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+    }
+    /**
+     * init universal image loader
+     */
+    private void initImageLoader(){
+        UniversalImageLoader imageLoader = new UniversalImageLoader(getContext());
+        ImageLoader.getInstance().init(imageLoader.getConfig());
     }
 
 }
