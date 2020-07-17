@@ -122,10 +122,11 @@ public class PopularDestinationFragment extends Fragment {
             }
         });
         mAuth = FirebaseAuth.getInstance();
-        userID = Objects.requireNonNull(mAuth.getCurrentUser()).getUid();
-        mDatabase = FirebaseDatabase.getInstance().getReference().child("Users").child(userID);
+       // userID = Objects.requireNonNull(mAuth.getCurrentUser()).getUid();
+       // mDatabase = FirebaseDatabase.getInstance().getReference().child("Users").child(userID);
 
-        mDatabase.addValueEventListener(new ValueEventListener() {
+        //code to display users image in the screen and greet either good morningor afternoon or night
+      /*  mDatabase.addValueEventListener(new ValueEventListener() {
             @SuppressLint("SetTextI18n")
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -140,7 +141,7 @@ public class PopularDestinationFragment extends Fragment {
             public void onCancelled(@NonNull DatabaseError error) {
 
             }
-        });
+        });      */
 
 
         popularDestinationViewModel.getState().observe(getViewLifecycleOwner(), new Observer<PopularDestinationViewModel.State>() {

@@ -418,14 +418,14 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     startActivity(new Intent(getApplicationContext(), MainActivity.class));
                     finish();
                     //String result = response.body().string();
-                    Log.i("loginResponse", response.toString());
+                    Log.i("loginResponse", "yes");
                     //Log.i("resultResponsee", result);
                     if(!response.isSuccessful()){
 
                         Toast.makeText(LoginActivity.this,"Email or Password Mismatch",Toast.LENGTH_SHORT).show();
-                    }else{
-                        Log.i("loginResponse", "Unsuccessful");
                     }
+                }else{
+                    Log.i("loginResponse", "Unsuccessful");
                 }
             }catch (Exception e){
                 e.printStackTrace();
