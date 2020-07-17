@@ -5,7 +5,7 @@
 
     <string-array name="flightType">
         <item>Economy</item>
-        
+
         <item>First Class</item>
     </string-array>
 
@@ -512,5 +512,6 @@
         <item>Zimbabwe</item>
         <item>Åland Islands</item>
     </string-array>
+    <string name="title_activity_google_maps">Map</string>
 
 </resources>
