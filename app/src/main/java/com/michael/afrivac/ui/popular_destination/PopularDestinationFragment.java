@@ -51,11 +51,9 @@ import com.michael.afrivac.R;
 import com.michael.afrivac.Util.UniversalImageLoader;
 import com.michael.afrivac.model.DestinationSuggestion;
 import com.michael.afrivac.model.PopularPlaces;
-<<<<<<< HEAD
-=======
+
 import com.michael.afrivac.ui.home.Popular;
 import com.nostra13.universalimageloader.core.ImageLoader;
->>>>>>> 79bcf57816949c9dc7fe878dc34563b52f061963
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -65,13 +63,11 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-<<<<<<< HEAD
+
 import java.util.Map;
-=======
 import java.util.Objects;
 
 import de.hdodenhof.circleimageview.CircleImageView;
->>>>>>> 79bcf57816949c9dc7fe878dc34563b52f061963
 
 public class PopularDestinationFragment extends Fragment {
     DatabaseReference mDatabase;
