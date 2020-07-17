@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.animation.Animation;
@@ -21,8 +22,10 @@ import com.hbb20.CountryCodePicker;
 import com.michael.afrivac.Auth.AuthViewModel;
 import com.michael.afrivac.Util.Helper;
 
+import okhttp3.FormBody;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
+import okhttp3.RequestBody;
 import okhttp3.Response;
 
 public class SignUpActivity extends AppCompatActivity {
@@ -51,6 +54,7 @@ public class SignUpActivity extends AppCompatActivity {
         authViewModel = new AuthViewModel();
         helper = new Helper();
 
+        Username = findViewById(R.id.username);
         email = findViewById(R.id.email);
         password = findViewById(R.id.password);
         country = findViewById(R.id.country);
@@ -107,7 +111,15 @@ public class SignUpActivity extends AppCompatActivity {
 
                         @Override
                         public void onAnimationEnd(Animation animation) {
-                            authViewModel.SignUp(v);
+
+                            String Email = email.getText().toString();
+                            String Password = password.getText().toString();
+                            String Phone = phone.getText().toString();
+                            String Name = Username.getText().toString();
+                            String Country = country.toString();
+
+                            RegisterUser userReg = new RegisterUser();
+                            userReg.execute(Email, Password, Phone, Name, Country);
                         }
 
                         @Override
@@ -163,23 +175,37 @@ public class SignUpActivity extends AppCompatActivity {
             String Email = strings[0];
             String Password = strings[1];
             String PhoneNumber = strings[2];
-            String finalURL = signUP_URL + "?email=" + Email + "&number=" +PhoneNumber+"&password=" + Password;
+            String Name = strings[3];
+            String Country = strings[4];
+            String finalURL = signUP_URL;
+
+            RequestBody requestDetails = new FormBody.Builder()
+                    .add("name", Name)
+                    .add("email", Email)
+                    .add("number", PhoneNumber)
+                    .add("password", Password)
+                    .add("country", Country)
+                    .build();
+
             OkHttpClient okHttpClient = new OkHttpClient();
+
             Request request = new Request.Builder()
-                    .url(finalURL)
-                    .get()
+                    .url("https://piscine-mandarine-32869.herokuapp.com/api/v1/auth/signup")
+                    .post(requestDetails)
                     .build();
             //Response response = null;
+
             try {
                 Response response = okHttpClient.newCall(request).execute();
                 if(response.isSuccessful()) {
                     String result = response.body().string();
-                    if (result.equalsIgnoreCase("Registration Successful")) {
+                    Log.i("response", "response successful");
+                    if (result.equalsIgnoreCase("1000")) {
                        showToast("Registration Successful");
                         Intent i = new Intent(getApplicationContext(), LoginActivity.class);
                         startActivity(i);
                         finish();
-                    }else if(result.equalsIgnoreCase("User Already Exist")){
+                    }else if(result.equalsIgnoreCase("1001")){
                         showToast("User Already Exist");
                     }else{
                         showToast("Oops try again");
@@ -195,6 +221,11 @@ public class SignUpActivity extends AppCompatActivity {
             return null;
         }
 
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+            Toast.makeText(SignUpActivity.this, "loading", Toast.LENGTH_SHORT).show();
+        }
     }
     public void showToast(final String Text){
         this.runOnUiThread(new Runnable() {
