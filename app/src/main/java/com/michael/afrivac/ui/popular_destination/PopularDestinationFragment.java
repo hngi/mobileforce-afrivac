@@ -56,6 +56,7 @@ import com.michael.afrivac.model.PopularPlaces;
 
 import com.michael.afrivac.ui.home.Popular;
 import com.nostra13.universalimageloader.core.ImageLoader;
+import com.sun.mail.imap.protocol.ID;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -119,6 +120,7 @@ public class PopularDestinationFragment extends Fragment {
                 final ArrayList<Object> arrayList = new ArrayList<>();
                 final String[] summmary = new String[1];
                 final String[] name = new String[1];
+                final String[] ID = new String[1];
                 JsonObjectRequest jsonRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
@@ -139,6 +141,8 @@ public class PopularDestinationFragment extends Fragment {
                                 double ratingNumber = popularDestinationObject.getDouble("ratingsAverage");
                                 int reviewNumber = popularDestinationObject.getInt("ratingsQuantity");
                                 boolean isFav = false;
+                                String id = popularDestinationObject.getString("_id");
+                                ID[0] = id;
 
                                 PopularPlaces placeDetailItems = new PopularPlaces(country, destination, summary, image, isFav, ratingNumber, reviewNumber);
                                 places.add(placeDetailItems);
@@ -157,6 +161,7 @@ public class PopularDestinationFragment extends Fragment {
                                         intent.putExtra("favorite", places.get(selectedPosition).isFavorite());
                                         intent.putExtra("position", selectedPosition);
                                         intent.putExtra("summary", summmary[0]);
+                                        intent.putExtra("ID", ID);
                                       //  intent.putExtra("photos", arrayList);
                                         startActivity(intent);
                                         break;

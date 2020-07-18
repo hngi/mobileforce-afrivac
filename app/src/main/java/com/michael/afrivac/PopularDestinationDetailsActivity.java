@@ -51,7 +51,6 @@ public class PopularDestinationDetailsActivity extends AppCompatActivity {
         int reviewNumber = intent.getIntExtra("reviewNumber", 0);
         boolean favorite = intent.getBooleanExtra("favorite", false);
         int position = intent.getIntExtra("position", 0);
-        String description = intent.getStringExtra("summary");
 
         String nameCountry = placeName + " (" + country + ")";
         name.setText(nameCountry);
