@@ -97,6 +97,20 @@ public class MyCustomDialog extends DialogFragment {
             Log.e(TAG, "onAttach: ClassCastException : " + e.getMessage() );
         }
     }
+
+    public String getInput1text() {
+
+        String input1text = mInput1.getText().toString();
+        return input1text;
+
+    }
+
+    public String getInput2text() {
+
+        String input2text = mInput2.getText().toString();
+        return input2text;
+
+    }
     //public void SharedPreferenceSAVE(String Title, String Description){
       //  SharedPreferences preferences = getActivity().getSharedPreferences("Memories",0);
        // SharedPreferences.Editor prefEDIT = preferences.edit();
