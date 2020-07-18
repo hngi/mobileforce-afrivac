@@ -62,9 +62,11 @@
                 android:text="(2600)"
                 android:layout_weight="2"
                 android:layout_gravity="center"
-                android:textSize="10sp"
+                android:textSize="15sp"
                 android:textColor="#0000ff"
-                android:textStyle="bold"/>
+                android:textStyle="bold"
+                android:id="@+id/ratingsQuantity"
+                />
         </LinearLayout>
 
         <LinearLayout

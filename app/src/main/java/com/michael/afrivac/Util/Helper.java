@@ -19,6 +19,9 @@ public class Helper {
     Context context;
     Intent intent;
     ProgressDialog progressDialog;
+
+    String token = "";
+
     public Helper(){
     }
 
@@ -114,6 +117,15 @@ public class Helper {
         intent = new Intent(context, EditAccountInfoActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         context.startActivity(intent);
+    }
+
+    public String token(String userToken) {   //gets the token upon login and saves it
+        token = userToken;
+        return null;
+    }
+
+    public String getToken() {    //call this to use the token anywhere
+        return token;
     }
 
     /*public void gotoProfilePageActivity(Context context){

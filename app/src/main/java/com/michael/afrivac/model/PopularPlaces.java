@@ -6,8 +6,8 @@ public class PopularPlaces {
     private double rating_number;
     private int review_number;
 
+    public PopularPlaces(){
 
-    public PopularPlaces() {
     }
 
     public PopularPlaces(String country, String name, String description, String image, boolean isFavorite, double rating_number, int review_number) {
