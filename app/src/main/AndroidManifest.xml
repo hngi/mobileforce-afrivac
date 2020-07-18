@@ -31,6 +31,7 @@
         </activity>
         <activity android:name=".FindHotelDetails" />
         <activity
+
             android:name=".PopularDestinationDetailsActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
@@ -48,6 +49,7 @@
         <activity android:name=".payment_page" />
         <activity android:name=".BookingActivity" />
         <activity android:name=".SignUpActivity" />
+
         <activity
             android:name=".LoginActivity"
             android:theme="@style/LoginTheme" />
