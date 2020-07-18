@@ -51,7 +51,7 @@ public class PopularDestinationDetailsActivity extends AppCompatActivity {
         int reviewNumber = intent.getIntExtra("reviewNumber", 0);
         boolean favorite = intent.getBooleanExtra("favorite", false);
         int position = intent.getIntExtra("position", 0);
-        String description = intent.getStringExtra("summary");
+        String id = intent.getStringExtra("ID");
 
         String nameCountry = placeName + " (" + country + ")";
         name.setText(nameCountry);
@@ -68,6 +68,7 @@ public class PopularDestinationDetailsActivity extends AppCompatActivity {
         SharedPreferences sharedPreferencesReview = getSharedPreferences("POSITION", Context.MODE_PRIVATE);
         SharedPreferences.Editor editorReview = sharedPreferencesReview.edit();
         editorReview.putInt("position", position);
+        editorReview.putString("id", id);
         editorReview.commit();
 
         mToolbar = findViewById(R.id.myToolbar);
