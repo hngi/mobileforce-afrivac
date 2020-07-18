@@ -119,12 +119,13 @@ public class PopularDestinationDetailsReviewFragment extends Fragment {
         SharedPreferences sharedP = getContext().getSharedPreferences("TOKEN", Context.MODE_PRIVATE);
         final String token = sharedP.getString("token", "Token");
 
-        final SharedPreferences sharedPreferences = getActivity().getSharedPreferences("POSITION", getContext().MODE_PRIVATE);
 
-        String ID = sharedPreferences.getString("ID", "Default");
+        SharedPreferences sharedPreferencesId = getContext().getSharedPreferences("ID", Context.MODE_PRIVATE);
+        String ID = sharedPreferencesId.getString("id", "id");
+
 
         try {
-
+            final SharedPreferences sharedPreferences = getActivity().getSharedPreferences("POSITION", getContext().MODE_PRIVATE);
             String url = "https://piscine-mandarine-32869.herokuapp.com/api/v1/destinations/";
             JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
                 @Override
@@ -144,6 +145,16 @@ public class PopularDestinationDetailsReviewFragment extends Fragment {
                                 int ratingsQ =  popularDestinationObject.getInt("ratingsQuantity");
                                 String ratingsQConv = "(" + ratingsQ + ")";
                                 ratingsQuantity.setText(ratingsQConv);
+
+                                SharedPreferences sharedPreferencesID = getContext().getSharedPreferences("ID", Context.MODE_PRIVATE);
+                                SharedPreferences.Editor editor = sharedPreferencesID.edit();
+                                editor.putString("id", popularDestinationObject.getString("_id"));
+                                editor.commit();
+                                try {
+                                    Log.d("IDDDDS", popularDestinationObject.getString("_id"));
+                                }catch (Exception e){
+                                    Log.e("IDErrr", e.getMessage());
+                                }
                             }
                         }
                     }catch (Exception e){
