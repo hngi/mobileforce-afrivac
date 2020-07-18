@@ -4,6 +4,8 @@ import android.os.AsyncTask;
 
 import com.google.android.gms.maps.GoogleMap;
 
+import java.io.IOException;
+
 public class GetNearbyPlaces extends AsyncTask<Object, String, String> {
     private String googlePlaceData, url;
     private GoogleMap mMap;
@@ -28,7 +30,16 @@ public class GetNearbyPlaces extends AsyncTask<Object, String, String> {
      */
     @Override
     protected String doInBackground(Object... objects) {
-        return null;
+        mMap = (GoogleMap) objects[0];
+        url = (String) objects[1];
+
+        DowloadUrl dowloadUrl = new DowloadUrl();
+        try {
+            googlePlaceData = dowloadUrl.ReadtheUrl(url);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return googlePlaceData;
     }
 
     @Override
