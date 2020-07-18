@@ -4,8 +4,10 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.util.Patterns;
@@ -22,13 +24,18 @@ import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
 import com.facebook.FacebookSdk;
+
+import com.facebook.login.Login;
+
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+
 import com.google.android.gms.auth.api.signin.GoogleSignInResult;
+
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -38,16 +45,26 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FacebookAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+
 import com.google.firebase.auth.GoogleAuthProvider;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+
 import com.michael.afrivac.Auth.AuthViewModel;
 import com.michael.afrivac.Util.Helper;
+
+import org.json.JSONObject;
 
 import java.util.Arrays;
 import java.util.HashMap;
 
 import Retrofit.SigninApi;
+
+import okhttp3.FormBody;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -58,19 +75,23 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     private EditText email, password;
     private String Email, Password;
-    private TextView sign_in, signUp, forgotPassword, resend_email_ver;
+    private TextView  signUp, forgotPassword, resend_email_ver;
     private FirebaseAuth mAuth;
     private FirebaseUser user;
     private AuthViewModel authViewModel;
     private Helper helper;
-    private Button googleSignIn;
+    private Button googleSignIn,sign_in;
     private Animation animation;
     private FirebaseAuth.AuthStateListener mAuthStateListener;
     private CallbackManager callbackManager;
     private LoginButton loginButton;
     private static final String EMAIL = "email";
+
     String googleName, googleEmail, idToken;
     private String imageUrl;
+
+    private  final String signIn_URL ="https://piscine-mandarine-32869.herokuapp.com/api/v1/auth/login";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,8 +107,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         signUp = findViewById(R.id.singin_goto_signup);
         forgotPassword = findViewById(R.id.signin_forgot_password);
 
-        final String Email = email.getText().toString().trim();
-        final String Password = password.getText().toString().trim();
 
         FacebookSdk.sdkInitialize(getApplicationContext());
         loginButton = findViewById(R.id.signin_with_facebook);
@@ -141,17 +160,35 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             public void onClick(final View v) {
                 animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.button_anim);
                 sign_in.startAnimation(animation);
+                final String Email = email.getText().toString().trim();
+                final String Password = password.getText().toString().trim();
+                new LoginUser().execute(Email, Password);
                 animation.setAnimationListener(new Animation.AnimationListener() {
                     @Override
-                    public void onAnimationStart(Animation animation) {}
+                    public void onAnimationStart(Animation animation) {
+                    }
 
                     @Override
                     public void onAnimationEnd(Animation animation) {
-                        if(!isEmpty(email.getText().toString()) && !isEmpty(password.getText().toString())){
+
+                        if (!isEmpty(email.getText().toString()) && !isEmpty(password.getText().toString())) {
                             helper.progressDialogStart("Login to User Account",
                                     "Please wait while we log-in into your account");
                             FirebaseAuth.getInstance().signInWithEmailAndPassword(email.getText().toString(),
-                                    password.getText().toString())
+                                    password.getText().toString());
+
+
+                            String Email = email.getText().toString();
+                            String Password = password.getText().toString();
+
+                            LoginUser userLogin = new LoginUser();
+                            userLogin.execute(Email, Password);
+
+
+                        /*if(!isEmpty(email.getText().toString()) && !isEmpty(password.getText().toString())){
+                            helper.progressDialogStart("Login to User Account", "Please wait while we log-in into your account");
+                            FirebaseAuth.getInstance().signInWithEmailAndPassword(email.getText().toString(), password.getText().toString())
+>>>>>>> c52d3fe781cdf9527d72685519258c6003a05486
                                     .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                                         @Override
                                         public void onComplete(@NonNull Task<AuthResult> task) {
@@ -172,14 +209,28 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                             Toast.makeText(LoginActivity.this, "Please enter password", Toast.LENGTH_SHORT).show();
                         } else if(!Patterns.EMAIL_ADDRESS.matcher(email.getText().toString()).matches()){
                             Toast.makeText(LoginActivity.this, "Please enter valid email", Toast.LENGTH_SHORT).show();
+                        }*/
                         }
                     }
 
                     @Override
-                    public void onAnimationRepeat(Animation animation) {}
+                    public void onAnimationRepeat(Animation animation) {
+                    }
                 });
             }
         });
+
+        //This Sign in button works for Api authentication
+
+//        sign_in.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                final String Email = email.getText().toString().trim();
+//                final String Password = password.getText().toString().trim();
+//                new LoginUser().execute(Email,Password);
+//
+//            }
+//        });
 
         googleSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -234,6 +285,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
 //        findViewById(R.id.signin_with_google).setOnClickListener(this);
     }
+
 
     public void handleFacebookToken(AccessToken token) {
 
@@ -443,6 +495,70 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         return string.equals("");
     }
 
+    //code to login user with inputed email and password
+    public class LoginUser extends AsyncTask<String,Void ,String>{
+
+        @Override
+        protected String doInBackground(String... strings) {
+            String email = strings[0];
+            String password = strings[1];
+            OkHttpClient okHttpClient = new OkHttpClient();
+            RequestBody formBody = new FormBody.Builder()
+                    .add("email", email)
+                    .add("password",password).build();
+            Request request = new Request.Builder()
+                    .url(signIn_URL)
+                    .post(formBody)
+                    .build();
+
+            //sends the email and Password to the db
+
+            try{
+                Response response = okHttpClient.newCall(request).execute();    //gets a response from the server
+                if(response.isSuccessful()){
+                    showToast("Successful Login");
+                    startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                    finish();
+                    String result = response.body().string();
+                    Log.i("loginResponse", "yes");
+                    Log.i("responseBody", result);
+                    //Log.i("resultResponsee", result);
+
+                    JSONObject jsonObject = new JSONObject(result);
+                    String resultData = jsonObject.getString("data");    //gets the data array in string format from the response body
+
+                    JSONObject jsonObject1 = new JSONObject(resultData);
+                    String resultToken = jsonObject1.getString("token");  //gets the token string from the data array
+                    helper.token(resultToken);   //sends token to the helper class to be used through out the app
+
+                    SharedPreferences sharedPreferences = getSharedPreferences("TOKEN", Context.MODE_PRIVATE);
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                    editor.putString("token", resultToken);
+                    editor.apply();
+
+                    Log.d("TOKEN", resultToken);
+
+                    if(!response.isSuccessful()){
+
+                        Toast.makeText(LoginActivity.this,"Email or Password Mismatch",Toast.LENGTH_SHORT).show();
+                    }
+                }else{
+                    Log.i("loginResponse", "Unsuccessful");
+                }
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+            return null;
+        }
+    }
+    public void showToast(final String Text){
+        this.runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                Toast.makeText(LoginActivity.this,Text,Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
 
 }
 

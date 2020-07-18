@@ -1,5 +1,8 @@
 package com.michael.afrivac;
 
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.os.AsyncTask;
 import android.os.Bundle;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -7,19 +10,41 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.RatingBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
 import com.firebase.client.Firebase;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import com.squareup.picasso.Picasso;
+import com.michael.afrivac.Util.Helper;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
 import org.w3c.dom.Text;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import okhttp3.FormBody;
+import okhttp3.OkHttpClient;
+//import okhttp3.Request;
+import okhttp3.RequestBody;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -32,6 +57,7 @@ public class PopularDestinationDetailsReviewFragment extends Fragment {
     private LinearLayoutManager layoutManager;
     private PopularDestinationReviewsRecyclerviewAdapter adapter;
     private Button btnSubmitReview, btnAddReview;
+    private Helper helper;
 
     EditText describe, tell;
     RatingBar rating;
@@ -90,21 +116,70 @@ public class PopularDestinationDetailsReviewFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         final View view = inflater.inflate(R.layout.fragment_popular_destination_details_review, container, false);
+        SharedPreferences sharedP = getContext().getSharedPreferences("TOKEN", Context.MODE_PRIVATE);
+        final String token = sharedP.getString("token", "Token");
+
+        try {
+
+            final SharedPreferences sharedPreferences = getActivity().getSharedPreferences("POSITION", getContext().MODE_PRIVATE);
+            String url = "https://piscine-mandarine-32869.herokuapp.com/api/v1/destinations/";
+            JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+                @Override
+                public void onResponse(JSONObject response) {
+                    try {
+
+                        JSONObject jsonResponse = response.getJSONObject("data");
+                        JSONArray popularDestinationJsonArray = jsonResponse.getJSONArray("selectedProperties");
+                        for (int pos = 0; pos < popularDestinationJsonArray.length(); pos++){
+                            JSONObject popularDestinationObject = popularDestinationJsonArray.getJSONObject(pos);
+                            if (sharedPreferences.getInt("position", 0) == pos){
+                                TextView ratingsAverage = view.findViewById(R.id.displayRating);
+                                double ratingsA = popularDestinationObject.getDouble("ratingsAverage");
+                                String ratingsAConv = "" + ratingsA;
+                                ratingsAverage.setText(ratingsAConv);
+                                TextView ratingsQuantity = view.findViewById(R.id.ratingsQuantity);
+                                int ratingsQ =  popularDestinationObject.getInt("ratingsQuantity");
+                                String ratingsQConv = "(" + ratingsQ + ")";
+                                ratingsQuantity.setText(ratingsQConv);
+                            }
+                        }
+                    }catch (Exception e){
+                        e.printStackTrace();
+                    }
+                }
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+
+                }
+            }){
+                public Map<String, String> getHeaders() throws AuthFailureError {
+                    Map<String, String> headers = new HashMap<>();
+                    headers.put("Authorization", "Bearer " + token);
+                    return headers;
+                }
+            };
+            Volley.newRequestQueue(getContext()).add(jsonObjectRequest);
+        }catch (Exception e){
+            Log.e("error", "ERROR: " + e.getMessage());
+        }
 
         recyclerView = view.findViewById(R.id.userRecyclerViewReview);
         btnAddReview = view.findViewById(R.id.addReview);
         btnSubmitReview =view.findViewById(R.id.submitReview);
 
+        helper = new Helper();
+
         layoutManager = new LinearLayoutManager(getContext());
-        adapter = new PopularDestinationReviewsRecyclerviewAdapter();
+        adapter = new PopularDestinationReviewsRecyclerviewAdapter(getContext());
 
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(adapter);
 
-        adapter.addUserReviewInfo(new UserReviewDetails("Uzumaki Naruto", "12/12/12", "This is great", "\"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."));
-        adapter.addUserReviewInfo(new UserReviewDetails("Uchia Sasuke", "12/12/12", "Amazing Hotel", "\"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."));
-        adapter.addUserReviewInfo(new UserReviewDetails("Monkey D Luffy", "12/12/12", "Cool", "\"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."));
-        adapter.addUserReviewInfo(new UserReviewDetails("Zoro", "12/12/12", "Fantabulous", "\"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."));
+       // adapter.addUserReviewInfo(new UserReviewDetails("Uzumaki Naruto", "12/12/12", "This is great", "\"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."));
+       // adapter.addUserReviewInfo(new UserReviewDetails("Uchia Sasuke", "12/12/12", "Amazing Hotel", "\"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."));
+       // adapter.addUserReviewInfo(new UserReviewDetails("Monkey D Luffy", "12/12/12", "Cool", "\"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."));
+       // adapter.addUserReviewInfo(new UserReviewDetails("Zoro", "12/12/12", "Fantabulous", "\"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."));
 
         btnAddReview.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -127,7 +202,15 @@ public class PopularDestinationDetailsReviewFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-            ReviewDetails reviewDetails = new ReviewDetails();
+                String Review = describe.getText().toString();
+                Float R = rating.getRating();
+                String Rating = String.valueOf(R);
+
+
+                PostReviews postReviews = new PostReviews();
+                postReviews.execute(Review, Rating);
+
+         /*   ReviewDetails reviewDetails = new ReviewDetails();
 
                 GetDataFromEditText();
 
@@ -146,7 +229,9 @@ public class PopularDestinationDetailsReviewFragment extends Fragment {
 
                 ConstraintLayout submitReviewCons = view.findViewById(R.id.submit_review_cons);
                 submitReviewCons.setVisibility(View.GONE);
-                btnAddReview.setVisibility(View.VISIBLE);
+                btnAddReview.setVisibility(View.VISIBLE);    */
+
+
             }
         });
     return view;
@@ -159,4 +244,33 @@ public class PopularDestinationDetailsReviewFragment extends Fragment {
 
         RatingHolder = rating.getRating();
     }
+
+    //code to send review to the API db
+    public class PostReviews extends AsyncTask<String, Void, String> {
+
+
+        @Override
+        protected String doInBackground(String... strings) {
+
+            OkHttpClient okHttpClient = new OkHttpClient();
+            String token = helper.getToken();
+            String Review = strings[0];
+            String Rating = strings[1];
+
+            RequestBody requestDetails = new FormBody.Builder()
+                    .add("review", Review)
+                    .add("rating", Rating)
+                  //  .add("destination", PhoneNumber)  //update this once popular dest is complete
+                    .build();
+
+            okhttp3.Request request = new okhttp3.Request.Builder()
+                    .url("https://piscine-mandarine-32869.herokuapp.com/api/v1/reviews/")
+                    .header("Authorization", "Authirization: Bearer " + token)
+                    .post(requestDetails)
+                    .build();
+
+            return null;
+        }
+    }
+
 }
