@@ -24,7 +24,9 @@ import com.google.firebase.database.core.view.Event;
 import com.michael.afrivac.Util.FirebaseUtil;
 import com.michael.afrivac.Util.Helper;
 import com.michael.afrivac.model.PopularPlaces;
+import com.nostra13.universalimageloader.utils.L;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.EventListener;
 import java.util.List;
@@ -33,15 +35,18 @@ import okhttp3.FormBody;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
+import okhttp3.Response;
 
 public class PopularDestinationReviewsRecyclerviewAdapter extends RecyclerView.Adapter<PopularDestinationReviewsRecyclerviewAdapter.ReviewAdapterHolder> {
 
     private List<UserReviewDetails> usersReviewDetailsArray = new ArrayList<>();
     ArrayList<UserReviewDetails> temp = new ArrayList<>();
+    PopularDestinationDetailsReviewFragment pFragment = new PopularDestinationDetailsReviewFragment();
 
     private Context context;
     private LoginActivity loginActivity = new LoginActivity();
     EditText reviewtxt;
+    Helper helper = new Helper();
  //   private FirebaseDatabase mFirebaseDatabase;
  //   private DatabaseReference mDatabaseReference;
 
@@ -50,6 +55,8 @@ public class PopularDestinationReviewsRecyclerviewAdapter extends RecyclerView.A
        // mFirebaseDatabase = FirebaseUtil.mFirebaseDatabase;
        // mDatabaseReference = FirebaseDatabase.getInstance().getReference("popular_destinatio").child("review");
         Log.i("db_popdest", "test");
+
+
 
     /*    mDatabaseReference.addChildEventListener(new ChildEventListener() {
             @Override
@@ -166,4 +173,4 @@ public class PopularDestinationReviewsRecyclerviewAdapter extends RecyclerView.A
     }
 
 
-}
+    }

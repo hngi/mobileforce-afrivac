@@ -38,6 +38,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 import org.w3c.dom.Text;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -79,6 +80,7 @@ public class PopularDestinationDetailsReviewFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    private String ID;
 
     public PopularDestinationDetailsReviewFragment() {
         // Required empty public constructor
@@ -111,6 +113,38 @@ public class PopularDestinationDetailsReviewFragment extends Fragment {
         }
     }
 
+    public class getReviews extends AsyncTask<String,Void ,String>{
+
+
+        @Override
+        protected String doInBackground(String... strings) {
+
+            OkHttpClient okHttpClient = new OkHttpClient();
+            String dest_id = helper.getDestID();
+
+            okhttp3.Request request = new okhttp3.Request.Builder()
+                    .url("https://piscine-mandarine-32869.herokuapp.com/api/v1/destinations/" + dest_id)
+                    .build();
+
+            Log.i("destiddd", "https://piscine-mandarine-32869.herokuapp.com/api/v1/destinations/" + dest_id);
+
+            try {
+                okhttp3.Response response = okHttpClient.newCall(request).execute();    //gets a response from the server
+                if (response.isSuccessful()) {
+                    String result = response.body().string();
+                    Log.i("desitid", result);
+
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+
+            return null;
+
+        }
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -121,7 +155,8 @@ public class PopularDestinationDetailsReviewFragment extends Fragment {
 
 
         SharedPreferences sharedPreferencesId = getContext().getSharedPreferences("ID", Context.MODE_PRIVATE);
-        String ID = sharedPreferencesId.getString("id", "id");
+        //ID = sharedPreferencesId.getString("id", "id");
+
 
 
         try {
@@ -149,6 +184,10 @@ public class PopularDestinationDetailsReviewFragment extends Fragment {
                                 SharedPreferences sharedPreferencesID = getContext().getSharedPreferences("ID", Context.MODE_PRIVATE);
                                 SharedPreferences.Editor editor = sharedPreferencesID.edit();
                                 editor.putString("id", popularDestinationObject.getString("_id"));
+                                Log.i("aaaa", popularDestinationObject.getString("_id"));
+                                helper.Dest_id(popularDestinationObject.getString("_id"));
+                                ID = popularDestinationObject.getString("_id");
+                                //dest_id = popularDestinationObject.getString("_id");
                                 editor.commit();
                                 try {
                                     Log.d("IDDDDS", popularDestinationObject.getString("_id"));
@@ -177,6 +216,11 @@ public class PopularDestinationDetailsReviewFragment extends Fragment {
         }catch (Exception e){
             Log.e("error", "ERROR: " + e.getMessage());
         }
+
+        getReviews getReviews = new getReviews();
+        getReviews.execute();
+
+
 
         recyclerView = view.findViewById(R.id.userRecyclerViewReview);
         btnAddReview = view.findViewById(R.id.addReview);
@@ -274,7 +318,7 @@ public class PopularDestinationDetailsReviewFragment extends Fragment {
             RequestBody requestDetails = new FormBody.Builder()
                     .add("review", Review)
                     .add("rating", Rating)
-                  //  .add("destination", PhoneNumber)  //update this once popular dest is complete
+                    .add("destination", ID)  //update this once popular dest is complete
                     .build();
 
             okhttp3.Request request = new okhttp3.Request.Builder()
@@ -285,6 +329,10 @@ public class PopularDestinationDetailsReviewFragment extends Fragment {
 
             return null;
         }
+    }
+
+    public String Dest_id() {
+        return ID;
     }
 
 }

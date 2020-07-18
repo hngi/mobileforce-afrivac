@@ -21,6 +21,7 @@ public class Helper {
     ProgressDialog progressDialog;
 
     String token = "";
+    String dest_id = "555";
 
     public Helper(){
     }
@@ -126,6 +127,16 @@ public class Helper {
 
     public String getToken() {    //call this to use the token anywhere
         return token;
+    }
+
+    public String Dest_id(String destid) {
+        dest_id = destid;
+        return null;
+
+    }
+
+    public String getDestID() {    //call this to use the token anywhere
+        return dest_id;
     }
 
     /*public void gotoProfilePageActivity(Context context){
