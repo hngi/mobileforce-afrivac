@@ -34,7 +34,7 @@
                 app:layout_constraintTop_toTopOf="parent"
                 android:textColor="#000"
                 android:textStyle="bold"
-                android:textSize="20sp"/>
+                android:textSize="15sp"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -44,7 +44,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 android:textStyle="normal"
                 android:textColor="#0000ff"
-                android:textSize="17sp"/>
+                android:textSize="15sp"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -60,34 +60,37 @@
                 android:layout_marginEnd="@dimen/dimension_20dp">
 
                 <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="160dp"
+                    android:layout_height="290dp"
                     android:src="@drawable/photos1"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toStartOf="@id/photo2"
                     android:id="@+id/photo1"
-                    android:layout_marginEnd="@dimen/dimension_20dp"/>
+                    android:layout_marginEnd="@dimen/dimension_20dp"
+                    android:scaleType="fitXY"/>
 
                 <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="140dp"
+                    android:layout_height="140dp"
                     android:src="@drawable/photo2"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@id/photo1"
-                    android:id="@+id/photo2"/>
+                    android:id="@+id/photo2"
+                    android:scaleType="fitXY"/>
 
                 <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="140dp"
+                    android:layout_height="140dp"
                     android:src="@drawable/photo3"
                     app:layout_constraintTop_toBottomOf="@id/photo2"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@id/photo1"
                     android:id="@+id/photo3"
                     android:layout_marginTop="15dp"
-                    android:layout_marginStart="@dimen/dimension_20dp"/>
+                    android:layout_marginStart="@dimen/dimension_20dp"
+                    android:scaleType="fitXY"/>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

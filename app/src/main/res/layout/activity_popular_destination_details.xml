@@ -61,8 +61,9 @@
             android:layout_marginEnd="20dp"
             android:text="Cairo"
             android:textColor="#fff"
-            android:textSize="20dp"
-            android:textStyle="bold" />
+            android:textSize="17sp"
+            android:textStyle="bold"
+            android:id="@+id/popularDestinationName"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -99,17 +100,19 @@
                 android:textSize="15sp"
                 android:textStyle="bold"
                 android:layout_marginStart="5dp"
-                android:layout_gravity="center_vertical"/>
+                android:layout_gravity="center_vertical"
+                android:id="@+id/ratingValue"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="end">
                 <ImageView
-                    android:layout_width="50dp"
-                    android:layout_height="30dp"
+                    android:layout_width="45dp"
+                    android:layout_height="25dp"
                     android:src="@drawable/favorite"
-                    android:layout_marginStart="50dp" />
+                    android:layout_marginStart="50dp"
+                    android:id="@+id/fav"/>
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
