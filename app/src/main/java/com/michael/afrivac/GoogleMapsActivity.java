@@ -110,6 +110,7 @@ public class GoogleMapsActivity extends FragmentActivity implements
                 List<Address> addressList = null;
 
                 if(!address.trim().isEmpty()){
+                    helper.progressDialogStart("Please Wait", "We are trying to load location");
                     Geocoder geocoder = new Geocoder(this);
 
                     try {
@@ -126,19 +127,24 @@ public class GoogleMapsActivity extends FragmentActivity implements
 
                                 mMap.addMarker(userOptions);
                                 mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
-                                mMap.animateCamera(CameraUpdateFactory.zoomTo(18));
+                                mMap.animateCamera(CameraUpdateFactory.zoomTo(15));
+                                helper.progressDialogEnd();
 
                             }
                         }else{
                             helper.toastMessage(this, "very sorry, your location was not found");
+                            helper.progressDialogEnd();
                         }
                     } catch (IOException e) {
                         helper.toastMessage(this, "Error message: " + e.getMessage() + "\n" + e.getLocalizedMessage());
                         e.printStackTrace();
+                    }finally {
+                        helper.progressDialogEnd();
                     }
 
                 }else{
                     helper.toastMessage(this, "please input a location name first");
+                    helper.progressDialogEnd();
                 }
                 break;
 
