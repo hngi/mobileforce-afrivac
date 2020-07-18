@@ -122,6 +122,10 @@ public class Helper {
         context.startActivity(intent);
     }
 
+    public void gotoGoogleMapActivity(Context context, Intent intent) {
+        context.startActivity(intent);
+    }
+
     /*public void gotoProfilePageActivity(Context context){
         intent = new Intent(context, ProfilePageActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);

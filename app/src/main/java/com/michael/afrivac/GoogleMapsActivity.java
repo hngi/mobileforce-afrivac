@@ -9,6 +9,7 @@ import androidx.fragment.app.FragmentActivity;
 import android.Manifest;
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
@@ -66,6 +67,17 @@ public class GoogleMapsActivity extends FragmentActivity implements
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+
+        Intent intent = getIntent();
+        String placeSearch = intent.getStringExtra("id_discover");
+        if(placeSearch == "DiscoverAfrica"){
+            String place = intent.getStringExtra("name");
+            if(place != null){
+                searchLoaction(place);
+            }else{
+                helper.toastMessage(this, "couldn't search popular destination");
+            }
+        }
     }
 
     /**
@@ -106,48 +118,51 @@ public class GoogleMapsActivity extends FragmentActivity implements
             case R.id.search_location:
                 EditText textLocation = findViewById(R.id.text_search);
                 String address = textLocation.getText().toString();
-
-                List<Address> addressList = null;
-
-                if(!address.trim().isEmpty()){
-                    helper.progressDialogStart("Please Wait", "We are trying to load location");
-                    Geocoder geocoder = new Geocoder(this);
-
-                    try {
-                        addressList = geocoder.getFromLocationName(address, 6);
-
-                        if(addressList != null){
-                            for(Address oneAddress : addressList){
-                                LatLng latLng = new LatLng(oneAddress.getLatitude(), oneAddress.getLongitude());
-
-                                userOptions = new MarkerOptions();
-                                userOptions.position(latLng);
-                                userOptions.title(address);
-                                userOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE));
-
-                                mMap.addMarker(userOptions);
-                                mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
-                                mMap.animateCamera(CameraUpdateFactory.zoomTo(15));
-                                helper.progressDialogEnd();
-
-                            }
-                        }else{
-                            helper.toastMessage(this, "very sorry, your location was not found");
-                            helper.progressDialogEnd();
-                        }
-                    } catch (IOException e) {
-                        helper.toastMessage(this, "Error message: " + e.getMessage() + "\n" + e.getLocalizedMessage());
-                        e.printStackTrace();
-                    }finally {
-                        helper.progressDialogEnd();
-                    }
-
-                }else{
-                    helper.toastMessage(this, "please input a location name first");
-                    helper.progressDialogEnd();
-                }
+                searchLoaction(address);
                 break;
 
+        }
+    }
+
+    public void searchLoaction(String address){
+        List<Address> addressList = null;
+
+        if(!address.trim().isEmpty()){
+            helper.progressDialogStart("Please Wait", "We are trying to load location");
+            Geocoder geocoder = new Geocoder(this);
+
+            try {
+                addressList = geocoder.getFromLocationName(address, 4);
+
+                if(addressList != null){
+                    for(Address oneAddress : addressList){
+                        LatLng latLng = new LatLng(oneAddress.getLatitude(), oneAddress.getLongitude());
+
+                        userOptions = new MarkerOptions();
+                        userOptions.position(latLng);
+                        userOptions.title(address);
+                        userOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE));
+
+                        mMap.addMarker(userOptions);
+                        mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
+                        mMap.animateCamera(CameraUpdateFactory.zoomTo(15));
+                        helper.progressDialogEnd();
+
+                    }
+                }else{
+                    helper.toastMessage(this, "very sorry, your location was not found");
+                    helper.progressDialogEnd();
+                }
+            } catch (IOException e) {
+                helper.toastMessage(this, "Error message: " + e.getMessage() + "\n" + e.getLocalizedMessage());
+                e.printStackTrace();
+            }finally {
+                helper.progressDialogEnd();
+            }
+
+        }else{
+            helper.toastMessage(this, "please input a location name first");
+            helper.progressDialogEnd();
         }
     }
 

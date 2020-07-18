@@ -1,6 +1,7 @@
 package com.michael.afrivac.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.michael.afrivac.GoogleMapsActivity;
 import com.michael.afrivac.R;
 
 import com.michael.afrivac.Util.Helper;
@@ -40,7 +42,7 @@ public class DiscoverAdapter extends RecyclerView.Adapter<DiscoverAdapter.MyView
     }
 
     @Override
-    public void onBindViewHolder(@NonNull final MyViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull final MyViewHolder holder, final int position) {
         holder.countryName.setText(discoverAfrica.get(position).getName());
         holder.destination.setText(discoverAfrica.get(position).getDestination());
         Picasso.get().load(discoverAfrica.get(position).getImage()).placeholder(R.mipmap.ic_launcher).resize(500,500).centerCrop().into(holder.image);
@@ -48,7 +50,10 @@ public class DiscoverAdapter extends RecyclerView.Adapter<DiscoverAdapter.MyView
         holder.countryName.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                helper.gotoGoogleMapActivity(holder.itemView.getContext());
+                Intent intent = new Intent(holder.itemView.getContext(), GoogleMapsActivity.class);
+                intent.putExtra("id_discover", "DiscoverAfrica");
+                intent.putExtra("name", discoverAfrica.get(position).getName());
+                helper.gotoGoogleMapActivity(holder.itemView.getContext(), intent);
             }
         });
     }
