@@ -36,6 +36,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.michael.afrivac.Util.Helper;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
 
 public class GoogleMapsActivity extends FragmentActivity implements
@@ -138,7 +139,6 @@ public class GoogleMapsActivity extends FragmentActivity implements
                     for(Address oneAddress : addressList){
                         LatLng latLng = new LatLng(oneAddress.getLatitude(), oneAddress.getLongitude());
 
-                        userOptions = new MarkerOptions();
                         userOptions.position(latLng);
                         userOptions.title(address);
                         userOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE));
