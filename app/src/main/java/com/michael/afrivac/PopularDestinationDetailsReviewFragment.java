@@ -2,6 +2,7 @@ package com.michael.afrivac;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.os.AsyncTask;
 import android.os.Bundle;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -20,6 +21,7 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -28,11 +30,21 @@ import com.android.volley.toolbox.Volley;
 import com.firebase.client.Firebase;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+
 import com.squareup.picasso.Picasso;
+import com.michael.afrivac.Util.Helper;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.w3c.dom.Text;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import okhttp3.FormBody;
+import okhttp3.OkHttpClient;
+//import okhttp3.Request;
+import okhttp3.RequestBody;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -45,6 +57,7 @@ public class PopularDestinationDetailsReviewFragment extends Fragment {
     private LinearLayoutManager layoutManager;
     private PopularDestinationReviewsRecyclerviewAdapter adapter;
     private Button btnSubmitReview, btnAddReview;
+    private Helper helper;
 
     EditText describe, tell;
     RatingBar rating;
@@ -103,10 +116,12 @@ public class PopularDestinationDetailsReviewFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         final View view = inflater.inflate(R.layout.fragment_popular_destination_details_review, container, false);
+        SharedPreferences sharedP = getContext().getSharedPreferences("TOKEN", Context.MODE_PRIVATE);
+        final String token = sharedP.getString("token", "Token");
 
         try {
 
-            final SharedPreferences sharedPreferences = getActivity().getSharedPreferences("POSITION", Context.MODE_PRIVATE);
+            final SharedPreferences sharedPreferences = getActivity().getSharedPreferences("POSITION", getContext().MODE_PRIVATE);
             String url = "https://piscine-mandarine-32869.herokuapp.com/api/v1/destinations/";
             JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
                 @Override
@@ -114,7 +129,7 @@ public class PopularDestinationDetailsReviewFragment extends Fragment {
                     try {
 
                         JSONObject jsonResponse = response.getJSONObject("data");
-                        JSONArray popularDestinationJsonArray = jsonResponse.getJSONArray("destination");
+                        JSONArray popularDestinationJsonArray = jsonResponse.getJSONArray("selectedProperties");
                         for (int pos = 0; pos < popularDestinationJsonArray.length(); pos++){
                             JSONObject popularDestinationObject = popularDestinationJsonArray.getJSONObject(pos);
                             if (sharedPreferences.getInt("position", 0) == pos){
@@ -122,8 +137,6 @@ public class PopularDestinationDetailsReviewFragment extends Fragment {
                                 double ratingsA = popularDestinationObject.getDouble("ratingsAverage");
                                 String ratingsAConv = "" + ratingsA;
                                 ratingsAverage.setText(ratingsAConv);
-
-
                                 TextView ratingsQuantity = view.findViewById(R.id.ratingsQuantity);
                                 int ratingsQ =  popularDestinationObject.getInt("ratingsQuantity");
                                 String ratingsQConv = "(" + ratingsQ + ")";
@@ -139,7 +152,13 @@ public class PopularDestinationDetailsReviewFragment extends Fragment {
                 public void onErrorResponse(VolleyError error) {
 
                 }
-            });
+            }){
+                public Map<String, String> getHeaders() throws AuthFailureError {
+                    Map<String, String> headers = new HashMap<>();
+                    headers.put("Authorization", "Bearer " + token);
+                    return headers;
+                }
+            };
             Volley.newRequestQueue(getContext()).add(jsonObjectRequest);
         }catch (Exception e){
             Log.e("error", "ERROR: " + e.getMessage());
@@ -148,6 +167,8 @@ public class PopularDestinationDetailsReviewFragment extends Fragment {
         recyclerView = view.findViewById(R.id.userRecyclerViewReview);
         btnAddReview = view.findViewById(R.id.addReview);
         btnSubmitReview =view.findViewById(R.id.submitReview);
+
+        helper = new Helper();
 
         layoutManager = new LinearLayoutManager(getContext());
         adapter = new PopularDestinationReviewsRecyclerviewAdapter(getContext());
@@ -181,7 +202,15 @@ public class PopularDestinationDetailsReviewFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-            ReviewDetails reviewDetails = new ReviewDetails();
+                String Review = describe.getText().toString();
+                Float R = rating.getRating();
+                String Rating = String.valueOf(R);
+
+
+                PostReviews postReviews = new PostReviews();
+                postReviews.execute(Review, Rating);
+
+         /*   ReviewDetails reviewDetails = new ReviewDetails();
 
                 GetDataFromEditText();
 
@@ -200,7 +229,9 @@ public class PopularDestinationDetailsReviewFragment extends Fragment {
 
                 ConstraintLayout submitReviewCons = view.findViewById(R.id.submit_review_cons);
                 submitReviewCons.setVisibility(View.GONE);
-                btnAddReview.setVisibility(View.VISIBLE);
+                btnAddReview.setVisibility(View.VISIBLE);    */
+
+
             }
         });
     return view;
@@ -213,4 +244,33 @@ public class PopularDestinationDetailsReviewFragment extends Fragment {
 
         RatingHolder = rating.getRating();
     }
+
+    //code to send review to the API db
+    public class PostReviews extends AsyncTask<String, Void, String> {
+
+
+        @Override
+        protected String doInBackground(String... strings) {
+
+            OkHttpClient okHttpClient = new OkHttpClient();
+            String token = helper.getToken();
+            String Review = strings[0];
+            String Rating = strings[1];
+
+            RequestBody requestDetails = new FormBody.Builder()
+                    .add("review", Review)
+                    .add("rating", Rating)
+                  //  .add("destination", PhoneNumber)  //update this once popular dest is complete
+                    .build();
+
+            okhttp3.Request request = new okhttp3.Request.Builder()
+                    .url("https://piscine-mandarine-32869.herokuapp.com/api/v1/reviews/")
+                    .header("Authorization", "Authirization: Bearer " + token)
+                    .post(requestDetails)
+                    .build();
+
+            return null;
+        }
+    }
+
 }

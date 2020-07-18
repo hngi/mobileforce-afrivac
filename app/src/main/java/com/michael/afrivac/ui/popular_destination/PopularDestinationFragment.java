@@ -8,7 +8,9 @@ import androidx.lifecycle.ViewModelProviders;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -110,16 +112,19 @@ public class PopularDestinationFragment extends Fragment {
             @Override
             public void onItemSelected(final int selectedPosition) {
 
+                SharedPreferences sharedP = getContext().getSharedPreferences("TOKEN", Context.MODE_PRIVATE);
+                final String token = sharedP.getString("token", "Token");
+
                 String url = "https://piscine-mandarine-32869.herokuapp.com/api/v1/destinations/";
                 final ArrayList<Object> arrayList = new ArrayList<>();
-                final String[] description = new String[1];
+                final String[] summmary = new String[1];
                 final String[] name = new String[1];
-                JsonObjectRequest jsonRequest = new JsonObjectRequest(Request.Method.POST, url, null, new Response.Listener<JSONObject>() {
+                JsonObjectRequest jsonRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
                         try {
                             JSONObject jsonResponse = response.getJSONObject("data");
-                            JSONArray popularDestinationJsonArray = jsonResponse.getJSONArray("destination");
+                            JSONArray popularDestinationJsonArray = jsonResponse.getJSONArray("selectedProperties");
 
                             for (int popItem = 0; popItem < popularDestinationJsonArray.length(); popItem++) {
 
@@ -129,11 +134,11 @@ public class PopularDestinationFragment extends Fragment {
                                 name[0] = destination;
                                 String country = popularDestinationObject.getString("country");
                                 String summary = popularDestinationObject.getString("summary");
+                                summmary[0] = summary;
                                 String image = popularDestinationObject.getString("imageCover");
                                 double ratingNumber = popularDestinationObject.getDouble("ratingsAverage");
                                 int reviewNumber = popularDestinationObject.getInt("ratingsQuantity");
                                 boolean isFav = false;
-                                description[0] = popularDestinationObject.getString("description");
 
                                 PopularPlaces placeDetailItems = new PopularPlaces(country, destination, summary, image, isFav, ratingNumber, reviewNumber);
                                 places.add(placeDetailItems);
@@ -151,7 +156,7 @@ public class PopularDestinationFragment extends Fragment {
                                         intent.putExtra("reviewNumber", places.get(selectedPosition).getReview_number());
                                         intent.putExtra("favorite", places.get(selectedPosition).isFavorite());
                                         intent.putExtra("position", selectedPosition);
-                                        intent.putExtra("description", description[0]);
+                                        intent.putExtra("summary", summmary[0]);
                                       //  intent.putExtra("photos", arrayList);
                                         startActivity(intent);
                                         break;
@@ -173,7 +178,7 @@ public class PopularDestinationFragment extends Fragment {
                 }){
                     public Map<String, String> getHeaders() throws AuthFailureError {
                         Map<String, String> headers = new HashMap<>();
-                        headers.put("Authorization", "Bearer " + "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmMGU4Yjc3ZmQ3NDc2MDAxN2IzNzRhNSIsImlhdCI6MTU5NDkwMzU4OCwiZXhwIjoxNTk1MTYyNzg4fQ.Ux3HFg9eeYNGE79sB2mC9xVggnAE9m9EHYwh5t4jlMU");
+                        headers.put("Authorization", "Bearer " + token);
                         return headers;
                     }};
 

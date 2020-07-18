@@ -17,6 +17,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -35,6 +36,8 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.HashMap;
+import java.util.Map;
 
 public class PopularDestinationDetailsOverviewFragment extends Fragment {
 
@@ -90,6 +93,9 @@ public class PopularDestinationDetailsOverviewFragment extends Fragment {
 
         final View view = inflater.inflate(R.layout.fragment_popular_destination_details_overview, container, false);
 
+        SharedPreferences sharedP = getContext().getSharedPreferences("TOKEN", getContext().MODE_PRIVATE);
+        final String token = sharedP.getString("token", "Token");
+
         try {
 
             final SharedPreferences sharedPreferences = getActivity().getSharedPreferences("POSITION", Context.MODE_PRIVATE);
@@ -100,20 +106,20 @@ public class PopularDestinationDetailsOverviewFragment extends Fragment {
                     try {
 
                         JSONObject jsonResponse = response.getJSONObject("data");
-                        JSONArray popularDestinationJsonArray = jsonResponse.getJSONArray("destination");
+                        JSONArray popularDestinationJsonArray = jsonResponse.getJSONArray("selectedProperties");
                         for (int pos = 0; pos < popularDestinationJsonArray.length(); pos++){
                             JSONObject popularDestinationObject = popularDestinationJsonArray.getJSONObject(pos);
                             if (sharedPreferences.getInt("position", 0) == pos){
                                 TextView details = view.findViewById(R.id.txtOverview);
-                                details.setText(popularDestinationObject.getString("description"));
+                                details.setText(popularDestinationObject.getString("summary"));
                                 ImageView photo1 = view.findViewById(R.id.photo1);
                                 ImageView photo2 = view.findViewById(R.id.photo2);
                                 ImageView photo3 = view.findViewById(R.id.photo3);
 
                                 try {
-                                    String imgURL1 = popularDestinationObject.getJSONArray("images").getString(0);
-                                    String imgURL2 = popularDestinationObject.getJSONArray("images").getString(1);
-                                    String imgURL3 = popularDestinationObject.getJSONArray("images").getString(2);
+                                    String imgURL1 = popularDestinationObject.getString("imageCover");
+                                    String imgURL2 = popularDestinationObject.getString("imageCover");
+                                    String imgURL3 = popularDestinationObject.getString("imageCover");
 
                                     Picasso.get().load(imgURL1).transform(new RoundedCornersTransform()).into(photo1);
                                     Picasso.get().load(imgURL2).transform(new RoundedCornersTransform()).into(photo2);
@@ -133,7 +139,13 @@ public class PopularDestinationDetailsOverviewFragment extends Fragment {
                 public void onErrorResponse(VolleyError error) {
 
                 }
-            });
+            }){
+                public Map<String, String> getHeaders() throws AuthFailureError {
+                    Map<String, String> headers = new HashMap<>();
+                    headers.put("Authorization", "Bearer " + token);
+                    return headers;
+                }
+            };
             Volley.newRequestQueue(getContext()).add(jsonObjectRequest);
         }catch (Exception e){
             Log.e("error", "ERROR: " + e.getMessage());

@@ -1,9 +1,13 @@
 package com.michael.afrivac.ui.popular_destination;
 
 import android.content.Context;
+
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.util.Log;
+
+import android.os.AsyncTask;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,13 +35,15 @@ import com.michael.afrivac.model.PopularPlaces;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
+import java.io.IOException;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import okhttp3.OkHttpClient;
 
 class PopularDestinationRVAdapter extends RecyclerView.Adapter<PopularDestinationRVAdapter.PopularPlacesRVAdapterVH> {
     private PopularDestinationRVAdapter.OnItemSelectedListener onItemSelectedListener;
@@ -46,21 +52,27 @@ class PopularDestinationRVAdapter extends RecyclerView.Adapter<PopularDestinatio
 
     private Context context;
     private ChildEventListener mChildListener;
+    //private FirebaseDatabase mFirebaseDatabase;
+    //private DatabaseReference mDatabaseReference;
+    //private ChildEventListener mChildListener;
+
 
     public PopularDestinationRVAdapter(final Context context, OnItemSelectedListener onItemSelectedListener) {
         temp= (ArrayList<PopularPlaces>) popularPlaces;
         this.context = context;
         this.onItemSelectedListener = onItemSelectedListener;
 
+        SharedPreferences sharedP = context.getSharedPreferences("TOKEN", Context.MODE_PRIVATE);
+        final String token = sharedP.getString("token", "Token");
+
         String url = "https://piscine-mandarine-32869.herokuapp.com/api/v1/destinations/";
         //RequestQueue requestQueue = Volley.newRequestQueue(context);
-        JsonObjectRequest jsonRequest = new JsonObjectRequest(Request.Method.POST, url, null, new Response.Listener<JSONObject>() {
+        JsonObjectRequest jsonRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 try {
                     JSONObject jsonResponse = response.getJSONObject("data");
-                    JSONArray popularDestinationJsonArray = jsonResponse.getJSONArray("destination");
-                    //JSONObject popularDestinationObject;
+                    JSONArray popularDestinationJsonArray = jsonResponse.getJSONArray("selectedProperties");
 
                     for (int pop = 0; pop < popularDestinationJsonArray.length(); pop++) {
 
@@ -79,20 +91,17 @@ class PopularDestinationRVAdapter extends RecyclerView.Adapter<PopularDestinatio
                         notifyItemInserted(popularPlaces.size() - 1);
 
                         try {
-                            Log.d("key", String.valueOf(popularPlaces));
-                        }catch (Exception e){
-                            Log.e("keyerr", e.getMessage());
+                            Log.d("RECYCLER", "" + response.get("data"));
+                        } catch (JSONException ex) {
+                            Log.e("errorRv2", "NO SHIT");
                         }
                     }
-
-                    SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
-                    SharedPreferences.Editor editor = sharedPreferences.edit();
-                    Gson gson = new Gson();
-                    String json = gson.toJson(popularPlaces);
-                    editor.putString("Destinations", json);
-                    editor.apply();
                 } catch (JSONException e){
-                    e.printStackTrace();
+                    try {
+                        Log.d("RECYCLER", e.getMessage() + "  " + response.get("data"));
+                    } catch (JSONException ex) {
+                        Log.e("errorRv2", e.getMessage());
+                    }
                 }
             }
         }, new Response.ErrorListener() {
@@ -101,14 +110,16 @@ class PopularDestinationRVAdapter extends RecyclerView.Adapter<PopularDestinatio
                 Toast.makeText(context, error.getMessage(), Toast.LENGTH_LONG).show();
             }
         }){
+            @Override
             public Map<String, String> getHeaders() throws AuthFailureError {
                 Map<String, String> headers = new HashMap<>();
-                headers.put("Authorization", "Bearer " + "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmMGU4Yjc3ZmQ3NDc2MDAxN2IzNzRhNSIsImlhdCI6MTU5NDkwMzU4OCwiZXhwIjoxNTk1MTYyNzg4fQ.Ux3HFg9eeYNGE79sB2mC9xVggnAE9m9EHYwh5t4jlMU");
+                headers.put("Authorization", "Bearer " + token);
                 return headers;
             }
         };
         Volley.newRequestQueue(context).add(jsonRequest);
     }
+
 
     public void setDestinations(List<PopularPlaces> popularPlaces) {
         //this.popularPlaces = popularPlaces;

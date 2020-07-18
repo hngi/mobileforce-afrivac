@@ -51,8 +51,7 @@ public class PopularDestinationDetailsActivity extends AppCompatActivity {
         int reviewNumber = intent.getIntExtra("reviewNumber", 0);
         boolean favorite = intent.getBooleanExtra("favorite", false);
         int position = intent.getIntExtra("position", 0);
-        //ArrayList<String> arrayList = intent.getStringArrayListExtra("photos");
-        String description = intent.getStringExtra("description");
+        String description = intent.getStringExtra("summary");
 
         String nameCountry = placeName + " (" + country + ")";
         name.setText(nameCountry);
@@ -70,12 +69,6 @@ public class PopularDestinationDetailsActivity extends AppCompatActivity {
         SharedPreferences.Editor editorReview = sharedPreferencesReview.edit();
         editorReview.putInt("position", position);
         editorReview.commit();
-
-        try {
-            Log.d("LOG", country + " " + desImage + " " + ratingsNumber + " " + reviewNumber + " " + favorite + " " + position + " " + description);
-        }catch (Exception e){
-            Log.e("LOGE", e.getMessage());
-        }
 
         mToolbar = findViewById(R.id.myToolbar);
         mTabLayout = findViewById(R.id.tabLayout);
