@@ -10,9 +10,13 @@ import android.Manifest;
 import android.app.Activity;
 import android.content.Context;
 import android.content.pm.PackageManager;
+import android.location.Address;
+import android.location.Geocoder;
 import android.location.Location;
 import android.os.Build;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.EditText;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApi;
@@ -30,6 +34,9 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.michael.afrivac.Util.Helper;
 
+import java.io.IOException;
+import java.util.List;
+
 public class GoogleMapsActivity extends FragmentActivity implements
         OnMapReadyCallback, GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener, LocationListener {
 
@@ -41,6 +48,7 @@ public class GoogleMapsActivity extends FragmentActivity implements
     private static final int RequestUserLocationCode = 3852;
 
     private Helper helper;
+    private MarkerOptions userOptions;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +56,7 @@ public class GoogleMapsActivity extends FragmentActivity implements
         setContentView(R.layout.activity_google_maps);
 
         helper = new Helper(this);
+        userOptions = new MarkerOptions();
 
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
             checkuserLocationpermission();
@@ -90,6 +99,50 @@ public class GoogleMapsActivity extends FragmentActivity implements
             mMap.setMyLocationEnabled(true);
         }
 
+    }
+
+    public void onClickIcon(View view){
+        switch (view.getId()){
+            case R.id.search_location:
+                EditText textLocation = findViewById(R.id.text_search);
+                String address = textLocation.getText().toString();
+
+                List<Address> addressList = null;
+
+                if(!address.trim().isEmpty()){
+                    Geocoder geocoder = new Geocoder(this);
+
+                    try {
+                        addressList = geocoder.getFromLocationName(address, 6);
+
+                        if(addressList != null){
+                            for(Address oneAddress : addressList){
+                                LatLng latLng = new LatLng(oneAddress.getLatitude(), oneAddress.getLongitude());
+
+                                userOptions = new MarkerOptions();
+                                userOptions.position(latLng);
+                                userOptions.title(address);
+                                userOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE));
+
+                                mMap.addMarker(userOptions);
+                                mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
+                                mMap.animateCamera(CameraUpdateFactory.zoomTo(18));
+
+                            }
+                        }else{
+                            helper.toastMessage(this, "very sorry, your location was not found");
+                        }
+                    } catch (IOException e) {
+                        helper.toastMessage(this, "Error message: " + e.getMessage() + "\n" + e.getLocalizedMessage());
+                        e.printStackTrace();
+                    }
+
+                }else{
+                    helper.toastMessage(this, "please input a location name first");
+                }
+                break;
+
+        }
     }
 
     public boolean checkuserLocationpermission(){
@@ -148,14 +201,13 @@ public class GoogleMapsActivity extends FragmentActivity implements
 
         LatLng latLng = new LatLng(location.getLatitude(), location.getLongitude());
 
-        MarkerOptions options = new MarkerOptions();
-        options.position(latLng);
-        options.title("User Current Location");
-        options.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE));
+        userOptions.position(latLng);
+        userOptions.title("User Current Location");
+        userOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE));
 
-        currentUserLocationMarker = mMap.addMarker(options);
+        currentUserLocationMarker = mMap.addMarker(userOptions);
         mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
-        mMap.animateCamera(CameraUpdateFactory.zoomBy(15));
+        mMap.animateCamera(CameraUpdateFactory.zoomBy(18));
 
         if(googleApiClient != null){
             LocationServices.FusedLocationApi.removeLocationUpdates(googleApiClient, this);

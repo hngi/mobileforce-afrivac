@@ -68,7 +68,7 @@
                 android:textSize="18sp" />
 
             <EditText
-                android:id="@+id/search"
+                android:id="@+id/map_shearch"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_margin="@dimen/dimension_5dp"

@@ -15,6 +15,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.michael.afrivac.R;
 
+import com.michael.afrivac.Util.Helper;
 import com.michael.afrivac.model.DiscoverAfrica;
 import com.squareup.picasso.Picasso;
 
@@ -22,6 +23,7 @@ import java.util.ArrayList;
 
 public class DiscoverAdapter extends RecyclerView.Adapter<DiscoverAdapter.MyViewHolder> {
     Context context;
+    Helper helper = new Helper();
     ArrayList<DiscoverAfrica> discoverAfrica;
     private FirebaseDatabase mFirebaseDatabase;
     private DatabaseReference mDatabaseReference;
@@ -38,11 +40,17 @@ public class DiscoverAdapter extends RecyclerView.Adapter<DiscoverAdapter.MyView
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull final MyViewHolder holder, int position) {
         holder.countryName.setText(discoverAfrica.get(position).getName());
         holder.destination.setText(discoverAfrica.get(position).getDestination());
         Picasso.get().load(discoverAfrica.get(position).getImage()).placeholder(R.mipmap.ic_launcher).resize(500,500).centerCrop().into(holder.image);
 
+        holder.countryName.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                helper.gotoGoogleMapActivity(holder.itemView.getContext());
+            }
+        });
     }
 
     @Override
