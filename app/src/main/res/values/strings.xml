@@ -5,7 +5,7 @@
 
     <string-array name="flightType">
         <item>Economy</item>
-        
+
         <item>First Class</item>
     </string-array>
 
@@ -274,7 +274,7 @@
     <string name="see_you">,\nsee you again in the morning</string>
     <string name="upload_from_camera" tools:ignore="MissingTranslation">Upload from Camera</string>
     <string name="select_a_photo_from_your_device" tools:ignore="MissingTranslation">Select a photo from your device</string>
-    <string name="resend_verification_code">Resend Verification Code</string>
+    <string name="resend_verification_code" tools:ignore="MissingTranslation">Resend Verification Code</string>
     <string name="french">French</string>
     <string name="spanish">Spanish</string>
     <string name="memories">memories</string>

@@ -8,10 +8,21 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatDelegate;
+
+import com.google.android.gms.auth.api.Auth;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.common.api.ResultCallback;
+import com.google.android.gms.common.api.Status;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.GoogleAuthProvider;
 import com.michael.afrivac.Util.Helper;
 import com.michael.afrivac.ui.account.AccountFragment;
 import com.michael.afrivac.ui.findHotel.FindHotelFragment;
@@ -56,6 +67,7 @@ import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
+    GoogleSignInClient mGoogleSignInClient;
     //creating fragment object
     Fragment fragment = null;
 
@@ -96,6 +108,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 //        }
 
         //mAuth = FirebaseAuth.getInstance();
+
+//        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN);
+        mGoogleSignInClient = GoogleSignIn.getClient(this, GoogleSignInOptions.DEFAULT_SIGN_IN);
 
 //        FloatingActionButton fab = findViewById(R.id.fab);
 //        fab.setOnClickListener(new View.OnClickListener() {
@@ -148,6 +163,17 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
 
     private void logout() {
+
+//    mAuth.signOut();
+
+    mGoogleSignInClient.signOut().addOnCompleteListener(this, new OnCompleteListener<Void>() {
+        @Override
+        public void onComplete(@NonNull Task<Void> task) {
+            helper.gotoLoginAcitivity(getApplicationContext());
+        }
+    });
+//        finish();
+
        // FirebaseAuth.getInstance().signOut();
        // helper.gotoLoginAcitivity(this);
        // finish();
@@ -222,8 +248,17 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         super.onStart();
        /* FirebaseUser currentUser = mAuth.getCurrentUser();
         if(currentUser == null){
+<<<<<<< HEAD
+            helper.gotoLoginAcitivity(getApplicationContext());
+        }
+        GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
+        if (account == null){
+            startActivity(new Intent (MainActivity.this, LoginActivity.class));
+        }
+=======
             helper.gotoLoginAcitivity(this);
         }    */
+
 
     }
 
