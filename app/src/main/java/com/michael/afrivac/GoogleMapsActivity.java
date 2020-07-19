@@ -74,6 +74,13 @@ public class GoogleMapsActivity extends FragmentActivity implements
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
+
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+
         Intent intent = getIntent();
         String placeSearch = intent.getStringExtra("id_discover");
         if(placeSearch == "DiscoverAfrica"){
@@ -83,7 +90,10 @@ public class GoogleMapsActivity extends FragmentActivity implements
             }else{
                 helper.toastMessage(this, "couldn't search popular destination");
             }
+        }else{
+            helper.toastMessage(this, "couldn't search popular destination");
         }
+
     }
 
     /**
@@ -114,7 +124,20 @@ public class GoogleMapsActivity extends FragmentActivity implements
             // for ActivityCompat#requestPermissions for more details.
 
             buildGoogleApiClient();
-            mMap.setMyLocationEnabled(true);
+
+            Intent intent = getIntent();
+            String placeSearch = intent.getStringExtra("id_discover");
+            if(placeSearch == "DiscoverAfrica"){
+                String place = intent.getStringExtra("name");
+                if(place != null){
+                    searchLoaction(place);
+                }else{
+                    helper.toastMessage(this, "couldn't search popular destination");
+                }
+            }else{
+                helper.toastMessage(this, "couldn't search popular destination");
+                mMap.setMyLocationEnabled(true);
+            }
         }
 
     }

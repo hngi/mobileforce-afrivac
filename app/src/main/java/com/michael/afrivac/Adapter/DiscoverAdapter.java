@@ -53,7 +53,15 @@ public class DiscoverAdapter extends RecyclerView.Adapter<DiscoverAdapter.MyView
                 Intent intent = new Intent(holder.itemView.getContext(), GoogleMapsActivity.class);
                 intent.putExtra("id_discover", "DiscoverAfrica");
                 intent.putExtra("name", discoverAfrica.get(position).getName());
-                helper.gotoGoogleMapActivity(holder.itemView.getContext(), intent);
+                holder.itemView.getContext().startActivity(intent);
+                //helper.gotoGoogleMapActivity(holder.itemView.getContext(), intent);
+            }
+        });
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                helper.toastMessage(holder.itemView.getContext(), "country name is : "+ discoverAfrica.get(position).getName());
             }
         });
     }
