@@ -9,10 +9,16 @@ import androidx.fragment.app.FragmentActivity;
 import android.Manifest;
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.location.Address;
+import android.location.Geocoder;
 import android.location.Location;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.EditText;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApi;
@@ -28,7 +34,12 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.michael.afrivac.Util.GetNearbyPlaces;
 import com.michael.afrivac.Util.Helper;
+
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.List;
 
 public class GoogleMapsActivity extends FragmentActivity implements
         OnMapReadyCallback, GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener, LocationListener {
@@ -41,6 +52,11 @@ public class GoogleMapsActivity extends FragmentActivity implements
     private static final int RequestUserLocationCode = 3852;
 
     private Helper helper;
+    private MarkerOptions userOptions;
+    private double latitude;
+    private double longitude;
+    private int radius = 10000;
+    private Intent intent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +64,7 @@ public class GoogleMapsActivity extends FragmentActivity implements
         setContentView(R.layout.activity_google_maps);
 
         helper = new Helper(this);
+        userOptions = new MarkerOptions();
 
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
             checkuserLocationpermission();
@@ -57,6 +74,13 @@ public class GoogleMapsActivity extends FragmentActivity implements
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+
+
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
     }
 
     /**
@@ -72,11 +96,6 @@ public class GoogleMapsActivity extends FragmentActivity implements
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
-        /*// Add a marker in Sydney and move the camera
-        LatLng sydney = new LatLng(90, 90);
-        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));*/
-
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED /*&& ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED*/) {
             // TODO: Consider calling
             //    ActivityCompat#requestPermissions
@@ -88,8 +107,114 @@ public class GoogleMapsActivity extends FragmentActivity implements
 
             buildGoogleApiClient();
             mMap.setMyLocationEnabled(true);
+
+            intent = getIntent();
+            String place = intent.getStringExtra("name");
+            if(place != null){
+                searchLoaction(place);
+            }else{
+                helper.toastMessage(this, "couldn't search popular destination by name ");
+            }
         }
 
+    }
+
+    public void onClickIcon(View view){
+        String hospital = "hospital", restaurants = "restaurant", schools = "school";
+        String url;
+        Object transferData[] = new Object[2];
+        GetNearbyPlaces getNearbyPlaces = new GetNearbyPlaces();
+
+        switch (view.getId()){
+            case R.id.search_location:
+                EditText textLocation = findViewById(R.id.text_search);
+                String address = textLocation.getText().toString();
+                searchLoaction(address);
+                break;
+
+            case R.id.hospital:
+                mMap.clear();
+                url = getUrl(latitude, longitude, hospital);
+                transferData[0] = mMap;
+                transferData[0] = url;
+
+                getNearbyPlaces.execute(transferData);
+                helper.toastMessage(this, "searching for nearby places");
+                break;
+
+            case R.id.restaurants:
+                mMap.clear();
+                url = getUrl(latitude, longitude, restaurants);
+                transferData[0] = mMap;
+                transferData[0] = url;
+
+                getNearbyPlaces.execute(transferData);
+                helper.toastMessage(this, "searching for nearby places");
+                break;
+
+            case R.id.schools:
+                mMap.clear();
+                url = getUrl(latitude, longitude, schools);
+                transferData[0] = mMap;
+                transferData[0] = url;
+
+                getNearbyPlaces.execute(transferData);
+                helper.toastMessage(this, "searching for nearby places");
+                break;
+        }
+    }
+
+    private String getUrl(double latitude, double longitude, String nearbyPLace) {
+        StringBuilder googleURL = new StringBuilder("https://maps.googleapis.com/maps/api/place/nearbysearch/json?");
+        googleURL.append("location=" + latitude +","+ longitude);
+        googleURL.append("&radius=" + radius);
+        googleURL.append("&type="+ nearbyPLace);
+        googleURL.append("&sensor=true");
+        googleURL.append("&key="+ "AIzaSyCZZIwREiX5EGr8_RKn81dIvYhvpvyXLp8");
+
+        Log.d("GoogleMapsActivity", "url : " + googleURL.toString());
+        return googleURL.toString();
+    }
+
+    public void searchLoaction(String address){
+        List<Address> addressList = null;
+
+        if(!address.trim().isEmpty()){
+            helper.progressDialogStart("Please Wait", "We are trying to load location");
+            Geocoder geocoder = new Geocoder(this);
+
+            try {
+                addressList = geocoder.getFromLocationName(address, 4);
+
+                if(addressList != null){
+                    for(Address oneAddress : addressList){
+                        LatLng latLng = new LatLng(oneAddress.getLatitude(), oneAddress.getLongitude());
+
+                        userOptions.position(latLng);
+                        userOptions.title(address);
+                        userOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE));
+
+                        mMap.addMarker(userOptions);
+                        mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
+                        mMap.animateCamera(CameraUpdateFactory.zoomTo(12));
+                        helper.progressDialogEnd();
+
+                    }
+                }else{
+                    helper.toastMessage(this, "very sorry, your location was not found");
+                    helper.progressDialogEnd();
+                }
+            } catch (IOException e) {
+                helper.toastMessage(this, "Error message: " + e.getMessage() + "\n" + e.getLocalizedMessage());
+                e.printStackTrace();
+            }finally {
+                helper.progressDialogEnd();
+            }
+
+        }else{
+            helper.toastMessage(this, "please input a location name first");
+            helper.progressDialogEnd();
+        }
     }
 
     public boolean checkuserLocationpermission(){
@@ -141,6 +266,9 @@ public class GoogleMapsActivity extends FragmentActivity implements
      */
     @Override
     public void onLocationChanged(Location location) {
+        latitude = location.getLatitude();
+        longitude = location.getLongitude();
+
         lastLocation = location;
         if(currentUserLocationMarker != null){
             currentUserLocationMarker.remove();
@@ -148,14 +276,23 @@ public class GoogleMapsActivity extends FragmentActivity implements
 
         LatLng latLng = new LatLng(location.getLatitude(), location.getLongitude());
 
-        MarkerOptions options = new MarkerOptions();
-        options.position(latLng);
-        options.title("User Current Location");
-        options.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE));
+        userOptions.position(latLng);
+        userOptions.title("User Current Location");
+        userOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE));
 
-        currentUserLocationMarker = mMap.addMarker(options);
+        currentUserLocationMarker = mMap.addMarker(userOptions);
         mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
-        mMap.animateCamera(CameraUpdateFactory.zoomBy(15));
+        mMap.animateCamera(CameraUpdateFactory.zoomBy(18));
+
+
+
+        intent = getIntent();
+        String place = intent.getStringExtra("name");
+        if(place != null){
+            searchLoaction(place);
+        }else{
+            helper.toastMessage(this, "couldn't search popular destination by name ");
+        }
 
         if(googleApiClient != null){
             LocationServices.FusedLocationApi.removeLocationUpdates(googleApiClient, this);

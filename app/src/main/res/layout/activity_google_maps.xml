@@ -1,9 +1,88 @@
 <?xml version="1.0" encoding="utf-8"?>
-<fragment xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:map="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/map"
-    android:name="com.google.android.gms.maps.SupportMapFragment"
-    android:layout_width="match_parent"
+<androidx.constraintlayout.widget.ConstraintLayout
     android:layout_height="match_parent"
-    tools:context=".GoogleMapsActivity" />
+    android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:map="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <EditText
+        android:id="@+id/text_search"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_margin="@dimen/dimension_5dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="10dp"
+        android:padding="@dimen/dimension_5dp"
+        android:ems="10"
+        android:hint="@string/find_destination"
+        android:inputType="textPersonName"
+        android:textColor="@color/black"
+        map:layout_constraintEnd_toStartOf="@+id/search_location"
+        map:layout_constraintStart_toStartOf="parent"
+        map:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/search_location"
+        android:layout_width="@dimen/dimension_40dp"
+        android:layout_height="@dimen/dimension_40dp"
+        android:layout_marginTop="@dimen/dimension_5dp"
+        android:layout_marginEnd="@dimen/dimension_5dp"
+        android:onClick="onClickIcon"
+        android:background="@drawable/circular_drawable03"
+        android:src="@drawable/search_icon_24"
+        map:layout_constraintEnd_toEndOf="parent"
+        map:layout_constraintTop_toTopOf="parent" />
+
+    <fragment
+        android:id="@+id/map"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        map:layout_constraintBottom_toBottomOf="parent"
+        map:layout_constraintEnd_toEndOf="parent"
+        map:layout_constraintStart_toStartOf="parent"
+        map:layout_constraintTop_toBottomOf="@+id/text_search"
+        tools:context=".GoogleMapsActivity" />
+
+
+
+    <ImageButton
+        android:id="@+id/hospital"
+        android:layout_width="@dimen/dimension_40dp"
+        android:layout_height="@dimen/dimension_40dp"
+        android:layout_marginBottom="10dp"
+        android:onClick="onClickIcon"
+        android:background="@drawable/circular_drawable02"
+        android:src="@drawable/search_hospitals"
+        map:layout_constraintBottom_toBottomOf="parent"
+        map:layout_constraintEnd_toStartOf="@+id/restaurants"
+        map:layout_constraintStart_toStartOf="parent" />
+
+    <ImageButton
+        android:id="@+id/schools"
+        android:layout_width="@dimen/dimension_40dp"
+        android:layout_height="@dimen/dimension_40dp"
+        android:layout_marginBottom="10dp"
+        map:layout_constraintBottom_toBottomOf="parent"
+        map:layout_constraintEnd_toEndOf="parent"
+        android:onClick="onClickIcon"
+        android:background="@drawable/circular_drawable02"
+        android:src="@drawable/search_school"
+        map:layout_constraintStart_toEndOf="@+id/restaurants" />
+
+    <ImageButton
+        android:id="@+id/restaurants"
+        android:layout_width="@dimen/dimension_40dp"
+        android:layout_height="@dimen/dimension_40dp"
+        android:layout_marginBottom="10dp"
+        android:onClick="onClickIcon"
+        android:background="@drawable/circular_drawable02"
+        android:src="@drawable/search_restaurants"
+        map:layout_constraintBottom_toBottomOf="parent"
+        map:layout_constraintEnd_toEndOf="parent"
+        map:layout_constraintStart_toStartOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

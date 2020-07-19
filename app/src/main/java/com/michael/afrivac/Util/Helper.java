@@ -8,6 +8,7 @@ import android.widget.Toast;
 import com.michael.afrivac.BookingActivity;
 import com.michael.afrivac.ContactUsActivity2;
 import com.michael.afrivac.EditAccountInfoActivity;
+import com.michael.afrivac.GoogleMapsActivity;
 import com.michael.afrivac.LocationActivity;
 import com.michael.afrivac.LoginActivity;
 import com.michael.afrivac.MainActivity;
@@ -113,6 +114,15 @@ public class Helper {
     public void gotoEditAccountActivity(Context context) {
         intent = new Intent(context, EditAccountInfoActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        context.startActivity(intent);
+    }
+
+    public void gotoGoogleMapActivity(Context context){
+        intent = new Intent(context, GoogleMapsActivity.class);
+        context.startActivity(intent);
+    }
+
+    public void gotoGoogleMapActivity(Context context, Intent intent) {
         context.startActivity(intent);
     }
 
