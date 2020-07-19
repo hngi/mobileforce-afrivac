@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.michael.afrivac.GoogleMapsActivity;
+import com.michael.afrivac.MainActivity;
 import com.michael.afrivac.R;
 
 import com.michael.afrivac.Util.Helper;
@@ -29,6 +30,7 @@ public class DiscoverAdapter extends RecyclerView.Adapter<DiscoverAdapter.MyView
     ArrayList<DiscoverAfrica> discoverAfrica;
     private FirebaseDatabase mFirebaseDatabase;
     private DatabaseReference mDatabaseReference;
+    private MainActivity mainActivity = new MainActivity();
 
     public DiscoverAdapter(Context c, ArrayList<DiscoverAfrica> d){
         context = c;
@@ -50,11 +52,12 @@ public class DiscoverAdapter extends RecyclerView.Adapter<DiscoverAdapter.MyView
         holder.countryName.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(holder.itemView.getContext(), GoogleMapsActivity.class);
+                Intent intent = new Intent(context, GoogleMapsActivity.class);
                 intent.putExtra("id_discover", "DiscoverAfrica");
                 intent.putExtra("name", discoverAfrica.get(position).getName());
-                holder.itemView.getContext().startActivity(intent);
+                context.startActivity(intent);
                 //helper.gotoGoogleMapActivity(holder.itemView.getContext(), intent);
+
             }
         });
 

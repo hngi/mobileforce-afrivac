@@ -56,6 +56,7 @@ public class GoogleMapsActivity extends FragmentActivity implements
     private double latitude;
     private double longitude;
     private int radius = 10000;
+    private Intent intent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,20 +81,6 @@ public class GoogleMapsActivity extends FragmentActivity implements
     @Override
     public void onStart() {
         super.onStart();
-
-        Intent intent = getIntent();
-        String placeSearch = intent.getStringExtra("id_discover");
-        if(placeSearch == "DiscoverAfrica"){
-            String place = intent.getStringExtra("name");
-            if(place != null){
-                searchLoaction(place);
-            }else{
-                helper.toastMessage(this, "couldn't search popular destination");
-            }
-        }else{
-            helper.toastMessage(this, "couldn't search popular destination");
-        }
-
     }
 
     /**
@@ -109,11 +96,6 @@ public class GoogleMapsActivity extends FragmentActivity implements
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
-        /*// Add a marker in Sydney and move the camera
-        LatLng sydney = new LatLng(90, 90);
-        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));*/
-
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED /*&& ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED*/) {
             // TODO: Consider calling
             //    ActivityCompat#requestPermissions
@@ -124,19 +106,14 @@ public class GoogleMapsActivity extends FragmentActivity implements
             // for ActivityCompat#requestPermissions for more details.
 
             buildGoogleApiClient();
+            mMap.setMyLocationEnabled(true);
 
-            Intent intent = getIntent();
-            String placeSearch = intent.getStringExtra("id_discover");
-            if(placeSearch == "DiscoverAfrica"){
-                String place = intent.getStringExtra("name");
-                if(place != null){
-                    searchLoaction(place);
-                }else{
-                    helper.toastMessage(this, "couldn't search popular destination");
-                }
+            intent = getIntent();
+            String place = intent.getStringExtra("name");
+            if(place != null){
+                searchLoaction(place);
             }else{
-                helper.toastMessage(this, "couldn't search popular destination");
-                mMap.setMyLocationEnabled(true);
+                helper.toastMessage(this, "couldn't search popular destination by name ");
             }
         }
 
@@ -219,7 +196,7 @@ public class GoogleMapsActivity extends FragmentActivity implements
 
                         mMap.addMarker(userOptions);
                         mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
-                        mMap.animateCamera(CameraUpdateFactory.zoomTo(15));
+                        mMap.animateCamera(CameraUpdateFactory.zoomTo(12));
                         helper.progressDialogEnd();
 
                     }
@@ -306,6 +283,16 @@ public class GoogleMapsActivity extends FragmentActivity implements
         currentUserLocationMarker = mMap.addMarker(userOptions);
         mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
         mMap.animateCamera(CameraUpdateFactory.zoomBy(18));
+
+
+
+        intent = getIntent();
+        String place = intent.getStringExtra("name");
+        if(place != null){
+            searchLoaction(place);
+        }else{
+            helper.toastMessage(this, "couldn't search popular destination by name ");
+        }
 
         if(googleApiClient != null){
             LocationServices.FusedLocationApi.removeLocationUpdates(googleApiClient, this);
