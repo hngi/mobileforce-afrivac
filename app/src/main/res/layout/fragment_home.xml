@@ -80,6 +80,7 @@
                 android:iconifiedByDefault="false"/>
 
             <TextView
+                android:id="@+id/discover_africa"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/dimension_5dp"
@@ -104,6 +105,7 @@
                 android:scrollbars="horizontal" />
 
             <TextView
+                android:id="@+id/popular_destination"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/dimension_5dp"

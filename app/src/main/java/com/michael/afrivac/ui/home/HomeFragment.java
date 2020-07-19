@@ -69,6 +69,8 @@ public class HomeFragment extends Fragment {
     SearchView searchView;
     ImageButton menuButton;
     TextView welcome_text;
+    TextView discoverTitle;
+    TextView popularTitle;
 
     private int radius;
 //for the discover Africa recycler view
@@ -99,6 +101,8 @@ public class HomeFragment extends Fragment {
         profile_image = root.findViewById(R.id.profile_image);
         menuButton = root.findViewById(R.id.menuButton);
         welcome_text = root.findViewById(R.id.welcome_text);
+        discoverTitle = root.findViewById(R.id.discover_africa);
+        popularTitle = root.findViewById(R.id.popular_destination);
 
         searchView = root.findViewById(R.id.search);
         changeSearchViewTextColor(searchView);
@@ -230,6 +234,18 @@ public class HomeFragment extends Fragment {
             public boolean onQueryTextChange(String newText) {
                 discoverAdapter.getFilter().filter(newText);
                 popularAdapter.getFilter().filter(newText);
+
+                if (discoverAdapter.getItemCount() < 1){
+                    discoverTitle.setVisibility(View.GONE);
+                } else {
+                    discoverTitle.setVisibility(View.VISIBLE);
+                }
+
+                if (popularAdapter.getItemCount() < 1){
+                    popularTitle.setVisibility(View.GONE);
+                } else {
+                    popularTitle.setVisibility(View.VISIBLE);
+                }
                 return false;
             }
         });

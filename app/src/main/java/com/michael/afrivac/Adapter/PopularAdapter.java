@@ -1,5 +1,6 @@
 package com.michael.afrivac.Adapter;
 
+import android.app.MediaRouteButton;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -27,7 +28,7 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PopularAdapter extends RecyclerView.Adapter<PopularAdapter.MyViewHolder> implements Filterable implements View.OnClickListener  {
+public class PopularAdapter extends RecyclerView.Adapter<PopularAdapter.MyViewHolder> implements Filterable, View.OnClickListener  {
     Context context;
     ArrayList<PopularPlaces> popularPlaces;
     ArrayList<PopularPlaces> popularPlacesFull;
