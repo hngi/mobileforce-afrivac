@@ -25,6 +25,7 @@ public class MyCustomDialog extends DialogFragment {
     public OnInputSelected mOnInputSelected;
 
     //widgets
+    String input1text, input2text;
     private EditText mInput1, mInput2;
     private TextView mActionOk, mActionCancel;
     SharedPreferences sharedPreferences;
@@ -65,20 +66,20 @@ public class MyCustomDialog extends DialogFragment {
             public void onClick(View v) {
                 Log.d(TAG, "onClick: capturing input.");
 
-                String input1 = mInput1.getText().toString();
-                String input2 = mInput2.getText().toString();
+                input1text = mInput1.getText().toString();
+                input2text = mInput2.getText().toString();
                 SharedPreferences.Editor editor = sharedPreferences.edit();
-                editor.putString(title, input1);
-                editor.putString(Description,input2);
+                editor.putString(title, input1text);
+                editor.putString(Description,input2text);
                 editor.apply();
-                if(!input1.equals("") || !input2.equals("")){
+                if(!input1text.equals("") || !input2text.equals("")){
 //
 //                    //Easiest way: just set the value.
 //                    MainFragment fragment = (MainFragment) getActivity().getFragmentManager().findFragmentByTag("MainFragment");
 //                    fragment.mInputDisplay.setText(input);
 
-                    mOnInputSelected.sendInput1(input1);
-                    mOnInputSelected.sendInput(input2);
+                    mOnInputSelected.sendInput1(input1text);
+                    mOnInputSelected.sendInput(input2text);
                 }
 
 
@@ -96,6 +97,20 @@ public class MyCustomDialog extends DialogFragment {
         }catch (ClassCastException e){
             Log.e(TAG, "onAttach: ClassCastException : " + e.getMessage() );
         }
+    }
+
+    public String getInput1text() {
+
+        //input1text = mInput1.getText().toString();
+        return input1text;
+
+    }
+
+    public String getInput2text() {
+
+        //input2text = mInput2.getText().toString();
+        return input2text;
+
     }
     //public void SharedPreferenceSAVE(String Title, String Description){
       //  SharedPreferences preferences = getActivity().getSharedPreferences("Memories",0);
