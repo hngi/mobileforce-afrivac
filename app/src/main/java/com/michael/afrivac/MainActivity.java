@@ -97,53 +97,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         mAuth = FirebaseAuth.getInstance();
 
-//        FloatingActionButton fab = findViewById(R.id.fab);
-//        fab.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-//                        .setAction("Action", null).show();
-//            }
-//        });
          drawer = findViewById(R.id.drawer_layout);
          navigationView = findViewById(R.id.nav_view);
-//        drawer = findViewById(R.id.drawer_layout);
-//        navigationView = findViewById(R.id.nav_view);
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
-        /*mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow,
-                R.id.nav_tools, R.id.nav_share, R.id.nav_send,
-                R.id.nav_popular_destination)
-                .setDrawerLayout(drawer)
-                .build();
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
-        NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
-        NavigationUI.setupWithNavController(navigationView, navController);
 
-//        mAppBarConfiguration = new AppBarConfiguration.Builder(
-//                R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow,
-//                R.id.nav_tools, R.id.nav_share, R.id.nav_send)
-//                .setDrawerLayout(drawer)
-//                .build();
-//        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
-//        NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
-//        NavigationUI.setupWithNavController(navigationView, navController);
-//
-//        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-//            private MenuItem menuItem;
-//
-//            @Override
-//            public boolean onNavigationItemSelected(MenuItem menuItem) {
-//                this.menuItem = menuItem;
-//                int id = menuItem.getItemId();
-//                if (id == R.id.nav_logout) {
-//                    logout();
-//                }
-//                drawer.closeDrawer(GravityCompat.START);
-//                return true;
-//            }
-          });*/
     }
 
 
@@ -314,6 +270,17 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         LanguageHelper.changeLocale(this.getResources(), "default");
         LanguageHelper.storeUserLanguage(this, "default");
         reLoadMainActivity();
+    }
+
+    public MainActivity(){
+
+    }
+
+    public void gotoGoogleMapActivity(String name){
+        Intent intent = new Intent(this, GoogleMapsActivity.class);
+        intent.putExtra("id_discover", "DiscoverAfrica");
+        intent.putExtra("name", name);
+        startActivity(intent);
     }
 
 }
