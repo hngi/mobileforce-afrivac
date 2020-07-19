@@ -31,10 +31,12 @@ import com.firebase.client.Firebase;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import com.google.gson.JsonObject;
 import com.squareup.picasso.Picasso;
 import com.michael.afrivac.Util.Helper;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 import org.w3c.dom.Text;
 
@@ -53,6 +55,8 @@ import okhttp3.RequestBody;
  * create an instance of this fragment.
  */
 public class PopularDestinationDetailsReviewFragment extends Fragment {
+
+    UserReviewDetails userReviewDetails;
 
     private RecyclerView recyclerView;
     private LinearLayoutManager layoutManager;
@@ -81,6 +85,13 @@ public class PopularDestinationDetailsReviewFragment extends Fragment {
     private String mParam1;
     private String mParam2;
     private String ID;
+    private String token = "";
+    String review;
+    String userRating;
+    String user;
+    String date;
+    String title;
+
 
     public PopularDestinationDetailsReviewFragment() {
         // Required empty public constructor
@@ -113,45 +124,13 @@ public class PopularDestinationDetailsReviewFragment extends Fragment {
         }
     }
 
-    public class getReviews extends AsyncTask<String,Void ,String>{
-
-
-        @Override
-        protected String doInBackground(String... strings) {
-
-            OkHttpClient okHttpClient = new OkHttpClient();
-            String dest_id = helper.getDestID();
-
-            okhttp3.Request request = new okhttp3.Request.Builder()
-                    .url("https://piscine-mandarine-32869.herokuapp.com/api/v1/destinations/" + dest_id)
-                    .build();
-
-            Log.i("destiddd", "https://piscine-mandarine-32869.herokuapp.com/api/v1/destinations/" + dest_id);
-
-            try {
-                okhttp3.Response response = okHttpClient.newCall(request).execute();    //gets a response from the server
-                if (response.isSuccessful()) {
-                    String result = response.body().string();
-                    Log.i("desitid", result);
-
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
-
-            return null;
-
-        }
-    }
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         final View view = inflater.inflate(R.layout.fragment_popular_destination_details_review, container, false);
         SharedPreferences sharedP = getContext().getSharedPreferences("TOKEN", Context.MODE_PRIVATE);
-        final String token = sharedP.getString("token", "Token");
+        token = sharedP.getString("token", "Token");
 
 
         SharedPreferences sharedPreferencesId = getContext().getSharedPreferences("ID", Context.MODE_PRIVATE);
@@ -188,6 +167,10 @@ public class PopularDestinationDetailsReviewFragment extends Fragment {
                                 helper.Dest_id(popularDestinationObject.getString("_id"));
                                 ID = popularDestinationObject.getString("_id");
                                 //dest_id = popularDestinationObject.getString("_id");
+
+                                getReviews getReviews = new getReviews();
+                                getReviews.execute(ID);
+
                                 editor.commit();
                                 try {
                                     Log.d("IDDDDS", popularDestinationObject.getString("_id"));
@@ -196,6 +179,7 @@ public class PopularDestinationDetailsReviewFragment extends Fragment {
                                 }
                             }
                         }
+
                     }catch (Exception e){
                         e.printStackTrace();
                     }
@@ -217,8 +201,8 @@ public class PopularDestinationDetailsReviewFragment extends Fragment {
             Log.e("error", "ERROR: " + e.getMessage());
         }
 
-        getReviews getReviews = new getReviews();
-        getReviews.execute();
+        //getReviews getReviews = new getReviews();
+        //getReviews.execute();
 
 
 
@@ -323,12 +307,108 @@ public class PopularDestinationDetailsReviewFragment extends Fragment {
 
             okhttp3.Request request = new okhttp3.Request.Builder()
                     .url("https://piscine-mandarine-32869.herokuapp.com/api/v1/reviews/")
-                    .header("Authorization", "Authirization: Bearer " + token)
+                    .header("Authorization", "Bearer " + token)
                     .post(requestDetails)
                     .build();
 
+            try {
+                okhttp3.Response response = okHttpClient.newCall(request).execute();
+
+                if (response.isSuccessful()) {
+                    Toast.makeText(getContext(), "Successfully submitted", Toast.LENGTH_SHORT).show();
+                }
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
             return null;
         }
+    }
+
+    public class getReviews extends AsyncTask<String,Void ,String>{
+
+
+        @Override
+        protected String doInBackground(String... strings) {
+
+            OkHttpClient okHttpClient = new OkHttpClient();
+           // String dest_id = helper.getDestID();
+            String dest_id = strings[0];
+           // String token = helper.getToken();
+
+            okhttp3.Request request = new okhttp3.Request.Builder()
+                    .url("https://piscine-mandarine-32869.herokuapp.com/api/v1/destinations/" + dest_id )
+                    .header("Authorization", "Bearer " + token)
+                    .build();
+
+            Log.i("dest frag", "https://piscine-mandarine-32869.herokuapp.com/api/v1/destinations/" + dest_id);
+
+            try {
+                okhttp3.Response response = okHttpClient.newCall(request).execute();    //gets a response from the server
+                String resultt = response.toString();
+                Log.i("outcome", resultt);
+                if (response.isSuccessful()) {
+                    String result = response.body().string();
+                    Log.i("desitid", result);
+
+                    JSONObject jsonObject = new JSONObject(result);
+                    String resultData = jsonObject.getString("data");
+
+                    JSONObject dataObject = new JSONObject(resultData);
+                    String destinationData = dataObject.getString("destination");
+
+                    JSONObject destinationObject = new JSONObject(destinationData);
+                    JSONArray reviewArray = destinationObject.getJSONArray("reviews");
+                    String reviewsData = destinationObject.getString("reviews");
+                    Log.i("reviews data per ID", reviewsData);
+
+                    for (int i = 0; i < reviewArray.length(); i++ ) {
+
+                        JSONObject reviewItem = reviewArray.getJSONObject(i);
+
+                        review = reviewItem.getString("review");
+                        userRating = reviewItem.getString("rating");
+                        user = reviewItem.getString("user");
+                        date = reviewItem.getString("createdAt");
+                        title = "My Title";
+                        Log.i("userString", user);
+                        if (user != null && !user.equals("")) {
+                            user = "Test User";
+                        }
+
+                         //adapter.addUserReviewInfo(new UserReviewDetails(user, date, title, review));
+                        //toAddDetails(user, date, title, review);
+
+                    }
+
+                }else {
+                    Log.i("dest frag response", "unsuccessful");
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+            return null;
+
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+
+                toAddDetails(user, date, title, review);
+
+        }
+    }
+
+    public void toAddDetails(String user, String date, String title, String review) {
+
+        userReviewDetails= new UserReviewDetails(user, date, title, review);
+        adapter.addUserReviewInfo(userReviewDetails);
+
     }
 
     public String Dest_id() {

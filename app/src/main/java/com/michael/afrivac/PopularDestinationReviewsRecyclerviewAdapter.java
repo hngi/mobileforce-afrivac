@@ -56,6 +56,8 @@ public class PopularDestinationReviewsRecyclerviewAdapter extends RecyclerView.A
        // mDatabaseReference = FirebaseDatabase.getInstance().getReference("popular_destinatio").child("review");
         Log.i("db_popdest", "test");
 
+        getReviews getReviews = new getReviews();
+        getReviews.execute();
 
 
     /*    mDatabaseReference.addChildEventListener(new ChildEventListener() {
@@ -172,5 +174,40 @@ public class PopularDestinationReviewsRecyclerviewAdapter extends RecyclerView.A
         }
     }
 
+    public class getReviews extends AsyncTask<String,Void ,String>{
+
+
+        @Override
+        protected String doInBackground(String... strings) {
+
+            OkHttpClient okHttpClient = new OkHttpClient();
+            String dest_id = helper.getDestID();
+
+            Request request = new Request.Builder()
+                    .url("https://piscine-mandarine-32869.herokuapp.com/api/v1/destinations/" + dest_id )
+                    .build();
+
+            Log.i("dest adap", "https://piscine-mandarine-32869.herokuapp.com/api/v1/destinations/" + dest_id);
+
+            try {
+                Response response = okHttpClient.newCall(request).execute();    //gets a response from the server
+                if (response.isSuccessful()) {
+                    String result = response.body().string();
+                    Log.i("desitid", result);
+
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            //UserReviewDetails userReviewDetails = new UserReviewDetails()
+
+           // addUserReviewInfo();
+
+
+            return null;
+
+        }
+    }
 
     }
