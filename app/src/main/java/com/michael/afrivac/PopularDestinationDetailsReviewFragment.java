@@ -168,8 +168,9 @@ public class PopularDestinationDetailsReviewFragment extends Fragment {
                                 ID = popularDestinationObject.getString("_id");
                                 //dest_id = popularDestinationObject.getString("_id");
 
-                                getReviews getReviews = new getReviews();
-                                getReviews.execute(ID);
+                                //getReviews getReviews = new getReviews();
+                                //getReviews.execute(ID);
+                                getReviews();
 
                                 editor.commit();
                                 try {
@@ -295,9 +296,12 @@ public class PopularDestinationDetailsReviewFragment extends Fragment {
         protected String doInBackground(String... strings) {
 
             OkHttpClient okHttpClient = new OkHttpClient();
-            String token = helper.getToken();
+           // String token = helper.getToken();
             String Review = strings[0];
             String Rating = strings[1];
+
+            SharedPreferences sharedP = getContext().getSharedPreferences("TOKEN", Context.MODE_PRIVATE);
+            token = sharedP.getString("token", "Token");
 
             RequestBody requestDetails = new FormBody.Builder()
                     .add("review", Review)
@@ -315,7 +319,9 @@ public class PopularDestinationDetailsReviewFragment extends Fragment {
                 okhttp3.Response response = okHttpClient.newCall(request).execute();
 
                 if (response.isSuccessful()) {
-                    Toast.makeText(getContext(), "Successfully submitted", Toast.LENGTH_SHORT).show();
+                    Log.i("Post Review", "Success");
+                }else {
+                    Log.i("Post Review", "Fail");
                 }
 
             } catch (IOException e) {
@@ -326,10 +332,76 @@ public class PopularDestinationDetailsReviewFragment extends Fragment {
         }
     }
 
-    public class getReviews extends AsyncTask<String,Void ,String>{
+    public void getReviews(){
+
+        try {
+            //final SharedPreferences sharedPreferences = getActivity().getSharedPreferences("POSITION", getContext().MODE_PRIVATE);
+            //String url = "https://piscine-mandarine-32869.herokuapp.com/api/v1/destinations/";
+            JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, "https://piscine-mandarine-32869.herokuapp.com/api/v1/destinations/" + ID , null, new Response.Listener<JSONObject>() {
+                @Override
+                public void onResponse(JSONObject response) {
+                    try {
+
+                        JSONObject jsonObject = new JSONObject(response.toString());
+                        String resultData = jsonObject.getString("data");
+                        Log.i("Jsonresponse", response.toString());
+
+                        JSONObject tokenObejct = new JSONObject(resultData);
+                        SharedPreferences sharedPreferences = getContext().getSharedPreferences("TOKEN", Context.MODE_PRIVATE);
+                        SharedPreferences.Editor editor = sharedPreferences.edit();
+                        editor.putString("token", tokenObejct.getString("token"));
+                        editor.apply();
+
+                        JSONObject dataObject = new JSONObject(resultData);
+                        String destinationData = dataObject.getString("destination");
+
+                        JSONObject destinationObject = new JSONObject(destinationData);
+                        JSONArray reviewArray = destinationObject.getJSONArray("reviews");
+                        String reviewsData = destinationObject.getString("reviews");
+                        Log.i("reviews data per ID", reviewsData);
+
+                        for (int i = 0; i < reviewArray.length(); i++ ) {
+
+                            JSONObject reviewItem = reviewArray.getJSONObject(i);
+
+                            review = reviewItem.getString("review");
+                            userRating = reviewItem.getString("rating");
+                            user = reviewItem.getString("user");
+                            date = reviewItem.getString("createdAt");
+                            title = "My Title";
+                            Log.i("userString", user);
+                            if (user != null && !user.equals("")) {
+                                user = "Test User";
+                            }
+
+                            adapter.addUserReviewInfo(new UserReviewDetails(user, date, title, review));
+                            //toAddDetails(user, date, title, review);
+
+                        }
+
+                    }catch (Exception e){
+                        e.printStackTrace();
+                    }
+                }
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+
+                }
+            }){
+                public Map<String, String> getHeaders() throws AuthFailureError {
+                    Map<String, String> headers = new HashMap<>();
+                    headers.put("Authorization", "Bearer " + token);
+                    return headers;
+                }
+            };
+            Volley.newRequestQueue(getContext()).add(jsonObjectRequest);
+        }catch (Exception e){
+            Log.e("error", "ERROR: " + e.getMessage());
+        }
 
 
-        @Override
+      /*  @Override
         protected String doInBackground(String... strings) {
 
             OkHttpClient okHttpClient = new OkHttpClient();
@@ -401,7 +473,7 @@ public class PopularDestinationDetailsReviewFragment extends Fragment {
 
                 toAddDetails(user, date, title, review);
 
-        }
+        }    */
     }
 
     public void toAddDetails(String user, String date, String title, String review) {
