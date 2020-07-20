@@ -1,10 +1,13 @@
 package com.michael.afrivac.Adapter;
 
+import android.app.MediaRouteButton;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -18,18 +21,22 @@ import com.michael.afrivac.PopularDestinationDetailsActivity;
 import com.michael.afrivac.R;
 
 
+import com.michael.afrivac.model.DiscoverAfrica;
 import com.michael.afrivac.model.PopularPlaces;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+import java.util.List;
 
-public class PopularAdapter extends RecyclerView.Adapter<PopularAdapter.MyViewHolder> implements View.OnClickListener {
+public class PopularAdapter extends RecyclerView.Adapter<PopularAdapter.MyViewHolder> implements Filterable, View.OnClickListener  {
     Context context;
     ArrayList<PopularPlaces> popularPlaces;
+    ArrayList<PopularPlaces> popularPlacesFull;
 
     public PopularAdapter(Context c, ArrayList<PopularPlaces> p) {
         context = c;
         popularPlaces = p;
+        popularPlacesFull = new ArrayList<>(p);
     }
 
 
@@ -85,4 +92,39 @@ public class PopularAdapter extends RecyclerView.Adapter<PopularAdapter.MyViewHo
 
         }
     }
+
+    @Override
+    public Filter getFilter() {
+        return popularFilter;
+    }
+
+    private Filter popularFilter = new Filter() {
+        @Override
+        protected FilterResults performFiltering(CharSequence constraint) {
+            List<PopularPlaces> filteredList = new ArrayList<>();
+
+            if (constraint == null ||constraint.length() == 0){
+                filteredList.addAll(popularPlacesFull);
+            } else {
+                String filterPattern = constraint.toString().toLowerCase().trim();
+
+                for (PopularPlaces popular : popularPlacesFull) {
+                    if (popular.getCountry().toLowerCase().contains(filterPattern)) {
+                        filteredList.add(popular);
+                    }
+                }
+            }
+
+            FilterResults results = new FilterResults();
+            results.values = filteredList;
+            return results;
+        }
+
+        @Override
+        protected void publishResults(CharSequence constraint, FilterResults results) {
+            popularPlaces.clear();
+            popularPlaces.addAll((List) results.values);
+            notifyDataSetChanged();
+        }
+    };
 }

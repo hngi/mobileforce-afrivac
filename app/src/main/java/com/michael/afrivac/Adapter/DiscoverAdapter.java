@@ -5,10 +5,13 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.lifecycle.MutableLiveData;
 import androidx.recyclerview.widget.RecyclerView;
 
 
@@ -23,11 +26,15 @@ import com.michael.afrivac.model.DiscoverAfrica;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
-public class DiscoverAdapter extends RecyclerView.Adapter<DiscoverAdapter.MyViewHolder> {
+public class DiscoverAdapter extends RecyclerView.Adapter<DiscoverAdapter.MyViewHolder> implements Filterable {
     Context context;
     Helper helper = new Helper();
     ArrayList<DiscoverAfrica> discoverAfrica;
+    private ArrayList<DiscoverAfrica> discoverAfricaFull;
     private FirebaseDatabase mFirebaseDatabase;
     private DatabaseReference mDatabaseReference;
     private MainActivity mainActivity = new MainActivity();
@@ -35,6 +42,7 @@ public class DiscoverAdapter extends RecyclerView.Adapter<DiscoverAdapter.MyView
     public DiscoverAdapter(Context c, ArrayList<DiscoverAfrica> d){
         context = c;
         discoverAfrica = d;
+        discoverAfricaFull = new ArrayList<>(d);
     }
 
     @NonNull
@@ -47,7 +55,7 @@ public class DiscoverAdapter extends RecyclerView.Adapter<DiscoverAdapter.MyView
     public void onBindViewHolder(@NonNull final MyViewHolder holder, final int position) {
         holder.countryName.setText(discoverAfrica.get(position).getName());
         holder.destination.setText(discoverAfrica.get(position).getDestination());
-        Picasso.get().load(discoverAfrica.get(position).getImage()).placeholder(R.mipmap.ic_launcher).resize(500,500).centerCrop().into(holder.image);
+
 
         holder.countryName.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -67,12 +75,15 @@ public class DiscoverAdapter extends RecyclerView.Adapter<DiscoverAdapter.MyView
                 helper.toastMessage(holder.itemView.getContext(), "country name is : "+ discoverAfrica.get(position).getName());
             }
         });
+
     }
 
     @Override
     public int getItemCount() {
         return discoverAfrica.size();
     }
+
+
 
     class MyViewHolder extends RecyclerView.ViewHolder {
         TextView countryName,destination;
@@ -85,4 +96,39 @@ public class DiscoverAdapter extends RecyclerView.Adapter<DiscoverAdapter.MyView
             image= itemView.findViewById(R.id.image_country);
         }
     }
+
+    @Override
+    public Filter getFilter() {
+        return discoverFilter;
+    }
+
+    private Filter discoverFilter = new Filter() {
+        @Override
+        protected FilterResults performFiltering(CharSequence constraint) {
+            List<DiscoverAfrica> filteredList = new ArrayList<>();
+
+            if (constraint == null ||constraint.length() == 0){
+                filteredList.addAll(discoverAfricaFull);
+            } else {
+                String filterPattern = constraint.toString().toLowerCase().trim();
+
+                for (DiscoverAfrica discover : discoverAfricaFull) {
+                    if (discover.getName().toLowerCase().contains(filterPattern)) {
+                        filteredList.add(discover);
+                    }
+                }
+            }
+
+            FilterResults results = new FilterResults();
+            results.values = filteredList;
+            return results;
+        }
+
+        @Override
+        protected void publishResults(CharSequence constraint, FilterResults results) {
+            discoverAfrica.clear();
+            discoverAfrica.addAll((List) results.values);
+            notifyDataSetChanged();
+        }
+    };
 }

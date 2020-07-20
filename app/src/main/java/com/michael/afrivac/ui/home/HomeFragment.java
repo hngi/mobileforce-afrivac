@@ -2,6 +2,7 @@ package com.michael.afrivac.ui.home;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -68,6 +69,8 @@ public class HomeFragment extends Fragment {
     SearchView searchView;
     ImageButton menuButton;
     TextView welcome_text;
+    TextView discoverTitle;
+    TextView popularTitle;
 
     private int radius;
 //for the discover Africa recycler view
@@ -98,6 +101,11 @@ public class HomeFragment extends Fragment {
         profile_image = root.findViewById(R.id.profile_image);
         menuButton = root.findViewById(R.id.menuButton);
         welcome_text = root.findViewById(R.id.welcome_text);
+        discoverTitle = root.findViewById(R.id.discover_africa);
+        popularTitle = root.findViewById(R.id.popular_destination);
+
+        searchView = root.findViewById(R.id.search);
+        changeSearchViewTextColor(searchView);
 
         Calendar calender = Calendar.getInstance();
         currentTime = calender.get(Calendar.HOUR_OF_DAY);
@@ -210,13 +218,37 @@ public class HomeFragment extends Fragment {
                 rv_discoverAfrica.setAdapter(discoverAdapter);
 
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
             }
         });
 
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                discoverAdapter.getFilter().filter(newText);
+                popularAdapter.getFilter().filter(newText);
+
+                if (discoverAdapter.getItemCount() < 1){
+                    discoverTitle.setVisibility(View.GONE);
+                } else {
+                    discoverTitle.setVisibility(View.VISIBLE);
+                }
+
+                if (popularAdapter.getItemCount() < 1){
+                    popularTitle.setVisibility(View.GONE);
+                } else {
+                    popularTitle.setVisibility(View.VISIBLE);
+                }
+                return false;
+            }
+        });
 
 
         profile_image.setOnClickListener(new View.OnClickListener() {
@@ -238,5 +270,18 @@ public class HomeFragment extends Fragment {
     private void initImageLoader(){
         UniversalImageLoader imageLoader = new UniversalImageLoader(getContext());
         ImageLoader.getInstance().init(imageLoader.getConfig());
+    }
+
+    private void changeSearchViewTextColor(View view) {
+        if (view != null) {
+            if (view instanceof TextView) {
+                ((TextView) view).setTextColor(Color.BLACK);
+            } else if (view instanceof ViewGroup) {
+                ViewGroup viewGroup = (ViewGroup) view;
+                for (int i = 0; i < viewGroup.getChildCount(); i++) {
+                    changeSearchViewTextColor(viewGroup.getChildAt(i));
+                }
+            }
+        }
     }
 }
