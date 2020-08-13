@@ -16,6 +16,7 @@ import com.michael.afrivac.Util.Helper;
 import com.michael.afrivac.ui.account.AccountFragment;
 import com.michael.afrivac.ui.findHotel.FindHotelFragment;
 import com.michael.afrivac.ui.home.HomeFragment;
+import com.michael.afrivac.ui.memories.MemoriesFragment;
 import com.michael.afrivac.ui.popular_destination.PopularDestinationFragment;
 import com.michael.afrivac.ui.support.SupportFragment;
 import com.google.firebase.auth.FirebaseAuth;
@@ -61,7 +62,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private AppBarConfiguration mAppBarConfiguration;
     private ActionBarDrawerToggle toggle;
     private Helper helper;
-    FirebaseAuth mAuth;
+    //FirebaseAuth mAuth;
     Toolbar toolbar;
 
     @Override
@@ -94,7 +95,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 //            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
 //        }
 
-        mAuth = FirebaseAuth.getInstance();
+        //mAuth = FirebaseAuth.getInstance();
 
 //        FloatingActionButton fab = findViewById(R.id.fab);
 //        fab.setOnClickListener(new View.OnClickListener() {
@@ -147,9 +148,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
 
     private void logout() {
-        FirebaseAuth.getInstance().signOut();
-        helper.gotoLoginAcitivity(this);
-        finish();
+       // FirebaseAuth.getInstance().signOut();
+       // helper.gotoLoginAcitivity(this);
+       // finish();
     }
 
     @Override
@@ -219,10 +220,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     protected void onStart() {
         super.onStart();
-        FirebaseUser currentUser = mAuth.getCurrentUser();
+       /* FirebaseUser currentUser = mAuth.getCurrentUser();
         if(currentUser == null){
             helper.gotoLoginAcitivity(this);
-        }
+        }    */
 
     }
 
@@ -267,6 +268,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.nav_support:
                 fragment = new SupportFragment();
                 fragment_tag = "SupportFragment";
+                break;
+            case R.id.nav_memories:
+                fragment = new MemoriesFragment();
+                fragment_tag = "MemoriesFragment";
                 break;
             case R.id.nav_logout:
                 logout();
