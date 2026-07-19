@@ -1,5 +1,8 @@
 package com.michael.afrivac;
 
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.os.AsyncTask;
 import android.os.Bundle;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -7,19 +10,44 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.RatingBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
 import com.firebase.client.Firebase;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import com.google.gson.JsonObject;
+import com.squareup.picasso.Picasso;
+import com.michael.afrivac.Util.Helper;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.w3c.dom.Text;
+
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
+
+import okhttp3.FormBody;
+import okhttp3.OkHttpClient;
+//import okhttp3.Request;
+import okhttp3.RequestBody;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -28,10 +56,13 @@ import org.w3c.dom.Text;
  */
 public class PopularDestinationDetailsReviewFragment extends Fragment {
 
+    UserReviewDetails userReviewDetails;
+
     private RecyclerView recyclerView;
     private LinearLayoutManager layoutManager;
     private PopularDestinationReviewsRecyclerviewAdapter adapter;
     private Button btnSubmitReview, btnAddReview;
+    private Helper helper;
 
     EditText describe, tell;
     RatingBar rating;
@@ -53,6 +84,14 @@ public class PopularDestinationDetailsReviewFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    private String ID;
+    private String token = "";
+    String review;
+    String userRating;
+    String user;
+    String date;
+    String title;
+
 
     public PopularDestinationDetailsReviewFragment() {
         // Required empty public constructor
@@ -90,21 +129,100 @@ public class PopularDestinationDetailsReviewFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         final View view = inflater.inflate(R.layout.fragment_popular_destination_details_review, container, false);
+        SharedPreferences sharedP = getContext().getSharedPreferences("TOKEN", Context.MODE_PRIVATE);
+        token = sharedP.getString("token", "Token");
+
+
+        SharedPreferences sharedPreferencesId = getContext().getSharedPreferences("ID", Context.MODE_PRIVATE);
+        //ID = sharedPreferencesId.getString("id", "id");
+
+
+
+        try {
+            final SharedPreferences sharedPreferences = getActivity().getSharedPreferences("POSITION", getContext().MODE_PRIVATE);
+            String url = "https://piscine-mandarine-32869.herokuapp.com/api/v1/destinations/";
+            JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+                @Override
+                public void onResponse(JSONObject response) {
+                    try {
+
+                        JSONObject jsonResponse = response.getJSONObject("data");
+                        JSONArray popularDestinationJsonArray = jsonResponse.getJSONArray("selectedProperties");
+                        for (int pos = 0; pos < popularDestinationJsonArray.length(); pos++){
+                            JSONObject popularDestinationObject = popularDestinationJsonArray.getJSONObject(pos);
+                            if (sharedPreferences.getInt("position", 0) == pos){
+                                TextView ratingsAverage = view.findViewById(R.id.displayRating);
+                                double ratingsA = popularDestinationObject.getDouble("ratingsAverage");
+                                String ratingsAConv = "" + ratingsA;
+                                ratingsAverage.setText(ratingsAConv);
+                                TextView ratingsQuantity = view.findViewById(R.id.ratingsQuantity);
+                                int ratingsQ =  popularDestinationObject.getInt("ratingsQuantity");
+                                String ratingsQConv = "(" + ratingsQ + ")";
+                                ratingsQuantity.setText(ratingsQConv);
+
+                                SharedPreferences sharedPreferencesID = getContext().getSharedPreferences("ID", Context.MODE_PRIVATE);
+                                SharedPreferences.Editor editor = sharedPreferencesID.edit();
+                                editor.putString("id", popularDestinationObject.getString("_id"));
+                                Log.i("aaaa", popularDestinationObject.getString("_id"));
+                                helper.Dest_id(popularDestinationObject.getString("_id"));
+                                ID = popularDestinationObject.getString("_id");
+                                //dest_id = popularDestinationObject.getString("_id");
+
+                                //getReviews getReviews = new getReviews();
+                                //getReviews.execute(ID);
+                                getReviews();
+
+                                editor.commit();
+                                try {
+                                    Log.d("IDDDDS", popularDestinationObject.getString("_id"));
+                                }catch (Exception e){
+                                    Log.e("IDErrr", e.getMessage());
+                                }
+                            }
+                        }
+
+                    }catch (Exception e){
+                        e.printStackTrace();
+                    }
+                }
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+
+                }
+            }){
+                public Map<String, String> getHeaders() throws AuthFailureError {
+                    Map<String, String> headers = new HashMap<>();
+                    headers.put("Authorization", "Bearer " + token);
+                    return headers;
+                }
+            };
+            Volley.newRequestQueue(getContext()).add(jsonObjectRequest);
+        }catch (Exception e){
+            Log.e("error", "ERROR: " + e.getMessage());
+        }
+
+        //getReviews getReviews = new getReviews();
+        //getReviews.execute();
+
+
 
         recyclerView = view.findViewById(R.id.userRecyclerViewReview);
         btnAddReview = view.findViewById(R.id.addReview);
         btnSubmitReview =view.findViewById(R.id.submitReview);
 
+        helper = new Helper();
+
         layoutManager = new LinearLayoutManager(getContext());
-        adapter = new PopularDestinationReviewsRecyclerviewAdapter();
+        adapter = new PopularDestinationReviewsRecyclerviewAdapter(getContext());
 
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(adapter);
 
-        adapter.addUserReviewInfo(new UserReviewDetails("Uzumaki Naruto", "12/12/12", "This is great", "\"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."));
-        adapter.addUserReviewInfo(new UserReviewDetails("Uchia Sasuke", "12/12/12", "Amazing Hotel", "\"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."));
-        adapter.addUserReviewInfo(new UserReviewDetails("Monkey D Luffy", "12/12/12", "Cool", "\"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."));
-        adapter.addUserReviewInfo(new UserReviewDetails("Zoro", "12/12/12", "Fantabulous", "\"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."));
+       // adapter.addUserReviewInfo(new UserReviewDetails("Uzumaki Naruto", "12/12/12", "This is great", "\"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."));
+       // adapter.addUserReviewInfo(new UserReviewDetails("Uchia Sasuke", "12/12/12", "Amazing Hotel", "\"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."));
+       // adapter.addUserReviewInfo(new UserReviewDetails("Monkey D Luffy", "12/12/12", "Cool", "\"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."));
+       // adapter.addUserReviewInfo(new UserReviewDetails("Zoro", "12/12/12", "Fantabulous", "\"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."));
 
         btnAddReview.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -127,7 +245,15 @@ public class PopularDestinationDetailsReviewFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-            ReviewDetails reviewDetails = new ReviewDetails();
+                String Review = describe.getText().toString();
+                Float R = rating.getRating();
+                String Rating = String.valueOf(R);
+
+
+                PostReviews postReviews = new PostReviews();
+                postReviews.execute(Review, Rating);
+
+         /*   ReviewDetails reviewDetails = new ReviewDetails();
 
                 GetDataFromEditText();
 
@@ -146,7 +272,9 @@ public class PopularDestinationDetailsReviewFragment extends Fragment {
 
                 ConstraintLayout submitReviewCons = view.findViewById(R.id.submit_review_cons);
                 submitReviewCons.setVisibility(View.GONE);
-                btnAddReview.setVisibility(View.VISIBLE);
+                btnAddReview.setVisibility(View.VISIBLE);    */
+
+
             }
         });
     return view;
@@ -159,4 +287,204 @@ public class PopularDestinationDetailsReviewFragment extends Fragment {
 
         RatingHolder = rating.getRating();
     }
+
+    //code to send review to the API db
+    public class PostReviews extends AsyncTask<String, Void, String> {
+
+
+        @Override
+        protected String doInBackground(String... strings) {
+
+            OkHttpClient okHttpClient = new OkHttpClient();
+           // String token = helper.getToken();
+            String Review = strings[0];
+            String Rating = strings[1];
+
+            SharedPreferences sharedP = getContext().getSharedPreferences("TOKEN", Context.MODE_PRIVATE);
+            token = sharedP.getString("token", "Token");
+
+            RequestBody requestDetails = new FormBody.Builder()
+                    .add("review", Review)
+                    .add("rating", Rating)
+                    .add("destination", ID)  //update this once popular dest is complete
+                    .build();
+
+            okhttp3.Request request = new okhttp3.Request.Builder()
+                    .url("https://piscine-mandarine-32869.herokuapp.com/api/v1/reviews/")
+                    .header("Authorization", "Bearer " + token)
+                    .post(requestDetails)
+                    .build();
+
+            try {
+                okhttp3.Response response = okHttpClient.newCall(request).execute();
+
+                if (response.isSuccessful()) {
+                    Log.i("Post Review", "Success");
+                }else {
+                    Log.i("Post Review", "Fail");
+                }
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            return null;
+        }
+    }
+
+    public void getReviews(){
+
+        try {
+            //final SharedPreferences sharedPreferences = getActivity().getSharedPreferences("POSITION", getContext().MODE_PRIVATE);
+            //String url = "https://piscine-mandarine-32869.herokuapp.com/api/v1/destinations/";
+            JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, "https://piscine-mandarine-32869.herokuapp.com/api/v1/destinations/" + ID , null, new Response.Listener<JSONObject>() {
+                @Override
+                public void onResponse(JSONObject response) {
+                    try {
+
+                        JSONObject jsonObject = new JSONObject(response.toString());
+                        String resultData = jsonObject.getString("data");
+                        Log.i("Jsonresponse", response.toString());
+
+                        JSONObject tokenObejct = new JSONObject(resultData);
+                        SharedPreferences sharedPreferences = getContext().getSharedPreferences("TOKEN", Context.MODE_PRIVATE);
+                        SharedPreferences.Editor editor = sharedPreferences.edit();
+                        editor.putString("token", tokenObejct.getString("token"));
+                        editor.apply();
+
+                        JSONObject dataObject = new JSONObject(resultData);
+                        String destinationData = dataObject.getString("destination");
+
+                        JSONObject destinationObject = new JSONObject(destinationData);
+                        JSONArray reviewArray = destinationObject.getJSONArray("reviews");
+                        String reviewsData = destinationObject.getString("reviews");
+                        Log.i("reviews data per ID", reviewsData);
+
+                        for (int i = 0; i < reviewArray.length(); i++ ) {
+
+                            JSONObject reviewItem = reviewArray.getJSONObject(i);
+
+                            review = reviewItem.getString("review");
+                            userRating = reviewItem.getString("rating");
+                            user = reviewItem.getString("user");
+                            date = reviewItem.getString("createdAt");
+                            title = "My Title";
+                            Log.i("userString", user);
+                            if (user != null && !user.equals("")) {
+                                user = "Test User";
+                            }
+
+                            adapter.addUserReviewInfo(new UserReviewDetails(user, date, title, review));
+                            //toAddDetails(user, date, title, review);
+
+                        }
+
+                    }catch (Exception e){
+                        e.printStackTrace();
+                    }
+                }
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+
+                }
+            }){
+                public Map<String, String> getHeaders() throws AuthFailureError {
+                    Map<String, String> headers = new HashMap<>();
+                    headers.put("Authorization", "Bearer " + token);
+                    return headers;
+                }
+            };
+            Volley.newRequestQueue(getContext()).add(jsonObjectRequest);
+        }catch (Exception e){
+            Log.e("error", "ERROR: " + e.getMessage());
+        }
+
+
+      /*  @Override
+        protected String doInBackground(String... strings) {
+
+            OkHttpClient okHttpClient = new OkHttpClient();
+           // String dest_id = helper.getDestID();
+            String dest_id = strings[0];
+           // String token = helper.getToken();
+
+            okhttp3.Request request = new okhttp3.Request.Builder()
+                    .url("https://piscine-mandarine-32869.herokuapp.com/api/v1/destinations/" + dest_id )
+                    .header("Authorization", "Bearer " + token)
+                    .build();
+
+            Log.i("dest frag", "https://piscine-mandarine-32869.herokuapp.com/api/v1/destinations/" + dest_id);
+
+            try {
+                okhttp3.Response response = okHttpClient.newCall(request).execute();    //gets a response from the server
+                String resultt = response.toString();
+                Log.i("outcome", resultt);
+                if (response.isSuccessful()) {
+                    String result = response.body().string();
+                    Log.i("desitid", result);
+
+                    JSONObject jsonObject = new JSONObject(result);
+                    String resultData = jsonObject.getString("data");
+
+                    JSONObject dataObject = new JSONObject(resultData);
+                    String destinationData = dataObject.getString("destination");
+
+                    JSONObject destinationObject = new JSONObject(destinationData);
+                    JSONArray reviewArray = destinationObject.getJSONArray("reviews");
+                    String reviewsData = destinationObject.getString("reviews");
+                    Log.i("reviews data per ID", reviewsData);
+
+                    for (int i = 0; i < reviewArray.length(); i++ ) {
+
+                        JSONObject reviewItem = reviewArray.getJSONObject(i);
+
+                        review = reviewItem.getString("review");
+                        userRating = reviewItem.getString("rating");
+                        user = reviewItem.getString("user");
+                        date = reviewItem.getString("createdAt");
+                        title = "My Title";
+                        Log.i("userString", user);
+                        if (user != null && !user.equals("")) {
+                            user = "Test User";
+                        }
+
+                         //adapter.addUserReviewInfo(new UserReviewDetails(user, date, title, review));
+                        //toAddDetails(user, date, title, review);
+
+                    }
+
+                }else {
+                    Log.i("dest frag response", "unsuccessful");
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+            return null;
+
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+
+                toAddDetails(user, date, title, review);
+
+        }    */
+    }
+
+    public void toAddDetails(String user, String date, String title, String review) {
+
+        userReviewDetails= new UserReviewDetails(user, date, title, review);
+        adapter.addUserReviewInfo(userReviewDetails);
+
+    }
+
+    public String Dest_id() {
+        return ID;
+    }
+
 }

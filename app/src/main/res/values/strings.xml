@@ -277,6 +277,7 @@
     <string name="resend_verification_code">Resend Verification Code</string>
     <string name="french">French</string>
     <string name="spanish">Spanish</string>
+    <string name="memories">memories</string>
     <string-array name="languages">
         <item>English</item>
         <item>France</item>

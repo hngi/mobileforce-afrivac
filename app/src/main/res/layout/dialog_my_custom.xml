@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#ffffff">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:padding="10dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Create a Memory"
+            android:textSize="18sp"
+            android:textColor="@color/colorBlue"
+            android:id="@+id/heading"
+            android:gravity="center_horizontal"
+            android:layout_marginTop="15dp"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/heading"
+            android:layout_marginTop="20dp"
+            android:hint="Title"
+            android:paddingTop="15dp"
+            app:backgroundTint="@color/colorBlue"
+            android:textColor="#000"
+            android:id="@+id/input1"
+            android:textColorHint="#D3D3D3"
+            />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/input1"
+            android:layout_marginTop="20dp"
+            android:hint="description"
+            android:paddingTop="5dp"
+            android:textColor="#000"
+            app:backgroundTint="@color/colorBlue"
+            android:id="@+id/input2"
+            android:textColorHint="#D3D3D3" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ok"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="20dp"
+            android:textSize="14sp"
+            android:layout_marginTop="5dp"
+            android:textColor="@color/colorBlue"
+            android:id="@+id/action_ok"
+            android:layout_marginBottom="5dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="CLEAR"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_marginRight="20dp"
+            android:textSize="14sp"
+            android:layout_marginTop="5dp"
+            android:textColor="@color/colorBlue"
+            android:id="@+id/action_cancel"
+            android:layout_marginBottom="5dp"/>
+
+    </RelativeLayout>
+
+
+</RelativeLayout>

@@ -19,6 +19,10 @@ public class Helper {
     Context context;
     Intent intent;
     ProgressDialog progressDialog;
+
+    String token = "";
+    String dest_id = "555";
+
     public Helper(){
     }
 
@@ -114,6 +118,25 @@ public class Helper {
         intent = new Intent(context, EditAccountInfoActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         context.startActivity(intent);
+    }
+
+    public String token(String userToken) {   //gets the token upon login and saves it
+        token = userToken;
+        return null;
+    }
+
+    public String getToken() {    //call this to use the token anywhere
+        return token;
+    }
+
+    public String Dest_id(String destid) {
+        dest_id = destid;
+        return null;
+
+    }
+
+    public String getDestID() {    //call this to use the token anywhere
+        return dest_id;
     }
 
     /*public void gotoProfilePageActivity(Context context){

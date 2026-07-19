@@ -1,5 +1,7 @@
 package com.michael.afrivac;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 
@@ -7,10 +9,22 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
+import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -22,6 +36,8 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.HashMap;
+import java.util.Map;
 
 public class PopularDestinationDetailsOverviewFragment extends Fragment {
 
@@ -69,17 +85,72 @@ public class PopularDestinationDetailsOverviewFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-
-        //to input the API url which will load in json format
-        DownloadTask task = new DownloadTask();
-        task.execute("https://lit-sea-83098.herokuapp.com/api/v1/destinations/");
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+
         final View view = inflater.inflate(R.layout.fragment_popular_destination_details_overview, container, false);
+
+        SharedPreferences sharedP = getContext().getSharedPreferences("TOKEN", getContext().MODE_PRIVATE);
+        final String token = sharedP.getString("token", "Token");
+
+        try {
+
+            final SharedPreferences sharedPreferences = getActivity().getSharedPreferences("POSITION", Context.MODE_PRIVATE);
+            String url = "https://piscine-mandarine-32869.herokuapp.com/api/v1/destinations/";
+            JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+                @Override
+                public void onResponse(JSONObject response) {
+                    try {
+
+                        JSONObject jsonResponse = response.getJSONObject("data");
+                        JSONArray popularDestinationJsonArray = jsonResponse.getJSONArray("selectedProperties");
+                        for (int pos = 0; pos < popularDestinationJsonArray.length(); pos++){
+                            JSONObject popularDestinationObject = popularDestinationJsonArray.getJSONObject(pos);
+                            if (sharedPreferences.getInt("position", 0) == pos){
+                                TextView details = view.findViewById(R.id.txtOverview);
+                                details.setText(popularDestinationObject.getString("summary"));
+                                ImageView photo1 = view.findViewById(R.id.photo1);
+                                ImageView photo2 = view.findViewById(R.id.photo2);
+                                ImageView photo3 = view.findViewById(R.id.photo3);
+
+                                try {
+                                    String imgURL1 = popularDestinationObject.getString("imageCover");
+                                    String imgURL2 = popularDestinationObject.getString("imageCover");
+                                    String imgURL3 = popularDestinationObject.getString("imageCover");
+
+                                    Picasso.get().load(imgURL1).transform(new RoundedCornersTransform()).into(photo1);
+                                    Picasso.get().load(imgURL2).transform(new RoundedCornersTransform()).into(photo2);
+                                    Picasso.get().load(imgURL3).transform(new RoundedCornersTransform()).into(photo3);
+
+                                }catch (Exception e){
+                                    Log.e("PhotosErr", "ERR: " + e.getMessage());
+                                }
+                            }
+                        }
+                    }catch (Exception e){
+                        e.printStackTrace();
+                    }
+                }
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+
+                }
+            }){
+                public Map<String, String> getHeaders() throws AuthFailureError {
+                    Map<String, String> headers = new HashMap<>();
+                    headers.put("Authorization", "Bearer " + token);
+                    return headers;
+                }
+            };
+            Volley.newRequestQueue(getContext()).add(jsonObjectRequest);
+        }catch (Exception e){
+            Log.e("error", "ERROR: " + e.getMessage());
+        }
+
         recyclerView = view.findViewById(R.id.hotelsItem);
         recreationRV = view.findViewById(R.id.whatToDoRV);
 
@@ -96,81 +167,5 @@ public class PopularDestinationDetailsOverviewFragment extends Fragment {
         recreationRV.setAdapter(mPopularDestinationDetailsRecreationCentersAdapter);
 
         return view;
-    }
-
-    //new task Michalezy
-
-    public class DownloadTask extends AsyncTask<String, Void, String> {
-
-
-        @Override
-        protected String doInBackground(String... urls) {
-
-            String result ="";
-            URL url;
-            HttpURLConnection urlConnection = null;
-
-            try {
-
-                url = new URL(urls[0]);
-                urlConnection = (HttpURLConnection) url.openConnection();
-                InputStream in = urlConnection.getInputStream();
-                InputStreamReader reader = new InputStreamReader(in);
-
-                int data = reader.read();
-
-                while (data != -1) {
-
-                    char current = (char) data;
-                    result += current;
-
-                    data = reader.read();
-
-                }
-
-                return result;
-
-            } catch (MalformedURLException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
-            return null;
-        }
-
-        @Override
-        protected void onPostExecute(String result) {
-            super.onPostExecute(result);
-
-            try {
-
-                JSONObject jsonObject = new JSONObject(result);
-                String data = jsonObject.getString("data");
-
-                //Log.i("data", data);
-
-                JSONObject destinationObject = new JSONObject(data);
-                String destination = destinationObject.getString("destination");
-
-                //Log.i("destination", destination);
-
-                JSONArray array = new JSONArray(destination);
-
-                JSONObject jsonPart = array.getJSONObject(0);
-
-                jsonPart.getString("country");
-                jsonPart.getString("ratingsAverage");
-                jsonObject.getString("ratingsQuantity");
-                jsonObject.getString("summary");
-
-
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-
-            //Log.i("Website Content", result);
-
-        }
     }
 }
